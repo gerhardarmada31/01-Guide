@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             moveInputs = new Vector3(playerInputs.x, 0, playerInputs.y);
             moveInputs = moveInputs.z * camF + moveInputs.x * camR;
 
-            // moveInputs = Vector3.ClampMagnitude(moveInputs, 1);
+            moveInputs = Vector3.ClampMagnitude(moveInputs, 1);
 
             //Rotation of Player
             if (charVelocity.magnitude > 0.01f && moveInputs != Vector3.zero)

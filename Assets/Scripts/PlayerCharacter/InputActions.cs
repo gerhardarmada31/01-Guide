@@ -65,7 +65,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""id"": ""f3af0f6d-2e8b-4264-9611-78ebc556a49c"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""Scale(factor=0.5),Clamp(min=-1,max=1)"",
                     ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": true,

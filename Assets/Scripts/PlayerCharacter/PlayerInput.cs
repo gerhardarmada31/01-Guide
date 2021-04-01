@@ -8,15 +8,26 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerInput : MonoBehaviour
 {
+
+    //CONSTS
     private InputActions controls;
     private Vector2 moveInput;
     private bool commandMode = false;
     private PlayerMovement playerMovement;
+    private CommandRange commandRange;
+
 
     private void Awake()
     {
         controls = new InputActions();
         playerMovement = GetComponent<PlayerMovement>();
+
+        commandRange = GetComponentInChildren<CommandRange>();
+        if (commandRange != null)
+        {
+            commandRange.transform.gameObject.SetActive(false);
+        }
+
     }
 
     private void OnEnable()
@@ -45,22 +56,26 @@ public class PlayerInput : MonoBehaviour
         commandMode = false;
         if (!commandMode)
         {
-
         }
+        commandRange.gameObject.SetActive(false);
     }
 
     private void HandleCmdOn(InputAction.CallbackContext context)
     {
+        //Create a condition if the spirit point is >= to 1
         if (!commandMode)
         {
             commandMode = true;
 
         }
+        commandRange.gameObject.SetActive(true);
     }
 
     private void HandleExecuteCom(InputAction.CallbackContext context)
     {
         commandMode = false;
+        commandRange.gameObject.SetActive(false);
+        commandRange.ConfirmTarget();
     }
 
 
@@ -69,16 +84,15 @@ public class PlayerInput : MonoBehaviour
         controls.PlayerCharacter.cmdOn.performed -= HandleCmdOn;
         controls.PlayerCharacter.cmdOff.performed -= HandleCmdOff;
         controls.PlayerCharacter.ExecuteCom.performed -= HandleExecuteCom;
-        
+
         controls.PlayerCharacter.Move.performed -= HandleMove => moveInput = HandleMove.ReadValue<Vector2>();
         controls.PlayerCharacter.Move.canceled -= HandleMove => moveInput = Vector2.zero;
-        
-        
+
+
         controls.PlayerCharacter.Jump.performed -= HandleJump;
         controls.Disable();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
     }
@@ -87,8 +101,13 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         // Debug.Log("Command Mode " + commandMode);
-        playerMovement.Move(moveInput);
+        if (!commandMode)
+        {
+            playerMovement.Move(moveInput);
+        }
+
         Debug.Log(moveInput);
+        commandRange.CommandMode();
 
     }
 

@@ -23,8 +23,8 @@ public class EnemyStatus : MonoBehaviour, ITakeDamage
         //only work if time is moving.
         if (obj == this.gameObject)
         {
-            Debug.Log("TakeDamage");
-            hp-= playerStats.totalDmg;
+            Debug.Log(this.gameObject.name + " TakeDamage");
+            // hp-= playerStats.totalDmg;
         }
     }
 

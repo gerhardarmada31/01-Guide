@@ -989,7 +989,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh43714
+  m_Name: pb_Mesh19762
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2827,11 +2827,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4591903395387208224, guid: 56cf5eeb640310d4e9cb938c4a5f4fe0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000032596134
+      value: 0.00000006318284
       objectReference: {fileID: 0}
     - target: {fileID: 4591903395387208224, guid: 56cf5eeb640310d4e9cb938c4a5f4fe0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000016805974
+      value: -0.00000003257593
       objectReference: {fileID: 0}
     - target: {fileID: 4591903395387208224, guid: 56cf5eeb640310d4e9cb938c4a5f4fe0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2918,7 +2918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3220362651771320337}
   m_Layer: 0
-  m_Name: Player (1)
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2943,7 +2943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &6941462895875036340
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3143,7 +3143,7 @@ GameObject:
   - component: {fileID: 7802968830207104018}
   - component: {fileID: 7802968830207104019}
   m_Layer: 0
-  m_Name: PlayerVcam
+  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3156,7 +3156,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7802968830207104016}
-  m_LocalRotation: {x: 0.4582589, y: 0.000000032596134, z: -0.000000016805974, w: 0.88881874}
+  m_LocalRotation: {x: 0.4582589, y: 0.00000006318284, z: -0.00000003257593, w: 0.88881874}
   m_LocalPosition: {x: -4.453483, y: 15.818138, z: -45.158905}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3308,7 +3308,7 @@ GameObject:
   - component: {fileID: 7802968831394596684}
   - component: {fileID: 7802968831394596682}
   m_Layer: 0
-  m_Name: PlayerCharacter
+  m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

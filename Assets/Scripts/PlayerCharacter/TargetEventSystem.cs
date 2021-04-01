@@ -16,6 +16,7 @@ public class TargetEventSystem : MonoBehaviour
 
     public void ConfirmTargetSelect(GameObject obj)
     {
+        //probably add a interface itargetable
         onConfirmTargetSelect?.Invoke(obj);
 
         // if (onConfirmTargetSelect != null)

@@ -89,7 +89,6 @@ public class PlayerCharacter : MonoBehaviour
         {
             StartCoroutine(WaitForTeleportUpdate());
             gameObject.transform.position = settings.playerPosition;
-
         }
         else
         {
@@ -234,7 +233,7 @@ public class PlayerCharacter : MonoBehaviour
 
         if (Input.GetButtonDown("ConfirmButton") && commandMode && commandObj.GetComponent<CommandRange>().selectedObj)
         {
-            commandObj.GetComponent<CommandRange>().ConfirmTarget();
+            // commandObj.GetComponent<CommandRange>().ConfirmTarget();
             commandObj.SetActive(false);
             commandMode = false;
         }
