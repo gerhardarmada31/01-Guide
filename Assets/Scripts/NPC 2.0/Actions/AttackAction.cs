@@ -16,14 +16,19 @@ public class AttackAction : NPCActions_SO
         {
             controller.NavMeshAgent.destination = controller.ChaseTarget.position;
 
-            if (Vector3.Distance(controller.NavMeshAgent.transform.position, controller.ChaseTarget.position) <= 3.5f)
+            if (Vector3.Distance(controller.NavMeshAgent.transform.position, controller.ChaseTarget.position) <= 2.5f)
             {
+                controller.NavMeshAgent.isStopped = true;
                 if (controller.TimerAttack(controller.enemyStats.attackRate))
                 {
                     Debug.Log("Attack");
                     Instantiate(controller.AttackObj, controller.Eyes.transform);
                 }
 
+            }
+            else
+            {
+                controller.NavMeshAgent.isStopped = false;
             }
 
         }

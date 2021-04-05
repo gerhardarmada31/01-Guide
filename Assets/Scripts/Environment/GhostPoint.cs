@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class GhostPoint : MonoBehaviour, ITakePosition
 {
-    public PlayerCharacter_SO playerStats;
-    public GameObject myPlayerCharacter;
+    private GameObject playerTransform;
+    private PlayerMovement playerBoost;
+    private PlayerStatus playerSpCheck;
+
     public void TakePosition(Vector3 takeposition)
     {
         takeposition = this.gameObject.transform.position;
@@ -24,13 +26,22 @@ public class GhostPoint : MonoBehaviour, ITakePosition
         TargetEventSystem.current.onConfirmTargetSelect += OnTeleportTarget;
     }
 
-    private void OnTeleportTarget(GameObject obj)
+    private void OnTeleportTarget(GameObject obj, GameObject playerObj)
     {
         if (obj == this.gameObject)
         {
-            Debug.Log("TeleportToTarget");
-            playerStats.hasTeleport = true;
-            playerStats.playerPosition = this.gameObject.transform.position;
+            playerTransform = playerObj;
+
+            playerTransform.transform.position = gameObject.transform.position;
+
+            // // if the players SP is not enough 
+            playerBoost = playerObj.GetComponent<PlayerMovement>();
+
+            if (playerBoost != null)
+            {
+                // Teleport to a target and boost
+                playerBoost.GhostBoost(transform,25f);
+            }
             //myPlayerCharacter.transform.position = gameObject.transform.position;
         }
     }

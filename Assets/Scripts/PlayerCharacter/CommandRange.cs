@@ -7,50 +7,47 @@ public class CommandRange : MonoBehaviour
 {
     public List<GameObject> targetObj = new List<GameObject>();
     public Text myText;
-    public GameObject selectedObj;
-    public int selectedTarget;
+
+    private int targetIndex;
+
     private bool isCommandModeOn;
 
+    private PlayerStatus playerStatus;
+    private GameObject playerObj;
+
+    private GameObject selectedObj;
+    public GameObject SelectedObj
+    {
+        get { return selectedObj; }
+        set { selectedObj = value; }
+    }
+
+
     // Probably create scriptable object to pass through values
-    public PlayerCharacter myPlayer = new PlayerCharacter();
 
 
     private void Awake()
     {
-        myPlayer = this.gameObject.GetComponentInParent<PlayerCharacter>();
+        playerStatus = GetComponentInParent<PlayerStatus>();
+        playerObj = this.transform.parent.gameObject;
     }
-    // Start is called before the first frame update
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.E))
-        // {
-        //     if (selectedTarget < targetObj.Count - 1)
-        //     {
-        //         selectedTarget++;
-        //     }
-        // }
-
-        // if (Input.GetKeyDown(KeyCode.Q))
-        // {
-        //     selectedTarget--;
-        //     if (selectedTarget <= -1)
-        //     {
-        //         selectedTarget = 0;
-        //     }
-        // }
-        if (selectedTarget < targetObj.Count && targetObj[selectedTarget] != null)
+        if (targetIndex < targetObj.Count && targetObj[targetIndex] != null)
         {
-            selectedObj = targetObj[selectedTarget];
-            myText.text = targetObj[selectedTarget].gameObject.name.ToString();
+            selectedObj = targetObj[targetIndex];
+            myText.text = targetObj[targetIndex].gameObject.name.ToString();
         }
     }
 
+    //Finding a target that and add it to the list targetObj
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Target"))
@@ -83,45 +80,72 @@ public class CommandRange : MonoBehaviour
 
     public void ConfirmTarget()
     {
-        // if (myPlayer.commandMode && selectedObj != null)
-        // {
-        //     myPlayer.commandMode = false;
-        TargetEventSystem.current.ConfirmTargetSelect(selectedObj);
+        if (playerStatus.CurrentSP >= 1 && selectedObj != null)
+        {
+            TargetEventSystem.current.ConfirmTargetSelect(selectedObj, playerObj);
 
-        //     //total SPcost
-        //     myPlayer.CurrentSP -= 1 + myPlayer.StackSP;
-        // }
+            // ITakeDamage damage = selectedObj.GetComponent<ITakeDamage>();
+            // if (damage != null)
+            // {
+            //     //get stats from playerStatus
+            //     damage.TakeDamage(playerStatus.TotalDmg);
+            // }
+            playerStatus.SpiritSystem();
+            Debug.Log("ConfirmTarget");
+        }
 
-        Debug.Log("ConfirmTarget");
+
+        //substract spirit
     }
 
     public void ClearingTarget()
     {
         targetObj.Clear();
         selectedObj = null;
+        targetIndex = 0;
     }
 
 
+    //When the game object is on, get the targets then time will stop
     public bool CommandMode()
     {
-
         if (gameObject.activeSelf)
         {
+            StartCoroutine(WaitandPause(0.1f));
             isCommandModeOn = true;
-            StartCoroutine(GetTargetsFirst());
+
         }
         else
         {
+            StopCoroutine(WaitandPause(0.1f));
+            ClearingTarget();
+            myText.text = "None";
             Time.timeScale = 1f;
             isCommandModeOn = false;
-            StopCoroutine(GetTargetsFirst());
         }
         return isCommandModeOn;
     }
 
-    IEnumerator GetTargetsFirst()
+    public void CommandSelect(float selectOperator)
     {
-        yield return new WaitForSeconds(0.1f);
+        if (selectOperator <= -1)
+        {
+            targetIndex = (targetIndex - 1) % targetObj.Count;
+
+            if (targetIndex <= -1)
+            {
+                targetIndex = targetObj.Count - 1;
+            }
+        }
+        else if (selectOperator >= 1)
+        {
+            targetIndex = (targetIndex + 1) % targetObj.Count;
+        }
+    }
+
+    IEnumerator WaitandPause(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
         Time.timeScale = 0f;
     }
 }

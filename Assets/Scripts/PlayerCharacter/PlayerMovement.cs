@@ -21,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-
-
         charController = GetComponent<CharacterController>();
     }
 
@@ -93,5 +91,15 @@ public class PlayerMovement : MonoBehaviour
         {
             charVelocity.y += Mathf.Sqrt(playerStats.jumpHeight * -3f * playerStats.gravityScale);
         }
+    }
+
+
+    //add a parameter to increase based on the boost value
+    public void GhostBoost(Transform ghostPosition, float ghostForce)
+    {
+        charController.enabled = false;
+        transform.position = ghostPosition.transform.position;
+        charController.enabled = true;
+        charVelocity.y = ghostForce;
     }
 }

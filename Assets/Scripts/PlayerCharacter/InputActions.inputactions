@@ -14,6 +14,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "c0583e71-4147-45df-932b-bd8995a6d4ba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "ExecuteCom",
                     "type": "Button",
                     "id": "ca1bdb8d-f0e4-47a6-805f-ebb203b3619c",
@@ -22,15 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "cmdOn",
-                    "type": "Button",
-                    "id": "08f8a21b-dab7-4b84-999c-ff3a60a4a693",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "cmdOff",
+                    "name": "CmdOff",
                     "type": "Button",
                     "id": "186143e2-78d0-4ce1-b53c-d497671e993d",
                     "expectedControlType": "Button",
@@ -38,10 +38,26 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Jump",
+                    "name": "CmdOn",
                     "type": "Button",
-                    "id": "c0583e71-4147-45df-932b-bd8995a6d4ba",
+                    "id": "08f8a21b-dab7-4b84-999c-ff3a60a4a693",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "CmdSelect",
+                    "type": "Button",
+                    "id": "2f1335a5-99bc-447f-9aa1-90f1cc352f61",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "StackSp",
+                    "type": "Value",
+                    "id": "0238c7b8-6154-4ef6-864b-0bcbbbc0c5b8",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 }
@@ -103,6 +119,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "",
+                    "id": "105765b9-47fe-4fa8-b21f-25662dc9aba0",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5b4b001f-a333-4800-b1e2-418869c85588",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CmdOn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76267eb9-84c8-4176-bc11-2e09363567f7",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CmdOff",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "Button With One Modifier",
                     "id": "e7e4b0a7-82a6-4501-9ad9-66babb6b612e",
                     "path": "ButtonWithOneModifier",
@@ -136,35 +185,46 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "5b4b001f-a333-4800-b1e2-418869c85588",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "cmdOn",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "76267eb9-84c8-4176-bc11-2e09363567f7",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "cmdOff",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "105765b9-47fe-4fa8-b21f-25662dc9aba0",
-                    "path": "<Keyboard>/space",
+                    "name": "1D Axis",
+                    "id": "243175b0-8f84-4b1d-ab4e-57a66519aaf7",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
+                    "action": "CmdSelect",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "17969292-8a94-42ca-b99f-56efd1f586cb",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CmdSelect",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a1b07ff2-ad52-437d-9b9e-146be23c42a1",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CmdSelect",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "99d11d5b-2a8f-41ee-81f0-2172ed019f88",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StackSp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

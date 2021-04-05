@@ -233,8 +233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acdaf920c01ae24a9ba209651a034f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: e779ac30b0ec2be4faaa63ac56480f06, type: 2}
-  myPlayerCharacter: {fileID: 1497324556}
 --- !u!54 &47449039
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -455,8 +453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acdaf920c01ae24a9ba209651a034f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: e779ac30b0ec2be4faaa63ac56480f06, type: 2}
-  myPlayerCharacter: {fileID: 1497324556}
 --- !u!136 &129772724
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -583,8 +579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acdaf920c01ae24a9ba209651a034f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: e779ac30b0ec2be4faaa63ac56480f06, type: 2}
-  myPlayerCharacter: {fileID: 1497324556}
 --- !u!136 &450702243
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -804,8 +798,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acdaf920c01ae24a9ba209651a034f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: e779ac30b0ec2be4faaa63ac56480f06, type: 2}
-  myPlayerCharacter: {fileID: 1497324556}
 --- !u!136 &572059909
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1809,6 +1801,10 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4752667532120920245, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
+      propertyPath: m_Name
+      value: Enemy Character 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
 --- !u!4 &1014029464 stripped
@@ -2030,13 +2026,12 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4752667532120920245, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
+      propertyPath: m_Name
+      value: Enemy Character 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
---- !u!1 &1497324556 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1524926828809422517, guid: ee3750f7075460842b44bb52713085c0, type: 3}
-  m_PrefabInstance: {fileID: 1524926829731338937}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1524035404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,8 +2358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acdaf920c01ae24a9ba209651a034f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: e779ac30b0ec2be4faaa63ac56480f06, type: 2}
-  myPlayerCharacter: {fileID: 1497324556}
 --- !u!136 &1697366165
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2436,7 +2429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697366162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.57, y: 6.4, z: -3.5}
+  m_LocalPosition: {x: 1.57, y: 2.45, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2477,7 +2470,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 3
   attack: 5
-  playerStats: {fileID: 11400000, guid: e779ac30b0ec2be4faaa63ac56480f06, type: 2}
 --- !u!54 &1889702835
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2600,7 +2592,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1951925539
 GameObject:
@@ -2860,7 +2852,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4719389079519639008, guid: 3c683df0bfb2fbf468ca1c5d09d19f7d, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4719389079519639008, guid: 3c683df0bfb2fbf468ca1c5d09d19f7d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3034,9 +3026,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObj: []
   myText: {fileID: 120680170}
-  selectedObj: {fileID: 0}
-  selectedTarget: 0
-  myPlayer: {fileID: 0}
 --- !u!1 &7802968830001739504
 GameObject:
   m_ObjectHideFlags: 0
@@ -3306,6 +3295,7 @@ GameObject:
   - component: {fileID: 7802968831394596693}
   - component: {fileID: 7802968831394596683}
   - component: {fileID: 7802968831394596684}
+  - component: {fileID: 7802968831394596685}
   - component: {fileID: 7802968831394596682}
   m_Layer: 0
   m_Name: Character
@@ -3358,6 +3348,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: e779ac30b0ec2be4faaa63ac56480f06, type: 2}
   playerMainCam: {fileID: 1014029464}
+--- !u!114 &7802968831394596685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802968831394596681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914b8cebca8141b46b1aa6f138d402b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: e779ac30b0ec2be4faaa63ac56480f06, type: 2}
 --- !u!33 &7802968831394596692
 MeshFilter:
   m_ObjectHideFlags: 0

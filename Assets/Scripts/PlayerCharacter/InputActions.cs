@@ -27,6 +27,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""c0583e71-4147-45df-932b-bd8995a6d4ba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""ExecuteCom"",
                     ""type"": ""Button"",
                     ""id"": ""ca1bdb8d-f0e4-47a6-805f-ebb203b3619c"",
@@ -35,15 +43,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""cmdOn"",
-                    ""type"": ""Button"",
-                    ""id"": ""08f8a21b-dab7-4b84-999c-ff3a60a4a693"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""cmdOff"",
+                    ""name"": ""CmdOff"",
                     ""type"": ""Button"",
                     ""id"": ""186143e2-78d0-4ce1-b53c-d497671e993d"",
                     ""expectedControlType"": ""Button"",
@@ -51,10 +51,26 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""CmdOn"",
                     ""type"": ""Button"",
-                    ""id"": ""c0583e71-4147-45df-932b-bd8995a6d4ba"",
+                    ""id"": ""08f8a21b-dab7-4b84-999c-ff3a60a4a693"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""CmdSelect"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f1335a5-99bc-447f-9aa1-90f1cc352f61"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""StackSp"",
+                    ""type"": ""Value"",
+                    ""id"": ""0238c7b8-6154-4ef6-864b-0bcbbbc0c5b8"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -116,6 +132,39 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""105765b9-47fe-4fa8-b21f-25662dc9aba0"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b4b001f-a333-4800-b1e2-418869c85588"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CmdOn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76267eb9-84c8-4176-bc11-2e09363567f7"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CmdOff"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""Button With One Modifier"",
                     ""id"": ""e7e4b0a7-82a6-4501-9ad9-66babb6b612e"",
                     ""path"": ""ButtonWithOneModifier"",
@@ -149,35 +198,46 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""5b4b001f-a333-4800-b1e2-418869c85588"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""cmdOn"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""76267eb9-84c8-4176-bc11-2e09363567f7"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""cmdOff"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""105765b9-47fe-4fa8-b21f-25662dc9aba0"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""243175b0-8f84-4b1d-ab4e-57a66519aaf7"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""action"": ""CmdSelect"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""17969292-8a94-42ca-b99f-56efd1f586cb"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CmdSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""a1b07ff2-ad52-437d-9b9e-146be23c42a1"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CmdSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99d11d5b-2a8f-41ee-81f0-2172ed019f88"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StackSp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -189,10 +249,12 @@ public class @InputActions : IInputActionCollection, IDisposable
         // PlayerCharacter
         m_PlayerCharacter = asset.FindActionMap("PlayerCharacter", throwIfNotFound: true);
         m_PlayerCharacter_Move = m_PlayerCharacter.FindAction("Move", throwIfNotFound: true);
-        m_PlayerCharacter_ExecuteCom = m_PlayerCharacter.FindAction("ExecuteCom", throwIfNotFound: true);
-        m_PlayerCharacter_cmdOn = m_PlayerCharacter.FindAction("cmdOn", throwIfNotFound: true);
-        m_PlayerCharacter_cmdOff = m_PlayerCharacter.FindAction("cmdOff", throwIfNotFound: true);
         m_PlayerCharacter_Jump = m_PlayerCharacter.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerCharacter_ExecuteCom = m_PlayerCharacter.FindAction("ExecuteCom", throwIfNotFound: true);
+        m_PlayerCharacter_CmdOff = m_PlayerCharacter.FindAction("CmdOff", throwIfNotFound: true);
+        m_PlayerCharacter_CmdOn = m_PlayerCharacter.FindAction("CmdOn", throwIfNotFound: true);
+        m_PlayerCharacter_CmdSelect = m_PlayerCharacter.FindAction("CmdSelect", throwIfNotFound: true);
+        m_PlayerCharacter_StackSp = m_PlayerCharacter.FindAction("StackSp", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -243,19 +305,23 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_PlayerCharacter;
     private IPlayerCharacterActions m_PlayerCharacterActionsCallbackInterface;
     private readonly InputAction m_PlayerCharacter_Move;
-    private readonly InputAction m_PlayerCharacter_ExecuteCom;
-    private readonly InputAction m_PlayerCharacter_cmdOn;
-    private readonly InputAction m_PlayerCharacter_cmdOff;
     private readonly InputAction m_PlayerCharacter_Jump;
+    private readonly InputAction m_PlayerCharacter_ExecuteCom;
+    private readonly InputAction m_PlayerCharacter_CmdOff;
+    private readonly InputAction m_PlayerCharacter_CmdOn;
+    private readonly InputAction m_PlayerCharacter_CmdSelect;
+    private readonly InputAction m_PlayerCharacter_StackSp;
     public struct PlayerCharacterActions
     {
         private @InputActions m_Wrapper;
         public PlayerCharacterActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerCharacter_Move;
-        public InputAction @ExecuteCom => m_Wrapper.m_PlayerCharacter_ExecuteCom;
-        public InputAction @cmdOn => m_Wrapper.m_PlayerCharacter_cmdOn;
-        public InputAction @cmdOff => m_Wrapper.m_PlayerCharacter_cmdOff;
         public InputAction @Jump => m_Wrapper.m_PlayerCharacter_Jump;
+        public InputAction @ExecuteCom => m_Wrapper.m_PlayerCharacter_ExecuteCom;
+        public InputAction @CmdOff => m_Wrapper.m_PlayerCharacter_CmdOff;
+        public InputAction @CmdOn => m_Wrapper.m_PlayerCharacter_CmdOn;
+        public InputAction @CmdSelect => m_Wrapper.m_PlayerCharacter_CmdSelect;
+        public InputAction @StackSp => m_Wrapper.m_PlayerCharacter_StackSp;
         public InputActionMap Get() { return m_Wrapper.m_PlayerCharacter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -268,18 +334,24 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnMove;
-                @ExecuteCom.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnExecuteCom;
-                @ExecuteCom.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnExecuteCom;
-                @ExecuteCom.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnExecuteCom;
-                @cmdOn.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdOn;
-                @cmdOn.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdOn;
-                @cmdOn.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdOn;
-                @cmdOff.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdOff;
-                @cmdOff.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdOff;
-                @cmdOff.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdOff;
                 @Jump.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnJump;
+                @ExecuteCom.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnExecuteCom;
+                @ExecuteCom.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnExecuteCom;
+                @ExecuteCom.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnExecuteCom;
+                @CmdOff.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdOff;
+                @CmdOff.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdOff;
+                @CmdOff.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdOff;
+                @CmdOn.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdOn;
+                @CmdOn.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdOn;
+                @CmdOn.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdOn;
+                @CmdSelect.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdSelect;
+                @CmdSelect.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdSelect;
+                @CmdSelect.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCmdSelect;
+                @StackSp.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnStackSp;
+                @StackSp.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnStackSp;
+                @StackSp.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnStackSp;
             }
             m_Wrapper.m_PlayerCharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -287,18 +359,24 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @ExecuteCom.started += instance.OnExecuteCom;
-                @ExecuteCom.performed += instance.OnExecuteCom;
-                @ExecuteCom.canceled += instance.OnExecuteCom;
-                @cmdOn.started += instance.OnCmdOn;
-                @cmdOn.performed += instance.OnCmdOn;
-                @cmdOn.canceled += instance.OnCmdOn;
-                @cmdOff.started += instance.OnCmdOff;
-                @cmdOff.performed += instance.OnCmdOff;
-                @cmdOff.canceled += instance.OnCmdOff;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @ExecuteCom.started += instance.OnExecuteCom;
+                @ExecuteCom.performed += instance.OnExecuteCom;
+                @ExecuteCom.canceled += instance.OnExecuteCom;
+                @CmdOff.started += instance.OnCmdOff;
+                @CmdOff.performed += instance.OnCmdOff;
+                @CmdOff.canceled += instance.OnCmdOff;
+                @CmdOn.started += instance.OnCmdOn;
+                @CmdOn.performed += instance.OnCmdOn;
+                @CmdOn.canceled += instance.OnCmdOn;
+                @CmdSelect.started += instance.OnCmdSelect;
+                @CmdSelect.performed += instance.OnCmdSelect;
+                @CmdSelect.canceled += instance.OnCmdSelect;
+                @StackSp.started += instance.OnStackSp;
+                @StackSp.performed += instance.OnStackSp;
+                @StackSp.canceled += instance.OnStackSp;
             }
         }
     }
@@ -306,9 +384,11 @@ public class @InputActions : IInputActionCollection, IDisposable
     public interface IPlayerCharacterActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnExecuteCom(InputAction.CallbackContext context);
-        void OnCmdOn(InputAction.CallbackContext context);
-        void OnCmdOff(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnExecuteCom(InputAction.CallbackContext context);
+        void OnCmdOff(InputAction.CallbackContext context);
+        void OnCmdOn(InputAction.CallbackContext context);
+        void OnCmdSelect(InputAction.CallbackContext context);
+        void OnStackSp(InputAction.CallbackContext context);
     }
 }

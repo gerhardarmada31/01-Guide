@@ -19,7 +19,7 @@ MonoBehaviour:
   totalDmg: 0
   moveSpeed: 9
   slideFriction: 30
-  gravityScale: -70
+  gravityScale: -60
   jumpHeight: 3.5
   castOffset: 0
   turnSpeed: 0.05

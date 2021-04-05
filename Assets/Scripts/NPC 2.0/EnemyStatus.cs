@@ -10,7 +10,9 @@ public class EnemyStatus : MonoBehaviour, ITakeDamage
     public int hp = 3;
     public int attack = 5;
 
-    public PlayerCharacter_SO playerStats;
+    private PlayerStatus playerDmg;
+
+    // public PlayerCharacter_SO playerStats;
 
     // Start is called before the first frame update
     void Start()
@@ -18,12 +20,18 @@ public class EnemyStatus : MonoBehaviour, ITakeDamage
         TargetEventSystem.current.onConfirmTargetSelect += ObjectTargeted;
     }
 
-    private void ObjectTargeted(GameObject obj)
+    private void ObjectTargeted(GameObject obj, GameObject playerObj)
     {
+
         //only work if time is moving.
         if (obj == this.gameObject)
         {
-            Debug.Log(this.gameObject.name + " TakeDamage");
+            playerDmg = playerObj.GetComponent<PlayerStatus>();
+            if (playerDmg != null)
+            {
+                hp -= playerDmg.TotalDmg;
+            }
+            Debug.Log($"{this.gameObject} took {playerDmg.TotalDmg} Damage");
             // hp-= playerStats.totalDmg;
         }
     }
@@ -49,6 +57,6 @@ public class EnemyStatus : MonoBehaviour, ITakeDamage
 
     public void TakeDamage(int takeDamge)
     {
-            hp-=takeDamge;
+        hp -= takeDamge;
     }
 }

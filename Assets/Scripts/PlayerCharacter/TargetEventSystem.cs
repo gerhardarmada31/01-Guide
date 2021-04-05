@@ -12,12 +12,12 @@ public class TargetEventSystem : MonoBehaviour
         current = this;
     }
 
-    public event Action<GameObject> onConfirmTargetSelect;
+    public event Action<GameObject, GameObject> onConfirmTargetSelect;
 
-    public void ConfirmTargetSelect(GameObject obj)
+    //Getting the target and getting from the players Values
+    public void ConfirmTargetSelect(GameObject target, GameObject playerObj)
     {
-        //probably add a interface itargetable
-        onConfirmTargetSelect?.Invoke(obj);
+        onConfirmTargetSelect?.Invoke(target, playerObj);
 
         // if (onConfirmTargetSelect != null)
         // {
