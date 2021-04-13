@@ -3,17 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostPoint : MonoBehaviour, ITakePosition
+public class GhostPoint : MonoBehaviour
 {
-    private GameObject playerTransform;
     private PlayerMovement playerBoost;
     private PlayerStatus playerSpCheck;
-
-    public void TakePosition(Vector3 takeposition)
-    {
-        takeposition = this.gameObject.transform.position;
-    }
-
     private void Awake()
     {
 
@@ -30,19 +23,16 @@ public class GhostPoint : MonoBehaviour, ITakePosition
     {
         if (obj == this.gameObject)
         {
-            playerTransform = playerObj;
 
-            playerTransform.transform.position = gameObject.transform.position;
+         //make a condition for checking you need more than one stacks
 
-            // // if the players SP is not enough 
+
             playerBoost = playerObj.GetComponent<PlayerMovement>();
 
             if (playerBoost != null)
             {
-                // Teleport to a target and boost
                 playerBoost.GhostBoost(transform,25f);
             }
-            //myPlayerCharacter.transform.position = gameObject.transform.position;
         }
     }
 
@@ -51,9 +41,5 @@ public class GhostPoint : MonoBehaviour, ITakePosition
         TargetEventSystem.current.onConfirmTargetSelect -= OnTeleportTarget;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 }

@@ -21,7 +21,7 @@ public class AttackAction : NPCActions_SO
                 controller.NavMeshAgent.isStopped = true;
                 if (controller.TimerAttack(controller.enemyStats.attackRate))
                 {
-                    Debug.Log("Attack");
+                    Debug.Log("AI Attacking");
                     Instantiate(controller.AttackObj, controller.Eyes.transform);
                 }
 

@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(downray, out RaycastHit hit, Mathf.Infinity))
         {
 
-
             //Camera Relativity
             Vector3 camF = playerMainCam.forward;
             Vector3 camR = playerMainCam.right;
@@ -61,20 +60,26 @@ public class PlayerMovement : MonoBehaviour
 
 
             //Gravity and Falling Velocity
-            charVelocity.y += playerStats.gravityScale * Time.deltaTime;
-
 
             Vector3 movement = moveInputs * playerStats.moveSpeed;
+
             movement.y = charVelocity.y;
 
             if (!isSlope && grounded)
             {
                 movement.x += (1f - hitNormal.y) * hitNormal.x * (-playerStats.gravityScale - playerStats.slideFriction);
                 movement.z += (1f - hitNormal.y) * hitNormal.z * (-playerStats.gravityScale - playerStats.slideFriction);
+                    //add smooth dampening here
+                //movement.x = Mathf.SmoothDamp()
+            
             }
+
+            charVelocity.y += playerStats.gravityScale * Time.deltaTime;
             if (grounded && charVelocity.y < 0)
             {
                 charVelocity.y = -3f;
+
+
             }
             charController.Move(movement * Time.deltaTime);
         }

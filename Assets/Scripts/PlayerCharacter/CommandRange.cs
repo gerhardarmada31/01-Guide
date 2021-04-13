@@ -61,7 +61,7 @@ public class CommandRange : MonoBehaviour
                 targetObj.Add(other.transform.gameObject);
             }
 
-            Debug.Log(selectedObj);
+            // Debug.Log(selectedObj);
         }
         else
         {
@@ -82,16 +82,10 @@ public class CommandRange : MonoBehaviour
     {
         if (playerStatus.CurrentSP >= 1 && selectedObj != null)
         {
+            //calling the functions from the selected object and gives a reference for the player Obj
             TargetEventSystem.current.ConfirmTargetSelect(selectedObj, playerObj);
-
-            // ITakeDamage damage = selectedObj.GetComponent<ITakeDamage>();
-            // if (damage != null)
-            // {
-            //     //get stats from playerStatus
-            //     damage.TakeDamage(playerStatus.TotalDmg);
-            // }
             playerStatus.SpiritSystem();
-            Debug.Log("ConfirmTarget");
+            // Debug.Log("ConfirmTarget");
         }
 
 

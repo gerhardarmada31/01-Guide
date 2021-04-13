@@ -73,7 +73,7 @@ public class PlayerInput : MonoBehaviour
 
     private void HandleJump(InputAction.CallbackContext context)
     {
-        Debug.Log("Jump");
+        // Debug.Log("Jump");
         playerMovement.Jump();
     }
 
@@ -127,14 +127,19 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         // Debug.Log("Command Mode " + commandMode);
+
+
+        // Debug.Log(moveInput);
+        commandRange.CommandMode();
+
+    }
+
+    private void FixedUpdate()
+    {
         if (!commandMode)
         {
             playerMovement.Move(moveInput);
         }
-
-        Debug.Log(moveInput);
-        commandRange.CommandMode();
-
     }
 
 
