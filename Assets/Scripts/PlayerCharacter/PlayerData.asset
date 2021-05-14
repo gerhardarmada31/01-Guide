@@ -17,11 +17,11 @@ MonoBehaviour:
   spRate: 0
   attackPoint: 1
   totalDmg: 0
-  moveSpeed: 8
-  slideFriction: 30
-  gravityScale: -60
+  moveSpeed: 9
+  slideFriction: 6
+  gravityScale: -80
   jumpHeight: 3.5
   castOffset: 0
-  turnSpeed: 0.2
+  turnSpeed: 0.1
   playerPosition: {x: -7.2533007, y: 7.3581047, z: 12.21105}
   hasTeleport: 0

@@ -6,52 +6,48 @@ using UnityEngine;
 public class CommandRange : MonoBehaviour
 {
     public List<GameObject> targetObj = new List<GameObject>();
-    public Text myText;
-    public GameObject selectedObj;
-    public int selectedTarget;
+    public Text targetText;
 
-    //Probably create scriptable object to pass through values
-    public PlayerCharacter myPlayer = new PlayerCharacter();
+    private int targetIndex;
+
+    private bool isCommandModeOn;
+
+    private PlayerStatus playerStatus;
+    private GameObject playerObj;
+
+    private GameObject selectedObj;
+    public GameObject SelectedObj
+    {
+        get { return selectedObj; }
+        set { selectedObj = value; }
+    }
+
+
+    // Probably create scriptable object to pass through values
 
 
     private void Awake()
     {
-        myPlayer = this.gameObject.GetComponentInParent<PlayerCharacter>();
-        this.gameObject.SetActive(false);
+        playerStatus = GetComponentInParent<PlayerStatus>();
+        playerObj = this.transform.parent.gameObject;
     }
-    // Start is called before the first frame update
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (targetIndex < targetObj.Count && targetObj[targetIndex] != null)
         {
-            if (selectedTarget < targetObj.Count - 1)
-            {
-                selectedTarget++;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            selectedTarget--;
-            if (selectedTarget <= -1)
-            {
-                selectedTarget = 0;
-            }
-        }
-
-        if (selectedTarget < targetObj.Count && targetObj[selectedTarget] != null)
-        {
-            selectedObj = targetObj[selectedTarget];
-            myText.text = targetObj[selectedTarget].gameObject.name.ToString();
+            selectedObj = targetObj[targetIndex];
+            targetText.text = targetObj[targetIndex].gameObject.name.ToString();
         }
     }
 
+    //Finding a target that and add it to the list targetObj
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Target"))
@@ -65,36 +61,85 @@ public class CommandRange : MonoBehaviour
                 targetObj.Add(other.transform.gameObject);
             }
 
-            Debug.Log(selectedObj);
+            // Debug.Log(selectedObj);
         }
         else
         {
-            myText.text = "None";
+            targetText.text = "None";
         }
     }
     private void OnDisable()
     {
-        targetObj.Clear();
-        selectedObj = null;
+
+    }
+
+    private void OnEnable()
+    {
         ClearingTarget();
     }
 
     public void ConfirmTarget()
     {
-        if (myPlayer.commandMode && selectedObj != null)
+        if (playerStatus.CurrentSP >= 1 && selectedObj != null)
         {
-            myPlayer.commandMode = false;
-            TargetEventSystem.current.ConfirmTargetSelect(selectedObj);
-
-            //total SPcost
-            myPlayer.CurrentSP -= 1 + myPlayer.StackSP;
+            //calling the functions from the selected object and gives a reference for the player Obj
+            TargetEventSystem.current.ConfirmTargetSelect(selectedObj, playerObj);
+            playerStatus.SpiritSystem();
+            // Debug.Log("ConfirmTarget");
         }
 
+
+        //substract spirit
     }
 
     public void ClearingTarget()
     {
         targetObj.Clear();
         selectedObj = null;
+        targetIndex = 0;
+    }
+
+
+    //When the game object is on, get the targets then time will stop
+    public bool CommandMode()
+    {
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine(WaitandPause(0.1f));
+            isCommandModeOn = true;
+
+        }
+        else
+        {
+            StopCoroutine(WaitandPause(0.1f));
+            ClearingTarget();
+            targetText.text = "None";
+            Time.timeScale = 1f;
+            isCommandModeOn = false;
+        }
+        return isCommandModeOn;
+    }
+
+    public void CommandSelect(float selectOperator)
+    {
+        if (selectOperator <= -1)
+        {
+            targetIndex = (targetIndex - 1) % targetObj.Count;
+
+            if (targetIndex <= -1)
+            {
+                targetIndex = targetObj.Count - 1;
+            }
+        }
+        else if (selectOperator >= 1)
+        {
+            targetIndex = (targetIndex + 1) % targetObj.Count;
+        }
+    }
+
+    IEnumerator WaitandPause(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Time.timeScale = 0f;
     }
 }

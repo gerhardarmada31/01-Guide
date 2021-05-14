@@ -3,15 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostPoint : MonoBehaviour, ITakePosition
+public class GhostPoint : MonoBehaviour
 {
-    public PlayerCharacter_SO playerStats;
-    public GameObject myPlayerCharacter;
-    public void TakePosition(Vector3 takeposition)
-    {
-        takeposition = this.gameObject.transform.position;
-    }
-
+    private PlayerMovement playerBoost;
+    private PlayerStatus playerSpCheck;
     private void Awake()
     {
 
@@ -24,14 +19,20 @@ public class GhostPoint : MonoBehaviour, ITakePosition
         TargetEventSystem.current.onConfirmTargetSelect += OnTeleportTarget;
     }
 
-    private void OnTeleportTarget(GameObject obj)
+    private void OnTeleportTarget(GameObject obj, GameObject playerObj)
     {
         if (obj == this.gameObject)
         {
-            Debug.Log("TeleportToTarget");
-            playerStats.hasTeleport = true;
-            playerStats.playerPosition = this.gameObject.transform.position;
-            //myPlayerCharacter.transform.position = gameObject.transform.position;
+
+         //make a condition for checking you need more than one stacks
+
+
+            playerBoost = playerObj.GetComponent<PlayerMovement>();
+
+            if (playerBoost != null)
+            {
+                playerBoost.GhostBoost(transform,25f);
+            }
         }
     }
 
@@ -40,9 +41,5 @@ public class GhostPoint : MonoBehaviour, ITakePosition
         TargetEventSystem.current.onConfirmTargetSelect -= OnTeleportTarget;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 }
