@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerStatus : MonoBehaviour, ITakeDamage
 {
     public PlayerCharacter_SO playerStats;
@@ -13,12 +13,15 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage
 
 
 
-
-
-    //PROPS
+    public float spRate { get; set; }
     public int TotalDmg
     {
         get { return totalDmg + (playerStats.attackPoint + StackSP); }
+    }
+
+    public int CurrentHP
+    {
+        get { return currentHP; }
     }
 
     public int CurrentSP
@@ -42,13 +45,13 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage
         }
 
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         currentHP = playerStats.maxHp;
+        spRate = playerStats.spRate;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //set a condition if commandRange is not on
@@ -76,17 +79,23 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage
     {
         if (currentSP != playerStats.maxSp)
         {
-            playerStats.spRate += Time.deltaTime;
+            spRate += Time.deltaTime;
         }
-        if (playerStats.spRate >= 3)
+        if (spRate >= 3)
         {
             currentSP++;
-            playerStats.spRate = 0;
+            spRate = 0;
         }
     }
 
     public void TakeDamage(int takeDamge)
     {
         currentHP -= takeDamge;
+        if (currentHP <= 0)
+        {
+            currentHP = 0;
+        }
     }
+
+
 }

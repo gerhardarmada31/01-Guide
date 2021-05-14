@@ -10,24 +10,35 @@ public class NPCStateController : MonoBehaviour
     public EnemyStats enemyStats;
     public NPCStates_SO remainState;
 
-    
+
     [SerializeField] private Transform eyes;
+    [SerializeField] private Transform attackSpawner;
     [SerializeField] private Transform chaseTarget;
     [SerializeField] private float stateTimeElapsed = 0;
     [SerializeField] private float attackRate;
+
     [SerializeField] private GameObject attackObj;
     [SerializeField] private NPCStates_SO currentState;
     [SerializeField] private List<Transform> wayPoints;
     [SerializeField] private int wayPointIndex;
+
 
     private NavMeshAgent navMeshAgent;
 
 
     //PROPERTIES
     public bool IsplayerIn { get; set; }
-    public GameObject AttackObj 
+
+    public bool InitAttack { get; set; }
+
+    public Transform AttackSpawner 
     {
-        get {return attackObj;} 
+        get {return attackSpawner;}
+    }
+
+    public GameObject AttackObj
+    {
+        get { return attackObj; }
     }
 
     public Transform Eyes
@@ -76,15 +87,15 @@ public class NPCStateController : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    private void OnDrawGizmos()
-    {
-        if (currentState != null && eyes != null)
-        {
-            Gizmos.color = currentState.sceneGizmoColor;
-            Gizmos.DrawWireSphere(eyes.position, enemyStats.lookSphereCastRadius);
+    // private void OnDrawGizmos()
+    // {
+    //     if (currentState != null && eyes != null)
+    //     {
+    //         Gizmos.color = currentState.sceneGizmoColor;
+    //         Gizmos.DrawWireSphere(eyes.position, enemyStats.lookSphereCastRadius);
 
-        }
-    }
+    //     }
+    // }
 
     public void TransistionToState(NPCStates_SO nextState)
     {

@@ -6,7 +6,7 @@ using UnityEngine;
 public class CommandRange : MonoBehaviour
 {
     public List<GameObject> targetObj = new List<GameObject>();
-    public Text myText;
+    public Text targetText;
 
     private int targetIndex;
 
@@ -43,7 +43,7 @@ public class CommandRange : MonoBehaviour
         if (targetIndex < targetObj.Count && targetObj[targetIndex] != null)
         {
             selectedObj = targetObj[targetIndex];
-            myText.text = targetObj[targetIndex].gameObject.name.ToString();
+            targetText.text = targetObj[targetIndex].gameObject.name.ToString();
         }
     }
 
@@ -65,7 +65,7 @@ public class CommandRange : MonoBehaviour
         }
         else
         {
-            myText.text = "None";
+            targetText.text = "None";
         }
     }
     private void OnDisable()
@@ -113,7 +113,7 @@ public class CommandRange : MonoBehaviour
         {
             StopCoroutine(WaitandPause(0.1f));
             ClearingTarget();
-            myText.text = "None";
+            targetText.text = "None";
             Time.timeScale = 1f;
             isCommandModeOn = false;
         }

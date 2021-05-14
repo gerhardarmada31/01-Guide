@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8061149527609573418}
   - component: {fileID: 8061149527609573413}
   - component: {fileID: 8061149527609573412}
-  - component: {fileID: 3917364066287138268}
+  - component: {fileID: 944201244}
+  - component: {fileID: 944201245}
   m_Layer: 0
   m_Name: AttackObj
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8061149527609573415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,7 +97,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3917364066287138268
+--- !u!114 &944201244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8061149527609573415}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7def7102a5a03d043b2c79872b9a2f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyStats: {fileID: 11400000, guid: a852ec8a9e30502428cd5d4c4777cd20, type: 2}
+  isProjectile: 1
+  fireSpeed: 5
+--- !u!114 &944201245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +121,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8061149527609573415}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bede18789f27bff4f9cfb39ac14bf1ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 59302cbb264227642afe7f6ff8bdb027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: a852ec8a9e30502428cd5d4c4777cd20, type: 2}
+  timer: 0.5

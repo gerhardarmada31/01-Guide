@@ -19,16 +19,25 @@ public class AttackAction : NPCActions_SO
             if (Vector3.Distance(controller.NavMeshAgent.transform.position, controller.ChaseTarget.position) <= 2.5f)
             {
                 controller.NavMeshAgent.isStopped = true;
+
+
+                
+                if (!controller.InitAttack)
+                {
+                    Instantiate(controller.AttackObj, controller.AttackSpawner.transform);
+                    controller.InitAttack = true;
+                }
+
                 if (controller.TimerAttack(controller.enemyStats.attackRate))
                 {
                     Debug.Log("AI Attacking");
-                    Instantiate(controller.AttackObj, controller.Eyes.transform);
+                    Instantiate(controller.AttackObj, controller.AttackSpawner.transform);
                 }
-
             }
             else
             {
                 controller.NavMeshAgent.isStopped = false;
+                controller.InitAttack = false;
             }
 
         }

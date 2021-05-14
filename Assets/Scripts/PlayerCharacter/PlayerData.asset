@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 3
   maxSp: 4
-  spRate: 0.28521553
+  spRate: 0
   attackPoint: 1
   totalDmg: 0
   moveSpeed: 9
-  slideFriction: 20
+  slideFriction: 6
   gravityScale: -80
   jumpHeight: 3.5
   castOffset: 0
-  turnSpeed: 0.05
+  turnSpeed: 0.1
   playerPosition: {x: -7.2533007, y: 7.3581047, z: 12.21105}
   hasTeleport: 0

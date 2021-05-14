@@ -12,12 +12,20 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 charVelocity;
     private bool grounded;
     private bool isSlope;
+    private float moveSpeed;
+    private float distanceToGround;
     private Vector3 hitNormal;
     private CharacterController charController;
 
     //Movement
 
     [SerializeField] private Transform playerMainCam;
+
+    private void Start()
+    {
+        moveSpeed = playerStats.moveSpeed;
+        distanceToGround = charController.bounds.extents.y;
+    }
 
     private void Awake()
     {
@@ -53,34 +61,43 @@ public class PlayerMovement : MonoBehaviour
             }
 
             grounded = charController.isGrounded;
+            // grounded = Physics.SphereCast(transform.position, charController.radius / 2, -transform.up, out RaycastHit hit1, distanceToGround + 0.5f);
 
             //Slope Physics
             isSlope = (Vector3.Angle(Vector3.up, hitNormal) <= charController.slopeLimit);
 
 
-
             //Gravity and Falling Velocity
 
-            Vector3 movement = moveInputs * playerStats.moveSpeed;
-
+            Vector3 movement = moveInputs * moveSpeed;
+            charVelocity.y += playerStats.gravityScale * Time.deltaTime;
             movement.y = charVelocity.y;
+
+
+
 
             if (!isSlope && grounded)
             {
-                movement.x += (1f - hitNormal.y) * hitNormal.x * (-playerStats.gravityScale - playerStats.slideFriction);
-                movement.z += (1f - hitNormal.y) * hitNormal.z * (-playerStats.gravityScale - playerStats.slideFriction);
-                    //add smooth dampening here
+                // movement.x += (1f - hitNormal.y) * hitNormal.x * (-playerStats.gravityScale - playerStats.slideFriction);
+                // movement.z += (1f - hitNormal.y) * hitNormal.z * (-playerStats.gravityScale - playerStats.slideFriction);
+                //add smooth dampening here
                 //movement.x = Mathf.SmoothDamp()
-            
-            }
 
-            charVelocity.y += playerStats.gravityScale * Time.deltaTime;
-            if (grounded && charVelocity.y < 0)
+                // convert this to playerSliderFriction
+                movement.x += ((1f - hitNormal.y) * hitNormal.x) * playerStats.slideFriction;
+                movement.z += ((1f - hitNormal.y) * hitNormal.z) * playerStats.slideFriction;
+                moveSpeed = moveSpeed / 2;
+            }
+            else
             {
-                charVelocity.y = -3f;
-
-
+                moveSpeed = playerStats.moveSpeed;
             }
+            if (isSlope && grounded && charVelocity.y < 0)
+            {
+                charVelocity.y = -2f;
+            }
+
+
             charController.Move(movement * Time.deltaTime);
         }
     }
@@ -92,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (grounded)
+        if (grounded && isSlope)
         {
             charVelocity.y += Mathf.Sqrt(playerStats.jumpHeight * -3f * playerStats.gravityScale);
         }
