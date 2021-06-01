@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AttackMelee : AttackObject
 {
-    [SerializeField] private float timer;
+    [SerializeField] private float lifeTime;
 
     void Awake()
     {
-        objTimer = timer;
+        objTimer = lifeTime;
     }
     // Start is called before the first frame update
     void Start()

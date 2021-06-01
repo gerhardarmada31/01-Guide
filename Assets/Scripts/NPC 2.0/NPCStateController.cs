@@ -79,23 +79,21 @@ public class NPCStateController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-
     //This is getting passing the argument rather than the values won't set in the scriptable object
     void Update()
     {
         currentState.UpdateState(this);
     }
 
-    // private void OnDrawGizmos()
-    // {
-    //     if (currentState != null && eyes != null)
-    //     {
-    //         Gizmos.color = currentState.sceneGizmoColor;
-    //         Gizmos.DrawWireSphere(eyes.position, enemyStats.lookSphereCastRadius);
+    private void OnDrawGizmos()
+    {
+        if (currentState != null && eyes != null)
+        {
+            Gizmos.color = currentState.sceneGizmoColor;
+            Gizmos.DrawWireSphere(attackSpawner.position, enemyStats.lookSphereCastRadius);
 
-    //     }
-    // }
+        }
+    }
 
     public void TransistionToState(NPCStates_SO nextState)
     {

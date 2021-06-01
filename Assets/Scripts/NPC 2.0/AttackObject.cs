@@ -8,6 +8,7 @@ public abstract class AttackObject : MonoBehaviour
     protected float objTimer;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public abstract class AttackObject : MonoBehaviour
 
     private void Update()
     {
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,6 +34,4 @@ public abstract class AttackObject : MonoBehaviour
     {
         Destroy(gameObject, objTimer);
     }
-
-
 }

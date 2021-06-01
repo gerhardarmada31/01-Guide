@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8061149527609573412}
   - component: {fileID: 944201244}
   - component: {fileID: 944201245}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: a852ec8a9e30502428cd5d4c4777cd20, type: 2}
   isProjectile: 1
+  isBulletHoming: 0
+  targetObj: {fileID: 0}
   fireSpeed: 5
+  bulletRotateSpeed: 100
+  lifeTime: 0
 --- !u!114 &944201245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,4 +129,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: a852ec8a9e30502428cd5d4c4777cd20, type: 2}
-  timer: 0.5
+  lifeTime: 1.5

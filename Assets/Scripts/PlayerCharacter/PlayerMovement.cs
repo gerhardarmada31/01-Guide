@@ -48,9 +48,10 @@ public class PlayerMovement : MonoBehaviour
             camF.Normalize();
             camR.Normalize();
 
+
+
             moveInputs = new Vector3(playerInputs.x, 0, playerInputs.y);
             moveInputs = moveInputs.z * camF + moveInputs.x * camR;
-
             moveInputs = Vector3.ClampMagnitude(moveInputs, 1);
 
             //Rotation of Player
@@ -61,32 +62,31 @@ public class PlayerMovement : MonoBehaviour
             }
 
             grounded = charController.isGrounded;
+            // if (Physics.Raycast(charController.bounds.center, Vector3.down * (distanceToGround + 1f)))
+            // {
+            //     grounded = true;
+            // }
+            // else
+            // {
+            //     grounded = false;
+            // }
             // grounded = Physics.SphereCast(transform.position, charController.radius / 2, -transform.up, out RaycastHit hit1, distanceToGround + 0.5f);
 
             //Slope Physics
-            isSlope = (Vector3.Angle(Vector3.up, hitNormal) <= charController.slopeLimit);
-
+            isSlope = (Vector3.Angle(hitNormal, Vector3.up) <= charController.slopeLimit);
 
             //Gravity and Falling Velocity
-
             Vector3 movement = moveInputs * moveSpeed;
             charVelocity.y += playerStats.gravityScale * Time.deltaTime;
             movement.y = charVelocity.y;
 
 
-
-
             if (!isSlope && grounded)
             {
-                // movement.x += (1f - hitNormal.y) * hitNormal.x * (-playerStats.gravityScale - playerStats.slideFriction);
-                // movement.z += (1f - hitNormal.y) * hitNormal.z * (-playerStats.gravityScale - playerStats.slideFriction);
-                //add smooth dampening here
-                //movement.x = Mathf.SmoothDamp()
-
-                // convert this to playerSliderFriction
                 movement.x += ((1f - hitNormal.y) * hitNormal.x) * playerStats.slideFriction;
                 movement.z += ((1f - hitNormal.y) * hitNormal.z) * playerStats.slideFriction;
                 moveSpeed = moveSpeed / 2;
+                grounded =false;
             }
             else
             {
@@ -94,10 +94,8 @@ public class PlayerMovement : MonoBehaviour
             }
             if (isSlope && grounded && charVelocity.y < 0)
             {
-                charVelocity.y = -2f;
+                charVelocity.y = -3f;
             }
-
-
             charController.Move(movement * Time.deltaTime);
         }
     }
@@ -109,12 +107,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (grounded && isSlope)
+        if (grounded)
         {
-            charVelocity.y += Mathf.Sqrt(playerStats.jumpHeight * -3f * playerStats.gravityScale);
+                charVelocity.y += Mathf.Sqrt(playerStats.jumpHeight * -3f * playerStats.gravityScale);
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        if (charController != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(charController.bounds.center, Vector3.down * (charController.bounds.extents.y + 1f));
+
+        }
+    }
 
     //add a parameter to increase based on the boost value
     public void GhostBoost(Transform ghostPosition, float ghostForce)
@@ -123,5 +130,8 @@ public class PlayerMovement : MonoBehaviour
         transform.position = ghostPosition.transform.position;
         charController.enabled = true;
         charVelocity.y = ghostForce;
+
+        //In case of setting a transform position, translate it.
+        // transform.Translate()
     }
 }

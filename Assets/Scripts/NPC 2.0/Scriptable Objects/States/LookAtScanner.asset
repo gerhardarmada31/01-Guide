@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a57f6db90a8d6794a87d426b5e031924, type: 3}
-  m_Name: ChaseScanner
+  m_Name: LookAtScanner
   m_EditorClassIdentifier: 
   nPCActions:
-  - {fileID: 11400000, guid: 6a02325d93da0eb4cb6dd9dad965ca68, type: 2}
+  - {fileID: 11400000, guid: d9eca93c36d70f840a66b961fe9603a0, type: 2}
+  - {fileID: 11400000, guid: a0880eaff8488484a8ec022179fe8480, type: 2}
+  - {fileID: 11400000, guid: d5bcfaddf8dae8147a34ba13832ed9f8, type: 2}
   transitions:
-  - decision: {fileID: 11400000, guid: 1afac75ca8c9da343aaaa9df5c458815, type: 2}
+  - decision: {fileID: 11400000, guid: c3ea330d2242b70468cb62c9c3465c86, type: 2}
     trueState: {fileID: 11400000, guid: c6ef9f67705a02340b13862d447e0725, type: 2}
     falseState: {fileID: 11400000, guid: 77a0bcb0a9a7c6747aa6ace258faef4c, type: 2}
   sceneGizmoColor: {r: 1, g: 0, b: 0, a: 1}

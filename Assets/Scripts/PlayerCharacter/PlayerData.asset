@@ -18,9 +18,9 @@ MonoBehaviour:
   attackPoint: 1
   totalDmg: 0
   moveSpeed: 9
-  slideFriction: 6
+  slideFriction: 20
   gravityScale: -80
-  jumpHeight: 3.5
+  jumpHeight: 3
   castOffset: 0
   turnSpeed: 0.1
   playerPosition: {x: -7.2533007, y: 7.3581047, z: 12.21105}

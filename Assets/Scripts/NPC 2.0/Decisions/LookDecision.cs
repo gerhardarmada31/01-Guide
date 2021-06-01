@@ -18,19 +18,34 @@ public class LookDecision : NPCDecision_SO
         //CHANGE THIS BASED ON ENEMYSTATS COLLISIONSPHERE
         RaycastHit hit;
 
-        Debug.DrawRay(controller.Eyes.position, controller.Eyes.forward.normalized * controller.enemyStats.lookRange, Color.green);
 
+        Debug.DrawRay(controller.AttackSpawner.position, controller.AttackSpawner.forward.normalized * controller.enemyStats.lookRange, Color.green);
 
-        if (Physics.SphereCast(controller.Eyes.position, controller.enemyStats.lookSphereCastRadius, controller.Eyes.forward, out hit, controller.enemyStats.lookRange)
+        Vector3 _originalEyePos = controller.Eyes.position;
+
+        if (Physics.SphereCast(controller.AttackSpawner.position, controller.enemyStats.lookSphereCastRadius, controller.Eyes.forward, out hit, controller.enemyStats.lookRange)
             && hit.collider.CompareTag("Player"))
         {
-
             controller.ChaseTarget = hit.transform;
+            // controller.Eyes.position = hit.transform.position;
             return true;
         }
+        // if(Physics.Raycast(controller.AttackSpawner.position, controller.AttackSpawner.forward.normalized, out hit, controller.enemyStats.lookRange)
+        //  && hit.collider.CompareTag("Player"))
+        // {
+        //     controller.ChaseTarget = hit.transform;
+        //     controller.Eyes.position = hit.transform.position;
+        // }
         else
         {
+            // controller.IsplayerIn =false;
             return false;
         }
+
+
+
+
+
+
     }
 }

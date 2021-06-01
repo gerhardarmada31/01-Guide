@@ -14,7 +14,7 @@ public class WayPointDecision : NPCDecision_SO
     private bool WayPointChange(NPCStateController controller)
     {
         //Patrol Action
-        if (controller.NavMeshAgent.remainingDistance <= controller.NavMeshAgent.stoppingDistance && !controller.NavMeshAgent.pathPending)
+        if (controller.NavMeshAgent.remainingDistance <= 1.0f && !controller.NavMeshAgent.pathPending)
         {
             return true;
         }
