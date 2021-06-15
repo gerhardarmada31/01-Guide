@@ -22,7 +22,7 @@ public class LongRangeAttackAction : NPCActions_SO
 
             if (controller.TimerAttack(controller.enemyStats.attackRate))
             {
-                Debug.Log("AI Attacking");
+                // Debug.Log("AI Attacking");
                 Instantiate(controller.AttackObj,controller.AttackSpawner.transform.position, controller.AttackSpawner.transform.rotation);
             }
         }

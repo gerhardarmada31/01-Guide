@@ -12,7 +12,7 @@ public class IdleAction : NPCActions_SO
 
     private void Idle(NPCStateController controller)
     {
-        Debug.Log("Idle");
+        // Debug.Log("Idle");
         controller.NavMeshAgent.isStopped = true;
 
     }

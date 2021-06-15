@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,11 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed;
     private float distanceToGround;
     private Vector3 hitNormal;
+
+    private bool coyoteJump;
+    private float coyoteTimer = 0.2f;
+    private int jumpCount = 0;
+
     private CharacterController charController;
 
     //Movement
@@ -49,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
             camR.Normalize();
 
 
-
             moveInputs = new Vector3(playerInputs.x, 0, playerInputs.y);
             moveInputs = moveInputs.z * camF + moveInputs.x * camR;
             moveInputs = Vector3.ClampMagnitude(moveInputs, 1);
@@ -80,24 +85,38 @@ public class PlayerMovement : MonoBehaviour
             charVelocity.y += playerStats.gravityScale * Time.deltaTime;
             movement.y = charVelocity.y;
 
+            bool _wasGrounded = grounded;
 
             if (!isSlope && grounded)
             {
                 movement.x += ((1f - hitNormal.y) * hitNormal.x) * playerStats.slideFriction;
                 movement.z += ((1f - hitNormal.y) * hitNormal.z) * playerStats.slideFriction;
                 moveSpeed = moveSpeed / 2;
-                grounded =false;
             }
             else
             {
                 moveSpeed = playerStats.moveSpeed;
             }
+
             if (isSlope && grounded && charVelocity.y < 0)
             {
                 charVelocity.y = -3f;
+                jumpCount = 0;
             }
+            else
+            {
+                StartCoroutine(CoyoteJumpDelay());
+            }
+
             charController.Move(movement * Time.deltaTime);
         }
+    }
+
+    IEnumerator CoyoteJumpDelay()
+    {
+        coyoteJump = true;
+        yield return new WaitForSeconds(coyoteTimer);
+        coyoteJump = false;
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
@@ -107,9 +126,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (grounded)
+        if (grounded || coyoteJump && jumpCount <= 0)
         {
-                charVelocity.y += Mathf.Sqrt(playerStats.jumpHeight * -3f * playerStats.gravityScale);
+            jumpCount++;
+            charVelocity.y += Mathf.Sqrt(playerStats.jumpHeight * -3f * playerStats.gravityScale);
         }
     }
 
@@ -119,7 +139,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Gizmos.color = Color.green;
             Gizmos.DrawRay(charController.bounds.center, Vector3.down * (charController.bounds.extents.y + 1f));
-
         }
     }
 

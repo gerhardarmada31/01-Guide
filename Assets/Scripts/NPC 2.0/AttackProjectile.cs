@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AttackProjectile : AttackObject
 {
+    public EnemyStats enemyStats;
     [SerializeField] private bool isProjectile;
     private Rigidbody rbBullet;
     [SerializeField] bool isBulletHoming;
@@ -46,7 +47,7 @@ public class AttackProjectile : AttackObject
 
     void OnTriggerEnter(Collider other)
     {
-        
+
         if (other.CompareTag("Terrain") || other.CompareTag("Player"))
         {
             ITakeDamage damage = other.GetComponent<ITakeDamage>();
@@ -55,7 +56,7 @@ public class AttackProjectile : AttackObject
             {
                 damage.TakeDamage(enemyStats.attackDamage);
             }
-                Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }

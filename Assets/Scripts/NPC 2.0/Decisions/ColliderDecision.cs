@@ -21,7 +21,7 @@ public class ColliderDecision : NPCDecision_SO
             if (Physics.Linecast(controller.AttackSpawner.position, controller.ChaseTarget.position, out hit, attackLayer)
              && hit.collider.CompareTag("Player"))
             {
-                Debug.Log("PlayahIn");
+                // Debug.Log("PlayahIn");
                 return true;
             }
             else

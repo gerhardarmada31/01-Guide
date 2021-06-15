@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AttackMelee : AttackObject
 {
+    public EnemyStats enemyStats;
     [SerializeField] private float lifeTime;
 
     void Awake()
@@ -17,8 +18,14 @@ public class AttackMelee : AttackObject
     }
 
     // Update is called once per frame
-    void Update()
-    {
 
+    private void OnTriggerEnter(Collider other)
+    {
+        ITakeDamage damage = other.GetComponent<ITakeDamage>();
+
+        if (damage != null)
+        {
+            damage.TakeDamage(enemyStats.attackDamage);
+        }
     }
 }

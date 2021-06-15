@@ -9,6 +9,7 @@ public class PlayerCharacter_SO : ScriptableObject
     public int maxHp;
     public int maxSp;
     public float spRate;
+    public float invuFrame;
 
     [Header ("Player Attacks")]
     public int attackPoint;

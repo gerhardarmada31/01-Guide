@@ -84,6 +84,7 @@ public class CommandRange : MonoBehaviour
         {
             //calling the functions from the selected object and gives a reference for the player Obj
             TargetEventSystem.current.ConfirmTargetSelect(selectedObj, playerObj);
+            playerObj.transform.LookAt(selectedObj.transform);
             playerStatus.SpiritSystem();
             // Debug.Log("ConfirmTarget");
         }
