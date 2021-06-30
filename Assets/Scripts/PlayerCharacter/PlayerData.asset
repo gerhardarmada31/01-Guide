@@ -15,6 +15,7 @@ MonoBehaviour:
   maxHp: 3
   maxSp: 4
   spRate: 0
+  invuFrame: 2
   attackPoint: 1
   totalDmg: 0
   moveSpeed: 9

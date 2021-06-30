@@ -12,16 +12,18 @@ public class TargetEventSystem : MonoBehaviour
         current = this;
     }
 
-    public event Action<GameObject, GameObject> onConfirmTargetSelect;
+    public event Action<GameObject, GameObject, int> onConfirmTargetSelect;
+    public event Action<GameObject, bool> onShroudDetected;
 
     //Getting the target and getting from the players Values
-    public void ConfirmTargetSelect(GameObject target, GameObject playerObj)
+    //spCheck is the totalDmg from playerStatus
+    public void ConfirmTargetSelect(GameObject target, GameObject playerObj, int spCheck)
     {
-        onConfirmTargetSelect?.Invoke(target, playerObj);
+        onConfirmTargetSelect?.Invoke(target, playerObj, spCheck);
+    }
 
-        // if (onConfirmTargetSelect != null)
-        // {
-        //     onConfirmTargetSelect(obj);
-        // }
+    public void ShroudDetected(GameObject shroudObject, bool isDetected)
+    {
+        onShroudDetected?.Invoke(shroudObject,isDetected);
     }
 }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8061149527609573418}
   - component: {fileID: 8061149527609573413}
   - component: {fileID: 8061149527609573412}
-  - component: {fileID: 944201244}
   - component: {fileID: 944201245}
   m_Layer: 8
   m_Name: AttackObj
@@ -97,25 +96,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &944201244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8061149527609573415}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7def7102a5a03d043b2c79872b9a2f8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyStats: {fileID: 11400000, guid: a852ec8a9e30502428cd5d4c4777cd20, type: 2}
-  isProjectile: 1
-  isBulletHoming: 0
-  targetObj: {fileID: 0}
-  fireSpeed: 5
-  bulletRotateSpeed: 100
-  lifeTime: 0
 --- !u!114 &944201245
 MonoBehaviour:
   m_ObjectHideFlags: 0

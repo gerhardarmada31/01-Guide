@@ -7,6 +7,7 @@ public class GhostPoint : MonoBehaviour
 {
     private PlayerMovement playerBoost;
     private PlayerStatus playerSpCheck;
+
     private void Awake()
     {
 
@@ -19,7 +20,7 @@ public class GhostPoint : MonoBehaviour
         TargetEventSystem.current.onConfirmTargetSelect += OnTeleportTarget;
     }
 
-    private void OnTeleportTarget(GameObject obj, GameObject playerObj)
+    private void OnTeleportTarget(GameObject obj, GameObject playerObj, int spCheck)
     {
         if (obj == this.gameObject)
         {
@@ -40,6 +41,4 @@ public class GhostPoint : MonoBehaviour
     {
         TargetEventSystem.current.onConfirmTargetSelect -= OnTeleportTarget;
     }
-
-
 }

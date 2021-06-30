@@ -19,8 +19,6 @@ public class AttackAction : NPCActions_SO
             if (Vector3.Distance(controller.NavMeshAgent.transform.position, controller.ChaseTarget.position) <= 2.5f)
             {
                 controller.NavMeshAgent.isStopped = true;
-
-
                 
                 if (!controller.InitAttack)
                 {

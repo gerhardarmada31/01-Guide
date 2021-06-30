@@ -26,6 +26,7 @@ public class ColliderDecision : NPCDecision_SO
             }
             else
             {
+                controller.ChaseTarget = null;
                 return false;
             }
             // return true;

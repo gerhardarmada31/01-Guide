@@ -73,6 +73,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""YMove"",
+                    ""type"": ""Button"",
+                    ""id"": ""515f056a-d608-4171-80ad-6f630d20d205"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -240,6 +248,85 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""action"": ""StackSp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""eba26df1-dc8e-488e-b56c-1aa54a9b5b12"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""YMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""2dcc5650-175f-48db-9129-756b17945d6a"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""YMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""4c91c728-5ba1-4ee5-8a8d-3241aa4cbfe1"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""YMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""CheatController"",
+            ""id"": ""40d9e923-932d-45db-9e2c-8e652d28c7e4"",
+            ""actions"": [
+                {
+                    ""name"": ""Return"",
+                    ""type"": ""Button"",
+                    ""id"": ""a6a1c128-9704-4a15-95c6-e938ae9b81a3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ToggleDebug"",
+                    ""type"": ""Button"",
+                    ""id"": ""7aea200f-f150-4b28-93d6-e44044cd72cb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""cec63f5b-0b78-4f17-9f8e-c9a58ba9ae29"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleDebug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""343460dc-ac06-4e63-b6c5-d63413670b6c"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -255,6 +342,11 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_PlayerCharacter_CmdOn = m_PlayerCharacter.FindAction("CmdOn", throwIfNotFound: true);
         m_PlayerCharacter_CmdSelect = m_PlayerCharacter.FindAction("CmdSelect", throwIfNotFound: true);
         m_PlayerCharacter_StackSp = m_PlayerCharacter.FindAction("StackSp", throwIfNotFound: true);
+        m_PlayerCharacter_YMove = m_PlayerCharacter.FindAction("YMove", throwIfNotFound: true);
+        // CheatController
+        m_CheatController = asset.FindActionMap("CheatController", throwIfNotFound: true);
+        m_CheatController_Return = m_CheatController.FindAction("Return", throwIfNotFound: true);
+        m_CheatController_ToggleDebug = m_CheatController.FindAction("ToggleDebug", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -311,6 +403,7 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerCharacter_CmdOn;
     private readonly InputAction m_PlayerCharacter_CmdSelect;
     private readonly InputAction m_PlayerCharacter_StackSp;
+    private readonly InputAction m_PlayerCharacter_YMove;
     public struct PlayerCharacterActions
     {
         private @InputActions m_Wrapper;
@@ -322,6 +415,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @CmdOn => m_Wrapper.m_PlayerCharacter_CmdOn;
         public InputAction @CmdSelect => m_Wrapper.m_PlayerCharacter_CmdSelect;
         public InputAction @StackSp => m_Wrapper.m_PlayerCharacter_StackSp;
+        public InputAction @YMove => m_Wrapper.m_PlayerCharacter_YMove;
         public InputActionMap Get() { return m_Wrapper.m_PlayerCharacter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -352,6 +446,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @StackSp.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnStackSp;
                 @StackSp.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnStackSp;
                 @StackSp.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnStackSp;
+                @YMove.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnYMove;
+                @YMove.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnYMove;
+                @YMove.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnYMove;
             }
             m_Wrapper.m_PlayerCharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -377,10 +474,54 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @StackSp.started += instance.OnStackSp;
                 @StackSp.performed += instance.OnStackSp;
                 @StackSp.canceled += instance.OnStackSp;
+                @YMove.started += instance.OnYMove;
+                @YMove.performed += instance.OnYMove;
+                @YMove.canceled += instance.OnYMove;
             }
         }
     }
     public PlayerCharacterActions @PlayerCharacter => new PlayerCharacterActions(this);
+
+    // CheatController
+    private readonly InputActionMap m_CheatController;
+    private ICheatControllerActions m_CheatControllerActionsCallbackInterface;
+    private readonly InputAction m_CheatController_Return;
+    private readonly InputAction m_CheatController_ToggleDebug;
+    public struct CheatControllerActions
+    {
+        private @InputActions m_Wrapper;
+        public CheatControllerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Return => m_Wrapper.m_CheatController_Return;
+        public InputAction @ToggleDebug => m_Wrapper.m_CheatController_ToggleDebug;
+        public InputActionMap Get() { return m_Wrapper.m_CheatController; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CheatControllerActions set) { return set.Get(); }
+        public void SetCallbacks(ICheatControllerActions instance)
+        {
+            if (m_Wrapper.m_CheatControllerActionsCallbackInterface != null)
+            {
+                @Return.started -= m_Wrapper.m_CheatControllerActionsCallbackInterface.OnReturn;
+                @Return.performed -= m_Wrapper.m_CheatControllerActionsCallbackInterface.OnReturn;
+                @Return.canceled -= m_Wrapper.m_CheatControllerActionsCallbackInterface.OnReturn;
+                @ToggleDebug.started -= m_Wrapper.m_CheatControllerActionsCallbackInterface.OnToggleDebug;
+                @ToggleDebug.performed -= m_Wrapper.m_CheatControllerActionsCallbackInterface.OnToggleDebug;
+                @ToggleDebug.canceled -= m_Wrapper.m_CheatControllerActionsCallbackInterface.OnToggleDebug;
+            }
+            m_Wrapper.m_CheatControllerActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Return.started += instance.OnReturn;
+                @Return.performed += instance.OnReturn;
+                @Return.canceled += instance.OnReturn;
+                @ToggleDebug.started += instance.OnToggleDebug;
+                @ToggleDebug.performed += instance.OnToggleDebug;
+                @ToggleDebug.canceled += instance.OnToggleDebug;
+            }
+        }
+    }
+    public CheatControllerActions @CheatController => new CheatControllerActions(this);
     public interface IPlayerCharacterActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -390,5 +531,11 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnCmdOn(InputAction.CallbackContext context);
         void OnCmdSelect(InputAction.CallbackContext context);
         void OnStackSp(InputAction.CallbackContext context);
+        void OnYMove(InputAction.CallbackContext context);
+    }
+    public interface ICheatControllerActions
+    {
+        void OnReturn(InputAction.CallbackContext context);
+        void OnToggleDebug(InputAction.CallbackContext context);
     }
 }

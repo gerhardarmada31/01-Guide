@@ -10,24 +10,53 @@ public class EnemyStatus : MonoBehaviour, ITakeDamage
     public int hp = 3;
     public int attack = 5;
 
+    [SerializeField] private NPCStateController controller;
+
+
+    //PROPS
+    private bool spCheckLvl1;
+    public bool SpCheckLvl1
+    {
+        get { return spCheckLvl1; }
+    }
+
+    private bool spCheckLvl2;
+    public bool SpCheckLvl2
+    {
+        get { return spCheckLvl2; }
+    }
+
+    private void Awake()
+    {
+
+    }
+
     private PlayerStatus playerDmg;
     void Start()
     {
         TargetEventSystem.current.onConfirmTargetSelect += ObjectTargeted;
     }
 
-    private void ObjectTargeted(GameObject obj, GameObject playerObj)
+    private void ObjectTargeted(GameObject obj, GameObject playerObj, int sentSp)
     {
 
         //only work if time is moving.
         if (obj == this.gameObject)
         {
-            playerDmg = playerObj.GetComponent<PlayerStatus>();
-            if (playerDmg != null)
+            //playerDmg is now obsolete
+            // playerDmg = playerObj.GetComponent<PlayerStatus>();
+            // if (playerDmg != null)
+            // {
+            //     hp -= playerDmg.TotalDmg;
+            // }
+            hp -= sentSp;
+            Debug.Log($"{this.gameObject} took {sentSp} Damage");
+
+            if (sentSp >= 2)
             {
-                hp -= playerDmg.TotalDmg;
+                //Change behaviour because of npcStateController
+                Debug.Log("Break");
             }
-            Debug.Log($"{this.gameObject} took {playerDmg.TotalDmg} Damage");
         }
     }
 
@@ -53,5 +82,11 @@ public class EnemyStatus : MonoBehaviour, ITakeDamage
     public void TakeDamage(int takeDamge)
     {
         hp -= takeDamge;
+    }
+
+    public void KILL_ALL()
+    {
+        Debug.Log("killall");
+        // Destroy(this);
     }
 }

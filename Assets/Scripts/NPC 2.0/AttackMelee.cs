@@ -23,9 +23,11 @@ public class AttackMelee : AttackObject
     {
         ITakeDamage damage = other.GetComponent<ITakeDamage>();
 
+        //sending players the damage
         if (damage != null)
         {
             damage.TakeDamage(enemyStats.attackDamage);
+            Destroy(gameObject);
         }
     }
 }

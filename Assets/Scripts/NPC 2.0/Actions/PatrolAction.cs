@@ -18,6 +18,7 @@ public class PatrolAction : NPCActions_SO
         //randomMode should be inside controller
 
         // Debug.unityLogger.Log("Entered Patrol Action");
+    
         controller.NavMeshAgent.destination = controller.WayPoints[controller.WayPointIndex].position;
         controller.NavMeshAgent.isStopped = false;
 

@@ -16,7 +16,7 @@ MonoBehaviour:
   lookSphereCastRadius: 1
   lookRange: 60
   attackRange: 1
-  attackRate: 1.5
+  attackRate: 2
   attackForce: 15
   attackDamage: 1
   searchDuration: 4

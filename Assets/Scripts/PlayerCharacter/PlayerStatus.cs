@@ -10,6 +10,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage
     private int currentSP;
     private int totalDmg;
     private int stackSP = 0;
+    private bool isInvunerable = false;
 
 
 
@@ -81,7 +82,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage
         {
             spRate += Time.deltaTime;
         }
-        if (spRate >= 3)
+        if (spRate >= 2)
         {
             currentSP++;
             spRate = 0;
@@ -90,12 +91,51 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage
 
     public void TakeDamage(int takeDamge)
     {
-        currentHP -= takeDamge;
+        if (isInvunerable == false)
+        {
+            currentHP -= takeDamge;
+            StartCoroutine(InvuTime());
+        }
+
         if (currentHP <= 0)
         {
             currentHP = 0;
         }
     }
+    
+    IEnumerator InvuTime()
+    {
+        isInvunerable = true;
+        yield return new WaitForSeconds(playerStats.invuFrame);
+        isInvunerable = false;
+    }
 
+    public void MoreHP()
+    {
+        currentHP = 99;
+        playerStats.invuFrame = 300;
+        playerStats.maxHp = 99;
+    }
 
+    public void MoreSP()
+    {
+        currentSP = 99;
+        // stackSP = 99;
+        playerStats.maxSp = 99;
+
+    }
+
+    public void MorePower()
+    {
+        playerStats.attackPoint = 99;
+    }
+
+    public void LessCheats()
+    {
+        currentHP = 3;
+        playerStats.invuFrame = 1.5f;
+        playerStats.maxHp = 3;
+        playerStats.maxSp = 4;
+        currentSP = 3;
+    }
 }

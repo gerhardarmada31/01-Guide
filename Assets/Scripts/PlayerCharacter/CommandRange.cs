@@ -9,11 +9,14 @@ public class CommandRange : MonoBehaviour
     public Text targetText;
 
     private int targetIndex;
+    private SphereCollider myCollider;
+
 
     private bool isCommandModeOn;
-
+    // private IShroudedObj shroudedObj;
     private PlayerStatus playerStatus;
     private GameObject playerObj;
+    private bool isDetected;
 
     private GameObject selectedObj;
     public GameObject SelectedObj
@@ -30,6 +33,7 @@ public class CommandRange : MonoBehaviour
     {
         playerStatus = GetComponentInParent<PlayerStatus>();
         playerObj = this.transform.parent.gameObject;
+        myCollider = this.GetComponent<SphereCollider>();
     }
 
     void Start()
@@ -50,8 +54,14 @@ public class CommandRange : MonoBehaviour
     //Finding a target that and add it to the list targetObj
     private void OnTriggerEnter(Collider other)
     {
+        //make an interface called itargetable or something
+        //Make list next of targetable Objects
+        var enemy = other.GetComponent<EnemyStatus>();
+
         if (other.CompareTag("Target"))
         {
+            //give a condition of the player has received the scanner 2.0
+            TargetEventSystem.current.ShroudDetected(other.gameObject, false);
             if (other.transform.parent != null)
             {
                 targetObj.Add(other.transform.parent.gameObject);
@@ -60,18 +70,13 @@ public class CommandRange : MonoBehaviour
             {
                 targetObj.Add(other.transform.gameObject);
             }
-
-            // Debug.Log(selectedObj);
         }
         else
         {
             targetText.text = "None";
         }
     }
-    private void OnDisable()
-    {
 
-    }
 
     private void OnEnable()
     {
@@ -83,14 +88,11 @@ public class CommandRange : MonoBehaviour
         if (playerStatus.CurrentSP >= 1 && selectedObj != null)
         {
             //calling the functions from the selected object and gives a reference for the player Obj
-            TargetEventSystem.current.ConfirmTargetSelect(selectedObj, playerObj);
+            TargetEventSystem.current.ConfirmTargetSelect(selectedObj, playerObj, playerStatus.TotalDmg);
             playerObj.transform.LookAt(selectedObj.transform);
             playerStatus.SpiritSystem();
             // Debug.Log("ConfirmTarget");
         }
-
-
-        //substract spirit
     }
 
     public void ClearingTarget()
@@ -98,6 +100,14 @@ public class CommandRange : MonoBehaviour
         targetObj.Clear();
         selectedObj = null;
         targetIndex = 0;
+    }
+
+    void OnDisable()
+    {
+        foreach (var allTargets in targetObj)
+        {
+            TargetEventSystem.current.ShroudDetected(allTargets, true);
+        }
     }
 
 
@@ -108,7 +118,6 @@ public class CommandRange : MonoBehaviour
         {
             StartCoroutine(WaitandPause(0.1f));
             isCommandModeOn = true;
-
         }
         else
         {
@@ -142,5 +151,15 @@ public class CommandRange : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         Time.timeScale = 0f;
+    }
+
+    public void MoreRange()
+    {
+        transform.localScale = new Vector3(20, 20, 20);
+    }
+
+    public bool detectedObj()
+    {
+        return isDetected;
     }
 }

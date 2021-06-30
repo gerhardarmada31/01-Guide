@@ -15,6 +15,7 @@ public class ScanDecision : NPCDecision_SO
     {
         controller.NavMeshAgent.isStopped = true;
         controller.transform.Rotate(0, controller.enemyStats.searchingTurnSpeed * Time.deltaTime, 0);
+        controller.ChaseTarget = null;
         return controller.checkCountDownElapsed(controller.enemyStats.searchDuration);
     }
 }

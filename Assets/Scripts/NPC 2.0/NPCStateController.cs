@@ -9,31 +9,37 @@ public class NPCStateController : MonoBehaviour
 {
     public EnemyStats enemyStats;
     public NPCStates_SO remainState;
+    private EnemyStatus enemyStatus;
 
 
+    //Set up some of that good2x headers
     [SerializeField] private Transform eyes;
     [SerializeField] private Transform attackSpawner;
     [SerializeField] private Transform chaseTarget;
     [SerializeField] private float stateTimeElapsed = 0;
     [SerializeField] private float attackRate;
-
     [SerializeField] private GameObject attackObj;
     [SerializeField] private NPCStates_SO currentState;
     [SerializeField] private List<Transform> wayPoints;
     [SerializeField] private int wayPointIndex;
+    [SerializeField] private GameObjectPool gameObjectPool;
 
 
     private NavMeshAgent navMeshAgent;
 
 
     //PROPERTIES
+    public GameObjectPool GameObjectPool { get { return gameObjectPool; } }
     public bool IsplayerIn { get; set; }
-
+    public EnemyStatus EnemyStatus
+    {
+        get { return enemyStatus; }
+    }
     public bool InitAttack { get; set; }
 
-    public Transform AttackSpawner 
+    public Transform AttackSpawner
     {
-        get {return attackSpawner;}
+        get { return attackSpawner; }
     }
 
     public GameObject AttackObj
@@ -72,11 +78,7 @@ public class NPCStateController : MonoBehaviour
     private void Awake()
     {
         navMeshAgent = this.GetComponent<NavMeshAgent>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
+        enemyStatus = GetComponent<EnemyStatus>();
     }
 
     //This is getting passing the argument rather than the values won't set in the scriptable object
@@ -91,7 +93,6 @@ public class NPCStateController : MonoBehaviour
         {
             Gizmos.color = currentState.sceneGizmoColor;
             Gizmos.DrawWireSphere(attackSpawner.position, enemyStats.lookSphereCastRadius);
-
         }
     }
 
@@ -129,5 +130,13 @@ public class NPCStateController : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void PoolFire()
+    {
+        var shot = gameObjectPool.Get();
+        shot.transform.rotation = transform.rotation;
+        shot.transform.position = transform.position;
+        shot.gameObject.SetActive(true);
     }
 }

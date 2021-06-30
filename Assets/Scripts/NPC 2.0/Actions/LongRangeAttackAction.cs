@@ -16,14 +16,15 @@ public class LongRangeAttackAction : NPCActions_SO
         {
             if (!controller.InitAttack)
             {
- Instantiate(controller.AttackObj,controller.AttackSpawner.transform.position, controller.AttackSpawner.transform.rotation);
+                Instantiate(controller.AttackObj, controller.AttackSpawner.transform.position, controller.AttackSpawner.transform.rotation);
                 controller.InitAttack = true;
             }
 
             if (controller.TimerAttack(controller.enemyStats.attackRate))
             {
+                controller.PoolFire();
                 // Debug.Log("AI Attacking");
-                Instantiate(controller.AttackObj,controller.AttackSpawner.transform.position, controller.AttackSpawner.transform.rotation);
+                // Instantiate(controller.AttackObj, controller.AttackSpawner.transform.position, controller.AttackSpawner.transform.rotation);
             }
         }
     }

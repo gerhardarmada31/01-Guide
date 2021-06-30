@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6838292553756588718
 Transform:
   m_ObjectHideFlags: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   fireSpeed: 10
   bulletRotateSpeed: 100
   lifeTime: 3
+  totalLifeTime: 5
 --- !u!54 &3546736515818553256
 Rigidbody:
   m_ObjectHideFlags: 0
