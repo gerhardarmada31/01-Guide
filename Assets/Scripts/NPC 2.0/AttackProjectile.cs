@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackProjectile : AttackObject, IGameObjectPooled
 {
-    public EnemyStats enemyStats;
+    public NPCAttributes enemyStats;
     [SerializeField] private bool isProjectile;
     private Rigidbody rbBullet;
     [SerializeField] bool isBulletHoming;

@@ -7,7 +7,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NPCStateController : MonoBehaviour
 {
-    public EnemyStats enemyStats;
+    public NPCAttributes enemyStats;
     public NPCStates_SO remainState;
     private EnemyStatus enemyStatus;
 

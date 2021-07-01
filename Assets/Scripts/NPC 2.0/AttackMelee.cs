@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackMelee : AttackObject
 {
-    public EnemyStats enemyStats;
+    public NPCAttributes enemyStats;
     [SerializeField] private float lifeTime;
 
     void Awake()

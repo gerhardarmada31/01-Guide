@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(menuName = "PluggableAI/EnemyStats", order = 0)]
-public class EnemyStats : ScriptableObject 
+[CreateAssetMenu(menuName = "PluggableAI/NPCAttributes", order = 0)]
+public class NPCAttributes : ScriptableObject 
 {
     [Header ("Movement, Eyes, and Rotations")]
     public float moveSpeed =1f;
