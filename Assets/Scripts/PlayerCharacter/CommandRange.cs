@@ -56,7 +56,7 @@ public class CommandRange : MonoBehaviour
     {
         //make an interface called itargetable or something
         //Make list next of targetable Objects
-        var enemy = other.GetComponent<EnemyStatus>();
+        var enemy = other.GetComponent<NPCStatus>();
 
         if (other.CompareTag("Target"))
         {

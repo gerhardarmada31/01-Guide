@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // , ITakeDamage
-public class EnemyStatus : MonoBehaviour, ITakeDamage
+public abstract class NPCStatus : MonoBehaviour, ITakeDamage
 {
     //Create an scriptable object later... for separation stuff
-    public int hp = 3;
-    public int attack = 5;
+    // public int hp = 3;
+    // public int attack = 1;
 
+    public NPCAttributes nPCAttributes;
     [SerializeField] private NPCStateController controller;
 
 
@@ -31,34 +32,12 @@ public class EnemyStatus : MonoBehaviour, ITakeDamage
 
     }
 
-    private PlayerStatus playerDmg;
     void Start()
     {
         TargetEventSystem.current.onConfirmTargetSelect += ObjectTargeted;
     }
 
-    private void ObjectTargeted(GameObject obj, GameObject playerObj, int sentSp)
-    {
-
-        //only work if time is moving.
-        if (obj == this.gameObject)
-        {
-            //playerDmg is now obsolete
-            // playerDmg = playerObj.GetComponent<PlayerStatus>();
-            // if (playerDmg != null)
-            // {
-            //     hp -= playerDmg.TotalDmg;
-            // }
-            hp -= sentSp;
-            Debug.Log($"{this.gameObject} took {sentSp} Damage");
-
-            if (sentSp >= 2)
-            {
-                //Change behaviour because of npcStateController
-                Debug.Log("Break");
-            }
-        }
-    }
+    protected abstract void ObjectTargeted(GameObject arg1, GameObject arg2, int arg3);
 
     // Update is called once per frame
     void Update()
@@ -73,7 +52,7 @@ public class EnemyStatus : MonoBehaviour, ITakeDamage
 
     public void Death()
     {
-        if (hp <= 0)
+        if (nPCAttributes.hp <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -81,7 +60,7 @@ public class EnemyStatus : MonoBehaviour, ITakeDamage
 
     public void TakeDamage(int takeDamge)
     {
-        hp -= takeDamge;
+        // hp -= takeDamge;
     }
 
     public void KILL_ALL()

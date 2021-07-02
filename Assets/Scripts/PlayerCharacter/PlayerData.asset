@@ -19,7 +19,7 @@ MonoBehaviour:
   attackPoint: 1
   totalDmg: 0
   moveSpeed: 9
-  slideFriction: 20
+  slideFriction: 22
   gravityScale: -80
   jumpHeight: 3.5
   castOffset: 0
