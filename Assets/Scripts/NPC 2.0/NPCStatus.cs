@@ -15,22 +15,26 @@ public abstract class NPCStatus : MonoBehaviour, ITakeDamage
 
 
     //PROPS
-    private bool spCheckLvl1;
-    public bool SpCheckLvl1
+    private int totalhp;
+    public int TotalHp
     {
-        get { return spCheckLvl1; }
+        get { return totalhp = nPCAttributes.hp; }
     }
 
-    private bool spCheckLvl2;
-    public bool SpCheckLvl2
+    private int spCheckLvl1;
+    public int SpCheckLvl1
     {
-        get { return spCheckLvl2; }
+        get { return spCheckLvl1 = nPCAttributes.spCheck1; }
+        set { spCheckLvl1 = value;}
     }
 
-    private void Awake()
+    private int spCheckLvl2;
+    public int SpCheckLvl2
     {
-
+        get { return spCheckLvl2 = nPCAttributes.spCheck2; }
+        set { spCheckLvl2 = value; }
     }
+
 
     void Start()
     {
@@ -39,24 +43,12 @@ public abstract class NPCStatus : MonoBehaviour, ITakeDamage
 
     protected abstract void ObjectTargeted(GameObject arg1, GameObject arg2, int arg3);
 
-    // Update is called once per frame
-    void Update()
-    {
-        Death();
-    }
-
     private void OnDisable()
     {
         TargetEventSystem.current.onConfirmTargetSelect -= ObjectTargeted;
     }
 
-    public void Death()
-    {
-        if (nPCAttributes.hp <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-    }
+
 
     public void TakeDamage(int takeDamge)
     {

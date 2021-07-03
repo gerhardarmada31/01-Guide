@@ -709,7 +709,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20032
+  m_Name: pb_Mesh20030
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2796,6 +2796,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4043320797367127205, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
+      propertyPath: nPCAttributes
+      value: 
+      objectReference: {fileID: 11400000, guid: a852ec8a9e30502428cd5d4c4777cd20, type: 2}
     - target: {fileID: 4752667531856397762, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
       propertyPath: m_Name
       value: EnemyChaser (1)
@@ -3598,6 +3602,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4043320797367127205, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
+      propertyPath: nPCAttributes
+      value: 
+      objectReference: {fileID: 11400000, guid: a852ec8a9e30502428cd5d4c4777cd20, type: 2}
     - target: {fileID: 4752667531856397762, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
       propertyPath: m_Name
       value: EnemyChaser (2)
@@ -5774,7 +5782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a859e0a80d792ef49bd4b1747dd78d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nPCAttributes: {fileID: 0}
+  nPCAttributes: {fileID: 11400000, guid: a6a71325b949d0442a70cadb6708276a, type: 2}
   controller: {fileID: 0}
 --- !u!1 &2419365725000559388
 GameObject:
@@ -5848,7 +5856,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 2}
 --- !u!4 &2419365725012684087
 Transform:
@@ -5858,7 +5866,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2419365725012684084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.96}
+  m_LocalPosition: {x: 0, y: 0, z: -1.77}
   m_LocalScale: {x: 1.5952, y: 1.5952, z: 1.5952}
   m_Children: []
   m_Father: {fileID: 2419365723909259788}
@@ -6074,6 +6082,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1406645075174002444, guid: 62ee02595d5af1243bf9356a13a6755f, type: 3}
+      propertyPath: nPCAttributes
+      value: 
+      objectReference: {fileID: 11400000, guid: a8db7a9a76d6b2649aaad69cbf9e7db6, type: 2}
     - target: {fileID: 1998876991501354671, guid: 62ee02595d5af1243bf9356a13a6755f, type: 3}
       propertyPath: gameObjectPool
       value: 

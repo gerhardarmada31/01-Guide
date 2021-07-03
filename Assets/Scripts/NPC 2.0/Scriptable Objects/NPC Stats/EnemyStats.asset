@@ -15,10 +15,11 @@ MonoBehaviour:
   moveSpeed: 1
   lookSphereCastRadius: 1
   lookRange: 60
+  searchDuration: 4
+  searchingTurnSpeed: 120
+  idleTime: 1
+  hp: 5
   attackRange: 1
   attackRate: 2
   attackForce: 15
   attackDamage: 1
-  searchDuration: 4
-  searchingTurnSpeed: 120
-  idleTime: 1

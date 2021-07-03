@@ -18,6 +18,9 @@ MonoBehaviour:
   searchDuration: 4
   searchingTurnSpeed: 120
   idleTime: 3
+  hp: 1
+  spCheck1: 1
+  spCheck2: 2
   attackRange: 0
   attackRate: 0
   attackForce: 0

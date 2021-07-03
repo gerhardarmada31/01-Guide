@@ -15,9 +15,13 @@ public class NPCAttributes : ScriptableObject
     public float searchingTurnSpeed = 120f;
     public float idleTime = 3f;
 
-    [Header("Damage and Health")]
+    [Header("Health and SpChecks")]
     
     public int hp = 1;
+    public int spCheck1;
+    public int spCheck2;
+
+    [Header("Damage")]
     public float attackRange = 1f;
     public float attackRate = 1f;
     public float attackForce = 15f;

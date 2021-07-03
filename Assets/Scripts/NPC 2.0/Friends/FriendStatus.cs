@@ -4,21 +4,33 @@ using UnityEngine;
 
 public class FriendStatus : NPCStatus
 {
+    //friends will power
+    private int wP;
+
+    private void Awake()
+    {
+        wP = TotalHp;
+    }
+
+    private void Update()
+    {
+
+    }
     // [SerializeField] private
-    protected override void ObjectTargeted(GameObject arg1, GameObject arg2, int arg3)
+    protected override void ObjectTargeted(GameObject obj, GameObject player, int sentSp)
     {
-        throw new System.NotImplementedException();
+        //most likely do a switch case for sp checks
+        if (obj == this.gameObject)
+        {
+            if (sentSp <= SpCheckLvl1)
+            {
+                Debug.Log("weakSauce");
+            }
+            else
+            {
+                Debug.Log("strongSauce");
+            }
+        }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

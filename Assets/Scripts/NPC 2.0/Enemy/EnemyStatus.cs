@@ -4,33 +4,39 @@ using UnityEngine;
 
 public class EnemyStatus : NPCStatus
 {
+    private int hp;
 
-
+    private void Awake()
+    {
+        hp = TotalHp;
+    }
     // Update is called once per frame
     void Update()
     {
-
+        Death();
     }
 
     protected override void ObjectTargeted(GameObject obj, GameObject playerObj, int sentSp)
     {
+        Debug.Log("Break");
         //only work if time is moving.
         if (obj == this.gameObject)
         {
-            //playerDmg is now obsolete
-            // playerDmg = playerObj.GetComponent<PlayerStatus>();
-            // if (playerDmg != null)
-            // {
-            //     hp -= playerDmg.TotalDmg;
-            // }
-            nPCAttributes.hp -= sentSp;
+            hp -= sentSp;
             Debug.Log($"{this.gameObject} took {sentSp} Damage");
 
             if (sentSp >= 2)
             {
                 //Change behaviour because of npcStateController
-                Debug.Log("Break");
             }
+        }
+    }
+
+    public void Death()
+    {
+        if (hp <= 0)
+        {
+            Destroy(this.gameObject);
         }
     }
 }

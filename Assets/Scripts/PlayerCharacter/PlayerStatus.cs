@@ -82,7 +82,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage
         {
             spRate += Time.deltaTime;
         }
-        if (spRate >= 2)
+        if (spRate >= playerStats.requiredSpRate)
         {
             currentSP++;
             spRate = 0;
