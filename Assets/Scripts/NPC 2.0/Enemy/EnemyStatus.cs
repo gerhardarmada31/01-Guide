@@ -22,6 +22,7 @@ public class EnemyStatus : NPCStatus
         //only work if time is moving.
         if (obj == this.gameObject)
         {
+            PlayerObj = playerObj;
             hp -= sentSp;
             Debug.Log($"{this.gameObject} took {sentSp} Damage");
 

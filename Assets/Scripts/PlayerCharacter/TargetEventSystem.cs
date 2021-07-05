@@ -5,11 +5,11 @@ using System;
 
 public class TargetEventSystem : MonoBehaviour
 {
-    public static TargetEventSystem current;
+    public static TargetEventSystem currentTarget;
 
     private void Awake()
     {
-        current = this;
+        currentTarget = this;
     }
 
     public event Action<GameObject, GameObject, int> onConfirmTargetSelect;

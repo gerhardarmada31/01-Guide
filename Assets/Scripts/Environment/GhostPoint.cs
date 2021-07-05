@@ -17,7 +17,7 @@ public class GhostPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TargetEventSystem.current.onConfirmTargetSelect += OnTeleportTarget;
+        TargetEventSystem.currentTarget.onConfirmTargetSelect += OnTeleportTarget;
     }
 
     private void OnTeleportTarget(GameObject obj, GameObject playerObj, int spCheck)
@@ -39,6 +39,6 @@ public class GhostPoint : MonoBehaviour
 
     private void OnDisable()
     {
-        TargetEventSystem.current.onConfirmTargetSelect -= OnTeleportTarget;
+        TargetEventSystem.currentTarget.onConfirmTargetSelect -= OnTeleportTarget;
     }
 }

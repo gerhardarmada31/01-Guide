@@ -11,3 +11,4 @@ public interface IShroudedObj
 {
     void shroudedObj(bool shroudEnabled);
 }
+

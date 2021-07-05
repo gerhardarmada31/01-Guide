@@ -9,7 +9,7 @@ public class NPCStateController : MonoBehaviour
 {
     public NPCAttributes enemyStats;
     public NPCStates_SO remainState;
-    private NPCStatus enemyStatus;
+    private NPCStatus npcStatus;
 
 
     //Set up some of that good2x headers
@@ -31,9 +31,9 @@ public class NPCStateController : MonoBehaviour
     //PROPERTIES
     public GameObjectPool GameObjectPool { get { return gameObjectPool; } }
     public bool IsplayerIn { get; set; }
-    public NPCStatus EnemyStatus
+    public NPCStatus NPCStatus
     {
-        get { return enemyStatus; }
+        get { return npcStatus; }
     }
     public bool InitAttack { get; set; }
 
@@ -78,7 +78,7 @@ public class NPCStateController : MonoBehaviour
     private void Awake()
     {
         navMeshAgent = this.GetComponent<NavMeshAgent>();
-        enemyStatus = GetComponent<NPCStatus>();
+        npcStatus = GetComponent<NPCStatus>();
     }
 
     //This is getting passing the argument rather than the values won't set in the scriptable object

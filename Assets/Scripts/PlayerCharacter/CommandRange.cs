@@ -61,7 +61,7 @@ public class CommandRange : MonoBehaviour
         if (other.CompareTag("Target"))
         {
             //give a condition of the player has received the scanner 2.0
-            TargetEventSystem.current.ShroudDetected(other.gameObject, false);
+            TargetEventSystem.currentTarget.ShroudDetected(other.gameObject, false);
             if (other.transform.parent != null)
             {
                 targetObj.Add(other.transform.parent.gameObject);
@@ -88,7 +88,7 @@ public class CommandRange : MonoBehaviour
         if (playerStatus.CurrentSP >= 1 && selectedObj != null)
         {
             //calling the functions from the selected object and gives a reference for the player Obj
-            TargetEventSystem.current.ConfirmTargetSelect(selectedObj, playerObj, playerStatus.TotalDmg);
+            TargetEventSystem.currentTarget.ConfirmTargetSelect(selectedObj, playerObj, playerStatus.TotalDmg);
             playerObj.transform.LookAt(selectedObj.transform);
             playerStatus.SpiritSystem();
             // Debug.Log("ConfirmTarget");
@@ -106,7 +106,7 @@ public class CommandRange : MonoBehaviour
     {
         foreach (var allTargets in targetObj)
         {
-            TargetEventSystem.current.ShroudDetected(allTargets, true);
+            TargetEventSystem.currentTarget.ShroudDetected(allTargets, true);
         }
     }
 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a57f6db90a8d6794a87d426b5e031924, type: 3}
-  m_Name: LookAtScanner
+  m_Name: ShootScanner
   m_EditorClassIdentifier: 
   nPCActions:
   - {fileID: 11400000, guid: d9eca93c36d70f840a66b961fe9603a0, type: 2}

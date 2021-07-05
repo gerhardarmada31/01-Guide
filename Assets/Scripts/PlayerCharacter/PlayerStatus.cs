@@ -51,6 +51,11 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage
     {
         currentHP = playerStats.maxHp;
         spRate = playerStats.spRate;
+        currentHP = 3;
+        playerStats.invuFrame = 1.5f;
+        playerStats.maxHp = 3;
+        playerStats.maxSp = 4;
+        currentSP = 3;
     }
 
     void Update()
@@ -102,7 +107,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage
             currentHP = 0;
         }
     }
-    
+
     IEnumerator InvuTime()
     {
         isInvunerable = true;

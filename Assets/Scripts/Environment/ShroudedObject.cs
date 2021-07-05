@@ -16,8 +16,8 @@ public class ShroudedObject : MonoBehaviour
     }
     void Start()
     {
-        TargetEventSystem.current.onConfirmTargetSelect += ObjectConfirmed;
-        TargetEventSystem.current.onShroudDetected += ShroudDetected;
+        TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
+        TargetEventSystem.currentTarget.onShroudDetected += ShroudDetected;
 
     }
 
@@ -50,7 +50,7 @@ public class ShroudedObject : MonoBehaviour
 
     void OnDisable()
     {
-        TargetEventSystem.current.onConfirmTargetSelect -= ObjectConfirmed;
+        TargetEventSystem.currentTarget.onConfirmTargetSelect -= ObjectConfirmed;
     }
 
     void OnTriggerEnter(Collider other)

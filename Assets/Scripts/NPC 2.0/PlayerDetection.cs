@@ -16,7 +16,6 @@ public class PlayerDetection : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             controller.ChaseTarget = other.gameObject.transform;
-            Debug.Log("PlayerEnter");
             controller.IsplayerIn = true;
         }
     }
@@ -30,6 +29,5 @@ public class PlayerDetection : MonoBehaviour
             controller.IsplayerIn = false;
         }
     }
-
 
 }

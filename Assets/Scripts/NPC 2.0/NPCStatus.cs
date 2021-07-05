@@ -4,17 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // , ITakeDamage
-public abstract class NPCStatus : MonoBehaviour, ITakeDamage
+public abstract class NPCStatus : MonoBehaviour
 {
     //Create an scriptable object later... for separation stuff
     // public int hp = 3;
     // public int attack = 1;
 
     public NPCAttributes nPCAttributes;
-    [SerializeField] private NPCStateController controller;
-
 
     //PROPS
+    private GameObject playerObj;
+    public GameObject PlayerObj
+    {
+        get {return playerObj;}
+        set {playerObj = value;}
+    }
     private int totalhp;
     public int TotalHp
     {
@@ -38,21 +42,20 @@ public abstract class NPCStatus : MonoBehaviour, ITakeDamage
 
     void Start()
     {
-        TargetEventSystem.current.onConfirmTargetSelect += ObjectTargeted;
+        TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectTargeted;
     }
 
-    protected abstract void ObjectTargeted(GameObject arg1, GameObject arg2, int arg3);
+    // private void ObjectTargeted(GameObject arg1, GameObject arg2, int arg3)
+    // {
+    //     throw new NotImplementedException();
+    // }
+
+    protected abstract void ObjectTargeted(GameObject myObj, GameObject playerObj, int spCheck);
+
 
     private void OnDisable()
     {
-        TargetEventSystem.current.onConfirmTargetSelect -= ObjectTargeted;
-    }
-
-
-
-    public void TakeDamage(int takeDamge)
-    {
-        // hp -= takeDamge;
+        TargetEventSystem.currentTarget.onConfirmTargetSelect -= ObjectTargeted;
     }
 
     public void KILL_ALL()

@@ -16,7 +16,7 @@ MonoBehaviour:
   maxSp: 4
   spRate: 0
   requiredSpRate: 2.3
-  invuFrame: 2
+  invuFrame: 1.5
   attackPoint: 1
   totalDmg: 0
   moveSpeed: 9

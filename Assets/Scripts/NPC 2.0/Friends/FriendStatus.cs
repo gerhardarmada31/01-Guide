@@ -22,6 +22,7 @@ public class FriendStatus : NPCStatus
         //most likely do a switch case for sp checks
         if (obj == this.gameObject)
         {
+            PlayerObj = player;
             if (sentSp <= SpCheckLvl1)
             {
                 Debug.Log("weakSauce");
