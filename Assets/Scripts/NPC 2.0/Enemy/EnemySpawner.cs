@@ -4,20 +4,40 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] private GameObject spawnedObj;
+
+    private CombatZone parentCombatZone;
+    private bool hasSpawned = false;
+
+    private void Awake()
+    {
+        parentCombatZone = this.GetComponentInParent<CombatZone>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void SpawnEnemies()
     {
-        Debug.Log("Spawning");
+        if (hasSpawned == false)
+        {
+            Instantiate(spawnedObj, transform.position, transform.rotation, this.gameObject.transform);
+
+            Debug.Log("Spawning");
+            hasSpawned = true;
+            // npcController.ChaseTarget = parentCombatZone.PlayerInZone.transform;
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
+    }
+
+    public void DeSpawnEnemies()
+    {
+        gameObject.SetActive(false);
     }
 }

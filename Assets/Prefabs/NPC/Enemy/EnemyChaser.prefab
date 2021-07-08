@@ -260,9 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd3c7e2a4ef6ca49963bb0fd3284f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 3
-  attack: 5
-  controller: {fileID: 0}
+  nPCAttributes: {fileID: 11400000, guid: a852ec8a9e30502428cd5d4c4777cd20, type: 2}
 --- !u!114 &4752667532120920247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,20 +275,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: a852ec8a9e30502428cd5d4c4777cd20, type: 2}
   remainState: {fileID: 11400000, guid: c6ef9f67705a02340b13862d447e0725, type: 2}
+  currentState: {fileID: 11400000, guid: 948d7c9a6633663408ff96ba799dfc9e, type: 2}
+  stateTimeElapsed: 0
+  wayPointIndex: 0
+  chaseTarget: {fileID: 0}
   eyes: {fileID: 4752667533233192847}
   attackSpawner: {fileID: 6620549591347287183}
-  chaseTarget: {fileID: 0}
-  stateTimeElapsed: 0
-  attackRate: 0
   attackObj: {fileID: 8061149527609573415, guid: 5e8150eb2de488248a987b104e95bb10, type: 3}
-  currentState: {fileID: 11400000, guid: de1262c21bc21f34c9fc63845dbea77a, type: 2}
+  attackRate: 0
+  gameObjectPool: {fileID: 0}
   wayPoints:
   - {fileID: 4752667532598647208}
   - {fileID: 4752667533212809639}
   - {fileID: 4752667532737504661}
   - {fileID: 4752667533797237543}
-  wayPointIndex: 0
-  gameObjectPool: {fileID: 0}
 --- !u!1 &4752667532209081513
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,7 +439,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4752667533233192844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10.6}
+  m_LocalPosition: {x: 0, y: 0, z: 1.9}
   m_LocalScale: {x: 1.5952, y: 1.5952, z: 1.5952}
   m_Children: []
   m_Father: {fileID: 4752667532120920244}
@@ -458,7 +456,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8.51
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 2}
 --- !u!114 &4752667533233192841
 MonoBehaviour:

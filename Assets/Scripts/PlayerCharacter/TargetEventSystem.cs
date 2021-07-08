@@ -15,6 +15,7 @@ public class TargetEventSystem : MonoBehaviour
     public event Action<GameObject, GameObject, int> onConfirmTargetSelect;
     public event Action<GameObject, bool> onShroudDetected;
 
+
     //Getting the target and getting from the players Values
     //spCheck is the totalDmg from playerStatus
     public void ConfirmTargetSelect(GameObject target, GameObject playerObj, int spCheck)

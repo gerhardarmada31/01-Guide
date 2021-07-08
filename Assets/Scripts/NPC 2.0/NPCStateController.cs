@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 // using Assets.NPCScript;
@@ -13,18 +14,18 @@ public class NPCStateController : MonoBehaviour
 
 
     //Set up some of that good2x headers
+    [SerializeField] private NPCStates_SO currentState;
+    [SerializeField] private float stateTimeElapsed = 0;
+    [SerializeField] private int wayPointIndex;
+    [SerializeField] private Transform chaseTarget;
     [SerializeField] private Transform eyes;
     [SerializeField] private Transform attackSpawner;
-    [SerializeField] private Transform chaseTarget;
-    [SerializeField] private float stateTimeElapsed = 0;
-    [SerializeField] private float attackRate;
     [SerializeField] private GameObject attackObj;
-    [SerializeField] private NPCStates_SO currentState;
-    [SerializeField] private List<Transform> wayPoints;
-    [SerializeField] private int wayPointIndex;
+    [SerializeField] private float attackRate;
     [SerializeField] private GameObjectPool gameObjectPool;
-
-
+    [SerializeField] private List<Transform> wayPoints;
+    private CombatZone combatZone;
+    private EnemySpawner enemySpawner;
     private NavMeshAgent navMeshAgent;
 
 
@@ -75,10 +76,30 @@ public class NPCStateController : MonoBehaviour
         }
     }
 
+
     private void Awake()
     {
         navMeshAgent = this.GetComponent<NavMeshAgent>();
         npcStatus = GetComponent<NPCStatus>();
+        combatZone = GetComponentInParent<CombatZone>();
+        enemySpawner = GetComponentInParent<EnemySpawner>();
+        // chaseTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
+
+    void OnEnable()
+    {
+        if (enemySpawner != null)
+        {
+            gameObject.transform.position = enemySpawner.gameObject.transform.position;
+        }
+    }
+
+    private void Start()
+    {
+        if (combatZone != null)
+        {
+        chaseTarget = combatZone.PlayerInZone.transform;
+        }
     }
 
     //This is getting passing the argument rather than the values won't set in the scriptable object

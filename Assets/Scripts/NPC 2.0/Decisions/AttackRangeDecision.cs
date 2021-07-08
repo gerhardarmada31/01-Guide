@@ -15,7 +15,7 @@ public class AttackRangeDecision : NPCDecision_SO
     {
         if (controller.ChaseTarget != null)
         {
-            if (Vector3.Distance(controller.transform.position, controller.ChaseTarget.transform.position) <= 3.5f)
+            if (Vector3.Distance(controller.transform.position, controller.ChaseTarget.transform.position) <= 2f)
             {
                 return true;
             }

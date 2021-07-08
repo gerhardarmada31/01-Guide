@@ -16,8 +16,8 @@ public abstract class NPCStatus : MonoBehaviour
     private GameObject playerObj;
     public GameObject PlayerObj
     {
-        get {return playerObj;}
-        set {playerObj = value;}
+        get { return playerObj; }
+        set { playerObj = value; }
     }
     private int totalhp;
     public int TotalHp
@@ -28,32 +28,26 @@ public abstract class NPCStatus : MonoBehaviour
     private int spCheckLvl1;
     public int SpCheckLvl1
     {
-        get { return spCheckLvl1 = nPCAttributes.spCheck1; }
-        set { spCheckLvl1 = value;}
+        get { return spCheckLvl1; }
+        set { spCheckLvl1 = value; }
     }
 
     private int spCheckLvl2;
     public int SpCheckLvl2
     {
-        get { return spCheckLvl2 = nPCAttributes.spCheck2; }
+        get { return spCheckLvl2; }
         set { spCheckLvl2 = value; }
     }
-
-
-    void Start()
+    protected virtual void Start()
     {
+        spCheckLvl1 = nPCAttributes.spCheck1;
+        spCheckLvl2 = nPCAttributes.spCheck2;
         TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectTargeted;
     }
-
-    // private void ObjectTargeted(GameObject arg1, GameObject arg2, int arg3)
-    // {
-    //     throw new NotImplementedException();
-    // }
-
     protected abstract void ObjectTargeted(GameObject myObj, GameObject playerObj, int spCheck);
 
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         TargetEventSystem.currentTarget.onConfirmTargetSelect -= ObjectTargeted;
     }

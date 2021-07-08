@@ -14,27 +14,31 @@ public class AttackAction : NPCActions_SO
     {
         if (controller.ChaseTarget != null)
         {
-            controller.NavMeshAgent.destination = controller.ChaseTarget.position;
+            // controller.NavMeshAgent.destination = controller.ChaseTarget.position;
 
-            if (Vector3.Distance(controller.NavMeshAgent.transform.position, controller.ChaseTarget.position) <= 2.5f)
+            // if (Vector3.Distance(controller.NavMeshAgent.transform.position, controller.ChaseTarget.position) <= 3.0f)
+            // {
+            //     
+
+
+            // }
+            // else
+            // {
+            //     controller.NavMeshAgent.isStopped = false;
+            // }
+
+
+            if (!controller.InitAttack && controller.NavMeshAgent.isStopped == true)
             {
                 controller.NavMeshAgent.isStopped = true;
-                
-                if (!controller.InitAttack)
-                {
-                    Instantiate(controller.AttackObj, controller.AttackSpawner.transform);
-                    controller.InitAttack = true;
-                }
-
-                if (controller.TimerAttack(controller.enemyStats.attackRate))
-                {
-                    Debug.Log("AI Attacking");
-                    Instantiate(controller.AttackObj, controller.AttackSpawner.transform);
-                }
+                Instantiate(controller.AttackObj, controller.AttackSpawner.transform);
+                controller.InitAttack = true;
             }
-            else
+
+            if (controller.TimerAttack(controller.enemyStats.attackRate) && controller.NavMeshAgent.isStopped == true)
             {
-                controller.NavMeshAgent.isStopped = false;
+                Debug.Log("AI Attacking");
+                Instantiate(controller.AttackObj, controller.AttackSpawner.transform);
                 controller.InitAttack = false;
             }
 

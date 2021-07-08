@@ -480,6 +480,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120680168}
   m_CullTransparentMesh: 1
+--- !u!1 &124572610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124572611}
+  - component: {fileID: 124572612}
+  m_Layer: 0
+  m_Name: EnemySpawn (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &124572611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124572610}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.21, y: -1.36, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2090297667}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124572612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124572610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a451c018ff1a847bc9a499501dc611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnedObj: {fileID: 4752667531856397762, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
 --- !u!1 &129772721
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +753,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28490
+  m_Name: pb_Mesh20042
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2806,7 +2850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4752667531856397762, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4752667531856397773, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
       propertyPath: m_RootOrder
@@ -3610,6 +3654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyChaser (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4752667531856397762, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4752667531856397773, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -4215,6 +4263,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShooter (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1998876991774725082, guid: 62ee02595d5af1243bf9356a13a6755f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1998876992097308592, guid: 62ee02595d5af1243bf9356a13a6755f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.3
@@ -4499,6 +4551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a451c018ff1a847bc9a499501dc611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnedObj: {fileID: 4752667531856397762, guid: 45f4e4ca7357a2e46baf94807b346ad2, type: 3}
 --- !u!1 &1714040037
 GameObject:
   m_ObjectHideFlags: 0
@@ -5174,7 +5227,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 25, y: 10, z: 25}
+  m_Size: {x: 30, y: 10, z: 25}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &2090297667
 Transform:
@@ -5184,10 +5237,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090297665}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -79.8, y: 15.14, z: 73.4}
+  m_LocalPosition: {x: -79.2, y: 15.14, z: 74.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1702641924}
+  - {fileID: 124572611}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5961,18 +6015,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: a6a71325b949d0442a70cadb6708276a, type: 2}
   remainState: {fileID: 11400000, guid: c6ef9f67705a02340b13862d447e0725, type: 2}
+  currentState: {fileID: 11400000, guid: fc31708a516b8c74082e18dca8b5b1b7, type: 2}
+  stateTimeElapsed: 0
+  wayPointIndex: 0
+  chaseTarget: {fileID: 0}
   eyes: {fileID: 2419365725012684087}
   attackSpawner: {fileID: 4289510937785484855}
-  chaseTarget: {fileID: 0}
-  stateTimeElapsed: 0
-  attackRate: 0
   attackObj: {fileID: 8061149527609573415, guid: 5e8150eb2de488248a987b104e95bb10, type: 3}
-  currentState: {fileID: 11400000, guid: fc31708a516b8c74082e18dca8b5b1b7, type: 2}
+  attackRate: 0
+  gameObjectPool: {fileID: 0}
   wayPoints:
   - {fileID: 2419365723329825552}
   - {fileID: 2419365725000559391}
-  wayPointIndex: 0
-  gameObjectPool: {fileID: 0}
 --- !u!114 &2419365723909259792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6339,6 +6393,10 @@ PrefabInstance:
     - target: {fileID: 1998876991774725082, guid: 62ee02595d5af1243bf9356a13a6755f, type: 3}
       propertyPath: m_Name
       value: EnemyShooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998876991774725082, guid: 62ee02595d5af1243bf9356a13a6755f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1998876992235352973, guid: 62ee02595d5af1243bf9356a13a6755f, type: 3}
       propertyPath: m_LocalPosition.x
