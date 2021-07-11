@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 280ac4f56d38c8344a08bc057e0a96d5
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-PH
+  stringIDs:
+  - Dave-Start-0
+  - Dave-Start-1
+  - Dave-Start-2
+  - Dave-David.Agree-3
+  - Dave-David.Agree-4
+  - Dave-David.Agree-5
+  - Dave-David.Agree-6
+  - Dave-David.Distant-7
+  - Dave-David.Help-8
+  - Dave-David.Nah-9
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {fileID: 7128917941130120860, guid: 280ac4f56d38c8344a08bc057e0a96d5, type: 3}
+  localizations: []

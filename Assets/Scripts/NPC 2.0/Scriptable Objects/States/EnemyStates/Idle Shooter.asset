@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a57f6db90a8d6794a87d426b5e031924, type: 3}
-  m_Name: Chase Melee
+  m_Name: Idle Shooter
   m_EditorClassIdentifier: 
   nPCActions:
-  - {fileID: 11400000, guid: 6a02325d93da0eb4cb6dd9dad965ca68, type: 2}
+  - {fileID: 11400000, guid: a0880eaff8488484a8ec022179fe8480, type: 2}
   transitions:
-  - decision: {fileID: 11400000, guid: 92b24359644e75044928b33966a65ea8, type: 2}
-    trueState: {fileID: 11400000, guid: 588649de2cdafee4da20b46dd99ce1c9, type: 2}
+  - decision: {fileID: 11400000, guid: c3ea330d2242b70468cb62c9c3465c86, type: 2}
+    trueState: {fileID: 11400000, guid: d4af8a88a9ef7144d866af1b140ae2d7, type: 2}
     falseState: {fileID: 11400000, guid: c6ef9f67705a02340b13862d447e0725, type: 2}
-  sceneGizmoColor: {r: 0.13664317, g: 1, b: 0, a: 1}
+  sceneGizmoColor: {r: 0, g: 1, b: 0.13727331, a: 1}

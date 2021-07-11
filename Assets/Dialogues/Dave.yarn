@@ -1,0 +1,40 @@
+title: Start
+tags: 
+colorID: 0
+position: 413,-84
+---
+sooooo..... waiting huh?
+[[yup|David.Agree]]
+[[I guess |David.Distant]]
+===
+title: David.Agree
+tags: 
+colorID: 0
+position: 38,-167
+---
+hey, so I can't go yet, cause I have some stuff to do.
+and I can't do them cause I'm not alive anymore.
+[[uuhhh sure why not|David.Help]]
+[[kinda wanna just relax right now|David.Nah]]
+===
+title: David.Distant
+tags: 
+colorID: 0
+position: 827,-179
+---
+Empty Text
+===
+title: David.Help
+tags: 
+colorID: 0
+position: 235,-500
+---
+Empty Text
+===
+title: David.Nah
+tags: 
+colorID: 0
+position: 595,-444
+---
+Empty Text
+===

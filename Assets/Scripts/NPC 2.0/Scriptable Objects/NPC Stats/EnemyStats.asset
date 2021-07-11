@@ -22,6 +22,6 @@ MonoBehaviour:
   spCheck1: 2
   spCheck2: 3
   attackRange: 1
-  attackRate: 2
+  attackRate: 1
   attackForce: 15
   attackDamage: 1

@@ -9,7 +9,8 @@ public class ShroudedObject : MonoBehaviour
     // private GameObject shroudedObj;
     private bool isShrouded = true;
     private bool isActivated = false;
-    [SerializeField] private int spCheck;
+    [SerializeField] private int spChecklvl1;
+    [SerializeField] private int spChecklvl2;
 
     void Awake()
     {
@@ -40,11 +41,21 @@ public class ShroudedObject : MonoBehaviour
 
     private void ObjectConfirmed(GameObject obj, GameObject playerObj, int currentSp)
     {
-        if (obj == this.gameObject && currentSp >= spCheck)
+        if (obj == this.gameObject && currentSp >= spChecklvl1)
         {
             Debug.Log("got hit");
             this.transform.GetChild(0).gameObject.SetActive(true);
             // isActivated = true;
+
+            if (currentSp <= spChecklvl1)
+            {
+                Debug.Log("Weak sauce");
+                //Change behaviour because of npcStateController
+            }
+            else if (currentSp >= spChecklvl2)
+            {
+                Debug.Log("strong Sauce");
+            }
         }
     }
 

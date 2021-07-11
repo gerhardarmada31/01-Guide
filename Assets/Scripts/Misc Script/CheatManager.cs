@@ -20,7 +20,7 @@ public class CheatManager : MonoBehaviour
     private List<CheatCodeInstance> cheatCodeList = new List<CheatCodeInstance>();
     void Start()
     {
-        Cursor.visible = false;
+        Cursor.visible = true;
 
     }
     private void Awake()
