@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 using UnityEngine.InputSystem;
 
 //Add also requirement for targeting
@@ -13,6 +14,7 @@ public class PlayerInput : MonoBehaviour
     private InputActions controls;
     private bool freeMove;
     private Vector2 moveInput;
+    private float dialogueInputs;
     private float yMoveInput;
     private float mouseWheelAxis;
     private bool commandMode = false;
@@ -20,7 +22,7 @@ public class PlayerInput : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerStatus playerStatus;
     private CommandRange commandRange;
-
+    private PlayerDialogue playerDialogue;
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class PlayerInput : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerStatus = GetComponent<PlayerStatus>();
         commandRange = GetComponentInChildren<CommandRange>();
+        playerDialogue = GetComponent<PlayerDialogue>();
         if (commandRange != null)
         {
             commandRange.transform.gameObject.SetActive(false);
@@ -47,6 +50,8 @@ public class PlayerInput : MonoBehaviour
         controls.PlayerCharacter.StackSp.performed += HandheldStackingSP;
         // controls.PlayerCharacter.StackSp.canceled += HandheldStackingSP => playerStatus.StackSP = 0;
 
+        // controls.PlayerCharacter.DialogueKeys.performed += HandleDialogueSelection => dialogueInputs = HandleDialogueSelection.ReadValue<float>();
+        // controls.PlayerCharacter.ContinueDialogue.performed += HandleDialogueNext;
         controls.PlayerCharacter.Jump.performed += HandleJump;
         controls.PlayerCharacter.Move.performed += HandleMove => moveInput = HandleMove.ReadValue<Vector2>();
         controls.PlayerCharacter.YMove.performed += HandleYMovement => yMoveInput = HandleYMovement.ReadValue<float>();
@@ -55,6 +60,13 @@ public class PlayerInput : MonoBehaviour
         controls.Enable();
 
     }
+
+    // private void HandleDialogueNext(InputAction.CallbackContext context)
+    // {
+    //     // throw new NotImplementedException();
+    //     playerDialogue.ConfirmedDialogue();
+    // }
+
 
     // private void HandleYMovement(InputAction.CallbackContext obj)
     // {
@@ -118,6 +130,10 @@ public class PlayerInput : MonoBehaviour
         controls.PlayerCharacter.CmdOff.performed -= HandleCmdOff;
         controls.PlayerCharacter.ExecuteCom.performed -= HandleExecuteCom;
         controls.PlayerCharacter.CmdSelect.performed -= HandleCmdSelect;
+        // controls.PlayerCharacter.DialogueKeys.performed -= HandleDialogue => dialogueInputs = HandleDialogue.ReadValue<float>();
+        // controls.PlayerCharacter.ContinueDialogue.performed -= HandleDialogueNext;
+
+
         controls.PlayerCharacter.Move.performed -= HandleMove => moveInput = HandleMove.ReadValue<Vector2>();
         controls.PlayerCharacter.YMove.performed -= HandleYMovement => yMoveInput = HandleYMovement.ReadValue<float>();
         controls.PlayerCharacter.YMove.canceled -= HandleYMovement => yMoveInput = 0;
@@ -130,17 +146,21 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         // Debug.Log("Command Mode " + commandMode);
+
         if (!commandMode && !freeMove)
         {
-            playerMovement.Move(moveInput);
+            if (!playerDialogue.IsInDialogue)
+            {
+            }
+                playerMovement.Move(moveInput);
         }
         else if (freeMove)
         {
             playerMovement.FreeMoveMode(moveInput, yMoveInput);
         }
-
         // Debug.Log(moveInput);
-        commandRange.CommandMode();
+
+
     }
 
     public void FreeMove()

@@ -11,10 +11,12 @@ public class CommandRange : MonoBehaviour
     private int targetIndex;
     private SphereCollider myCollider;
 
+    public FriendDialogue MyFriend { get; set; }
 
     private bool isCommandModeOn;
     // private IShroudedObj shroudedObj;
     private PlayerStatus playerStatus;
+    private PlayerDialogue playerDialogue;
     private GameObject playerObj;
     private bool isDetected;
 
@@ -31,6 +33,7 @@ public class CommandRange : MonoBehaviour
 
     private void Awake()
     {
+        playerDialogue = GetComponentInParent<PlayerDialogue>();
         playerStatus = GetComponentInParent<PlayerStatus>();
         playerObj = this.transform.parent.gameObject;
         myCollider = this.GetComponent<SphereCollider>();
@@ -89,6 +92,15 @@ public class CommandRange : MonoBehaviour
         {
             //calling the functions from the selected object and gives a reference for the player Obj
             TargetEventSystem.currentTarget.ConfirmTargetSelect(selectedObj, playerObj, playerStatus.TotalDmg);
+            MyFriend = selectedObj.GetComponent<FriendDialogue>();
+
+            if (MyFriend != null)
+            {
+                //checks if player is in a dialogue
+                playerDialogue.IsInDialogue = true;
+                DialogueController.Instance.dialogueRunner.StartDialogue(MyFriend.YarnStartNode);
+            }
+
             playerObj.transform.LookAt(selectedObj.transform);
             playerStatus.SpiritSystem();
             // Debug.Log("ConfirmTarget");
@@ -121,6 +133,7 @@ public class CommandRange : MonoBehaviour
         }
         else
         {
+            Debug.Log("cmdOn");
             StopCoroutine(WaitandPause(0.1f));
             ClearingTarget();
             targetText.text = "None";
