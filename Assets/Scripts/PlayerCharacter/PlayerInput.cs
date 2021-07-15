@@ -103,6 +103,7 @@ public class PlayerInput : MonoBehaviour
         commandMode = false;
         commandRange.gameObject.SetActive(false);
         playerStatus.StackSP = 0;
+        controls.PlayerCharacter.Jump.Enable();
     }
 
     private void HandleCmdOn(InputAction.CallbackContext context)
@@ -112,6 +113,7 @@ public class PlayerInput : MonoBehaviour
         {
             commandMode = true;
             commandRange.gameObject.SetActive(true);
+            controls.PlayerCharacter.Jump.Disable();
         }
     }
 
@@ -151,16 +153,20 @@ public class PlayerInput : MonoBehaviour
         {
             if (!playerDialogue.IsInDialogue)
             {
-            }
                 playerMovement.Move(moveInput);
+                controls.PlayerCharacter.Jump.Enable();
+            }
+            else
+            {
+                controls.PlayerCharacter.Jump.Disable();
+            }
         }
         else if (freeMove)
         {
             playerMovement.FreeMoveMode(moveInput, yMoveInput);
         }
         // Debug.Log(moveInput);
-
-
+        commandRange.CommandMode();
     }
 
     public void FreeMove()

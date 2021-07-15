@@ -5,7 +5,7 @@ using UnityEngine;
 public class CombatZone : MonoBehaviour
 {
     private EnemySpawner[] enemySpawners;
-    private float despawnTime = 3f;
+    private float despawnTime = 8f;
     Coroutine coroutine;
 
     private ITakeDamage playerTarget;

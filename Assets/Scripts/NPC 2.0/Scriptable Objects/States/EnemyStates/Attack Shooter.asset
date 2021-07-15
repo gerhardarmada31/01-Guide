@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nPCActions:
   - {fileID: 11400000, guid: d9eca93c36d70f840a66b961fe9603a0, type: 2}
-  - {fileID: 11400000, guid: a0880eaff8488484a8ec022179fe8480, type: 2}
   - {fileID: 11400000, guid: d5bcfaddf8dae8147a34ba13832ed9f8, type: 2}
   transitions:
   - decision: {fileID: 11400000, guid: c3ea330d2242b70468cb62c9c3465c86, type: 2}

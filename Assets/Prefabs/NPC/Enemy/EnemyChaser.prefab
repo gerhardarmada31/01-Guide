@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 4752667533233192847}
   - component: {fileID: 4752667533233192846}
   - component: {fileID: 4752667533233192841}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DetectCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
