@@ -8,11 +8,13 @@ public class FriendDialogue : MonoBehaviour
     [SerializeField] GameObject chatBubble;
     [SerializeField] string yarnStartNode ="Start";
     [SerializeField] YarnProgram yarnDialogue;
+    [SerializeField] SpeakerSO speakerData;
     // Start is called before the first frame update
     void Start()
     {
         // chatBubble.SetActive(false);
         DialogueController.Instance.dialogueRunner.Add(yarnDialogue);
+        DialogueController.Instance.AddSpeaker(speakerData);
     }
 
     // Update is called once per frame

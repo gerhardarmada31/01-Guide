@@ -8,10 +8,12 @@ public class PlayerDialogue : MonoBehaviour
     private FriendDialogue friendNpc;
     private CommandRange commandRange;
     private bool isInDialogue = false;
+    [SerializeField] SpeakerSO speakerData;
 
     private void Start()
     {
         commandRange = GetComponentInChildren<CommandRange>();
+        DialogueController.Instance.AddSpeaker(speakerData);
     }
     // public string YarnStartNode { get{return yarnStartNode;} }
     //Property

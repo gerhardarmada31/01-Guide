@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 6cf202b375b512140893479280148a88
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - David-Start-0
+  - David-Start-1
+  - David-Start-2
+  - David-Start-3
+  - David-David.NotBusy-4
+  - David-David.NotBusy-5
+  - David-David.NotBusy-6
+  - David-David.NotBusy-7
+  - David-David.Busy-8
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []

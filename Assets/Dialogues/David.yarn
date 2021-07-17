@@ -1,0 +1,34 @@
+title: Start
+tags: 
+colorID: 0
+position: 568,222
+---
+<<SetSpeaker David>>
+
+<<if Visited("Start") is false>>
+hey you busy?
+[[not really|David.NotBusy]]
+[[kinda|David.Busy]]
+<<else>>
+hey....
+<<endif>>
+===
+title: David.NotBusy
+tags: 
+colorID: 0
+position: 181,35
+---
+oh cool, you mind you look something for me?
+<<SetSpeaker Phantom>>
+oh no more tasks....
+<<SetSpeaker David>>
+can you look for some white balls?
+great thanks!
+===
+title: David.Busy
+tags: 
+colorID: 0
+position: 926,56
+---
+oh okay then....
+===
