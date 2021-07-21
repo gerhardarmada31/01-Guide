@@ -17,9 +17,4 @@ public class FriendDialogue : MonoBehaviour
         DialogueController.Instance.AddSpeaker(speakerData);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

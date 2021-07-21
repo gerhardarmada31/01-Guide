@@ -6,16 +6,32 @@ public class FriendStatus : NPCStatus
 {
     //friends will power
     private int wP;
+    public bool FriendIsTalking { get; set; }
 
     private void Awake()
     {
         wP = TotalHp;
     }
 
-    private void Update()
+    protected override void Start()
     {
-
+        base.Start();
+        // Debug.Log("sup");
+        DialogueEvent.currentDialogueEvent.onFriendTalking += FriendTalk;
+        // FriendIsTalking =false;
     }
+
+    private void FriendTalk(GameObject friendObj, bool friendTalking)
+    {
+        //Stop moving based on the value here
+        if (friendObj == this.gameObject)
+        {
+            FriendIsTalking = friendTalking;
+            Debug.Log("stop walking" + friendObj);
+        }
+    }
+
+
     // [SerializeField] private
     protected override void ObjectTargeted(GameObject obj, GameObject player, int sentSp)
     {

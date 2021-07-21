@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using Yarn.Unity;
+using System;
 
 public class DialogueController : SingletonParent<DialogueController>
 {
@@ -12,12 +13,19 @@ public class DialogueController : SingletonParent<DialogueController>
     [SerializeField] Image speakerBox;
 
     public DialogueRunner dialogueRunner;
+    private GameObject friendObject;
     Dictionary<string, SpeakerSO> speakerDatabase = new Dictionary<string, SpeakerSO>();
 
     private void Awake()
     {
         dialogueRunner = GetComponent<DialogueRunner>();
         dialogueRunner.AddCommandHandler("SetSpeaker", SetSpeakerInfo);
+        TargetEventSystem.currentTarget.onConfirmTargetSelect += FriendTargeted; 
+    }
+
+    private void FriendTargeted(GameObject friend, GameObject arg2, int arg3)
+    {
+        friendObject = friend;
     }
 
     // Start is called before the first frame update
@@ -29,7 +37,7 @@ public class DialogueController : SingletonParent<DialogueController>
             return;
         }
 
-        speakerDatabase.Add(data.speakerName,data);
+        speakerDatabase.Add(data.speakerName, data);
         // speakerDatabase.Add
 
     }
@@ -41,9 +49,15 @@ public class DialogueController : SingletonParent<DialogueController>
         if (speakerDatabase.TryGetValue(speaker, out SpeakerSO data))
         {
             txt_SpeakerName.text = data.speakerName;
+            Debug.Log(txt_SpeakerName.text);
             speakerBox.sprite = data.DialougeBox;
             return;
         }
         Debug.LogErrorFormat("Could not set speaker info for unknown speaker {0}", speaker);
+    }
+
+    public void FriendTalking(bool FriendTalking)
+    {
+        DialogueEvent.currentDialogueEvent.FriendTalking(friendObject, FriendTalking);
     }
 }

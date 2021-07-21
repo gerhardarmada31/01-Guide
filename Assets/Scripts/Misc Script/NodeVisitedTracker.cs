@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Yarn.Unity;
 // Field ... is never assigned to and will always have its default value null
 #pragma warning disable 0649
 
@@ -14,6 +14,11 @@ public class NodeVisitedTracker : MonoBehaviour
 #pragma warning restore 0649
 
     private HashSet<string> _visitedNodes = new HashSet<string>();
+
+    private void Awake()
+    {
+        dialogueRunner = GetComponent<DialogueRunner>();
+    }
 
     void Start()
     {

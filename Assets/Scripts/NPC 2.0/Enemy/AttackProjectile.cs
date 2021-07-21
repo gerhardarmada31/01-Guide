@@ -12,7 +12,7 @@ public class AttackProjectile : AttackObject, IGameObjectPooled
     [SerializeField] private float fireSpeed;
     [SerializeField] private float bulletRotateSpeed = 100f;
     [SerializeField] private float lifeTime;
-    [SerializeField] private float totalLifeTime = 5f;
+    [SerializeField] private float totalLifeTime;
 
     private GameObjectPool pool;
 

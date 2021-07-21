@@ -11,10 +11,7 @@ public class ShroudedObject : MonoBehaviour
     private bool isActivated = false;
     [SerializeField] private int spChecklvl1;
     [SerializeField] private int spChecklvl2;
-
-    void Awake()
-    {
-    }
+    
     void Start()
     {
         TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
@@ -44,12 +41,13 @@ public class ShroudedObject : MonoBehaviour
         if (obj == this.gameObject && currentSp >= spChecklvl1)
         {
             Debug.Log("got hit");
-            this.transform.GetChild(0).gameObject.SetActive(true);
-            // isActivated = true;
+            isActivated = true;
 
             if (currentSp <= spChecklvl1)
             {
+                isShrouded = false;
                 Debug.Log("Weak sauce");
+                this.transform.GetChild(0).gameObject.SetActive(true);
                 //Change behaviour because of npcStateController
             }
             else if (currentSp >= spChecklvl2)
@@ -62,6 +60,7 @@ public class ShroudedObject : MonoBehaviour
     void OnDisable()
     {
         TargetEventSystem.currentTarget.onConfirmTargetSelect -= ObjectConfirmed;
+        TargetEventSystem.currentTarget.onShroudDetected -= ShroudDetected;
     }
 
     void OnTriggerEnter(Collider other)
@@ -70,7 +69,11 @@ public class ShroudedObject : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        this.transform.GetChild(0).gameObject.SetActive(false);
+        if (isShrouded)
+        {
+            Debug.Log("shroud");
+            this.transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 
     private void Update()

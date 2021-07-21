@@ -36,6 +36,12 @@ public class NPCStateController : MonoBehaviour
     {
         get { return npcStatus; }
     }
+    private FriendStatus friendStatus;
+    public FriendStatus FriendStatus
+    {
+        get { return friendStatus; }
+        set { friendStatus = value; }
+    }
     public bool InitAttack { get; set; }
 
     public Transform AttackSpawner
@@ -76,9 +82,20 @@ public class NPCStateController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+
+        //private make a filter for this
+    }
+
 
     private void Awake()
     {
+        if (FriendStatus != null)
+        {
+        }
+        FriendStatus = GetComponent<FriendStatus>();
+
         navMeshAgent = this.GetComponent<NavMeshAgent>();
         npcStatus = GetComponent<NPCStatus>();
         combatZone = GetComponentInParent<CombatZone>();
@@ -86,26 +103,28 @@ public class NPCStateController : MonoBehaviour
         // chaseTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
+
+
     void OnEnable()
     {
         if (enemySpawner != null)
         {
             gameObject.transform.position = enemySpawner.gameObject.transform.position;
         }
-    }
-
-    private void Start()
-    {
         if (combatZone != null)
         {
-        chaseTarget = combatZone.PlayerInZone.transform;
+            chaseTarget = combatZone.PlayerInZone.transform;
         }
     }
+
+
+
 
     //This is getting passing the argument rather than the values won't set in the scriptable object
     void Update()
     {
         currentState.UpdateState(this);
+        Debug.Log(currentState);
     }
 
     private void OnDrawGizmos()

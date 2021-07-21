@@ -113,10 +113,10 @@ MonoBehaviour:
   isProjectile: 1
   isBulletHoming: 0
   targetObj: {fileID: 0}
-  fireSpeed: 10
+  fireSpeed: 15
   bulletRotateSpeed: 100
-  lifeTime: 3
-  totalLifeTime: 5
+  lifeTime: 1.5
+  totalLifeTime: 2
 --- !u!54 &3546736515818553256
 Rigidbody:
   m_ObjectHideFlags: 0

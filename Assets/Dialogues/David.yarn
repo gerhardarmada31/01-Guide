@@ -1,12 +1,14 @@
 title: Start
 tags: 
-colorID: 0
 position: 568,222
 ---
 <<SetSpeaker David>>
 
 <<if Visited("Start") is false>>
-hey you busy?
+hey you busy? alksjdlaksjdlakjsldkajsld
+alksjdlaksjdlakjsldkajsldlaks
+laksjdlakjsdlkjas
+
 [[not really|David.NotBusy]]
 [[kinda|David.Busy]]
 <<else>>
@@ -15,8 +17,7 @@ hey....
 ===
 title: David.NotBusy
 tags: 
-colorID: 0
-position: 181,35
+position: 270.09544372558594,87.32590019702911
 ---
 oh cool, you mind you look something for me?
 <<SetSpeaker Phantom>>
