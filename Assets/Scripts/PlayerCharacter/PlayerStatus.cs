@@ -63,7 +63,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage
         //set a condition if commandRange is not on
         SpiritCharge();
         HealthSystem();
-        Debug.Log($"current Stack {StackSP}");
+        // Debug.Log($"current Stack {StackSP}");
     }
 
     private void HealthSystem()

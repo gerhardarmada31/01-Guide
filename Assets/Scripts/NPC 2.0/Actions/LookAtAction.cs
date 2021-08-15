@@ -23,5 +23,15 @@ public class LookAtAction : NPCActions_SO
             // controller.Eyes.position = controller.ChaseTarget.position
             // controller.transform.eulerAngles = new Vector3(0,controller.transform.eulerAngles.y,0);
         }
+
+        if(controller.FriendStatus !=null && controller.FriendStatus.PlayerObj !=null)
+        {
+            var targetRotation = Quaternion.LookRotation(controller.FriendStatus.PlayerObj.transform.position - controller.transform.position);
+            Debug.Log("lookFriend");
+            //Tween it probably
+            // controller.transform.LookAt(controller.FriendStatus.PlayerObj.transform);
+
+            controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, targetRotation, 3f * Time.deltaTime);
+        }
     }
 }

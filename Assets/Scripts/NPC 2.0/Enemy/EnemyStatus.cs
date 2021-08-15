@@ -8,6 +8,15 @@ public class EnemyStatus : NPCStatus
     private int hp;
     private int spChecks;
 
+    // private bool isEnemyDead;
+    // public bool IsEnemyDead
+    // {
+    //     get { return isEnemyDead; }
+    //     set { isEnemyDead = value; }
+    // }
+
+    private bool isEnemyDead;
+
     private void Awake()
     {
         hp = TotalHp;
@@ -31,7 +40,7 @@ public class EnemyStatus : NPCStatus
 
     protected override void ObjectTargeted(GameObject obj, GameObject playerObj, int sentSp)
     {
-        Debug.Log("Break");
+        // Debug.Log("Break");
         //only work if time is moving.
         if (obj == this.gameObject && obj != null)
         {
@@ -55,8 +64,17 @@ public class EnemyStatus : NPCStatus
     {
         if (hp <= 0)
         {
-            Destroy(this.gameObject);
+
+            isEnemyDead = true;
+            GoalEvent.currentGoalEvent.KillUpdate(this.transform.parent.gameObject, isEnemyDead);
+            this.transform.parent.gameObject.SetActive(false);
+
         }
+    }
+
+    private void OnDestroy()
+    {
+
     }
 
     protected override void Start()

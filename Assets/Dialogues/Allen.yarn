@@ -1,0 +1,62 @@
+title: Allen.Start
+tags: 
+position: 447,37
+---
+<<SetSpeaker Allen>>
+
+<<if GoalComplete("Allen.Goal") is true && Visited("Allen.YesTask") is true>>
+good job, now don't bother me...
+
+<<else>>
+
+<<endif>>
+
+
+<<if Visited("Allen.YesTask") is false && Visited("Allen.Start") is false>>
+Hey, can you take care of those ghosts on top?
+
+[[sure, why not|Allen.YesTask]]
+[[are they tough?|Allen.InfoTask]]
+[[nah I'm busy|Allen.NoTask]]
+
+<<elseif Visited("Allen.Start") is true && Visited("Allen.YesTask") is false>>
+let me guess, still busy?
+
+[[you know it| Allen.NoTask]]
+[[actually I'm available| Allen.YesTask]]
+
+<<else>>
+
+<<endif>>
+===
+title: Allen.InfoTask
+tags: 
+position: 444,-232
+---
+<<SetSpeaker Phantom>>
+do you think we can handle it?
+
+<<SetSpeaker Allen>>
+i dunno
+probably
+maybe...
+
+<<SetSpeaker Phantom>>
+cool thanks
+===
+title: Allen.NoTask
+tags: 
+position: 109,35
+---
+talk to me when you're free.
+===
+title: Allen.YesTask
+tags: 
+position: 769,46
+---
+<<SetSpeaker Allen>>
+cool, just don't die.
+
+<<SetSpeaker Phantom>>
+we'll try.
+===

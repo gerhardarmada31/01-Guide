@@ -1,25 +1,40 @@
-title: Start
+title: David.Start
 tags: 
-position: 568,222
+position: 591,143
 ---
 <<SetSpeaker David>>
 
-<<if Visited("Start") is false>>
-hey you busy? alksjdlaksjdlakjsldkajsld
-alksjdlaksjdlakjsldkajsldlaks
-laksjdlakjsdlkjas
+<<if GoalComplete("Goal01") is true && Visited("David.NotBusy") is true>>
+Awesome Thank you
+
+<<else>>
+
+<<endif>>
+
+<<if Visited("David.Start") is false>>
+hey you busy?
 
 [[not really|David.NotBusy]]
 [[kinda|David.Busy]]
+
 <<else>>
-hey....
+    <<if Visited("David.Busy") is true && Visited("David.NotBusy") is false>>
+    Still Busy?
+    [[yup|David.Busy]]
+    [[I'm free|David.NotBusy]]
+    <<else>>
+        <<if GoalComplete("Goal01") is false>>
+        Look for some 2 balls
+
+        <<endif>>
+    <<endif>>
 <<endif>>
 ===
 title: David.NotBusy
 tags: 
-position: 270.09544372558594,87.32590019702911
+position: 80,252
 ---
-oh cool, you mind you look something for me?
+Sweet!
 <<SetSpeaker Phantom>>
 oh no more tasks....
 <<SetSpeaker David>>

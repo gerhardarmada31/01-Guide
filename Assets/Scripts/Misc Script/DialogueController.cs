@@ -23,6 +23,11 @@ public class DialogueController : SingletonParent<DialogueController>
         TargetEventSystem.currentTarget.onConfirmTargetSelect += FriendTargeted; 
     }
 
+    private void GoalComplete(string[] parameters)
+    {
+        throw new NotImplementedException();
+    }
+
     private void FriendTargeted(GameObject friend, GameObject arg2, int arg3)
     {
         friendObject = friend;
@@ -38,8 +43,6 @@ public class DialogueController : SingletonParent<DialogueController>
         }
 
         speakerDatabase.Add(data.speakerName, data);
-        // speakerDatabase.Add
-
     }
 
     public void SetSpeakerInfo(string[] info)

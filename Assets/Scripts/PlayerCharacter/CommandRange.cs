@@ -39,12 +39,6 @@ public class CommandRange : MonoBehaviour
         myCollider = this.GetComponent<SphereCollider>();
     }
 
-    void Start()
-    {
-
-    }
-
-
     void Update()
     {
         if (targetIndex < targetObj.Count && targetObj[targetIndex] != null)

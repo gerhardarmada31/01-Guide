@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Yarn.Unity;
+
+
+public class GoalObjInteract : GoalBase
+{
+
+    [SerializeField] int ObjectRequireAmount = 1;
+
+    protected override void Start()
+    {
+        base.Start();
+        requiredAmount = ObjectRequireAmount;
+        GoalEvent.currentGoalEvent.onGoalUpdate += CheckAmount;
+    }
+    public void AddAmount()
+    {
+        currentAmount++;
+    }
+
+    private void CheckAmount(string goalName, int _currentAmount)
+    {
+        if (goalTitle == goalName)
+        {
+            Debug.Log("amountAdd");
+            AddAmount();
+
+            if (currentAmount >= requiredAmount)
+            {
+                goalComplete = true;
+                GoalEvent.currentGoalEvent.GoalComplete(goalTitle, goalComplete);
+                Debug.Log("Required amount met");
+                // GoalEvent.currentGoalEvent.AmountUpdate(goalTitle, currentAmount);
+                //Do GoalReward
+                //Do DialogueUpdate
+            }
+        }
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        GoalEvent.currentGoalEvent.onGoalUpdate -= CheckAmount;
+    }
+
+
+}

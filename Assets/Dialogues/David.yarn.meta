@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6cf202b375b512140893479280148a88
+guid: 02851757fb6f276418a301b646fffdf6
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -10,17 +10,21 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
   baseLanguageID: en-US
   stringIDs:
-  - David-Start-0
-  - David-Start-1
-  - David-Start-2
-  - David-Start-3
-  - David-David.NotBusy-4
-  - David-David.NotBusy-5
-  - David-David.NotBusy-6
-  - David-David.NotBusy-7
-  - David-David.Busy-8
+  - David 1-David.Start-0
+  - David 1-David.Start-1
+  - David 1-David.Start-2
+  - David 1-David.Start-3
+  - David 1-David.Start-4
+  - David 1-David.Start-5
+  - David 1-David.Start-6
+  - David 1-David.Start-7
+  - David 1-David.NotBusy-8
+  - David 1-David.NotBusy-9
+  - David 1-David.NotBusy-10
+  - David 1-David.NotBusy-11
+  - David 1-David.Busy-12
   compilationStatus: 1
   isSuccesfullyCompiled: 1
   compilationErrorMessage: 
-  baseLanguage: {fileID: 7128917941130120860, guid: 6cf202b375b512140893479280148a88, type: 3}
+  baseLanguage: {fileID: 7128917941130120860, guid: 02851757fb6f276418a301b646fffdf6, type: 3}
   localizations: []
