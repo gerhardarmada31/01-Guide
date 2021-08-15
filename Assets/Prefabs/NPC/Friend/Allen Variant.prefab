@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1702329276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4966737140704475089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f339e30dfaa85489823946e6e47bb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goalTitle: Allen.Goal
+  reqAreasCleared: 1
 --- !u!1001 &5918344934203117920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25,7 +39,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1643614032605344710, guid: 3932928018534f5458868846c85e8672, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1643614032605344713, guid: 3932928018534f5458868846c85e8672, type: 3}
       propertyPath: m_RootOrder
@@ -72,8 +86,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1643614032869271213, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: speakerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d3bb123793469b46a94462952a96e88, type: 2}
+    - target: {fileID: 1643614032869271213, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: yarnDialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: 930c6f04b05515d4fa803b0eef68e465, type: 3}
+    - target: {fileID: 1643614032869271213, guid: 3932928018534f5458868846c85e8672, type: 3}
       propertyPath: yarnStartNode
-      value: David.Start
+      value: Allen.Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032869271217, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_Name
+      value: Friend Allen
       objectReference: {fileID: 0}
     - target: {fileID: 1643614034029891491, guid: 3932928018534f5458868846c85e8672, type: 3}
       propertyPath: m_LocalPosition.x
@@ -87,5 +113,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -7.71
       objectReference: {fileID: 0}
+    - target: {fileID: 1643614034051320205, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: isDetectorFriend
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3932928018534f5458868846c85e8672, type: 3}
+--- !u!1 &4966737140704475089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1643614032869271217, guid: 3932928018534f5458868846c85e8672, type: 3}
+  m_PrefabInstance: {fileID: 5918344934203117920}
+  m_PrefabAsset: {fileID: 0}

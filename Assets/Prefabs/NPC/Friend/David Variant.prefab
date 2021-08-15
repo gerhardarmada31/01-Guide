@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2094375764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5857473309393839814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbae8fddcf772db4a8a7bcd6c6066050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goalTitle: Goal01
+  ObjectRequireAmount: 2
 --- !u!1001 &5153990106985873527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79,5 +93,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Friend David
       objectReference: {fileID: 0}
+    - target: {fileID: 1643614034051320205, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: isDetectorFriend
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3932928018534f5458868846c85e8672, type: 3}
+--- !u!1 &5857473309393839814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1643614032869271217, guid: 3932928018534f5458868846c85e8672, type: 3}
+  m_PrefabInstance: {fileID: 5153990106985873527}
+  m_PrefabAsset: {fileID: 0}

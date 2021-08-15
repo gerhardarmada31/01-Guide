@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDetection : MonoBehaviour
 {
     [SerializeField] NPCStateController controller;
+    [SerializeField] private bool isDetectorFriend;
 
     private void OnEnable()
     {
@@ -24,9 +25,13 @@ public class PlayerDetection : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            controller.ChaseTarget = null;
-            Debug.Log("PlayerExit");
+            if (isDetectorFriend)
+            {
+                controller.ChaseTarget = null;
+                Debug.Log("PlayerExit");
+            }
             controller.IsplayerIn = false;
+
         }
     }
 

@@ -6095,25 +6095,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1702329266 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4966737140704475089, guid: b91a80cfe98f23e4786c6d5106ddd33d, type: 3}
-  m_PrefabInstance: {fileID: 5918344933378053974}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1702329276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1702329266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88f339e30dfaa85489823946e6e47bb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goalTitle: Allen.Goal
-  reqAreasCleared: 1
 --- !u!1 &1710922455
 GameObject:
   m_ObjectHideFlags: 0
@@ -7590,25 +7571,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2094375754 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5857473309393839814, guid: 73fae2a6c36253d4ca1b23fc4b755638, type: 3}
-  m_PrefabInstance: {fileID: 8132019603357197515}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2094375764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2094375754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbae8fddcf772db4a8a7bcd6c6066050, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goalTitle: Goal01
-  ObjectRequireAmount: 2
 --- !u!1 &2104625159
 GameObject:
   m_ObjectHideFlags: 3
@@ -8379,10 +8341,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Allen
       objectReference: {fileID: 0}
-    - target: {fileID: 4966737140431004326, guid: b91a80cfe98f23e4786c6d5106ddd33d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4966737140431004329, guid: b91a80cfe98f23e4786c6d5106ddd33d, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -8426,22 +8384,6 @@ PrefabInstance:
     - target: {fileID: 4966737140431004329, guid: b91a80cfe98f23e4786c6d5106ddd33d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4966737140704475085, guid: b91a80cfe98f23e4786c6d5106ddd33d, type: 3}
-      propertyPath: speakerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 2d3bb123793469b46a94462952a96e88, type: 2}
-    - target: {fileID: 4966737140704475085, guid: b91a80cfe98f23e4786c6d5106ddd33d, type: 3}
-      propertyPath: yarnDialogue
-      value: 
-      objectReference: {fileID: 2480198943629176163, guid: 930c6f04b05515d4fa803b0eef68e465, type: 3}
-    - target: {fileID: 4966737140704475085, guid: b91a80cfe98f23e4786c6d5106ddd33d, type: 3}
-      propertyPath: yarnStartNode
-      value: Allen.Start
-      objectReference: {fileID: 0}
-    - target: {fileID: 4966737140704475089, guid: b91a80cfe98f23e4786c6d5106ddd33d, type: 3}
-      propertyPath: m_Name
-      value: Friend Allen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b91a80cfe98f23e4786c6d5106ddd33d, type: 3}
