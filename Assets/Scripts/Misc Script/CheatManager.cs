@@ -52,7 +52,7 @@ public class CheatManager : MonoBehaviour
         }
         else
         {
-            Cursor.visible = false;
+            // Cursor.visible = false;
         }
     }
 
@@ -77,7 +77,7 @@ public class CheatManager : MonoBehaviour
             CheckCheat(currentString);
         }
         Time.timeScale = 1;
-        Cursor.visible = false;
+     //   Cursor.visible = false;
         isPlayerTyping = !isPlayerTyping;
     }
 

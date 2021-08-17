@@ -19,6 +19,7 @@ public class CommandRange : MonoBehaviour
     private PlayerDialogue playerDialogue;
     private GameObject playerObj;
     private bool isDetected;
+    private LineRenderer targetLine;
 
     private GameObject selectedObj;
     public GameObject SelectedObj
@@ -33,6 +34,8 @@ public class CommandRange : MonoBehaviour
 
     private void Awake()
     {
+        targetLine = GetComponent<LineRenderer>();
+        targetLine.enabled = false;
         playerDialogue = GetComponentInParent<PlayerDialogue>();
         playerStatus = GetComponentInParent<PlayerStatus>();
         playerObj = this.transform.parent.gameObject;
@@ -46,6 +49,7 @@ public class CommandRange : MonoBehaviour
             selectedObj = targetObj[targetIndex];
             targetText.text = targetObj[targetIndex].gameObject.name.ToString();
         }
+        TargetLeyLine();
     }
 
     //Finding a target that and add it to the list targetObj
@@ -57,10 +61,12 @@ public class CommandRange : MonoBehaviour
 
         if (other.CompareTag("Target"))
         {
+
             //give a condition of the player has received the scanner 2.0
             TargetEventSystem.currentTarget.ShroudDetected(other.gameObject, false);
             if (other.transform.parent != null)
             {
+                // Debug.DrawLine(this.transform.parent.position, other.transform.position, Color.red);
                 targetObj.Add(other.transform.parent.gameObject);
             }
             else
@@ -120,6 +126,7 @@ public class CommandRange : MonoBehaviour
     //When the game object is on, get the targets then time will stop
     public bool CommandMode()
     {
+
         if (gameObject.activeSelf)
         {
             StartCoroutine(WaitandPause(0.1f));
@@ -127,12 +134,15 @@ public class CommandRange : MonoBehaviour
         }
         else
         {
-            Debug.Log("cmdOn");
-            StopCoroutine(WaitandPause(0.1f));
-            ClearingTarget();
-            targetText.text = "None";
-            Time.timeScale = 1f;
-            isCommandModeOn = false;
+            if (this.enabled == true)
+            {
+                Debug.Log("cmdOff");
+                StopCoroutine(WaitandPause(0.1f));
+                ClearingTarget();
+                targetText.text = "None";
+                Time.timeScale = 1f;
+                isCommandModeOn = false;
+            }
         }
         return isCommandModeOn;
     }
@@ -151,6 +161,25 @@ public class CommandRange : MonoBehaviour
         else if (selectOperator >= 1)
         {
             targetIndex = (targetIndex + 1) % targetObj.Count;
+        }
+    }
+
+    public void TargetLeyLine()
+    {
+        if (selectedObj != null)
+        {
+            if (Physics.Linecast(this.transform.position, selectedObj.transform.position))
+            {
+                targetLine.enabled = true;
+                targetLine.SetPosition(0, this.transform.position);
+                var targetPosition = selectedObj.transform.position - transform.position;
+                targetLine.SetPosition(1, selectedObj.transform.position);
+                Debug.Log("TargetLinedUp");
+            }
+        }
+        else
+        {
+            targetLine.enabled = false;
         }
     }
 
