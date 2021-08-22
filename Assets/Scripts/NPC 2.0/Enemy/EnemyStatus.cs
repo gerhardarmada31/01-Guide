@@ -2,11 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.Feedbacks;
 
 public class EnemyStatus : NPCStatus
 {
     private int hp;
     private int spChecks;
+    private MMFeedbacks enemyFeedBack;
+
+    // public bool IsStagger { get; set; }
 
     // private bool isEnemyDead;
     // public bool IsEnemyDead
@@ -20,6 +24,7 @@ public class EnemyStatus : NPCStatus
     private void Awake()
     {
         hp = TotalHp;
+        enemyFeedBack = GetComponentInChildren<MMFeedbacks>();
     }
     // Update is called once per frame
     void Update()
@@ -36,6 +41,7 @@ public class EnemyStatus : NPCStatus
     {
         base.OnDisable();
         hp = TotalHp;
+        // StopCoroutine(BeforeDeath());
     }
 
     protected override void ObjectTargeted(GameObject obj, GameObject playerObj, int sentSp)
@@ -44,6 +50,7 @@ public class EnemyStatus : NPCStatus
         //only work if time is moving.
         if (obj == this.gameObject && obj != null)
         {
+            enemyFeedBack?.PlayFeedbacks();
             PlayerObj = playerObj;
             hp -= sentSp;
             Debug.Log($"{this.gameObject} took {sentSp} Damage");
@@ -51,25 +58,29 @@ public class EnemyStatus : NPCStatus
             if (sentSp <= SpCheckLvl1)
             {
                 Debug.Log("Weak sauce");
+                IsStagger = true;
                 //Change behaviour because of npcStateController
+                //
             }
             else if (sentSp >= SpCheckLvl2)
             {
                 Debug.Log("strong Sauce");
+            }
+
+            if (hp <= 0)
+            {
+                isEnemyDead = true;
+                GoalEvent.currentGoalEvent.KillUpdate(this.transform.parent.gameObject, isEnemyDead);
+                enemyFeedBack?.PlayFeedbacks();
+                StartCoroutine(BeforeDeath(0.2f));
+
             }
         }
     }
 
     public void Death()
     {
-        if (hp <= 0)
-        {
 
-            isEnemyDead = true;
-            GoalEvent.currentGoalEvent.KillUpdate(this.transform.parent.gameObject, isEnemyDead);
-            this.transform.parent.gameObject.SetActive(false);
-
-        }
     }
 
     private void OnDestroy()
@@ -80,7 +91,13 @@ public class EnemyStatus : NPCStatus
     protected override void Start()
     {
         base.Start();
+    }
+
+    IEnumerator BeforeDeath(float _time)
+    {
+        yield return new WaitForSeconds(_time);
         Debug.Log("sup");
+        this.transform.parent.gameObject.SetActive(false);
     }
 
 

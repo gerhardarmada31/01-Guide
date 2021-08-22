@@ -112,6 +112,7 @@ public class PlayerInput : MonoBehaviour
         if (!commandMode && playerStatus.CurrentSP >= 1)
         {
             commandMode = true;
+
             commandRange.gameObject.SetActive(true);
             controls.PlayerCharacter.Jump.Disable();
         }
@@ -167,6 +168,7 @@ public class PlayerInput : MonoBehaviour
         }
         // Debug.Log(moveInput);
         commandRange.CommandMode();
+
     }
 
     public void FreeMove()

@@ -11,6 +11,8 @@ public abstract class NPCStatus : MonoBehaviour
     // public int attack = 1;
 
     public NPCAttributes nPCAttributes;
+    public bool IsStagger { get; set; }
+    
 
     //PROPS
     private GameObject playerObj;

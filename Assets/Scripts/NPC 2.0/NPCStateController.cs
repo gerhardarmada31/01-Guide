@@ -82,13 +82,6 @@ public class NPCStateController : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-
-        //private make a filter for this
-    }
-
-
     private void Awake()
     {
         if (FriendStatus != null)

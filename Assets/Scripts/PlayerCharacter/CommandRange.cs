@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class CommandRange : MonoBehaviour
@@ -10,6 +11,7 @@ public class CommandRange : MonoBehaviour
 
     private int targetIndex;
     private SphereCollider myCollider;
+    private MMFeedbacks commandRangeFeel;
 
     public FriendDialogue MyFriend { get; set; }
 
@@ -34,6 +36,7 @@ public class CommandRange : MonoBehaviour
 
     private void Awake()
     {
+        commandRangeFeel = GetComponentInChildren<MMFeedbacks>();
         targetLine = GetComponent<LineRenderer>();
         targetLine.enabled = false;
         playerDialogue = GetComponentInParent<PlayerDialogue>();
@@ -126,9 +129,10 @@ public class CommandRange : MonoBehaviour
     //When the game object is on, get the targets then time will stop
     public bool CommandMode()
     {
-
         if (gameObject.activeSelf)
         {
+            Debug.Log("cmdOn");
+            commandRangeFeel?.PlayFeedbacks();
             StartCoroutine(WaitandPause(0.1f));
             isCommandModeOn = true;
         }
