@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerUI : MonoBehaviour
+public class PlayerStatusUI : MonoBehaviour
 {
 
-    
-    //UI related stuff
+
+    // //UI related stuff
     [SerializeField]
     private Text hpValue;
     [SerializeField]
