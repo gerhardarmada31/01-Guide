@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class PlayerStatus : MonoBehaviour, ITakeDamage
+public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
 {
     public PlayerCharacter_SO playerStats;
 
@@ -56,6 +56,9 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage
         playerStats.maxHp = 3;
         playerStats.maxSp = 4;
         currentSP = 3;
+
+        //del this later
+        playerStats.currentCoin = 0;
     }
 
     void Update()
@@ -92,6 +95,12 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage
             currentSP++;
             spRate = 0;
         }
+    }
+
+
+    public void GetCoins(int coins)
+    {
+        playerStats.currentCoin += coins;
     }
 
     public void TakeDamage(int takeDamge)
@@ -143,4 +152,6 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage
         playerStats.maxSp = 4;
         currentSP = 3;
     }
+
+
 }

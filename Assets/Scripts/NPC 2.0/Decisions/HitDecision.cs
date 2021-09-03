@@ -16,22 +16,11 @@ public class HitDecision : NPCDecision_SO
     private bool EnemyHit(NPCStateController controller)
     {
         // throw new NotImplementedException();
-        if (controller.NPCStatus.IsStagger == true)
+        if (controller.NPCStatus.IsHit == true)
         {
             return true;
         }
         return false;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

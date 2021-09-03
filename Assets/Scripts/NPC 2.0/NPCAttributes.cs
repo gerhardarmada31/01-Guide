@@ -20,6 +20,8 @@ public class NPCAttributes : ScriptableObject
     public int hp = 1;
     public int spCheck1;
     public int spCheck2;
+    public bool hasStun;
+    public float staggerTimer;
 
     [Header("Damage")]
     public float attackRange = 1f;

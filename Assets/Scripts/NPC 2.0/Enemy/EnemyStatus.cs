@@ -54,17 +54,20 @@ public class EnemyStatus : NPCStatus
             PlayerObj = playerObj;
             hp -= sentSp;
             Debug.Log($"{this.gameObject} took {sentSp} Damage");
+            IsHit = true;
 
             if (sentSp <= SpCheckLvl1)
             {
                 Debug.Log("Weak sauce");
-                IsStagger = true;
-                //Change behaviour because of npcStateController
-                //
             }
             else if (sentSp >= SpCheckLvl2)
             {
                 Debug.Log("strong Sauce");
+                if (hasStun)
+                {
+                    IsStun = true;
+                }
+
             }
 
             if (hp <= 0)

@@ -13,11 +13,24 @@ public class StaggerAction : NPCActions_SO
 
     private void Stagger(NPCStateController controller)
     {
-        // Debug.Log("Idle");
+        Debug.Log("STAGGER");
+
         controller.NavMeshAgent.isStopped = true;
-        if (controller.TimerAttack(0.5f))
+        if (controller.NPCStatus.IsStun)
         {
-            controller.NPCStatus.IsStagger = false;
+            if (controller.TimerAttack(controller.NPCStatus.StaggerTime))
+            {
+                controller.NPCStatus.IsHit = false;
+                controller.NPCStatus.IsStun = false;
+            }
         }
+        else
+        {
+            if (controller.TimerAttack(0.1f))
+            {
+                controller.NPCStatus.IsHit = false;
+            }
+        }
+
     }
 }

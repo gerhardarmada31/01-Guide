@@ -11,8 +11,8 @@ public abstract class NPCStatus : MonoBehaviour
     // public int attack = 1;
 
     public NPCAttributes nPCAttributes;
-    public bool IsStagger { get; set; }
-    
+
+
 
     //PROPS
     private GameObject playerObj;
@@ -40,8 +40,21 @@ public abstract class NPCStatus : MonoBehaviour
         get { return spCheckLvl2; }
         set { spCheckLvl2 = value; }
     }
+
+    public bool IsStun { get; set; }
+    public bool hasStun { get; set; }
+    public bool IsHit { get; set; }
+
+    private float staggerTime;
+    public float StaggerTime
+    {
+        get { return staggerTime; }
+        set { staggerTime = value; }
+    }
     protected virtual void Start()
     {
+        hasStun = nPCAttributes.hasStun;
+        staggerTime = nPCAttributes.staggerTimer;
         spCheckLvl1 = nPCAttributes.spCheck1;
         spCheckLvl2 = nPCAttributes.spCheck2;
         TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectTargeted;

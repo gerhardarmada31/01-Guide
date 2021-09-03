@@ -23,3 +23,8 @@ public interface ICombatZone
 {
     void TargetObject(bool inCombat);
 }
+
+public interface ICollector
+{
+    void GetCoins(int coins);
+}

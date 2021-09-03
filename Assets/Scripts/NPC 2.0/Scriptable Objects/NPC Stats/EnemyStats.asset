@@ -21,6 +21,8 @@ MonoBehaviour:
   hp: 5
   spCheck1: 2
   spCheck2: 3
+  hasStun: 1
+  staggerTimer: 0.5
   attackRange: 1
   attackRate: 1
   attackForce: 15

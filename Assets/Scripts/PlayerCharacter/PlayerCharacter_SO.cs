@@ -25,6 +25,10 @@ public class PlayerCharacter_SO : ScriptableObject
     public float turnSpeed;
 
 
+    [Header ("Player Inventory")]
+    public int currentCoin;
+
+
     public Vector3 playerPosition;
     public bool hasTeleport = false;
     //public float playerUpBoost;
