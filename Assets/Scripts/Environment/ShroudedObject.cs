@@ -18,7 +18,6 @@ public class ShroudedObject : MonoBehaviour
     {
         TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
         TargetEventSystem.currentTarget.onShroudDetected += ShroudDetected;
-
     }
 
     private void ShroudDetected(GameObject obj, bool shroudOn)

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public PlayerCharacter_SO playerStats;
+    // public PlayerCharacter_SO playerStats;
 
     private Vector3 moveInputs;
     private Vector3 charVelocity;
@@ -21,26 +21,29 @@ public class PlayerMovement : MonoBehaviour
     private int jumpCount = 0;
 
     private CharacterController charController;
-
+    private PlayerStatus pStatus;
     //Movement
 
     [SerializeField] private Transform playerMainCam;
     [SerializeField] private Transform playerResetPoint;
 
-    private void Start()
-    {
-        moveSpeed = playerStats.moveSpeed;
-        distanceToGround = charController.bounds.extents.y;
-    }
-
     private void Awake()
     {
+        pStatus = GetComponent<PlayerStatus>();
         charController = GetComponent<CharacterController>();
     }
 
+    private void Start()
+    {
+        moveSpeed = pStatus.playerStats.moveSpeed;
+        distanceToGround = charController.bounds.extents.y;
+    }
+
+
+
     public void Move(Vector2 playerInputs)
     {
-        Ray downray = new Ray(transform.position + transform.forward * playerStats.castOffset, Vector3.down);
+        Ray downray = new Ray(transform.position + transform.forward * pStatus.playerStats.castOffset, Vector3.down);
 
         if (Physics.Raycast(downray, out RaycastHit hit, Mathf.Infinity))
         {
@@ -64,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         if (charVelocity.magnitude > 0.01f && moveInputs != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveInputs);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, playerStats.turnSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, pStatus.playerStats.turnSpeed);
         }
 
         grounded = charController.isGrounded;
@@ -74,18 +77,18 @@ public class PlayerMovement : MonoBehaviour
 
         //Gravity and Falling Velocity
         Vector3 movement = moveInputs * moveSpeed;
-        charVelocity.y += playerStats.gravityScale * Time.deltaTime;
+        charVelocity.y += pStatus.playerStats.gravityScale * Time.deltaTime;
         movement.y = charVelocity.y;
 
         if (!isSlope && grounded)
         {
-            movement.x += ((1f - hitNormal.y) * hitNormal.x) * playerStats.slideFriction;
-            movement.z += ((1f - hitNormal.y) * hitNormal.z) * playerStats.slideFriction;
+            movement.x += ((1f - hitNormal.y) * hitNormal.x) * pStatus.playerStats.slideFriction;
+            movement.z += ((1f - hitNormal.y) * hitNormal.z) * pStatus.playerStats.slideFriction;
             moveSpeed = moveSpeed / 2;
         }
         else
         {
-            moveSpeed = playerStats.moveSpeed;
+            moveSpeed = pStatus.playerStats.moveSpeed;
         }
 
         if (isSlope && grounded && charVelocity.y < 0)
@@ -120,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
             if (grounded || coyoteJump && jumpCount <= 0)
             {
                 jumpCount++;
-                charVelocity.y += Mathf.Sqrt(playerStats.jumpHeight * -3f * playerStats.gravityScale);
+                charVelocity.y += Mathf.Sqrt(pStatus.playerStats.jumpHeight * -3f * pStatus.playerStats.gravityScale);
             }
         }
     }
@@ -154,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.Log("freeMove");
     }
-    
+
     public void ResetPosition()
     {
         gameObject.transform.position = playerResetPoint.position;
