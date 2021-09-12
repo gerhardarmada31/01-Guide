@@ -79,11 +79,11 @@ public class ShroudedObject : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (isShrouded)
-        {
-            Debug.Log("shroud");
-            this.transform.GetChild(0).gameObject.SetActive(false);
-        }
+        // if (isShrouded)
+        // {
+        //     Debug.Log("shroud");
+        //     this.transform.GetChild(0).gameObject.SetActive(false);
+        // }
     }
 
 }

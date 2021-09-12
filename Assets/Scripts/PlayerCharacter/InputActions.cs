@@ -97,6 +97,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""a4873738-f017-4247-acd6-ec27cde8daa5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -372,6 +380,17 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ContinueDialogue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""999e42c5-f0d4-49e2-b71a-673f5aa98257"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -944,6 +963,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_PlayerCharacter_YMove = m_PlayerCharacter.FindAction("YMove", throwIfNotFound: true);
         m_PlayerCharacter_DialogueKeys = m_PlayerCharacter.FindAction("DialogueKeys", throwIfNotFound: true);
         m_PlayerCharacter_ContinueDialogue = m_PlayerCharacter.FindAction("ContinueDialogue", throwIfNotFound: true);
+        m_PlayerCharacter_Menu = m_PlayerCharacter.FindAction("Menu", throwIfNotFound: true);
         // CheatController
         m_CheatController = asset.FindActionMap("CheatController", throwIfNotFound: true);
         m_CheatController_Return = m_CheatController.FindAction("Return", throwIfNotFound: true);
@@ -1019,6 +1039,7 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerCharacter_YMove;
     private readonly InputAction m_PlayerCharacter_DialogueKeys;
     private readonly InputAction m_PlayerCharacter_ContinueDialogue;
+    private readonly InputAction m_PlayerCharacter_Menu;
     public struct PlayerCharacterActions
     {
         private @InputActions m_Wrapper;
@@ -1033,6 +1054,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @YMove => m_Wrapper.m_PlayerCharacter_YMove;
         public InputAction @DialogueKeys => m_Wrapper.m_PlayerCharacter_DialogueKeys;
         public InputAction @ContinueDialogue => m_Wrapper.m_PlayerCharacter_ContinueDialogue;
+        public InputAction @Menu => m_Wrapper.m_PlayerCharacter_Menu;
         public InputActionMap Get() { return m_Wrapper.m_PlayerCharacter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1072,6 +1094,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @ContinueDialogue.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnContinueDialogue;
                 @ContinueDialogue.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnContinueDialogue;
                 @ContinueDialogue.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnContinueDialogue;
+                @Menu.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnMenu;
             }
             m_Wrapper.m_PlayerCharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -1106,6 +1131,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @ContinueDialogue.started += instance.OnContinueDialogue;
                 @ContinueDialogue.performed += instance.OnContinueDialogue;
                 @ContinueDialogue.canceled += instance.OnContinueDialogue;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
             }
         }
     }
@@ -1268,6 +1296,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnYMove(InputAction.CallbackContext context);
         void OnDialogueKeys(InputAction.CallbackContext context);
         void OnContinueDialogue(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
     public interface ICheatControllerActions
     {

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd7b3def7d246a4e8e37dd8fcb9cc98, type: 3}
   m_Name: New Default Object
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 6553217746100236383, guid: af68e145c64c25b44b3844941b8ceec5, type: 3}
   type: 2
   description: 'Letter to '

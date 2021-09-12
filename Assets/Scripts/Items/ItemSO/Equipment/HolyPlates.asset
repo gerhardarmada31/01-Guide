@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3a084b5720bb84ba6e716c5c392dc8, type: 3}
   m_Name: HolyPlates
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 6553217746100236383, guid: af68e145c64c25b44b3844941b8ceec5, type: 3}
   type: 1
   description: 'Plates for Rob,
 

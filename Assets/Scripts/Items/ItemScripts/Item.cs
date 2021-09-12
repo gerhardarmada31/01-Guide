@@ -16,9 +16,8 @@ public class Item : MonoBehaviour
     {
         if (obj == this.gameObject)
         {
-            Debug.Log("got hit");
-
-            //ADD Item
+            Destroy(this.gameObject);
+            
         }
     }
 

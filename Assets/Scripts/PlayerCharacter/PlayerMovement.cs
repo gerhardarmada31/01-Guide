@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class PlayerMovement : MonoBehaviour
 {
     // public PlayerCharacter_SO playerStats;
@@ -57,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
         camR.y = 0;
         camF.Normalize();
         camR.Normalize();
-
 
         moveInputs = new Vector3(playerInputs.x, 0, playerInputs.y);
         moveInputs = moveInputs.z * camF + moveInputs.x * camR;
@@ -144,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
         transform.position = ghostPosition.transform.position;
         charController.enabled = true;
         charVelocity.y = ghostForce;
+
 
         //In case of setting a transform position, translate it.
         // transform.Translate()

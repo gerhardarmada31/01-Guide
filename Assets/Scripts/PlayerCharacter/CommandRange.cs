@@ -3,27 +3,30 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using MoreMountains.Feedbacks;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CommandRange : MonoBehaviour
 {
     public List<GameObject> targetObj = new List<GameObject>();
     public Text targetText;
-
     private int targetIndex;
+
     private SphereCollider myCollider;
     private MMFeedbacks commandRangeFeel;
+    private bool isDetected;
 
     public FriendDialogue MyFriend { get; set; }
 
     private bool isCommandModeOn;
     // private IShroudedObj shroudedObj;
     private PlayerStatus playerStatus;
+    private PlayerInventory playerInventory;
     private PlayerDialogue playerDialogue;
     private GameObject playerObj;
-    private bool isDetected;
-    private LineRenderer targetLine;
 
+    private LineRenderer targetLine;
     private GameObject selectedObj;
+    [SerializeField] private UnityEvent updateUIitem;
     public GameObject SelectedObj
     {
         get { return selectedObj; }
@@ -41,6 +44,7 @@ public class CommandRange : MonoBehaviour
         targetLine.enabled = false;
         playerDialogue = GetComponentInParent<PlayerDialogue>();
         playerStatus = GetComponentInParent<PlayerStatus>();
+        playerInventory = GetComponentInParent<PlayerInventory>();
         playerObj = this.transform.parent.gameObject;
         myCollider = this.GetComponent<SphereCollider>();
     }
@@ -96,6 +100,13 @@ public class CommandRange : MonoBehaviour
             //calling the functions from the selected object and gives a reference for the player Obj
             TargetEventSystem.currentTarget.ConfirmTargetSelect(selectedObj, playerObj, playerStatus.TotalDmg);
             MyFriend = selectedObj.GetComponent<FriendDialogue>();
+            var itemObj = selectedObj.GetComponent<Item>();
+
+            if (itemObj)
+            {
+                playerInventory.inventory.AddItem(itemObj.item, 1);
+                updateUIitem.Invoke();
+            }
 
             if (MyFriend != null)
             {

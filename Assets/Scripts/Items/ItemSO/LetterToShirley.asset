@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3324586995aad5b48992df12eedb8ee7, type: 3}
   m_Name: LetterToShirley
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 6553217746100236383, guid: b26c78be66153c54c8dd0bbdc23d8f6e, type: 3}
   type: 0
   description: A letter describing how beautiful shirley is.

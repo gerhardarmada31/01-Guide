@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 //Add also requirement for targeting
 [RequireComponent(typeof(PlayerMovement), typeof(PlayerStatus))]
@@ -19,6 +20,9 @@ public class PlayerInput : MonoBehaviour
     private float mouseWheelAxis;
     private bool commandMode = false;
 
+    // private bool menuOn = false;
+    [SerializeField] private UnityEvent callMenu;
+    private bool isMenuOn = false;
     private PlayerMovement playerMovement;
     private PlayerStatus playerStatus;
     private CommandRange commandRange;
@@ -42,6 +46,8 @@ public class PlayerInput : MonoBehaviour
     {
         //Debug contro;
         //Subscribring from the inputaction events
+        controls.PlayerCharacter.Menu.performed += HandleMenu;
+        // controls.PlayerCharacter.Menu.canceled
 
         controls.PlayerCharacter.CmdOn.performed += HandleCmdOn;
         controls.PlayerCharacter.CmdOff.performed += HandleCmdOff;
@@ -59,6 +65,12 @@ public class PlayerInput : MonoBehaviour
         controls.PlayerCharacter.Move.canceled += HandleMove => moveInput = Vector2.zero;
         controls.Enable();
 
+    }
+
+    private void HandleMenu(InputAction.CallbackContext context)
+    {
+        isMenuOn = !isMenuOn;
+        callMenu.Invoke();
     }
 
     // private void HandleDialogueNext(InputAction.CallbackContext context)
@@ -128,6 +140,7 @@ public class PlayerInput : MonoBehaviour
 
     private void OnDisable()
     {
+        controls.PlayerCharacter.Menu.performed -= HandleMenu;
 
         controls.PlayerCharacter.CmdOn.performed -= HandleCmdOn;
         controls.PlayerCharacter.CmdOff.performed -= HandleCmdOff;
@@ -152,7 +165,7 @@ public class PlayerInput : MonoBehaviour
 
         if (!commandMode && !freeMove)
         {
-            if (!playerDialogue.IsInDialogue)
+            if (!playerDialogue.IsInDialogue && isMenuOn == false)
             {
                 playerMovement.Move(moveInput);
                 controls.PlayerCharacter.Jump.Enable();
