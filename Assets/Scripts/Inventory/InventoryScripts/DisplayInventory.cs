@@ -21,31 +21,37 @@ public class DisplayInventory : MonoBehaviour
     private List<GameObject> itemsList = new List<GameObject>();
     public GameObject lastSelectedObj;
     Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
-    // Start is called before the first frame update
+
 
     private void Awake()
     {
-        continueButton = EventSystem.current.firstSelectedGameObject;
+        // continueButton = EventSystem.current.firstSelectedGameObject;
         // EventSystem.current.firstSelectedGameObject = null;
+        // EventSystem.current.SetSelectedGameObject(null);
 
-        if (itemsList != null)
-        {
-            EventSystem.current.SetSelectedGameObject(lastSelectedObj);
-        }
-        Debug.Log("yoasdasdasd  " + EventSystem.current.currentSelectedGameObject);
+        InitialDisplay();
+        // if (itemsList != null)
+        // {
+        //     // EventSystem.current.SetSelectedGameObject(lastSelectedObj);
+        // }
+        // else
+        // {
+        //     EventSystem.current.SetSelectedGameObject(itemsList[0]);
+        // }
 
+        // Debug.Log("yoasdasdasd  " + EventSystem.current.currentSelectedGameObject);
 
-        uiContainer = GetComponentInChildren<Transform>();
-        uiContainer.gameObject.SetActive(false);
     }
+
 
     void Start()
     {
-
-        CreateDisplay();
+        // EventSystem.current.SetSelectedGameObject(null);
+        // EventSystem.current.SetSelectedGameObject(itemsList[0]);
+        OnOffInventory(false);
     }
 
-    public void CreateDisplay()
+    public void InitialDisplay()
     {
         for (int i = 0; i < inventory.Container.Count; i++)
         {
@@ -55,8 +61,9 @@ public class DisplayInventory : MonoBehaviour
             itemsDisplayed.Add(inventory.Container[i], obj);
             itemsList.Add(obj);
         }
-        EventSystem.current.SetSelectedGameObject(itemsList[0]);
-        //EventSystem.current.firstSelectedGameObject = inventory.Container[1].item.prefab;
+
+
+        // EventSystem.current.firstSelectedGameObject = itemsList[0];
     }
 
     // private void OnDisable()
@@ -75,7 +82,7 @@ public class DisplayInventory : MonoBehaviour
         {
             if (itemsDisplayed.ContainsKey(inventory.Container[i]))
             {
-                return;
+                Debug.Log("asdasdas");
                 // itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
             }
             else
@@ -90,17 +97,39 @@ public class DisplayInventory : MonoBehaviour
 
     public void DisplayOnOff()
     {
-        isMenuOn = !isMenuOn;
-        uiContainer.gameObject.SetActive(isMenuOn);
-        Debug.Log("Menu is" + isMenuOn);
 
-        // if (isMenuOn==true)
-        // {
-        //     uiContainer.gameObject.SetActive(true);
-        // }
-        // else
-        // {
-        //     uiContainer.gameObject.SetActive(false);
-        // }
+
+        isMenuOn = !isMenuOn;
+        // uiContainer.gameObject.SetActive(isMenuOn);
+        OnOffInventory(isMenuOn);
+
+
+        if (lastSelectedObj == null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            Debug.Log("default select invent");
+            EventSystem.current.SetSelectedGameObject(itemsList[0]);
+        }
+        else if (isMenuOn == true)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(lastSelectedObj);
+        }
+
+        if (isMenuOn == false)
+        {
+            lastSelectedObj = EventSystem.current.currentSelectedGameObject;
+        }
+
+
+        Debug.Log("Menu is" + isMenuOn);
+    }
+
+    public void OnOffInventory(bool _onOffSwitch)
+    {
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            gameObject.transform.GetChild(i).gameObject.SetActive(_onOffSwitch);
+        }
     }
 }

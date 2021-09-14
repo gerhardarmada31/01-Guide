@@ -161,8 +161,6 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log("Command Mode " + commandMode);
-
         if (!commandMode && !freeMove)
         {
             if (!playerDialogue.IsInDialogue && isMenuOn == false)

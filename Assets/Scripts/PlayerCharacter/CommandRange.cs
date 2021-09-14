@@ -102,7 +102,7 @@ public class CommandRange : MonoBehaviour
             MyFriend = selectedObj.GetComponent<FriendDialogue>();
             var itemObj = selectedObj.GetComponent<Item>();
 
-            if (itemObj)
+            if (itemObj != null)
             {
                 playerInventory.inventory.AddItem(itemObj.item, 1);
                 updateUIitem.Invoke();
