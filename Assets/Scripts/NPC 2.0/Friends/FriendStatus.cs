@@ -42,6 +42,12 @@ public class FriendStatus : NPCStatus
             if (sentSp <= SpCheckLvl1)
             {
                 Debug.Log("weakSauce");
+                var _goalItem= this.GetComponent<GoalItem>();
+
+                if (_goalItem != null)
+                {
+                    _goalItem.CheckItem();
+                }
             }
             else
             {

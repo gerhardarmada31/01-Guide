@@ -7,17 +7,21 @@ public class Item : MonoBehaviour
 {
     public Item_SO item;
 
+    public int ItemAmount { get; set; }
+    private string itemTitle;
+    [SerializeField] private string goalTitle;
     private void Start()
     {
-        TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
+        ItemAmount = item.itemAmount;
+        itemTitle = item.itemTitle;
     }
 
     private void ObjectConfirmed(GameObject obj, GameObject playerObj, int currentSp)
     {
         if (obj == this.gameObject)
         {
-            Destroy(this.gameObject);
-            
+            // GoalEvent.currentGoalEvent.AmountUpdate()
+            Destroy(this.gameObject);           
         }
     }
 

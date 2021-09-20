@@ -20,12 +20,15 @@ public class DialogueController : SingletonParent<DialogueController>
     {
         dialogueRunner = GetComponent<DialogueRunner>();
         dialogueRunner.AddCommandHandler("SetSpeaker", SetSpeakerInfo);
+        dialogueRunner.AddCommandHandler("SetAcceptGoal", GoalAccept);
         TargetEventSystem.currentTarget.onConfirmTargetSelect += FriendTargeted; 
     }
 
-    private void GoalComplete(string[] parameters)
+    private void GoalAccept(string[] info)
     {
-        throw new NotImplementedException();
+        // throw new NotImplementedException()
+        // string speaker = info[0];
+        GoalEvent.currentGoalEvent.GoalAccept(txt_SpeakerName.text);
     }
 
     private void FriendTargeted(GameObject friend, GameObject arg2, int arg3)

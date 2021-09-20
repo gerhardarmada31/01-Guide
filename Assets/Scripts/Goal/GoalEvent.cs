@@ -13,28 +13,46 @@ public class GoalEvent : MonoBehaviour
         currentGoalEvent = this;
     }
 
-    public event Action<string, int> onGoalUpdate;
+    public event Action<string, int> onGoalspInteractUpdate;
+    public event Action<string, string, int> onGoalItemUpdate;
     public event Action<GameObject, bool> onGoalKillUpdate;
     public event Action<string, bool, int> onAreaClearComplete;
     public event Action<string, bool> onGoalComplete;
+    public event Action<string> onGoalAccept;
 
-    public void AmountUpdate(string goalName, int goalAmountUpdate)
+
+    //Amount updated for the objects interacted
+    public void spInteractUpdate(string goalName, int goalSpInteractUpdate)
     {
-        onGoalUpdate?.Invoke(goalName, goalAmountUpdate);
+        onGoalspInteractUpdate?.Invoke(goalName, goalSpInteractUpdate);
     }
 
+    //Amount update for the item goals
+    public void ItemUpdate(string goalName, string itemTitle, int itemAmountReq)
+    {
+        onGoalItemUpdate?.Invoke(goalName, itemTitle, itemAmountReq);
+    }
+
+    //respawner updates kill amount to the combat volume
     public void KillUpdate(GameObject thisEnemy, bool isEnemyDead)
     {
         onGoalKillUpdate?.Invoke(thisEnemy, isEnemyDead);
     }
 
+    //Calls from the combat volume to the npc
     public void AreaClearComplete(string completedGoalName, bool isAreaClear, int numOfAreasCleared)
     {
         onAreaClearComplete?.Invoke(completedGoalName, isAreaClear, numOfAreasCleared);
     }
 
+    //An event for the npc goalEnd dialog
     public void GoalComplete(string completedGoalName, bool isGoalComplete)
     {
         onGoalComplete?.Invoke(completedGoalName, isGoalComplete);
+    }
+
+    public void GoalAccept(string acceptedGoalName)
+    {
+        onGoalAccept?.Invoke(acceptedGoalName);
     }
 }

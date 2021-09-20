@@ -104,7 +104,7 @@ public class CommandRange : MonoBehaviour
 
             if (itemObj != null)
             {
-                playerInventory.inventory.AddItem(itemObj.item, 1);
+                playerInventory.inventory.AddItem(itemObj.item, itemObj.ItemAmount);
                 updateUIitem.Invoke();
             }
 

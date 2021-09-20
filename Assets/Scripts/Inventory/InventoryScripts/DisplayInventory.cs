@@ -25,29 +25,13 @@ public class DisplayInventory : MonoBehaviour
 
     private void Awake()
     {
-        // continueButton = EventSystem.current.firstSelectedGameObject;
-        // EventSystem.current.firstSelectedGameObject = null;
-        // EventSystem.current.SetSelectedGameObject(null);
-
         InitialDisplay();
-        // if (itemsList != null)
-        // {
-        //     // EventSystem.current.SetSelectedGameObject(lastSelectedObj);
-        // }
-        // else
-        // {
-        //     EventSystem.current.SetSelectedGameObject(itemsList[0]);
-        // }
-
-        // Debug.Log("yoasdasdasd  " + EventSystem.current.currentSelectedGameObject);
-
     }
 
 
     void Start()
     {
-        // EventSystem.current.SetSelectedGameObject(null);
-        // EventSystem.current.SetSelectedGameObject(itemsList[0]);
+
         OnOffInventory(false);
     }
 
@@ -63,13 +47,8 @@ public class DisplayInventory : MonoBehaviour
         }
 
 
-        // EventSystem.current.firstSelectedGameObject = itemsList[0];
     }
 
-    // private void OnDisable()
-    // {
-    //     lastSelectedObj = EventSystem.current.currentSelectedGameObject;
-    // }
 
     public Vector3 GetPosition(int i)
     {
@@ -98,11 +77,8 @@ public class DisplayInventory : MonoBehaviour
     public void DisplayOnOff()
     {
 
-
         isMenuOn = !isMenuOn;
-        // uiContainer.gameObject.SetActive(isMenuOn);
         OnOffInventory(isMenuOn);
-
 
         if (lastSelectedObj == null)
         {
@@ -116,10 +92,7 @@ public class DisplayInventory : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(lastSelectedObj);
         }
 
-        if (isMenuOn == false)
-        {
-            lastSelectedObj = EventSystem.current.currentSelectedGameObject;
-        }
+        lastSelectedObj = EventSystem.current.currentSelectedGameObject;
 
 
         Debug.Log("Menu is" + isMenuOn);

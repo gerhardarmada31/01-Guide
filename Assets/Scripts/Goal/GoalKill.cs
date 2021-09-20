@@ -25,7 +25,6 @@ public class GoalKill : GoalBase
             currentAreasCleared += _addAreaClear;
             if (currentAreasCleared >= reqAreasCleared && isAreaClear)
             {
-                Debug.Break();
                 GoalEvent.currentGoalEvent.GoalComplete(goalTitle, true);
             }
         }

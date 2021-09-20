@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2016689280123238157
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1643614032605344710, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_Name
+      value: Shirley Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032605344713, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032605344713, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.699455
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032605344713, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032605344713, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 41.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032605344713, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032605344713, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032605344713, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032605344713, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032605344713, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032605344713, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032605344713, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032869271213, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: speakerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e47df0504a0f8148b7acec697cf3603, type: 2}
+    - target: {fileID: 1643614032869271213, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: yarnDialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: 2e2b08218caef9c47b03ce327588d1ab, type: 3}
+    - target: {fileID: 1643614032869271213, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: yarnStartNode
+      value: Shirley.Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032869271217, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: m_Name
+      value: Friend Shirley
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3932928018534f5458868846c85e8672, type: 3}

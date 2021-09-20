@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6553217746100236383, guid: b26c78be66153c54c8dd0bbdc23d8f6e, type: 3}
   type: 0
+  itemNameUI: A Letter from Shirley
+  itemTitle: letterShirley
+  itemAmount: 1
   description: A letter describing how beautiful shirley is.

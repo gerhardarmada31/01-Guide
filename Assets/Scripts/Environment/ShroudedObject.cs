@@ -51,7 +51,7 @@ public class ShroudedObject : MonoBehaviour
                 if (!isActivated)
                 {
                     Debug.Log("Weak sauce");
-                    GoalEvent.currentGoalEvent.AmountUpdate(goalTitle, activateCounter);
+                    GoalEvent.currentGoalEvent.spInteractUpdate(goalTitle, activateCounter);
                 }
 
                 this.transform.GetChild(0).gameObject.SetActive(true);

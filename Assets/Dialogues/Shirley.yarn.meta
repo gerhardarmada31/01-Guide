@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 2e2b08218caef9c47b03ce327588d1ab
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Shirley-Shirley.Start-0
+  - Shirley-Shirley.Start-1
+  - Shirley-Shirley.Start-2
+  - Shirley-Shirley.Start-3
+  - Shirley-Shirley.Start-4
+  - Shirley-Shirley.Start-5
+  - Shirley-Shirley.Start-6
+  - Shirley-Shirley.Start-7
+  - Shirley-Shirley.Accept-8
+  - Shirley-Shirley.Decline-9
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []

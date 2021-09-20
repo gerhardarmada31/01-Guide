@@ -13,7 +13,7 @@ public class GoalObjInteract : GoalBase
     {
         base.Start();
         requiredAmount = ObjectRequireAmount;
-        GoalEvent.currentGoalEvent.onGoalUpdate += CheckAmount;
+        GoalEvent.currentGoalEvent.onGoalspInteractUpdate += CheckAmount;
     }
     public void AddAmount()
     {
@@ -42,8 +42,7 @@ public class GoalObjInteract : GoalBase
     protected override void OnDisable()
     {
         base.OnDisable();
-        GoalEvent.currentGoalEvent.onGoalUpdate -= CheckAmount;
+        GoalEvent.currentGoalEvent.onGoalspInteractUpdate -= CheckAmount;
     }
-
 
 }

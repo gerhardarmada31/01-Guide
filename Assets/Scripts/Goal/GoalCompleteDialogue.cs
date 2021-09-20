@@ -28,6 +28,7 @@ public class GoalCompleteDialogue : MonoBehaviour
             return completedGoals.Contains(goalName.AsString);
         }
         );
+        // dialogueRunner.ad
     }
 
     private void GoalCompleteCheck(string goalCompletedName,bool goalComplete)

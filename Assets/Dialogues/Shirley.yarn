@@ -1,0 +1,48 @@
+title: Shirley.Start
+tags: 
+colorID: 0
+position: 368,-284
+---
+<<SetSpeaker Shirley>>
+
+<<if GoalComplete("Shirley.Goal") is true && Visited("Shirley.Accept") is true>>
+GOOD JOB!
+
+<<endif>>
+
+<<if Visited("Shirley.Start") is false>>
+can you find my Letter?
+
+[[for sure|Shirley.Accept]]
+[[uuuhh no|Shirley.Decline]]
+
+<<else>>
+    <<if Visited("Shirley.Decline") is true && Visited("Shirley.Accept") is false>>
+    are you free now?
+    [[yeah|Shirley.Accept]]
+    [[still busy|Shirley.Decline]]
+    
+    <<else>>
+        <<if GoalComplete("Shirley.Goal") is false>>
+        the letter is made out of paper
+        <<endif>>
+
+    <<endif>>
+
+<<endif>>
+===
+title: Shirley.Accept
+tags: 
+colorID: 0
+position: 50,-276
+---
+<<SetAcceptGoal>>
+Thank you so much
+===
+title: Shirley.Decline
+tags: 
+colorID: 0
+position: 693,-317
+---
+oh.... okay
+===

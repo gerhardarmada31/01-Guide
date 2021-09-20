@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6553217746100236383, guid: af68e145c64c25b44b3844941b8ceec5, type: 3}
   type: 2
+  itemNameUI: 
+  itemTitle: 
+  itemAmount: 1
   description: 'Letter to '
