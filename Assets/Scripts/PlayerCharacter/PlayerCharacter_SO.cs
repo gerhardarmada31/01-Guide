@@ -17,7 +17,9 @@ public class PlayerCharacter_SO : ScriptableObject
     public int totalDmg;
 
     [Header ("Player Movement")]
-    public float moveSpeed;
+    public float currentSpeed;
+    public float normalSpeed;
+    public float sprintSpeed;
     public float slideFriction;
     public float gravityScale;
     public float jumpHeight;

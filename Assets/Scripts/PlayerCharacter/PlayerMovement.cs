@@ -34,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        moveSpeed = pStatus.playerStats.moveSpeed;
+        //Setting up speed from playerChar_SO
+        moveSpeed = pStatus.playerStats.currentSpeed;
         distanceToGround = charController.bounds.extents.y;
     }
 
@@ -86,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            moveSpeed = pStatus.playerStats.moveSpeed;
+            moveSpeed = pStatus.playerStats.currentSpeed;
         }
 
         if (isSlope && grounded && charVelocity.y < 0)
@@ -124,6 +125,23 @@ public class PlayerMovement : MonoBehaviour
                 charVelocity.y += Mathf.Sqrt(pStatus.playerStats.jumpHeight * -3f * pStatus.playerStats.gravityScale);
             }
         }
+    }
+
+    public void Sprint()
+    {
+        if (pStatus.CurrentSP > 0)
+        {
+            // moveSpeed += 4;
+            pStatus.playerStats.currentSpeed = pStatus.playerStats.sprintSpeed;
+
+            Debug.Log("speed!");
+            // decrease spRate here
+        }
+        else
+        {
+            pStatus.playerStats.currentSpeed = pStatus.playerStats.normalSpeed;
+        }
+
     }
 
     private void OnDrawGizmos()

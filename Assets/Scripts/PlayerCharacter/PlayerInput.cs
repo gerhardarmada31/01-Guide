@@ -50,6 +50,7 @@ public class PlayerInput : MonoBehaviour
         // controls.PlayerCharacter.Menu.canceled
 
         controls.PlayerCharacter.Sprint.performed += HandleSprint;
+        controls.PlayerCharacter.Sprint.canceled += HandleStopSprint;
         controls.PlayerCharacter.CmdOn.performed += HandleCmdOn;
         controls.PlayerCharacter.CmdOff.performed += HandleCmdOff;
         controls.PlayerCharacter.ExecuteCom.performed += HandleExecuteCom;
@@ -68,9 +69,16 @@ public class PlayerInput : MonoBehaviour
 
     }
 
+    private void HandleStopSprint(InputAction.CallbackContext context)
+    {
+        Debug.Log("Stop Sprinting");
+    }
+
     private void HandleSprint(InputAction.CallbackContext context)
     {
         //PlayerMovement.Sprint();
+        Debug.Log("Sprinting!!");
+        playerMovement.Sprint();
     }
 
     private void HandleMenu(InputAction.CallbackContext context)
@@ -138,6 +146,8 @@ public class PlayerInput : MonoBehaviour
         controls.PlayerCharacter.Menu.performed -= HandleMenu;
 
         controls.PlayerCharacter.Sprint.performed += HandleSprint;
+        controls.PlayerCharacter.Sprint.canceled += HandleStopSprint;
+
         controls.PlayerCharacter.CmdOn.performed -= HandleCmdOn;
         controls.PlayerCharacter.CmdOff.performed -= HandleCmdOff;
         controls.PlayerCharacter.ExecuteCom.performed -= HandleExecuteCom;
@@ -162,6 +172,7 @@ public class PlayerInput : MonoBehaviour
             if (!playerDialogue.IsInDialogue && isMenuOn == false)
             {
                 playerMovement.Move(moveInput);
+                controls.PlayerCharacter.Sprint.Enable();
                 controls.PlayerCharacter.Jump.Enable();
             }
             else

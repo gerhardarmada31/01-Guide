@@ -50,6 +50,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
 
     void Start()
     {
+        playerStats.currentSpeed = playerStats.normalSpeed;
         currentHP = playerStats.maxHp;
         spRate = playerStats.spRate;
         currentHP = 3;
@@ -95,6 +96,14 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
         {
             currentSP++;
             spRate = 0;
+        }
+    }
+
+    public void SpiritDecrease(bool _isPressingSprint, float _isMoving)
+    {
+        if (_isPressingSprint)
+        {
+            spRate -=Time.deltaTime;
         }
     }
 
