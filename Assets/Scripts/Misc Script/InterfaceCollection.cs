@@ -24,7 +24,9 @@ public interface ICombatZone
     void TargetObject(bool inCombat);
 }
 
+public enum dropType { COIN, HEALTH, SPIRIT }
+
 public interface ICollector
 {
-    void GetCoins(int coins);
+    void GetCollectDrop(int dropAmount, dropType _dropType);
 }

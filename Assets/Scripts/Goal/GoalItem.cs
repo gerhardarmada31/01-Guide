@@ -45,6 +45,7 @@ public class GoalItem : GoalBase
                     Debug.Log("goal ITEM COMPLETE " + playerInventory.Container[i].item);
                     GoalEvent.currentGoalEvent.GoalComplete(goalTitle, true);
                     goalComplete = true;
+                    InventoryEvent.currentInventoryEvent.InventoryUpdateUI(false);
                     playerInventory.Container.Remove(playerInventory.Container[i]);
                     // break;
                 }

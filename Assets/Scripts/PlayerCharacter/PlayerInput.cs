@@ -49,6 +49,7 @@ public class PlayerInput : MonoBehaviour
         controls.PlayerCharacter.Menu.performed += HandleMenu;
         // controls.PlayerCharacter.Menu.canceled
 
+        controls.PlayerCharacter.Sprint.performed += HandleSprint;
         controls.PlayerCharacter.CmdOn.performed += HandleCmdOn;
         controls.PlayerCharacter.CmdOff.performed += HandleCmdOff;
         controls.PlayerCharacter.ExecuteCom.performed += HandleExecuteCom;
@@ -67,23 +68,17 @@ public class PlayerInput : MonoBehaviour
 
     }
 
+    private void HandleSprint(InputAction.CallbackContext context)
+    {
+        //PlayerMovement.Sprint();
+    }
+
     private void HandleMenu(InputAction.CallbackContext context)
     {
         isMenuOn = !isMenuOn;
         callMenu.Invoke();
     }
 
-    // private void HandleDialogueNext(InputAction.CallbackContext context)
-    // {
-    //     // throw new NotImplementedException();
-    //     playerDialogue.ConfirmedDialogue();
-    // }
-
-
-    // private void HandleYMovement(InputAction.CallbackContext obj)
-    // {
-    //     throw new NotImplementedException();
-    // }
 
     private void HandheldStackingSP(InputAction.CallbackContext context)
     {
@@ -142,6 +137,7 @@ public class PlayerInput : MonoBehaviour
     {
         controls.PlayerCharacter.Menu.performed -= HandleMenu;
 
+        controls.PlayerCharacter.Sprint.performed += HandleSprint;
         controls.PlayerCharacter.CmdOn.performed -= HandleCmdOn;
         controls.PlayerCharacter.CmdOff.performed -= HandleCmdOff;
         controls.PlayerCharacter.ExecuteCom.performed -= HandleExecuteCom;

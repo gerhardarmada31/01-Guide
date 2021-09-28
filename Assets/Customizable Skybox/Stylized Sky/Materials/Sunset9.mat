@@ -22,7 +22,7 @@ Material:
     m_Floats:
     - _HorizonLineBlendMode: 1
     - _HorizonLineContribution: 1
-    - _HorizonLineExponent: 3
+    - _HorizonLineExponent: 2.43
     - _SkyGradientExponent: 1
     - _SunDiscContribution: 1
     - _SunDiscExponent: 5000
@@ -35,9 +35,9 @@ Material:
     - _View: 0
     - __dirty: 0
     m_Colors:
-    - _HorizonLineColor: {r: 1, g: 0.15361942, b: 0, a: 1}
+    - _HorizonLineColor: {r: 1, g: 0.22180364, b: 0, a: 1}
     - _SkyGradientBottom: {r: 0.34509805, g: 0.63914835, b: 0.8392157, a: 1}
-    - _SkyGradientTop: {r: 0.2224101, g: 0.4675733, b: 0.8018868, a: 1}
+    - _SkyGradientTop: {r: 0.24857599, g: 0.4202272, b: 0.8962264, a: 1}
     - _SunDiscColor: {r: 1, g: 0.9516228, b: 0.9338235, a: 1}
-    - _SunHaloColor: {r: 1, g: 0.40000004, b: 0, a: 1}
+    - _SunHaloColor: {r: 1, g: 0.5690329, b: 0, a: 1}
   m_BuildTextureStacks: []

@@ -105,6 +105,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""9688ea3e-72e9-48b7-84be-8b240738641c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=0.1,pressPoint=0.2)""
                 }
             ],
             ""bindings"": [
@@ -393,6 +401,17 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa89f8e5-995b-4fa1-88b4-cbfc5f0d27cc"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -523,6 +542,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""be9d99a2-1825-45eb-b743-b26613d81ff2"",
                     ""expectedControlType"": ""Quaternion"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Tab"",
+                    ""type"": ""Button"",
+                    ""id"": ""0329cd49-2939-428d-bab0-6eeb06f64e69"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -945,6 +972,39 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""NextOrPrev"",
+                    ""id"": ""7e4d35fe-c4b7-4e6a-ae05-2a0487cadca1"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tab"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""29698322-f010-4c26-9f75-e4e56838bd72"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""21c788b1-c51e-4fa3-816f-87bd0a99d371"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -964,6 +1024,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_PlayerCharacter_DialogueKeys = m_PlayerCharacter.FindAction("DialogueKeys", throwIfNotFound: true);
         m_PlayerCharacter_ContinueDialogue = m_PlayerCharacter.FindAction("ContinueDialogue", throwIfNotFound: true);
         m_PlayerCharacter_Menu = m_PlayerCharacter.FindAction("Menu", throwIfNotFound: true);
+        m_PlayerCharacter_Sprint = m_PlayerCharacter.FindAction("Sprint", throwIfNotFound: true);
         // CheatController
         m_CheatController = asset.FindActionMap("CheatController", throwIfNotFound: true);
         m_CheatController_Return = m_CheatController.FindAction("Return", throwIfNotFound: true);
@@ -980,6 +1041,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        m_UI_Tab = m_UI.FindAction("Tab", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1040,6 +1102,7 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerCharacter_DialogueKeys;
     private readonly InputAction m_PlayerCharacter_ContinueDialogue;
     private readonly InputAction m_PlayerCharacter_Menu;
+    private readonly InputAction m_PlayerCharacter_Sprint;
     public struct PlayerCharacterActions
     {
         private @InputActions m_Wrapper;
@@ -1055,6 +1118,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @DialogueKeys => m_Wrapper.m_PlayerCharacter_DialogueKeys;
         public InputAction @ContinueDialogue => m_Wrapper.m_PlayerCharacter_ContinueDialogue;
         public InputAction @Menu => m_Wrapper.m_PlayerCharacter_Menu;
+        public InputAction @Sprint => m_Wrapper.m_PlayerCharacter_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_PlayerCharacter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1097,6 +1161,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Menu.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnMenu;
                 @Menu.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnMenu;
                 @Menu.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnMenu;
+                @Sprint.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnSprint;
             }
             m_Wrapper.m_PlayerCharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -1134,6 +1201,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Menu.started += instance.OnMenu;
                 @Menu.performed += instance.OnMenu;
                 @Menu.canceled += instance.OnMenu;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
             }
         }
     }
@@ -1193,6 +1263,7 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
+    private readonly InputAction m_UI_Tab;
     public struct UIActions
     {
         private @InputActions m_Wrapper;
@@ -1207,6 +1278,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        public InputAction @Tab => m_Wrapper.m_UI_Tab;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1246,6 +1318,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @TrackedDeviceOrientation.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
+                @Tab.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTab;
+                @Tab.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTab;
+                @Tab.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTab;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1280,6 +1355,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @Tab.started += instance.OnTab;
+                @Tab.performed += instance.OnTab;
+                @Tab.canceled += instance.OnTab;
             }
         }
     }
@@ -1297,6 +1375,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnDialogueKeys(InputAction.CallbackContext context);
         void OnContinueDialogue(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
     public interface ICheatControllerActions
     {
@@ -1315,5 +1394,6 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        void OnTab(InputAction.CallbackContext context);
     }
 }

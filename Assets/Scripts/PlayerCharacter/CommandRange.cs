@@ -26,7 +26,6 @@ public class CommandRange : MonoBehaviour
 
     private LineRenderer targetLine;
     private GameObject selectedObj;
-    [SerializeField] private UnityEvent updateUIitem;
     public GameObject SelectedObj
     {
         get { return selectedObj; }
@@ -105,7 +104,7 @@ public class CommandRange : MonoBehaviour
             if (itemObj != null)
             {
                 playerInventory.inventory.AddItem(itemObj.item, itemObj.ItemAmount);
-                updateUIitem.Invoke();
+                InventoryEvent.currentInventoryEvent.InventoryUpdateUI(true);
             }
 
             if (MyFriend != null)

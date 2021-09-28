@@ -13,6 +13,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
     private bool isInvunerable = false;
 
 
+    public dropType currentDropType;
 
     public float spRate { get; set; }
     public int TotalDmg
@@ -98,9 +99,9 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
     }
 
 
-    public void GetCoins(int coins)
+    public void GetCollectDrop(int coins)
     {
-        playerStats.currentCoin += coins;
+
     }
 
     public void TakeDamage(int takeDamge)
@@ -153,5 +154,27 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
         currentSP = 3;
     }
 
+    public void GetCollectDrop(int dropAmount, dropType _dropType)
+    {
+        switch (((int)_dropType))
+        {
+            case 0:
+                playerStats.currentCoin += dropAmount;
+                break;
 
+            case 1:
+                currentHP += dropAmount;
+                Debug.Log("Health pickup");
+                break;
+
+            case 2:
+                currentSP += dropAmount;
+                break;
+
+            default:
+                Debug.LogError("Value is not in the dropType");
+                break;
+
+        }
+    }
 }
