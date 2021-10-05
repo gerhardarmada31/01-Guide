@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b3a084b5720bb84ba6e716c5c392dc8, type: 3}
-  m_Name: Glasses
+  m_Name: Wizard Hat
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  uiPrefab: {fileID: 6553217746100236383, guid: 215b239728458ba4fbe5951773c9491b, type: 3}
   type: 1
-  description: Glasses for Tom, so he can see better
-  plusHP: 0
-  plusAtk: 1
-  plusSP: 0
-  plusSPRate: 0
+  itemNameUI: 
+  itemTitle: 
+  itemAmount: 1
+  description: sadly you can't cast spells
+  EquipPrefab: {fileID: 3658221909748571256, guid: 82da36f7a969c7842b3f095483980d24, type: 3}

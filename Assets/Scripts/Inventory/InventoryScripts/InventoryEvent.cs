@@ -12,9 +12,16 @@ public class InventoryEvent : MonoBehaviour
     }
 
     public event Action<bool> onInventoryUpdateUI;
+    public event Action<Equipment_SO, bool> onEquipPlayer;
+
 
     public void InventoryUpdateUI(bool isAdd)
     {
         onInventoryUpdateUI?.Invoke(isAdd);
+    }
+
+    public void EquipItemPlayer(Equipment_SO _item, bool _hasHat)
+    {
+        onEquipPlayer?.Invoke(_item, _hasHat);
     }
 }

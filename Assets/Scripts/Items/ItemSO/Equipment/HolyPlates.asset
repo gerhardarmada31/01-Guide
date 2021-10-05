@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3a084b5720bb84ba6e716c5c392dc8, type: 3}
   m_Name: HolyPlates
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6553217746100236383, guid: af68e145c64c25b44b3844941b8ceec5, type: 3}
+  uiPrefab: {fileID: 6553217746100236383, guid: b26c78be66153c54c8dd0bbdc23d8f6e, type: 3}
   type: 1
+  itemNameUI: 
+  itemTitle: 
+  itemAmount: 1
   description: 'Plates for Rob,
 
 
     malevolent ghost is annoyed by it.'
-  plusHP: 0
-  plusAtk: 0
-  plusSP: 0
-  plusSPRate: 0
+  EquipPrefab: {fileID: 0}

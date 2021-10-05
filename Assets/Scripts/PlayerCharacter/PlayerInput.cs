@@ -72,13 +72,14 @@ public class PlayerInput : MonoBehaviour
     private void HandleStopSprint(InputAction.CallbackContext context)
     {
         Debug.Log("Stop Sprinting");
+        playerMovement.Sprint(false);
     }
 
     private void HandleSprint(InputAction.CallbackContext context)
     {
         //PlayerMovement.Sprint();
         Debug.Log("Sprinting!!");
-        playerMovement.Sprint();
+        playerMovement.Sprint(true);
     }
 
     private void HandleMenu(InputAction.CallbackContext context)

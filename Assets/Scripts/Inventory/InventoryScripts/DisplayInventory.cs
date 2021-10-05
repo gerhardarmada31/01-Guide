@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using TMPro;
 
 public class DisplayInventory : MonoBehaviour
 {
+
     private bool isMenuOn;
     private Transform uiContainer;
     private GameObject continueButton;
@@ -29,6 +31,11 @@ public class DisplayInventory : MonoBehaviour
         InitialDisplay();
     }
 
+    void TaskOnClick()
+    {
+
+    }
+
 
     void Start()
     {
@@ -40,7 +47,7 @@ public class DisplayInventory : MonoBehaviour
     {
         for (int i = 0; i < inventory.Container.Count; i++)
         {
-            var obj = Instantiate(inventory.Container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
+            var obj = Instantiate(inventory.Container[i].item.uiPrefab, Vector3.zero, Quaternion.identity, transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             // obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
             itemsDisplayed.Add(inventory.Container[i], obj);
@@ -76,7 +83,7 @@ public class DisplayInventory : MonoBehaviour
                 if (_isAdd == true)
                 {
 
-                    obj = Instantiate(inventory.Container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
+                    obj = Instantiate(inventory.Container[i].item.uiPrefab, Vector3.zero, Quaternion.identity, transform);
                     obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
                     // obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
                     itemsDisplayed.Add(inventory.Container[i], obj);

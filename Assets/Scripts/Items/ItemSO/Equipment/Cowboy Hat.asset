@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd7b3def7d246a4e8e37dd8fcb9cc98, type: 3}
-  m_Name: New Default Object
+  m_Script: {fileID: 11500000, guid: 6b3a084b5720bb84ba6e716c5c392dc8, type: 3}
+  m_Name: Cowboy Hat
   m_EditorClassIdentifier: 
-  uiPrefab: {fileID: 6553217746100236383, guid: b26c78be66153c54c8dd0bbdc23d8f6e, type: 3}
-  type: 2
+  uiPrefab: {fileID: 6553217746100236383, guid: 3aa886f3f991085438179c92fe207582, type: 3}
+  type: 1
   itemNameUI: 
   itemTitle: 
   itemAmount: 1
-  description: 'Letter to '
+  description: Now all you need is a horse.
+  EquipPrefab: {fileID: 225045935228908981, guid: b42a00f9702b84542999bdf2ad21ca27, type: 3}

@@ -45,10 +45,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Ray downray = new Ray(transform.position + transform.forward * pStatus.playerStats.castOffset, Vector3.down);
 
-        if (Physics.Raycast(downray, out RaycastHit hit, Mathf.Infinity))
-        {
+        //Raycast for shadow prefab in FUTURE
+        // if (Physics.Raycast(downray, out RaycastHit hit, Mathf.Infinity))
+        // {
 
-        }
+        // }
 
         //Camera Relativity
         Vector3 camF = playerMainCam.forward;
@@ -100,6 +101,28 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(CoyoteJumpDelay());
         }
 
+        //SP charging condition
+        if (grounded)
+        {
+            pStatus.SpStop = false;
+        }
+        else
+        {
+            pStatus.SpStop = true;
+        }
+
+
+        //Check if player is moving
+        if (moveInputs.magnitude != 0)
+        {
+            pStatus.IsMoving = true;
+        }
+        else
+        {
+            pStatus.IsMoving = false;
+        }
+
+        //character Moving
         charController.Move(movement * Time.deltaTime);
     }
 
@@ -117,29 +140,41 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
+        //sp charging stops when jumping
+
         if (isSlope)
         {
             if (grounded || coyoteJump && jumpCount <= 0)
             {
                 jumpCount++;
                 charVelocity.y += Mathf.Sqrt(pStatus.playerStats.jumpHeight * -3f * pStatus.playerStats.gravityScale);
+
             }
         }
     }
 
-    public void Sprint()
+    public void Sprint(bool _isSprinting)
     {
-        if (pStatus.CurrentSP > 0)
+        if (pStatus.CurrentSP > 0 && _isSprinting == true)
         {
             // moveSpeed += 4;
+
             pStatus.playerStats.currentSpeed = pStatus.playerStats.sprintSpeed;
+            pStatus.IsSprinting = true;
+            //if character is moving
+            // if (moveInputs.magnitude != 0)
+            // {
+            // }
+
+
 
             Debug.Log("speed!");
             // decrease spRate here
         }
-        else
+        else if (_isSprinting == false)
         {
             pStatus.playerStats.currentSpeed = pStatus.playerStats.normalSpeed;
+            pStatus.IsSprinting = false;
         }
 
     }

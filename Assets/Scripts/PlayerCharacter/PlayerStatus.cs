@@ -15,7 +15,13 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
 
     public dropType currentDropType;
 
+    //PROPS
     public float spRate { get; set; }
+
+    public bool IsSprinting { get; set; }
+    public bool IsMoving { get; set; }
+    public bool SpStop { get; set; }
+
     public int TotalDmg
     {
         get { return totalDmg + (playerStats.attackPoint + StackSP); }
@@ -86,32 +92,42 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
         stackSP = 0;
     }
 
+    // public void SpiritCharge(bool _isSprinting, bool _isJumping)
     public void SpiritCharge()
     {
-        if (currentSP != playerStats.maxSp)
-        {
-            spRate += Time.deltaTime;
-        }
-        if (spRate >= playerStats.requiredSpRate)
+
+        //SP counter increases/decreases the spRate is at 0 or at maxSpRate
+        if (spRate >= playerStats.maxSpRate)
         {
             currentSP++;
             spRate = 0;
         }
-    }
-
-    public void SpiritDecrease(bool _isPressingSprint, float _isMoving)
-    {
-        if (_isPressingSprint)
+        else if (spRate < 0)
         {
-            spRate -=Time.deltaTime;
+            currentSP--;
+            spRate = (playerStats.maxSpRate - 1f);
         }
+
+        //Checking if the player is moving or sprinting.
+        if (IsSprinting == true && IsMoving == true)
+        {
+            spRate -= Time.deltaTime;
+            Debug.Log("DEDUCT SPRATE");
+
+            if (currentSP <= 0)
+            {
+                spRate = 0.1f;
+            }
+        }
+        else if (currentSP != playerStats.maxSp && SpStop == false)
+        {
+            spRate += Time.deltaTime;
+        }
+
     }
 
 
-    public void GetCollectDrop(int coins)
-    {
 
-    }
 
     public void TakeDamage(int takeDamge)
     {

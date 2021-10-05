@@ -12,7 +12,7 @@ public enum ItemType
 
 public abstract class Item_SO : ScriptableObject
 {
-    public GameObject prefab;
+    public GameObject uiPrefab;
     public ItemType type;
 
     public string itemNameUI;

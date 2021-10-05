@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   maxHp: 3
-  maxSp: 4
-  spRate: 0
-  requiredSpRate: 2.3
   invuFrame: 1.5
   attackPoint: 1
   totalDmg: 0
-  currentSpeed: 0
+  maxSp: 4
+  maxSpRate: 3
+  spRate: 0
+  spRegen: 0.1
+  spDrain: 0.1
+  currentSpeed: 9
   normalSpeed: 9
   sprintSpeed: 12
   slideFriction: 22

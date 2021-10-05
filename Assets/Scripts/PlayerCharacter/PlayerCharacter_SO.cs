@@ -5,18 +5,23 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerManagerSO")]
 public class PlayerCharacter_SO : ScriptableObject
 {
-    [Header ("Player Health and Spirit")]
+    [Header("Player Health")]
     public int maxHp;
-    public int maxSp;
-    public float spRate;
-    public float requiredSpRate;
+
     public float invuFrame;
 
-    [Header ("Player Attacks")]
+    [Header("Player Attacks")]
     public int attackPoint;
     public int totalDmg;
 
-    [Header ("Player Movement")]
+    [Header("Player Spirit")]
+    public int maxSp;
+    public float maxSpRate;
+    public float spRate;
+    [Range(0,50)] public float spRegen;
+    [Range(0,50)] public float spDrain;
+
+    [Header("Player Movement")]
     public float currentSpeed;
     public float normalSpeed;
     public float sprintSpeed;
@@ -27,7 +32,8 @@ public class PlayerCharacter_SO : ScriptableObject
     public float turnSpeed;
 
 
-    [Header ("Player Inventory")]
+
+    [Header("Player Inventory")]
     public int currentCoin;
 
 

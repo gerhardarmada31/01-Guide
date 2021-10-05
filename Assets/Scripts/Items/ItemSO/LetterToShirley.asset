@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3324586995aad5b48992df12eedb8ee7, type: 3}
   m_Name: LetterToShirley
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6553217746100236383, guid: b26c78be66153c54c8dd0bbdc23d8f6e, type: 3}
+  uiPrefab: {fileID: 6553217746100236383, guid: 30bb4fa8e31187a478a884f940c44489, type: 3}
   type: 0
   itemNameUI: A Letter from Shirley
   itemTitle: letterShirley
