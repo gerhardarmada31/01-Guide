@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
 {
     public PlayerCharacter_SO playerStats;
@@ -13,7 +14,10 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
     private bool isInvunerable = false;
 
 
-    public dropType currentDropType;
+
+    // public dropType currentDropType;
+
+    [SerializeField] private HealthUI hpUI;
 
     //PROPS
     public float spRate { get; set; }
@@ -54,12 +58,18 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
 
     }
 
+    private void Awake()
+    {
+        currentHP = 3;
+        hpUI.DrawHeart(currentHP, playerStats.maxHp);
+    }
+
     void Start()
     {
         playerStats.currentSpeed = playerStats.normalSpeed;
         currentHP = playerStats.maxHp;
         spRate = playerStats.spRate;
-        currentHP = 3;
+
         playerStats.invuFrame = 1.5f;
         playerStats.maxHp = 3;
         playerStats.maxSp = 4;
@@ -134,6 +144,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
         if (isInvunerable == false)
         {
             currentHP -= takeDamge;
+            hpUI.DrawHeart(currentHP, playerStats.maxHp);
             StartCoroutine(InvuTime());
         }
 
@@ -179,6 +190,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
         currentSP = 3;
     }
 
+    //An interface that collects from objects that are collectable
     public void GetCollectDrop(int dropAmount, dropType _dropType)
     {
         switch (((int)_dropType))
@@ -188,8 +200,11 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
                 break;
 
             case 1:
-                currentHP += dropAmount;
-                Debug.Log("Health pickup");
+                if (currentHP < playerStats.maxHp)
+                {
+                    currentHP += dropAmount;
+                    hpUI.DrawHeart(currentHP, playerStats.maxHp);
+                }
                 break;
 
             case 2:
