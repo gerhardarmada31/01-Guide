@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class HealthUI : MonoBehaviour
 {
 
-    private List<int> hpBarList = new List<int>();
     public PlayerStatus pStats;
     [SerializeField] private GameObject hpCell;
     [SerializeField] private GameObject hpCellE;
@@ -43,24 +42,4 @@ public class HealthUI : MonoBehaviour
             }
         }
     }
-
-    private void Start()
-    {
-        // //Set 
-        // Debug.Log("health" + pStats.CurrentHP);
-
-        // for (int i = 0; i < pStats.CurrentHP; i++)
-        // {
-        //     Instantiate(hpCell, this.transform);
-        // }
-    }
-
-    public void UpdateHP()
-    {
-
-    }
-
-    //Add health
-
-    //Minus health
 }

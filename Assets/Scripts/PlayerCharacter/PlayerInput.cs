@@ -120,6 +120,7 @@ public class PlayerInput : MonoBehaviour
         commandRange.gameObject.SetActive(false);
         playerStatus.StackSP = 0;
         controls.PlayerCharacter.Jump.Enable();
+        playerStatus.spiritCommandRange = false;
     }
 
     private void HandleCmdOn(InputAction.CallbackContext context)
@@ -128,7 +129,7 @@ public class PlayerInput : MonoBehaviour
         if (!commandMode && playerStatus.CurrentSP >= 1)
         {
             commandMode = true;
-
+            playerStatus.spiritCommandRange = true;
             commandRange.gameObject.SetActive(true);
             controls.PlayerCharacter.Jump.Disable();
         }

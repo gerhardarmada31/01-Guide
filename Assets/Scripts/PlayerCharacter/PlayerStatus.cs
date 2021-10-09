@@ -16,9 +16,9 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
 
 
     // public dropType currentDropType;
-
     [SerializeField] private HealthUI hpUI;
-
+    [SerializeField] private SpiritUI spUI;
+    public bool spiritCommandRange { get; set; }
     //PROPS
     public float spRate { get; set; }
 
@@ -39,6 +39,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
     public int CurrentSP
     {
         get { return currentSP; }
+        set { currentSP = value; }
     }
 
 
@@ -60,23 +61,27 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
 
     private void Awake()
     {
-        currentHP = 3;
-        hpUI.DrawHeart(currentHP, playerStats.maxHp);
-    }
 
-    void Start()
-    {
+
         playerStats.currentSpeed = playerStats.normalSpeed;
-        currentHP = playerStats.maxHp;
+
         spRate = playerStats.spRate;
 
         playerStats.invuFrame = 1.5f;
         playerStats.maxHp = 3;
         playerStats.maxSp = 4;
-        currentSP = 3;
 
         //del this later
         playerStats.currentCoin = 0;
+        currentHP = 3;
+        currentSP = 3;
+
+        hpUI.DrawHeart(currentHP, playerStats.maxHp);
+    }
+
+    void Start()
+    {
+        currentHP = playerStats.maxHp;
     }
 
     void Update()
@@ -84,6 +89,18 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
         //set a condition if commandRange is not on
         SpiritCharge();
         HealthSystem();
+        spUI.SpiritRateUI(spRate, playerStats.maxSpRate, currentSP, playerStats.maxSp);
+
+        //If commandRange is true go to spirit Stacking else spirit count
+        if (spiritCommandRange)
+        {
+            spUI.SpiritCount(stackSP);
+        }
+        else
+        {
+            spUI.SpiritCount(currentSP);
+        }
+        // spUI.SpiritCount(currentSP,);
         // Debug.Log($"current Stack {StackSP}");
     }
 
@@ -107,11 +124,18 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
     {
 
         //SP counter increases/decreases the spRate is at 0 or at maxSpRate
-        if (spRate >= playerStats.maxSpRate)
+        if (spRate >= playerStats.maxSpRate && currentSP != playerStats.maxSp)
         {
             currentSP++;
             spRate = 0;
         }
+
+        if (currentSP >= playerStats.maxSp)
+        {
+            currentSP = playerStats.maxSp;
+            spRate = 0;
+        }
+
         else if (spRate < 0)
         {
             currentSP--;
@@ -203,12 +227,16 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
                 if (currentHP < playerStats.maxHp)
                 {
                     currentHP += dropAmount;
-                    hpUI.DrawHeart(currentHP, playerStats.maxHp);
                 }
+                hpUI.DrawHeart(currentHP, playerStats.maxHp);
                 break;
 
             case 2:
-                currentSP += dropAmount;
+                if (currentSP <= playerStats.maxSp)
+                {
+                    currentSP += dropAmount;
+                }
+
                 break;
 
             default:
