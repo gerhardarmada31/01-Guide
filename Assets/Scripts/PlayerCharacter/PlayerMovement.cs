@@ -11,6 +11,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveInputs;
     private Vector3 charVelocity;
     private bool grounded;
+
+
+    public bool Grounded
+    {
+        get { return grounded; }
+        set { grounded = value; }
+    }
     private bool isSlope;
     private float moveSpeed;
     private float distanceToGround;

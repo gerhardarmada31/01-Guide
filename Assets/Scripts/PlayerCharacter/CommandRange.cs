@@ -113,8 +113,8 @@ public class CommandRange : MonoBehaviour
                 playerDialogue.IsInDialogue = true;
                 DialogueController.Instance.dialogueRunner.StartDialogue(MyFriend.YarnStartNode);
             }
-
-            playerObj.transform.LookAt(selectedObj.transform);
+            Vector3 targetPos = new Vector3(selectedObj.transform.position.x, this.transform.position.y, selectedObj.transform.position.z);
+            playerObj.transform.LookAt(targetPos);
             playerStatus.SpiritSystem();
             // Debug.Log("ConfirmTarget");
         }

@@ -171,15 +171,20 @@ public class PlayerInput : MonoBehaviour
     {
         if (!commandMode && !freeMove)
         {
+            playerMovement.Move(moveInput);
+
             if (!playerDialogue.IsInDialogue && isMenuOn == false)
             {
-                playerMovement.Move(moveInput);
                 controls.PlayerCharacter.Sprint.Enable();
                 controls.PlayerCharacter.Jump.Enable();
+                controls.PlayerCharacter.CmdOn.Enable();
+                controls.PlayerCharacter.Move.Enable();
             }
             else
             {
+                controls.PlayerCharacter.Move.Disable();
                 controls.PlayerCharacter.Jump.Disable();
+                controls.PlayerCharacter.CmdOn.Disable();
             }
         }
         else if (freeMove)

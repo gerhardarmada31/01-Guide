@@ -9,8 +9,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 225045935228908981, guid: b42a00f9702b84542999bdf2ad21ca27, type: 3}
       propertyPath: m_Name
-      value: HatPrefab Variant
+      value: WizardHatPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 5428891862200466883, guid: b42a00f9702b84542999bdf2ad21ca27, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f30c1adb9ec5c849b36746e980649a6, type: 2}
     - target: {fileID: 8532941744784048491, guid: b42a00f9702b84542999bdf2ad21ca27, type: 3}
       propertyPath: m_Mesh
       value: 

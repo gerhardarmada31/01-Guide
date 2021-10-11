@@ -1,0 +1,97 @@
+title: IOM.Start
+tags: 
+colorID: 0
+position: 240,-583
+---
+<<SetSpeaker IOM>>
+hey Rob
+have you seen my husband?
+
+<<set $IOM_Found to 1>>
+
+[[nah|IOM.NotFoundPartner]]
+<<if $p0B_Found is 1>>
+[[as matter of fact|IOM.FoundPartner]]
+
+<<endif>>
+===
+title: IOM.NotFoundPartner
+tags: 
+colorID: 0
+position: -139,-863
+---
+<<SetSpeaker Phantom>>
+uhh no, whats he look like?
+
+<<SetSpeaker IOM>>
+he looks handsome.
+
+<<SetSpeaker Phantom>>
+uhuh. and?
+
+<<SetSpeaker IOM>>
+kind
+gentle
+caring
+
+<<SetSpeaker Phantom>>
+.....
+should we just walk away?
+[[I wanna see how this goes|IOM.Help]]
+[[yeah.... |IOM.NotHelp]]
+===
+title: IOM.FoundPartner
+tags: 
+colorID: 0
+position: 624,-882
+---
+<<SetSpeaker Phantom>>
+yeah we talked a little bit.
+last time we saw him.
+he was at the beach.
+
+<<SetSpeaker IOM>>
+that's great! 
+can you tell him
+I think about him everyday...
+
+<<SetSpeaker Phantom>>
+huh??
+can't you just tell him yourself...
+
+<<SetSpeaker IOM>>
+uhhh... no I can't.... 
+I would love to..
+but no...
+
+<<SetSpeaker Phantom>>
+whatcha thinkin Rob?
+[[lets help them|IOM.Help]]
+[[seems... like a hassle|IOM.NotHelp]]
+===
+title: IOM.Help
+tags: 
+colorID: 0
+position: 229,-852
+---
+<<SetSpeaker Phantom>>
+Fine, we'll do it.
+
+<<SetSpeaker IOM>>
+thank you thank you thank you!!!!
+===
+title: IOM.NotHelp
+tags: 
+colorID: 0
+position: 238,-1145
+---
+<<SetSpeaker Phantom>>
+sorry, we're kinda busy.
+
+<<SetSpeaker IOM>>
+oh no worries!
+I can wait.
+
+<<SetSpeaker Phantom>>
+.....
+===
