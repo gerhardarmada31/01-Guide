@@ -12,7 +12,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
     private int totalDmg;
     private int stackSP = 0;
     private bool isInvunerable = false;
-
+    private WaitForSeconds regenSec;
 
 
     // public dropType currentDropType;
@@ -64,7 +64,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
 
 
         playerStats.currentSpeed = playerStats.normalSpeed;
-
+        regenSec = new WaitForSeconds(playerStats.spRegen);
         spRate = playerStats.spRate;
 
         playerStats.invuFrame = 1.5f;
@@ -112,7 +112,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
         }
     }
 
-    public void SpiritSystem()
+    public void SpiritStack()
     {
         // deduct current sp based on stackSP and executing this through commandRange confirm
         currentSP = currentSP - (1 * (stackSP + 1));
@@ -123,39 +123,41 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
     public void SpiritCharge()
     {
 
-        //SP counter increases/decreases the spRate is at 0 or at maxSpRate
-        if (spRate >= playerStats.maxSpRate && currentSP != playerStats.maxSp)
-        {
-            currentSP++;
-            spRate = 0;
-        }
-
-        if (currentSP >= playerStats.maxSp)
-        {
-            currentSP = playerStats.maxSp;
-            spRate = 0;
-        }
-
-        else if (spRate < 0)
-        {
-            currentSP--;
-            spRate = (playerStats.maxSpRate - 1f);
-        }
-
         //Checking if the player is moving or sprinting.
         if (IsSprinting == true && IsMoving == true)
         {
-            spRate -= Time.deltaTime;
+            spRate -= (playerStats.spDrain * Time.deltaTime);
+
             Debug.Log("DEDUCT SPRATE");
+            SpStop = true;
 
             if (currentSP <= 0)
             {
                 spRate = 0.1f;
             }
+
+            if (spRate < 0)
+            {
+                currentSP--;
+                spRate = (playerStats.maxSpRate - 0.001f);
+            }
         }
-        else if (currentSP != playerStats.maxSp && SpStop == false)
+        else if (SpStop == false)
         {
-            spRate += Time.deltaTime;
+            spRate += (playerStats.spRegen * Time.deltaTime);
+
+            if (spRate >= playerStats.maxSpRate)
+            {
+                if (currentSP >= playerStats.maxSp)
+                {
+                    spRate = (playerStats.maxSpRate - 0.001f);
+                }
+                else
+                {
+                    spRate = 0;
+                    currentSP++;
+                }
+            }
         }
 
     }
@@ -184,6 +186,8 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
         yield return new WaitForSeconds(playerStats.invuFrame);
         isInvunerable = false;
     }
+
+    #region Cheats
 
     public void MoreHP()
     {
@@ -214,6 +218,10 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
         currentSP = 3;
     }
 
+    #endregion
+
+
+
     //An interface that collects from objects that are collectable
     public void GetCollectDrop(int dropAmount, dropType _dropType)
     {
@@ -232,10 +240,16 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
                 break;
 
             case 2:
-                if (currentSP <= playerStats.maxSp)
+                if (currentSP < playerStats.maxSp)
                 {
                     currentSP += dropAmount;
+                    if (currentSP >= playerStats.maxSp)
+                    {
+                        currentSP = playerStats.maxSp;
+                        spRate = (playerStats.maxSpRate - 0.001f);
+                    }
                 }
+
 
                 break;
 

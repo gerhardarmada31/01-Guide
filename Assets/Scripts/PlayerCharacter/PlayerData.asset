@@ -19,8 +19,8 @@ MonoBehaviour:
   maxSp: 4
   maxSpRate: 3
   spRate: 0
-  spRegen: 0.1
-  spDrain: 0.1
+  spRegen: 1.5
+  spDrain: 2.3
   currentSpeed: 9
   normalSpeed: 9
   sprintSpeed: 12

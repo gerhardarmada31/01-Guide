@@ -115,7 +115,7 @@ public class CommandRange : MonoBehaviour
             }
             Vector3 targetPos = new Vector3(selectedObj.transform.position.x, this.transform.position.y, selectedObj.transform.position.z);
             playerObj.transform.LookAt(targetPos);
-            playerStatus.SpiritSystem();
+            playerStatus.SpiritStack();
             // Debug.Log("ConfirmTarget");
         }
     }

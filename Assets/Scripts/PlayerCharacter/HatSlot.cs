@@ -30,6 +30,13 @@ public class HatSlot : MonoBehaviour
             hatItem = equipSO;
             currentHat = Instantiate(equipSO.EquipPrefab, this.transform);
         }
+        else if (hatItem != equipSO)
+        {
+            Destroy(currentHat);
+            hatItem = equipSO;
+            // previousHat = currentHat;
+            currentHat = Instantiate(equipSO.EquipPrefab, this.transform);
+        }
         else if (hatItem == equipSO)
         {
             Destroy(currentHat);
@@ -37,18 +44,14 @@ public class HatSlot : MonoBehaviour
         }
 
 
-        if (hatItem != equipSO)
-        {
-            Destroy(currentHat);
-            currentHat = Instantiate(equipSO.EquipPrefab, this.transform);
-        }
+        // if (hatItem != equipSO)
+        // {
+        //     // Destroy(currentHat);
+        //     previousHat = currentHat;
+        //     currentHat = Instantiate(equipSO.EquipPrefab, this.transform);
+        // }
         // else if()
         // if the pastHat is not the same destroy the past hat and equip the new one
 
     }
-
-    // public void EquipHat()
-    // {
-    //     Instantiate(hatItem.EquipPrefab, this.transform);
-    // }
 }
