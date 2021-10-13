@@ -1,0 +1,40 @@
+title: p0B.Start
+tags: 
+colorID: 0
+position: 87,-780
+---
+<<SetSpeaker p0B>>
+hi! Rob!
+hi! Tom!
+
+<<set $p0B_Found to true>>
+
+<<SetSpeaker Phantom>>
+uuh hi?
+
+<<if $IOM_Found is false>>
+    <<SetSpeaker p0B>>
+    goodbye!
+
+    <<SetSpeaker Phantom>>
+    bye?
+    I figured you we're gonna give us an errand or something
+
+    <<SetSpeaker p0B>>
+    oh yeah! 
+    thanks for reminding me
+
+    [[.....|p0B.madAtPhantom]]
+    [[ <glare at Tom>|p0B.madAtPhantom]]
+
+<<endif>>
+===
+title: p0B.madAtPhantom
+tags: 
+colorID: 0
+position: 81,-1031
+---
+<<SetSpeaker Phantom>>
+.....
+sorry.
+===

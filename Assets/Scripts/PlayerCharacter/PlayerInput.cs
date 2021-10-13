@@ -110,7 +110,6 @@ public class PlayerInput : MonoBehaviour
 
     private void HandleJump(InputAction.CallbackContext context)
     {
-        // Debug.Log("Jump");
         playerMovement.Jump();
     }
 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a57f6db90a8d6794a87d426b5e031924, type: 3}
-  m_Name: TalkingFriend
+  m_Name: TalkingIdle
   m_EditorClassIdentifier: 
   nPCActions:
   - {fileID: 11400000, guid: a0880eaff8488484a8ec022179fe8480, type: 2}
@@ -18,5 +18,5 @@ MonoBehaviour:
   transitions:
   - decision: {fileID: 11400000, guid: 0ed40f861843bbe4ba6a80310a812d70, type: 2}
     trueState: {fileID: 11400000, guid: c6ef9f67705a02340b13862d447e0725, type: 2}
-    falseState: {fileID: 11400000, guid: fc31708a516b8c74082e18dca8b5b1b7, type: 2}
-  sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    falseState: {fileID: 11400000, guid: dd48773c4b20ea74bb0f9aaab2c4e13c, type: 2}
+  sceneGizmoColor: {r: 0, g: 0.8237238, b: 1, a: 1}

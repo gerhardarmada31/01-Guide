@@ -16,14 +16,16 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
 
 
     // public dropType currentDropType;
+    [Header("UI Implement")]
     [SerializeField] private HealthUI hpUI;
     [SerializeField] private SpiritUI spUI;
-    public bool spiritCommandRange { get; set; }
     //PROPS
-    public float spRate { get; set; }
 
+    public bool spiritCommandRange { get; set; }
+    public float spRate { get; set; }
     public bool IsSprinting { get; set; }
     public bool IsMoving { get; set; }
+    public bool IsJumping { get; set; }
     public bool SpStop { get; set; }
 
     public int TotalDmg
@@ -124,22 +126,38 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
     {
 
         //Checking if the player is moving or sprinting.
-        if (IsSprinting == true && IsMoving == true)
+        if (IsSprinting == true && IsMoving == true && IsJumping == false)
         {
+
+
             spRate -= (playerStats.spDrain * Time.deltaTime);
-
-            Debug.Log("DEDUCT SPRATE");
             SpStop = true;
+            Debug.Log("DEDUCT SPRATE");
 
-            if (currentSP <= 0)
-            {
-                spRate = 0.1f;
-            }
+            // if (currentSP <= 0)
+            // {
+            //     spRate = 0.1f;
+            //     // currentSP = 0;
+            // }
+            // else if (currentSP != 0)
+            // {
+
+            // }
 
             if (spRate < 0)
             {
-                currentSP--;
-                spRate = (playerStats.maxSpRate - 0.001f);
+                if (currentSP <= 0)
+                {
+                    CurrentSP = 0;
+                    spRate = 0.01f;
+                    playerStats.currentSpeed = playerStats.normalSpeed;
+                }
+                else
+                {
+                    currentSP--;
+                    spRate = (playerStats.maxSpRate - 0.001f);
+                }
+
             }
         }
         else if (SpStop == false)

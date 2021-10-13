@@ -14,15 +14,21 @@ public class NPCStateController : MonoBehaviour
 
 
     //Set up some of that good2x headers
+    [Header("AI STATUS")]
     [SerializeField] private NPCStates_SO currentState;
     [SerializeField] private float stateTimeElapsed = 0;
     [SerializeField] private int wayPointIndex;
     [SerializeField] private Transform chaseTarget;
+
+    
+    [Header("DETECTORS")]
     [SerializeField] private Transform eyes;
     [SerializeField] private Transform attackSpawner;
     [SerializeField] private GameObject attackObj;
     [SerializeField] private float attackRate;
     [SerializeField] private GameObjectPool gameObjectPool;
+
+    
     [SerializeField] private List<Transform> wayPoints;
     private CombatZone combatZone;
     private EnemySpawner enemySpawner;

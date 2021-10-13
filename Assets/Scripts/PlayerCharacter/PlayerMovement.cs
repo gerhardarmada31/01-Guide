@@ -13,11 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private bool grounded;
 
 
-    public bool Grounded
-    {
-        get { return grounded; }
-        set { grounded = value; }
-    }
+
     private bool isSlope;
     private float moveSpeed;
     private float distanceToGround;
@@ -112,9 +108,11 @@ public class PlayerMovement : MonoBehaviour
         if (grounded)
         {
             pStatus.SpStop = false;
+            pStatus.IsJumping = false;
         }
         else
         {
+            pStatus.IsJumping = true;
             pStatus.SpStop = true;
         }
 
@@ -162,12 +160,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void Sprint(bool _isSprinting)
     {
-        if (pStatus.CurrentSP > 0 && _isSprinting == true)
+        if (pStatus.CurrentSP >= 0 && pStatus.spRate >= 0f && _isSprinting == true)
         {
+            pStatus.IsSprinting = true;
             // moveSpeed += 4;
 
             pStatus.playerStats.currentSpeed = pStatus.playerStats.sprintSpeed;
-            pStatus.IsSprinting = true;
             //if character is moving
             // if (moveInputs.magnitude != 0)
             // {
@@ -180,6 +178,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (_isSprinting == false)
         {
+            // Debug.Break();
             pStatus.playerStats.currentSpeed = pStatus.playerStats.normalSpeed;
             pStatus.IsSprinting = false;
         }

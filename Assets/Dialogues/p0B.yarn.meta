@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 7241accb1862bad449d418cf5c36a5c7
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-US
+  stringIDs:
+  - p0B-p0B.Start-0
+  - p0B-p0B.Start-1
+  - p0B-p0B.Start-2
+  - p0B-p0B.Start-3
+  - p0B-p0B.Start-4
+  - p0B-p0B.Start-5
+  - p0B-p0B.Start-6
+  - p0B-p0B.Start-7
+  - p0B-p0B.Start-8
+  - p0B-p0B.Start-9
+  - p0B-p0B.madAtPhantom-10
+  - p0B-p0B.madAtPhantom-11
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {fileID: 7128917941130120860, guid: 7241accb1862bad449d418cf5c36a5c7, type: 3}
+  localizations: []
