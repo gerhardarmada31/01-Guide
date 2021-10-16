@@ -33,6 +33,7 @@ public class GoalItem : GoalBase
         goalAccept = true;
     }
 
+    //Checks the item if the player has. if it does remove it.
     public void CheckItem()
     {
         if (goalComplete == false && goalAccept == true)

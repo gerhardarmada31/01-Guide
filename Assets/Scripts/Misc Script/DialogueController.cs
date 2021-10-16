@@ -26,8 +26,6 @@ public class DialogueController : SingletonParent<DialogueController>
 
     private void GoalAccept(string[] info)
     {
-        // throw new NotImplementedException()
-        // string speaker = info[0];
         GoalEvent.currentGoalEvent.GoalAccept(txt_SpeakerName.text);
     }
 

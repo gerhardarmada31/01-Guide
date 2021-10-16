@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a57f6db90a8d6794a87d426b5e031924, type: 3}
-  m_Name: PatrolFriend
+  m_Name: Walker Patrol
   m_EditorClassIdentifier: 
   nPCActions:
   - {fileID: 11400000, guid: cc54326d2210a1542a04f829bb0bda77, type: 2}

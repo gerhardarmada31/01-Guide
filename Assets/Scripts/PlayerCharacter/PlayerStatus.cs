@@ -134,16 +134,6 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
             SpStop = true;
             Debug.Log("DEDUCT SPRATE");
 
-            // if (currentSP <= 0)
-            // {
-            //     spRate = 0.1f;
-            //     // currentSP = 0;
-            // }
-            // else if (currentSP != 0)
-            // {
-
-            // }
-
             if (spRate < 0)
             {
                 if (currentSP <= 0)

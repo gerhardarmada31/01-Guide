@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57f6db90a8d6794a87d426b5e031924, type: 3}
+  m_Name: Walker Idle
+  m_EditorClassIdentifier: 
+  nPCActions:
+  - {fileID: 11400000, guid: a0880eaff8488484a8ec022179fe8480, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: 2aefe041bc34a2445b45d83f2e8fc3f6, type: 2}
+    trueState: {fileID: 11400000, guid: c6ef9f67705a02340b13862d447e0725, type: 2}
+    falseState: {fileID: 11400000, guid: fc31708a516b8c74082e18dca8b5b1b7, type: 2}
+  sceneGizmoColor: {r: 0, g: 0.92174244, b: 1, a: 1}

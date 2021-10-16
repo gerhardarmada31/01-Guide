@@ -13,7 +13,6 @@ public class TalkDecision : NPCDecision_SO
 
     public bool HasBeenHit(NPCStateController controller)
     {
-        // return false;
 
         if (controller.FriendStatus != null)
         {

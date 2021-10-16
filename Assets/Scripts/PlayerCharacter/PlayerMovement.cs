@@ -160,27 +160,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void Sprint(bool _isSprinting)
     {
+        pStatus.IsSprinting = _isSprinting;
+
         if (pStatus.CurrentSP >= 0 && pStatus.spRate >= 0f && _isSprinting == true)
         {
-            pStatus.IsSprinting = true;
-            // moveSpeed += 4;
-
             pStatus.playerStats.currentSpeed = pStatus.playerStats.sprintSpeed;
-            //if character is moving
-            // if (moveInputs.magnitude != 0)
-            // {
-            // }
-
-
-
-            Debug.Log("speed!");
-            // decrease spRate here
         }
         else if (_isSprinting == false)
         {
-            // Debug.Break();
+
             pStatus.playerStats.currentSpeed = pStatus.playerStats.normalSpeed;
-            pStatus.IsSprinting = false;
+
         }
 
     }
