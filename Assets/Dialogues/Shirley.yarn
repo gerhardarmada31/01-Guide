@@ -33,10 +33,9 @@ can you find my Letter?
 ===
 title: Shirley.Accept
 tags: 
-colorID: 0
-position: 50,-276
+position: 51,-277
 ---
-<<SetAcceptGoal>>
+<<SetItemGoal>>
 Thank you so much
 ===
 title: Shirley.Decline

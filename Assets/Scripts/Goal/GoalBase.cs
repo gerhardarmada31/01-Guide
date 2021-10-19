@@ -8,12 +8,21 @@ using Yarn.Unity;
 
 public abstract class GoalBase : MonoBehaviour
 {
+    [Header("Goal Attribute")]
     [SerializeField] protected string goalTitle;
+    [SerializeField] protected GameObject rewardEquip;
+    [SerializeField] protected int rewardCoin;
+
     protected bool goalComplete;
 
     //current amount can be the amount of certain items
     protected int currentAmount;
     protected int requiredAmount;
+
+    public void GoalReward()
+    {
+        Debug.Log("Get Reward");
+    }
 
     //<variables>
     //dialogues from NPC

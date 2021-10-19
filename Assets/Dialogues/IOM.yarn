@@ -1,17 +1,29 @@
 title: IOM.Start
 tags: 
-colorID: 0
-position: 240,-583
+position: 311.0792236328125,-478.95477294921875
 ---
 <<SetSpeaker IOM>>
+
+
+<<if GoalComplete("Odd.Couple") is false>>
 hey Rob
 have you seen my husband?
 
-<<set $IOM_Found to 1>>
+
 
 [[nah|IOM.NotFoundPartner]]
-<<if $p0B_Found is 1>>
+<<if $p0B_Found is true>>
 [[as matter of fact|IOM.FoundPartner]]
+<<endif>>
+
+<<else>>
+
+<<SetSpeaker Phantom>>
+we found p0b
+
+<<SetSpeaker IOM>>
+h$%ck
+sweet
 
 <<endif>>
 ===
@@ -71,13 +83,16 @@ whatcha thinkin Rob?
 ===
 title: IOM.Help
 tags: 
-position: 219,-858
+position: 240,-875
 ---
 <<SetSpeaker Phantom>>
 Fine, we'll do it.
 
 <<SetSpeaker IOM>>
 thank you thank you thank you!!!!
+
+
+<<set $IOM_Talked to true>>
 ===
 title: IOM.NotHelp
 tags: 

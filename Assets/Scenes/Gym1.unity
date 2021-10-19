@@ -1266,7 +1266,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 6.41
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2094375764, guid: dec1894ec3cbbef4a9470c913ad89c1c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dec1894ec3cbbef4a9470c913ad89c1c, type: 3}
 --- !u!1 &281817175
 GameObject:
@@ -6070,6 +6071,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400221605}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1431884959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5857473309393839814, guid: dec1894ec3cbbef4a9470c913ad89c1c, type: 3}
+  m_PrefabInstance: {fileID: 242800220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1431884961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431884959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e85e35e338f3bb48a90560105ce1bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goalTitle: Odd.Couple
+  requiredFriendName: p0B
 --- !u!1 &1444193847
 GameObject:
   m_ObjectHideFlags: 0
@@ -7267,7 +7287,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2094375764, guid: 67d4b29aeac262141a92ec62c0cbfbd1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 67d4b29aeac262141a92ec62c0cbfbd1, type: 3}
 --- !u!1 &1630598345
 GameObject:

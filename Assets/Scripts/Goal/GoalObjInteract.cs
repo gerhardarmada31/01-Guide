@@ -32,9 +32,6 @@ public class GoalObjInteract : GoalBase
                 goalComplete = true;
                 GoalEvent.currentGoalEvent.GoalComplete(goalTitle, goalComplete);
                 Debug.Log("Required amount met");
-                // GoalEvent.currentGoalEvent.AmountUpdate(goalTitle, currentAmount);
-                //Do GoalReward
-                //Do DialogueUpdate
             }
         }
     }

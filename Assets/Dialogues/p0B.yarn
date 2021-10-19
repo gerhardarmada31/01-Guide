@@ -1,7 +1,6 @@
 title: p0B.Start
 tags: 
-colorID: 0
-position: 87,-780
+position: 84.00001049041748,-895.0000610351562
 ---
 <<SetSpeaker p0B>>
 hi! Rob!
@@ -12,7 +11,7 @@ hi! Tom!
 <<SetSpeaker Phantom>>
 uuh hi?
 
-<<if $IOM_Found is false>>
+<<if $IOM_Talked is false>>
     <<SetSpeaker p0B>>
     goodbye!
 
@@ -21,20 +20,62 @@ uuh hi?
     I figured you we're gonna give us an errand or something
 
     <<SetSpeaker p0B>>
-    oh yeah! 
-    thanks for reminding me
+    hmmm... 
+    not really..
 
-    [[.....|p0B.madAtPhantom]]
-    [[ <glare at Tom>|p0B.madAtPhantom]]
+    <<SetSpeaker Phantom>>
+    sweet!
+
+
+<<elseif $IOM_Talked is true>>
+    <<SetSpeaker Phantom>>
+    wait, you're p0B?
+
+    <<SetSpeaker p0B>>
+    yes?
+
+    <<SetSpeaker Phantom>>
+    you're partner's looking for you.
+
+    <<SetSpeaker p0B>>
+    IOM? did he say something?
+    
+    <<SetSpeaker Phantom>>
+    he says he's thinking about you all time
+
+    <<SetSpeaker p0B>>
+    aww 
+    can you tell him
+    i'm thinking about him too
+
+    <<SetSpeaker Phantom>>
+    he's actually pretty nearby
+    you can go to him if you go arou-
+
+    <<SetSpeaker p0B>>
+    HE'S CLOSE?!
+    TELL HIM MOVE AWAY!
+
+    <<SetSpeaker Phantom>>
+    ....
+    huh??
+    ...
+    ok...
+
+    <<SetSpeaker p0B>>
+    <<SetTalkGoal p0B>>
 
 <<endif>>
 ===
 title: p0B.madAtPhantom
 tags: 
-colorID: 0
-position: 81,-1031
+position: 103.00000095367432,-1293.9999389648438
 ---
 <<SetSpeaker Phantom>>
 .....
 sorry.
+
+//SetTalkGoal
+
 ===
+

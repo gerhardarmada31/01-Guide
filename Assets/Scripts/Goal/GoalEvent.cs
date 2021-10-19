@@ -18,7 +18,8 @@ public class GoalEvent : MonoBehaviour
     public event Action<GameObject, bool> onGoalKillUpdate;
     public event Action<string, bool, int> onAreaClearComplete;
     public event Action<string, bool> onGoalComplete;
-    public event Action<string> onGoalAccept;
+    public event Action<string> onGoalItem;
+    public event Action<string> onGoalTalk;
 
 
     //Amount updated for the objects interacted
@@ -51,8 +52,13 @@ public class GoalEvent : MonoBehaviour
         onGoalComplete?.Invoke(completedGoalName, isGoalComplete);
     }
 
-    public void GoalAccept(string acceptedGoalName)
+    public void GoalItem(string itemGoalName)
     {
-        onGoalAccept?.Invoke(acceptedGoalName);
+        onGoalItem?.Invoke(itemGoalName);
+    }
+
+    public void GoalTalk(string personTalk)
+    {
+        onGoalTalk?.Invoke(personTalk);
     }
 }

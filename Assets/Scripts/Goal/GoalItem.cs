@@ -12,7 +12,7 @@ public class GoalItem : GoalBase
 
     [SerializeField] private string requiredItemTitle;
     [SerializeField] private string speakerName;
-    private bool goalAccept;
+    private bool goalItem;
 
     void Awake()
     {
@@ -23,20 +23,20 @@ public class GoalItem : GoalBase
     {
         base.Start();
         requiredAmount = ObjectRequireAmount;
-        GoalEvent.currentGoalEvent.onGoalAccept += AcceptGoal;
+        GoalEvent.currentGoalEvent.onGoalItem += ItemGoal;
         // GoalEvent.currentGoalEvent.onGoalItemUpdate += CheckItem;
     }
 
     //MAKE A BOOLEAN THAT SAYS THE ACCEPTGOAL = TRUE
-    private void AcceptGoal(string speakerName)
+    private void ItemGoal(string speakerName)
     {
-        goalAccept = true;
+        goalItem = true;
     }
 
     //Checks the item if the player has. if it does remove it.
     public void CheckItem()
     {
-        if (goalComplete == false && goalAccept == true)
+        if (goalComplete == false && goalItem == true)
         {
             for (int i = 0; i < playerInventory.Container.Count; i++)
             {
