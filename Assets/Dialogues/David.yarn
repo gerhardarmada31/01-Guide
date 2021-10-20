@@ -6,6 +6,7 @@ position: 476.44873046875,193.91168975830078
 
 <<if GoalComplete("Goal01") is true && Visited("David.NotBusy") is true>>
 Awesome Thank you
+<<GetReward Item>>
 
 <<else>>
 

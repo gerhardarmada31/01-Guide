@@ -2353,8 +2353,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalTitle: Shirley.Goal
+  rewardEquip: {fileID: 0}
+  rewardCoin: 0
   ObjectRequireAmount: 1
   playerInventory: {fileID: 11400000, guid: bc2f079c1ffb50640bf068ba4d9e5562, type: 2}
+  UIItem: {fileID: 0}
   requiredItemTitle: letterShirley
   speakerName: Shirley
 --- !u!1001 &603356129
@@ -6089,6 +6092,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalTitle: Odd.Couple
+  rewardEquip: {fileID: 0}
+  rewardCoin: 0
   requiredFriendName: p0B
 --- !u!1 &1444193847
 GameObject:
@@ -11525,6 +11530,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2094375764, guid: 73fae2a6c36253d4ca1b23fc4b755638, type: 3}
+      propertyPath: rewardCoin
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094375764, guid: 73fae2a6c36253d4ca1b23fc4b755638, type: 3}
+      propertyPath: rewardEquip
+      value: 
+      objectReference: {fileID: 11400000, guid: 64f11ce556e8c4546a0bbf713eb2a730, type: 2}
     - target: {fileID: 5857473309393839809, guid: 73fae2a6c36253d4ca1b23fc4b755638, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1

@@ -13,7 +13,7 @@ public class GoalCompleteDialogue : MonoBehaviour
     {
         dialogueRunner = GetComponent<DialogueRunner>();
     }
-    
+
     void Start()
     {
         GoalEvent.currentGoalEvent.onGoalComplete += GoalCompleteCheck;
@@ -27,7 +27,7 @@ public class GoalCompleteDialogue : MonoBehaviour
         // dialogueRunner.ad
     }
 
-    private void GoalCompleteCheck(string goalCompletedName,bool goalComplete)
+    private void GoalCompleteCheck(string goalCompletedName, bool goalComplete)
     {
         Debug.Log("goalTitleAdded");
         Debug.Log(goalComplete);

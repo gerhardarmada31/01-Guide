@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Linq;
 using TMPro;
 
 public class DisplayInventory : MonoBehaviour
@@ -21,10 +22,19 @@ public class DisplayInventory : MonoBehaviour
     public int y_spaceBetweenItem;
     public int numColomns;
     [SerializeField] private List<GameObject> itemsList = new List<GameObject>();
+    public List<GameObject> ItemsList
+    {
+        get { return itemsList; }
+        set { itemsList = value; }
+    }
     public GameObject lastSelectedObj;
     private GameObject obj;
-    Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
-
+    public Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
+    public Dictionary<InventorySlot, GameObject> ItemsDisplayed
+    {
+        get { return itemsDisplayed; }
+        set { itemsDisplayed = value; }
+    }
 
     private void Awake()
     {
@@ -41,6 +51,11 @@ public class DisplayInventory : MonoBehaviour
     {
         InventoryEvent.currentInventoryEvent.onInventoryUpdateUI += UpdateDisplay;
         OnOffInventory(false);
+
+        foreach (var keyVal in itemsDisplayed)
+        {
+            Debug.Log("Key = " + keyVal.Key + "Val = " + keyVal.Value);
+        }
     }
 
     public void InitialDisplay()
@@ -51,7 +66,8 @@ public class DisplayInventory : MonoBehaviour
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             // obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
             itemsDisplayed.Add(inventory.Container[i], obj);
-            itemsList.Add(obj);
+            // itemsList.Add(obj);
+            // itemsList.
         }
 
 
@@ -65,28 +81,40 @@ public class DisplayInventory : MonoBehaviour
 
     public void UpdateDisplay(bool _isAdd)
     {
+
         for (int i = 0; i < inventory.Container.Count; i++)
         {
+
+
             if (itemsDisplayed.ContainsKey(inventory.Container[i]))
             {
-                Debug.Log("asdasdas");
+
                 // itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
 
+                //Removes the item
                 if (_isAdd == false)
                 {
-                    itemsDisplayed.Remove(inventory.Container[i]);
-                    Destroy(obj);
+                    obj = Instantiate(inventory.Container[i].item.uiPrefab, Vector3.zero, Quaternion.identity, transform);
+                    obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
+
+                    Debug.Log("REMOVE ITEM! " + obj);
+                    // itemsDisplayed.Remove(inventory.Container[i]);
+                    // if()
+                    // itemsList.Remove(obj);
+                    // Destroy(obj);
                 }
             }
             else
             {
+                //Adds the item
                 if (_isAdd == true)
                 {
-
                     obj = Instantiate(inventory.Container[i].item.uiPrefab, Vector3.zero, Quaternion.identity, transform);
                     obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
+
                     // obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
                     itemsDisplayed.Add(inventory.Container[i], obj);
+                    // itemsList.Add(obj);
                 }
 
             }
@@ -103,7 +131,7 @@ public class DisplayInventory : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(null);
             Debug.Log("default select invent");
-            EventSystem.current.SetSelectedGameObject(itemsList[0]);
+            EventSystem.current.SetSelectedGameObject(itemsDisplayed[inventory.Container[0]]);
         }
         else if (isMenuOn == true)
         {

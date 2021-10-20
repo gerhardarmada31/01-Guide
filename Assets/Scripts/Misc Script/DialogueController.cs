@@ -22,7 +22,15 @@ public class DialogueController : SingletonParent<DialogueController>
         dialogueRunner.AddCommandHandler("SetSpeaker", SetSpeakerInfo);
         dialogueRunner.AddCommandHandler("SetItemGoal", GoalItem);
         dialogueRunner.AddCommandHandler("SetTalkGoal", GoalTalk);
+        dialogueRunner.AddCommandHandler("GetReward", GoalReward);
         TargetEventSystem.currentTarget.onConfirmTargetSelect += FriendTargeted;
+    }
+
+    private void GoalReward(string[] parameters)
+    {
+        Debug.Log("REWARD!!!");
+        GoalBase goalReward = friendObject.GetComponent<GoalBase>();
+        goalReward.GoalReward(parameters);
     }
 
     private void GoalItem(string[] info)

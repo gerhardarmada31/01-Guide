@@ -30,3 +30,8 @@ public interface ICollector
 {
     void GetCollectDrop(int dropAmount, dropType _dropType);
 }
+
+public interface ICoinReward
+{
+    void GetCoinReward(int coinAmount);
+}

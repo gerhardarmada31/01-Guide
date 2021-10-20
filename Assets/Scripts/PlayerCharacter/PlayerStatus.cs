@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
+public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
 {
     public PlayerCharacter_SO playerStats;
 
@@ -266,5 +266,10 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector
                 break;
 
         }
+    }
+
+    public void GetCoinReward(int coinAmount)
+    {
+        playerStats.currentCoin += coinAmount;
     }
 }
