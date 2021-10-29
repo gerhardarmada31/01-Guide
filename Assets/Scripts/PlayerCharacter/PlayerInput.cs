@@ -16,9 +16,12 @@ public class PlayerInput : MonoBehaviour
     private bool freeMove;
     private Vector2 moveInput;
     private float dialogueInputs;
+    private float tabInput;
+    float tabVal;
     private float yMoveInput;
     private float mouseWheelAxis;
     private bool commandMode = false;
+    private int[] tabList = new int[3];
 
     // private bool menuOn = false;
     [SerializeField] private UnityEvent callMenu;
@@ -44,22 +47,25 @@ public class PlayerInput : MonoBehaviour
 
     private void OnEnable()
     {
-        //Debug contro;
-        //Subscribring from the inputaction events
-        controls.PlayerCharacter.Menu.performed += HandleMenu;
-        // controls.PlayerCharacter.Menu.canceled
 
+        //Subscribring from the inputaction events
+
+        //MENU
+        controls.PlayerCharacter.Menu.performed += HandleMenu;
+        controls.UI.Tab.performed += HandleTab;
+
+        //SPRINT
         controls.PlayerCharacter.Sprint.performed += HandleSprint;
         controls.PlayerCharacter.Sprint.canceled += HandleStopSprint;
+
+        //COMMAND RANGE
         controls.PlayerCharacter.CmdOn.performed += HandleCmdOn;
         controls.PlayerCharacter.CmdOff.performed += HandleCmdOff;
         controls.PlayerCharacter.ExecuteCom.performed += HandleExecuteCom;
         controls.PlayerCharacter.CmdSelect.performed += HandleCmdSelect;
         controls.PlayerCharacter.StackSp.performed += HandheldStackingSP;
-        // controls.PlayerCharacter.StackSp.canceled += HandheldStackingSP => playerStatus.StackSP = 0;
 
-        // controls.PlayerCharacter.DialogueKeys.performed += HandleDialogueSelection => dialogueInputs = HandleDialogueSelection.ReadValue<float>();
-        // controls.PlayerCharacter.ContinueDialogue.performed += HandleDialogueNext;
+        //MOVEMENT
         controls.PlayerCharacter.Jump.performed += HandleJump;
         controls.PlayerCharacter.Move.performed += HandleMove => moveInput = HandleMove.ReadValue<Vector2>();
         controls.PlayerCharacter.YMove.performed += HandleYMovement => yMoveInput = HandleYMovement.ReadValue<float>();
@@ -69,6 +75,40 @@ public class PlayerInput : MonoBehaviour
 
     }
 
+    #region MENU
+    private void HandleMenu(InputAction.CallbackContext context)
+    {
+        isMenuOn = !isMenuOn;
+        callMenu.Invoke();
+    }
+
+    private void HandleTab(InputAction.CallbackContext context)
+    {
+        // int index;
+
+        //make an int array called tabs[2]
+        //convert float tabInput to int?
+        if (isMenuOn)
+        {
+            tabInput = context.ReadValue<float>();
+            Mathf.Round(tabInput);
+            tabVal = ((tabVal + tabInput) % tabList.Length);
+            Debug.Log("this tabInput" + tabVal);
+            if (tabVal <= 0)
+            {
+                tabVal = tabList.Length;
+            }
+        }
+        else
+        {
+            tabVal = 0;
+        }
+    }
+
+    #endregion
+
+
+    #region SPRING
     private void HandleStopSprint(InputAction.CallbackContext context)
     {
         Debug.Log("Stop Sprinting");
@@ -81,14 +121,10 @@ public class PlayerInput : MonoBehaviour
         Debug.Log("Sprinting!!");
         playerMovement.Sprint(true);
     }
-
-    private void HandleMenu(InputAction.CallbackContext context)
-    {
-        isMenuOn = !isMenuOn;
-        callMenu.Invoke();
-    }
+    #endregion
 
 
+    #region  COMMANDRANGE
     private void HandheldStackingSP(InputAction.CallbackContext context)
     {
         //This stacks the value of the spirits
@@ -108,10 +144,6 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    private void HandleJump(InputAction.CallbackContext context)
-    {
-        playerMovement.Jump();
-    }
 
     private void HandleCmdOff(InputAction.CallbackContext context)
     {
@@ -121,7 +153,6 @@ public class PlayerInput : MonoBehaviour
         controls.PlayerCharacter.Jump.Enable();
         playerStatus.spiritCommandRange = false;
     }
-
     private void HandleCmdOn(InputAction.CallbackContext context)
     {
         //Create a condition if the spirit point is >= to 1
@@ -141,14 +172,32 @@ public class PlayerInput : MonoBehaviour
         commandRange.ConfirmTarget();
     }
 
+    #endregion
+
+
+    #region  MOVEMENT
+    private void HandleJump(InputAction.CallbackContext context)
+    {
+        playerMovement.Jump();
+    }
+
+    #endregion
+
+
+
 
     private void OnDisable()
     {
+        //MENU
         controls.PlayerCharacter.Menu.performed -= HandleMenu;
+        controls.UI.Tab.performed -= HandleTab;
 
+        //SPRINT
         controls.PlayerCharacter.Sprint.performed += HandleSprint;
         controls.PlayerCharacter.Sprint.canceled += HandleStopSprint;
 
+
+        //COMMAND RNAGE
         controls.PlayerCharacter.CmdOn.performed -= HandleCmdOn;
         controls.PlayerCharacter.CmdOff.performed -= HandleCmdOff;
         controls.PlayerCharacter.ExecuteCom.performed -= HandleExecuteCom;
@@ -156,7 +205,7 @@ public class PlayerInput : MonoBehaviour
         // controls.PlayerCharacter.DialogueKeys.performed -= HandleDialogue => dialogueInputs = HandleDialogue.ReadValue<float>();
         // controls.PlayerCharacter.ContinueDialogue.performed -= HandleDialogueNext;
 
-
+        //MOVEMENT
         controls.PlayerCharacter.Move.performed -= HandleMove => moveInput = HandleMove.ReadValue<Vector2>();
         controls.PlayerCharacter.YMove.performed -= HandleYMovement => yMoveInput = HandleYMovement.ReadValue<float>();
         controls.PlayerCharacter.YMove.canceled -= HandleYMovement => yMoveInput = 0;
@@ -164,6 +213,7 @@ public class PlayerInput : MonoBehaviour
         controls.PlayerCharacter.Jump.performed -= HandleJump;
         controls.Disable();
     }
+
 
     // Update is called once per frame
     void Update()

@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 190580304934601057, guid: abf2410f3d12a944cb2fa4db00e77878, type: 3}
       propertyPath: m_Name
-      value: Key Image
+      value: Key Item2 Icon
       objectReference: {fileID: 0}
     - target: {fileID: 190580304934601070, guid: abf2410f3d12a944cb2fa4db00e77878, type: 3}
       propertyPath: m_Pivot.x

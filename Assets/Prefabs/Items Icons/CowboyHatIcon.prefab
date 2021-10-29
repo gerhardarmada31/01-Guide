@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CowboyHatIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 190580304934601057, guid: 78bdf3439bdd1894eb13b2bc27cb9036, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 190580304934601070, guid: 78bdf3439bdd1894eb13b2bc27cb9036, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

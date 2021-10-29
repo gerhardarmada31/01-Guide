@@ -7,6 +7,9 @@ TagManager:
   - Target
   - Enemy
   - Terrain
+  - ItemIcon
+  - StatusIcon
+  - SystemIcon
   layers:
   - Default
   - TransparentFX
@@ -19,7 +22,7 @@ TagManager:
   - Enemy
   - CommandRange
   - gbCamera
-  - 
+  - UIContent
   - 
   - 
   - 

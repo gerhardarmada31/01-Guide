@@ -149,12 +149,12 @@ GameObject:
   - component: {fileID: 190580304934601071}
   - component: {fileID: 978248034061684514}
   m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
+  m_Name: Equip Image
+  m_TagString: ItemIcon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &190580304934601070
 RectTransform:
   m_ObjectHideFlags: 0

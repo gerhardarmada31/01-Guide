@@ -83,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         charVelocity.y += pStatus.playerStats.gravityScale * Time.deltaTime;
         movement.y = charVelocity.y;
 
+        //Slide from slope
         if (!isSlope && grounded)
         {
             movement.x += ((1f - hitNormal.y) * hitNormal.x) * pStatus.playerStats.slideFriction;

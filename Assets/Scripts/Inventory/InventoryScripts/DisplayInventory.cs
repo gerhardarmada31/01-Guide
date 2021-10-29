@@ -14,22 +14,36 @@ public class DisplayInventory : MonoBehaviour
     private Transform uiContainer;
     private GameObject continueButton;
 
+    //del me
+    private bool itemOn;
+
     public InventorySO inventory;
+
     [SerializeField] private int xStart;
     [SerializeField] private int yStart;
-
     public int x_spaceBetweenItem;
     public int y_spaceBetweenItem;
     public int numColomns;
+
+    [Header("Parent of the content Items")]
+    [SerializeField] private GameObject itemParent;
+    [SerializeField] private GameObject statusParent;
+    [SerializeField] private GameObject systemParent;
+
+
+    public GameObject lastSelectedObj;
+    private GameObject obj;
+
+    public Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
     [SerializeField] private List<GameObject> itemsList = new List<GameObject>();
+
+
+    //PROP
     public List<GameObject> ItemsList
     {
         get { return itemsList; }
         set { itemsList = value; }
     }
-    public GameObject lastSelectedObj;
-    private GameObject obj;
-    public Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
     public Dictionary<InventorySlot, GameObject> ItemsDisplayed
     {
         get { return itemsDisplayed; }
@@ -40,12 +54,6 @@ public class DisplayInventory : MonoBehaviour
     {
         InitialDisplay();
     }
-
-    void TaskOnClick()
-    {
-
-    }
-
 
     void Start()
     {
@@ -62,12 +70,10 @@ public class DisplayInventory : MonoBehaviour
     {
         for (int i = 0; i < inventory.Container.Count; i++)
         {
-            var obj = Instantiate(inventory.Container[i].item.uiPrefab, Vector3.zero, Quaternion.identity, transform);
+            var obj = Instantiate(inventory.Container[i].item.uiPrefab, Vector3.zero, Quaternion.identity, itemParent.transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             // obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
             itemsDisplayed.Add(inventory.Container[i], obj);
-            // itemsList.Add(obj);
-            // itemsList.
         }
 
 
@@ -85,7 +91,6 @@ public class DisplayInventory : MonoBehaviour
         for (int i = 0; i < inventory.Container.Count; i++)
         {
 
-
             if (itemsDisplayed.ContainsKey(inventory.Container[i]))
             {
 
@@ -94,14 +99,11 @@ public class DisplayInventory : MonoBehaviour
                 //Removes the item
                 if (_isAdd == false)
                 {
-                    obj = Instantiate(inventory.Container[i].item.uiPrefab, Vector3.zero, Quaternion.identity, transform);
+                    obj = Instantiate(inventory.Container[i].item.uiPrefab, Vector3.zero, Quaternion.identity, itemParent.transform);
                     obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
 
                     Debug.Log("REMOVE ITEM! " + obj);
-                    // itemsDisplayed.Remove(inventory.Container[i]);
-                    // if()
-                    // itemsList.Remove(obj);
-                    // Destroy(obj);
+
                 }
             }
             else
@@ -109,7 +111,7 @@ public class DisplayInventory : MonoBehaviour
                 //Adds the item
                 if (_isAdd == true)
                 {
-                    obj = Instantiate(inventory.Container[i].item.uiPrefab, Vector3.zero, Quaternion.identity, transform);
+                    obj = Instantiate(inventory.Container[i].item.uiPrefab, Vector3.zero, Quaternion.identity, itemParent.transform);
                     obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
 
                     // obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
@@ -145,11 +147,21 @@ public class DisplayInventory : MonoBehaviour
         Debug.Log("Menu is" + isMenuOn);
     }
 
+    //All of the objects inside the menu that turns
     public void OnOffInventory(bool _onOffSwitch)
     {
-        for (int i = 0; i < gameObject.transform.childCount; i++)
+
+        //Something that activates only current tab
+        foreach (Transform item in transform)
         {
-            gameObject.transform.GetChild(i).gameObject.SetActive(_onOffSwitch);
+            item.gameObject.SetActive(_onOffSwitch);
         }
+
+        statusParent.SetActive(false);
+        systemParent.SetActive(false);
+
     }
+
+    //menu on only the last selected tab is activated.
+
 }
