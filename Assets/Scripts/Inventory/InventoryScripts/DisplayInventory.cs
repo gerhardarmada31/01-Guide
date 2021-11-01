@@ -123,6 +123,12 @@ public class DisplayInventory : MonoBehaviour
         }
     }
 
+    public void ItemTab()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(itemsDisplayed[inventory.Container[0]]);
+    }
+
     public void DisplayOnOff()
     {
 

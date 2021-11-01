@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour
     private Vector2 moveInput;
     private float dialogueInputs;
     private float tabInput;
-    float tabVal;
+    float tabVal = 1;
     private float yMoveInput;
     private float mouseWheelAxis;
     private bool commandMode = false;
@@ -25,6 +25,10 @@ public class PlayerInput : MonoBehaviour
 
     // private bool menuOn = false;
     [SerializeField] private UnityEvent callMenu;
+    [SerializeField] private UnityEvent itemTab;
+    [SerializeField] private UnityEvent statsTab;
+    [SerializeField] private UnityEvent optionsTab;
+
     private bool isMenuOn = false;
     private PlayerMovement playerMovement;
     private PlayerStatus playerStatus;
@@ -93,15 +97,33 @@ public class PlayerInput : MonoBehaviour
             tabInput = context.ReadValue<float>();
             Mathf.Round(tabInput);
             tabVal = ((tabVal + tabInput) % tabList.Length);
-            Debug.Log("this tabInput" + tabVal);
             if (tabVal <= 0)
             {
                 tabVal = tabList.Length;
             }
+
+            switch (tabVal)
+            {
+                case 1:
+                    itemTab.Invoke();
+                    break;
+
+                case 2:
+                    statsTab.Invoke();
+                    break;
+
+                case 3:
+                    optionsTab.Invoke();
+                    break;
+
+                default:
+                    Debug.LogError("Overlap. Tab value is more than 3");
+                    break;
+            }
         }
         else
         {
-            tabVal = 0;
+            tabVal = 1;
         }
     }
 
