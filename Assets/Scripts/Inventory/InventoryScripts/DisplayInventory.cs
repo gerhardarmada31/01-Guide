@@ -123,6 +123,7 @@ public class DisplayInventory : MonoBehaviour
         }
     }
 
+    //Its a UnityEvent the calls from the PlayerInput
     public void ItemTab()
     {
         EventSystem.current.SetSelectedGameObject(null);
@@ -135,19 +136,22 @@ public class DisplayInventory : MonoBehaviour
         isMenuOn = !isMenuOn;
         OnOffInventory(isMenuOn);
 
-        if (lastSelectedObj == null)
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            Debug.Log("default select invent");
-            EventSystem.current.SetSelectedGameObject(itemsDisplayed[inventory.Container[0]]);
-        }
-        else if (isMenuOn == true)
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(lastSelectedObj);
-        }
+        // if (lastSelectedObj == null)
+        // {
+        //     EventSystem.current.SetSelectedGameObject(null);
+        //     Debug.Log("default select invent");
+        //     EventSystem.current.SetSelectedGameObject(itemsDisplayed[inventory.Container[0]]);
+        // }
+        // else if (isMenuOn == true)
+        // {
+        //     // EventSystem.current.SetSelectedGameObject(lastSelectedObj);
+        // }
 
-        lastSelectedObj = EventSystem.current.currentSelectedGameObject;
+        // EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(itemsDisplayed[inventory.Container[0]]);
+        // lastSelectedObj = EventSystem.current.currentSelectedGameObject;
+
 
 
         Debug.Log("Menu is" + isMenuOn);

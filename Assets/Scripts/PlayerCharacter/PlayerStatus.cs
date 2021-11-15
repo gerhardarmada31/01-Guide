@@ -7,6 +7,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
 {
     public PlayerCharacter_SO playerStats;
 
+    private int maxHp;
     private int currentHP;
     private int currentSP;
     private int totalDmg;
@@ -36,6 +37,13 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
     public int CurrentHP
     {
         get { return currentHP; }
+    }
+
+
+    public int MaxHp
+    {
+        get { return maxHp; }
+        set { maxHp = value; }
     }
 
     public int CurrentSP
@@ -70,15 +78,17 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
         spRate = playerStats.spRate;
 
         playerStats.invuFrame = 1.5f;
-        playerStats.maxHp = 3;
+        // playerStats.maxHp = 3;
         playerStats.maxSp = 4;
 
+
         //del this later
-        playerStats.currentCoin = 0;
+        // playerStats.currentCoin = 100;
+        maxHp = playerStats.maxHp;
         currentHP = 3;
         currentSP = 3;
 
-        hpUI.DrawHeart(currentHP, playerStats.maxHp);
+        hpUI.DrawHeart(currentHP, maxHp);
     }
 
     void Start()
@@ -112,6 +122,14 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
         {
             Destroy(gameObject, 0.5f);
         }
+    }
+
+    //Updates the Health UI
+    public void UpgradeHealthUI()
+    {
+        maxHp = playerStats.maxHp;
+        currentHP = maxHp;
+        hpUI.DrawHeart(currentHP, maxHp);
     }
 
     public void SpiritStack()
@@ -178,7 +196,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
         if (isInvunerable == false)
         {
             currentHP -= takeDamge;
-            hpUI.DrawHeart(currentHP, playerStats.maxHp);
+            hpUI.DrawHeart(currentHP, maxHp);
             StartCoroutine(InvuTime());
         }
 

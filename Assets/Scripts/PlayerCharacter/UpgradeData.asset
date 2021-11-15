@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ccf175cb0c589499a90e0269df5eac, type: 3}
+  m_Name: UpgradeData
+  m_EditorClassIdentifier: 
+  lvl1CostHp: 200
+  lvl2CostHp: 800
+  lvl3CostHp: 0
+  lvl4CostHp: 0
+  lvl1UpgradeHp: 1
+  lvl2UpgradeHp: 2
+  lvl3UpgradeHp: 0
+  lvl4UpgradeHp: 0
+  lvl1CostAtk: 200
+  lvl2CostAtk: 0
+  lvl3CostAtk: 0
+  lvl4CostAtk: 0
+  lvl1UpgradeAtk: 1
+  lvl2UpgradeAtk: 0
+  lvl3UpgradeAtk: 0
+  lvl4UpgradeAtk: 0
+  lvl1CostSp: 200
+  lvl2CostSp: 0
+  lvl3CostSp: 0
+  lvl4CostSp: 0
+  lvl1UpgradeSp: 1
+  lvl2UpgradeSp: 0
+  lvl3UpgradeSp: 0
+  lvl4UpgradeSp: 0
+  lvl1CostSpRate: 200
+  lvl2CostSpRate: 0
+  lvl3CostSpRate: 0
+  lvl4CostSpRate: 0
+  lvl1UpgradeSpRate: 1
+  lvl2UpgradeSpRate: 0
+  lvl3UpgradeSpRate: 0
+  lvl4UpgradeSpRate: 0
