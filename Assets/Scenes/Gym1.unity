@@ -1464,7 +1464,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.506296
-  m_CameraDistance: 10
+  m_CameraDistance: 12
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -1675,7 +1675,7 @@ GameObject:
   - component: {fileID: 291711456}
   - component: {fileID: 291711457}
   m_Layer: 0
-  m_Name: Collider West
+  m_Name: Collider East
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1692,7 +1692,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 30, z: 30}
+  m_Size: {x: 50, y: 30, z: 50}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &291711455
 Transform:
@@ -1702,7 +1702,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291711453}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 74.1, y: 8.06804, z: 31.3}
+  m_LocalPosition: {x: 87.9, y: 8.06804, z: 15.5}
   m_LocalScale: {x: 2.959, y: 1, z: 2.9108083}
   m_Children: []
   m_Father: {fileID: 1064522565}
@@ -1784,7 +1784,43 @@ MonoBehaviour:
     m_Mode: 0
     m_Event:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 2141553850}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1106767887}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 279806853}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   m_OnObjectExit:
     m_Action: 0
     m_Target: {fileID: 1106767887}
@@ -1793,7 +1829,31 @@ MonoBehaviour:
     m_Mode: 0
     m_Event:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1106767887}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2141553850}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &309155696
 GameObject:
   m_ObjectHideFlags: 0
@@ -4351,8 +4411,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767895862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80.84, y: 5.08, z: 71.29}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -35.32, y: 13.45, z: 81.94}
+  m_LocalScale: {x: 1, y: 3.6474, z: 16.352}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 61
@@ -4370,7 +4430,7 @@ GameObject:
   - component: {fileID: 769345588}
   - component: {fileID: 769345585}
   m_Layer: 0
-  m_Name: Collider East
+  m_Name: Collider West
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4396,23 +4456,71 @@ MonoBehaviour:
   m_SkipFirst: 0
   m_Repeating: 1
   m_OnObjectEnter:
-    m_Action: 2
+    m_Action: 0
     m_Target: {fileID: 2141553850}
     m_BoostAmount: 5
     m_StartTime: 0
     m_Mode: 0
     m_Event:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 769345584}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 279806853}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   m_OnObjectExit:
-    m_Action: 3
+    m_Action: 0
     m_Target: {fileID: 2141553850}
     m_BoostAmount: -5
     m_StartTime: 0
     m_Mode: 0
     m_Event:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 2141553850}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1106767887}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!65 &769345586
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7664,11 +7772,11 @@ MonoBehaviour:
   ScaleActive: 0
   PositionWiggleProperties:
     WigglePermitted: 1
-    WiggleType: 3
+    WiggleType: 2
     UseUnscaledTime: 0
     StartWigglingAutomatically: 1
     SmoothPingPong: 1
-    UseSpeedCurve: 0
+    UseSpeedCurve: 1
     SpeedCurve:
       serializedVersion: 2
       m_Curve:
@@ -7693,9 +7801,9 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    FrequencyMin: 0
-    FrequencyMax: 1
-    AmplitudeMin: {x: 0, y: 0.5, z: 0}
+    FrequencyMin: 1
+    FrequencyMax: 2
+    AmplitudeMin: {x: 0, y: 0, z: 0}
     AmplitudeMax: {x: 0, y: 1, z: 0}
     RelativeAmplitude: 1
     Curve:
@@ -7731,7 +7839,7 @@ MonoBehaviour:
     PauseMin: 0
     PauseMax: 0
     LimitedTime: 0
-    LimitedTimeTotal: 0
+    LimitedTimeTotal: 2
     LimitedTimeFalloff:
       serializedVersion: 2
       m_Curve:
@@ -7757,8 +7865,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     LimitedTimeResetValue: 1
-    LimitedTimeLeft: 0
-    NoiseFrequencyMin: {x: 0, y: 0, z: 0}
+    LimitedTimeLeft: 2
+    NoiseFrequencyMin: {x: 0, y: 1, z: 0}
     NoiseFrequencyMax: {x: 0, y: 1, z: 0}
     NoiseShiftMin: {x: 0, y: 0, z: 0}
     NoiseShiftMax: {x: 0, y: 0, z: 0}

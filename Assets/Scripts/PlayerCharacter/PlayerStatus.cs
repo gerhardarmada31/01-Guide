@@ -25,6 +25,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
     public bool spiritCommandRange { get; set; }
     public float spRate { get; set; }
     public bool IsSprinting { get; set; }
+    public bool IsHit { get; set; }
     public bool IsMoving { get; set; }
     public bool IsJumping { get; set; }
     public bool SpStop { get; set; }
@@ -128,7 +129,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
     public void UpgradeHealthUI()
     {
         maxHp = playerStats.maxHp;
-        currentHP = maxHp;
+        // currentHP = maxHp;
         hpUI.DrawHeart(currentHP, maxHp);
     }
 
@@ -197,6 +198,8 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
         {
             currentHP -= takeDamge;
             hpUI.DrawHeart(currentHP, maxHp);
+            //Start a coroutine of damageTime
+            StartCoroutine(DamageTime());
             StartCoroutine(InvuTime());
         }
 
@@ -211,6 +214,15 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
         isInvunerable = true;
         yield return new WaitForSeconds(playerStats.invuFrame);
         isInvunerable = false;
+    }
+
+    //MoveStops to for the damage of the player
+    IEnumerator DamageTime()
+    {
+        IsHit = true;
+        yield return new WaitForSeconds(0.2f);
+        IsHit = false;
+
     }
 
     #region Cheats

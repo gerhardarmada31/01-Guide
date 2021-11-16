@@ -240,30 +240,34 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!commandMode && !freeMove)
+        if (!playerStatus.IsHit)
         {
-            playerMovement.Move(moveInput);
+            if (!commandMode && !freeMove)
+            {
+                playerMovement.Move(moveInput);
 
-            if (!playerDialogue.IsInDialogue && isMenuOn == false)
-            {
-                controls.PlayerCharacter.Sprint.Enable();
-                controls.PlayerCharacter.Jump.Enable();
-                controls.PlayerCharacter.CmdOn.Enable();
-                controls.PlayerCharacter.Move.Enable();
+                if (!playerDialogue.IsInDialogue && isMenuOn == false)
+                {
+                    controls.PlayerCharacter.Sprint.Enable();
+                    controls.PlayerCharacter.Jump.Enable();
+                    controls.PlayerCharacter.CmdOn.Enable();
+                    controls.PlayerCharacter.Move.Enable();
+                }
+                else
+                {
+                    controls.PlayerCharacter.Move.Disable();
+                    controls.PlayerCharacter.Jump.Disable();
+                    controls.PlayerCharacter.CmdOn.Disable();
+                }
             }
-            else
+            else if (freeMove)
             {
-                controls.PlayerCharacter.Move.Disable();
-                controls.PlayerCharacter.Jump.Disable();
-                controls.PlayerCharacter.CmdOn.Disable();
+                playerMovement.FreeMoveMode(moveInput, yMoveInput);
             }
+            // Debug.Log(moveInput);
+            commandRange.CommandMode();
         }
-        else if (freeMove)
-        {
-            playerMovement.FreeMoveMode(moveInput, yMoveInput);
-        }
-        // Debug.Log(moveInput);
-        commandRange.CommandMode();
+
 
     }
 

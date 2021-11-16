@@ -25,6 +25,7 @@ public class CommandRange : MonoBehaviour
     private GameObject playerObj;
 
     private LineRenderer targetLine;
+    private bool canTarget = true;
     private GameObject selectedObj;
     public GameObject SelectedObj
     {
@@ -180,14 +181,21 @@ public class CommandRange : MonoBehaviour
 
     public void TargetLeyLine()
     {
+        RaycastHit hit;
         if (selectedObj != null)
         {
-            if (Physics.Linecast(this.transform.position, selectedObj.transform.position))
+            if (Physics.Linecast(this.transform.position, selectedObj.transform.position, out hit))
             {
+                // selectedObj = (hit.collider.gameObject);
                 targetLine.enabled = true;
                 targetLine.SetPosition(0, this.transform.position);
-                var targetPosition = selectedObj.transform.position - transform.position;
-                targetLine.SetPosition(1, selectedObj.transform.position);
+                // var targetPosition = selectedObj.transform.position - transform.position;
+
+                if (hit.collider)
+                {
+                    //ADD CANTARGET BOOL = TRUE;
+                    targetLine.SetPosition(1, hit.point);
+                }
                 Debug.Log("TargetLinedUp");
             }
         }
