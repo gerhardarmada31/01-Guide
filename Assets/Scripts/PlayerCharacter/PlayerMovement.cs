@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerStatus pStatus;
     //Movement
 
+    //Change GAMECAM and MAINCAM
     [SerializeField] private Transform playerMainCam;
     [SerializeField] private Transform playerResetPoint;
 
