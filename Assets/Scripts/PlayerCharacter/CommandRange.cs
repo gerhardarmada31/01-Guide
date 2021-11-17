@@ -95,7 +95,7 @@ public class CommandRange : MonoBehaviour
 
     public void ConfirmTarget()
     {
-        if (playerStatus.CurrentSP >= 1 && selectedObj != null)
+        if (playerStatus.CurrentSP >= 1 && selectedObj != null && canTarget == true)
         {
             //calling the functions from the selected object and gives a reference for the player Obj
             TargetEventSystem.currentTarget.ConfirmTargetSelect(selectedObj, playerObj, playerStatus.TotalDmg);
@@ -184,17 +184,29 @@ public class CommandRange : MonoBehaviour
         RaycastHit hit;
         if (selectedObj != null)
         {
-            if (Physics.Linecast(this.transform.position, selectedObj.transform.position, out hit))
+            var allLayers = ~(1 << 8);
+            if (Physics.Linecast(this.transform.position, selectedObj.transform.position, out hit, allLayers))
             {
                 // selectedObj = (hit.collider.gameObject);
                 targetLine.enabled = true;
                 targetLine.SetPosition(0, this.transform.position);
                 // var targetPosition = selectedObj.transform.position - transform.position;
 
+                //Checks if Leyline hits the target
                 if (hit.collider)
                 {
-                    //ADD CANTARGET BOOL = TRUE;
                     targetLine.SetPosition(1, hit.point);
+                    Debug.Log(hit.collider.name);
+                    if (hit.collider.transform.position != selectedObj.transform.position)
+                    {
+                        canTarget = false;
+                    }
+                    else
+                    {
+                        canTarget = true;
+
+                    }
+
                 }
                 Debug.Log("TargetLinedUp");
             }

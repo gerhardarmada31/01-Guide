@@ -14,11 +14,21 @@ public class ShroudedObject : MonoBehaviour
     [SerializeField] private int spChecklvl1;
     [SerializeField] private int spChecklvl2;
 
+    [SerializeField] private float lookRadius = 1f;
+
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, lookRadius);
+    }
+
     void Start()
     {
         TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
         TargetEventSystem.currentTarget.onShroudDetected += ShroudDetected;
     }
+
 
     private void ShroudDetected(GameObject obj, bool shroudOn)
     {
