@@ -74,8 +74,8 @@ public class DisplayInventory : MonoBehaviour
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             // obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
             itemsDisplayed.Add(inventory.Container[i], obj);
-        }
 
+        }
 
     }
 
@@ -150,7 +150,6 @@ public class DisplayInventory : MonoBehaviour
         // EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(itemsDisplayed[inventory.Container[0]]);
-        // lastSelectedObj = EventSystem.current.currentSelectedGameObject;
 
 
 

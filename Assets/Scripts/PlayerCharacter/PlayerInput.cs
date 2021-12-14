@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 
@@ -125,6 +126,8 @@ public class PlayerInput : MonoBehaviour
         {
             tabVal = 1;
         }
+
+       Debug.Log(EventSystem.current.currentSelectedGameObject);
     }
 
     #endregion
