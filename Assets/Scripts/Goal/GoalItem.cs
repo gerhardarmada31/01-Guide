@@ -46,7 +46,7 @@ public class GoalItem : GoalBase
             //checks if the SO item tittle is the same as the goalItemTitle
             for (int i = 0; i < playerInventory.Container.Count; i++)
             {
-                if (playerInventory.Container[i].item.itemTitle == requiredItemTitle)
+                if (playerInventory.Container[i].item.itemID == requiredItemTitle)
                 {
                     Debug.Log("goal ITEM COMPLETE " + playerInventory.Container[i].item);
                     GoalEvent.currentGoalEvent.GoalComplete(goalTitle, true);

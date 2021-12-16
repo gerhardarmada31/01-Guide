@@ -16,7 +16,7 @@ public abstract class Item_SO : ScriptableObject
     public ItemType type;
 
     public string itemNameUI;
-    public string itemTitle;
+    public string itemID;
     public int itemAmount = 1;
     [TextArea(15,20)]
     public string description;

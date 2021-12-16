@@ -8,12 +8,12 @@ public class Item : MonoBehaviour
     public Item_SO item;
 
     public int ItemAmount { get; set; }
-    private string itemTitle;
+    private string itemID;
     [SerializeField] private string goalTitle;
     private void Start()
     {
         ItemAmount = item.itemAmount;
-        itemTitle = item.itemTitle;
+        itemID = item.itemID;
     }
 
     private void ObjectConfirmed(GameObject obj, GameObject playerObj, int currentSp)

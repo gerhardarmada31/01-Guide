@@ -113,6 +113,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Hold(duration=0.1,pressPoint=0.2)""
+                },
+                {
+                    ""name"": ""CloseNotify"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa59ffee-e234-4726-88fa-f33fb9a63aa0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=0.1,pressPoint=0.2)""
                 }
             ],
             ""bindings"": [
@@ -410,6 +418,17 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d46e8709-a7e0-4788-9957-df34b4873932"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseNotify"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1025,6 +1044,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_PlayerCharacter_ContinueDialogue = m_PlayerCharacter.FindAction("ContinueDialogue", throwIfNotFound: true);
         m_PlayerCharacter_Menu = m_PlayerCharacter.FindAction("Menu", throwIfNotFound: true);
         m_PlayerCharacter_Sprint = m_PlayerCharacter.FindAction("Sprint", throwIfNotFound: true);
+        m_PlayerCharacter_CloseNotify = m_PlayerCharacter.FindAction("CloseNotify", throwIfNotFound: true);
         // CheatController
         m_CheatController = asset.FindActionMap("CheatController", throwIfNotFound: true);
         m_CheatController_Return = m_CheatController.FindAction("Return", throwIfNotFound: true);
@@ -1103,6 +1123,7 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerCharacter_ContinueDialogue;
     private readonly InputAction m_PlayerCharacter_Menu;
     private readonly InputAction m_PlayerCharacter_Sprint;
+    private readonly InputAction m_PlayerCharacter_CloseNotify;
     public struct PlayerCharacterActions
     {
         private @InputActions m_Wrapper;
@@ -1119,6 +1140,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @ContinueDialogue => m_Wrapper.m_PlayerCharacter_ContinueDialogue;
         public InputAction @Menu => m_Wrapper.m_PlayerCharacter_Menu;
         public InputAction @Sprint => m_Wrapper.m_PlayerCharacter_Sprint;
+        public InputAction @CloseNotify => m_Wrapper.m_PlayerCharacter_CloseNotify;
         public InputActionMap Get() { return m_Wrapper.m_PlayerCharacter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1164,6 +1186,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Sprint.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnSprint;
+                @CloseNotify.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCloseNotify;
+                @CloseNotify.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCloseNotify;
+                @CloseNotify.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCloseNotify;
             }
             m_Wrapper.m_PlayerCharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -1204,6 +1229,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @CloseNotify.started += instance.OnCloseNotify;
+                @CloseNotify.performed += instance.OnCloseNotify;
+                @CloseNotify.canceled += instance.OnCloseNotify;
             }
         }
     }
@@ -1376,6 +1404,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnContinueDialogue(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnCloseNotify(InputAction.CallbackContext context);
     }
     public interface ICheatControllerActions
     {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro;
@@ -13,6 +14,7 @@ public class DisplayInventory : MonoBehaviour
     private bool isMenuOn;
     private Transform uiContainer;
     private GameObject continueButton;
+
 
     //del me
     private bool itemOn;
@@ -33,6 +35,10 @@ public class DisplayInventory : MonoBehaviour
 
     public GameObject lastSelectedObj;
     private GameObject obj;
+
+    //[Header("ITEM NOTIFICATION")]
+
+    public GameObject itemNotificationUI { get; set; }
 
     public Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
     [SerializeField] private List<GameObject> itemsList = new List<GameObject>();
@@ -74,7 +80,6 @@ public class DisplayInventory : MonoBehaviour
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             // obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
             itemsDisplayed.Add(inventory.Container[i], obj);
-
         }
 
     }
@@ -101,9 +106,7 @@ public class DisplayInventory : MonoBehaviour
                 {
                     obj = Instantiate(inventory.Container[i].item.uiPrefab, Vector3.zero, Quaternion.identity, itemParent.transform);
                     obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-
                     Debug.Log("REMOVE ITEM! " + obj);
-
                 }
             }
             else
@@ -135,25 +138,26 @@ public class DisplayInventory : MonoBehaviour
 
         isMenuOn = !isMenuOn;
         OnOffInventory(isMenuOn);
-
-        // if (lastSelectedObj == null)
-        // {
-        //     EventSystem.current.SetSelectedGameObject(null);
-        //     Debug.Log("default select invent");
-        //     EventSystem.current.SetSelectedGameObject(itemsDisplayed[inventory.Container[0]]);
-        // }
-        // else if (isMenuOn == true)
-        // {
-        //     // EventSystem.current.SetSelectedGameObject(lastSelectedObj);
-        // }
-
-        // EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(itemsDisplayed[inventory.Container[0]]);
 
 
 
         Debug.Log("Menu is" + isMenuOn);
+    }
+
+    //EVENT Activate item notification
+    public void ItemNotifyActivate()
+    {
+        itemNotificationUI.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        isMenuOn = true;
+    }
+
+    //Unity Event to destroy ItemNotification
+    public void DestroyItemNotification()
+    {
+        itemNotificationUI.SetActive(false);
     }
 
     //All of the objects inside the menu that turns

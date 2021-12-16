@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName ="New Inventory", menuName ="Inventory/Inventory")]
+[CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory/Inventory")]
 public class InventorySO : ScriptableObject
 {
     public List<InventorySlot> Container = new List<InventorySlot>();
+
+
+
 
     public void AddItem(Item_SO _item, int _amount)
     {
@@ -23,6 +27,8 @@ public class InventorySO : ScriptableObject
         }
         if (!hasItem)
         {
+            //CALL THE EVENT FOR THE NOTIFICATION ITEM HERE
+            InventoryEvent.currentInventoryEvent.ItemNotify(_item.itemNameUI);
             Container.Add(new InventorySlot(_item, _amount));
         }
     }

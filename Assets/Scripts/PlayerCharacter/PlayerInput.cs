@@ -29,7 +29,9 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private UnityEvent itemTab;
     [SerializeField] private UnityEvent statsTab;
     [SerializeField] private UnityEvent optionsTab;
+    [SerializeField] private UnityEvent closeItemNotification;
 
+    private bool isItemNotifyOn = false;
     private bool isMenuOn = false;
     private PlayerMovement playerMovement;
     private PlayerStatus playerStatus;
@@ -54,10 +56,12 @@ public class PlayerInput : MonoBehaviour
     {
 
         //Subscribring from the inputaction events
+        InventoryEvent.currentInventoryEvent.onPlayerItemNotify += HandleItemNotifyInput;
 
         //MENU
         controls.PlayerCharacter.Menu.performed += HandleMenu;
         controls.UI.Tab.performed += HandleTab;
+        controls.PlayerCharacter.CloseNotify.performed += HandleItemNotifyUI;
 
         //SPRINT
         controls.PlayerCharacter.Sprint.performed += HandleSprint;
@@ -80,12 +84,34 @@ public class PlayerInput : MonoBehaviour
 
     }
 
+    private void HandleItemNotifyInput(bool _isItemOn)
+    {
+        isItemNotifyOn = true;
+        Debug.Log("ITEM PLAYER NOTIFIED");
+    }
+
+    private void HandleItemNotifyUI(InputAction.CallbackContext context)
+    {
+        if (isItemNotifyOn)
+        {
+            Debug.Log("ITEM PRESSED");
+            controls.PlayerCharacter.Menu.Disable();
+            isItemNotifyOn = false;
+            //unity event that listens if the ItemNotification Is Active
+            closeItemNotification.Invoke();
+        }
+    }
+
+
+
     #region MENU
     private void HandleMenu(InputAction.CallbackContext context)
     {
         isMenuOn = !isMenuOn;
         callMenu.Invoke();
     }
+
+
 
     private void HandleTab(InputAction.CallbackContext context)
     {
@@ -127,13 +153,13 @@ public class PlayerInput : MonoBehaviour
             tabVal = 1;
         }
 
-       Debug.Log(EventSystem.current.currentSelectedGameObject);
+
     }
 
     #endregion
 
 
-    #region SPRING
+    #region SPRINT
     private void HandleStopSprint(InputAction.CallbackContext context)
     {
         Debug.Log("Stop Sprinting");
@@ -216,6 +242,7 @@ public class PlayerInput : MonoBehaviour
         //MENU
         controls.PlayerCharacter.Menu.performed -= HandleMenu;
         controls.UI.Tab.performed -= HandleTab;
+        controls.PlayerCharacter.CloseNotify.performed -= HandleItemNotifyUI;
 
         //SPRINT
         controls.PlayerCharacter.Sprint.performed += HandleSprint;
@@ -243,33 +270,50 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!playerStatus.IsHit)
+        if (!isItemNotifyOn)
         {
-            if (!commandMode && !freeMove)
-            {
-                playerMovement.Move(moveInput);
 
-                if (!playerDialogue.IsInDialogue && isMenuOn == false)
-                {
-                    controls.PlayerCharacter.Sprint.Enable();
-                    controls.PlayerCharacter.Jump.Enable();
-                    controls.PlayerCharacter.CmdOn.Enable();
-                    controls.PlayerCharacter.Move.Enable();
-                }
-                else
-                {
-                    controls.PlayerCharacter.Move.Disable();
-                    controls.PlayerCharacter.Jump.Disable();
-                    controls.PlayerCharacter.CmdOn.Disable();
-                }
-            }
-            else if (freeMove)
+
+            if (!playerStatus.IsHit)
             {
-                playerMovement.FreeMoveMode(moveInput, yMoveInput);
+                if (!commandMode && !freeMove)
+                {
+                    playerMovement.Move(moveInput);
+
+                    if (!playerDialogue.IsInDialogue && isMenuOn == false)
+                    {
+                        controls.PlayerCharacter.Sprint.Enable();
+                        controls.PlayerCharacter.Jump.Enable();
+                        controls.PlayerCharacter.CmdOn.Enable();
+                        controls.PlayerCharacter.Move.Enable();
+                    }
+                    else
+                    {
+                        controls.PlayerCharacter.Move.Disable();
+                        controls.PlayerCharacter.Jump.Disable();
+                        controls.PlayerCharacter.CmdOn.Disable();
+                    }
+                }
+                else if (freeMove)
+                {
+                    playerMovement.FreeMoveMode(moveInput, yMoveInput);
+                }
+                // Debug.Log(moveInput);
             }
-            // Debug.Log(moveInput);
-            commandRange.CommandMode();
         }
+        else
+        {
+            Debug.Log("HELLOSASDASD");
+            controls.PlayerCharacter.CmdOn.Disable();
+            controls.PlayerCharacter.Jump.Disable();
+            controls.PlayerCharacter.Move.Disable();
+            var itemNotifyUI = EventSystem.current.currentSelectedGameObject;
+
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(itemNotifyUI);
+        }
+        commandRange.CommandMode();
+        Debug.Log("MODE CURRENTLY SELECTED " + EventSystem.current.currentSelectedGameObject);
 
 
     }

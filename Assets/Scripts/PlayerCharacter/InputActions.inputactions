@@ -100,6 +100,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Hold(duration=0.1,pressPoint=0.2)"
+                },
+                {
+                    "name": "CloseNotify",
+                    "type": "Button",
+                    "id": "fa59ffee-e234-4726-88fa-f33fb9a63aa0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.1,pressPoint=0.2)"
                 }
             ],
             "bindings": [
@@ -397,6 +405,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d46e8709-a7e0-4788-9957-df34b4873932",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CloseNotify",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

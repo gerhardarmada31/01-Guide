@@ -8,6 +8,9 @@ position: 368,-284
 <<if GoalComplete("Shirley.Goal") is true && Visited("Shirley.Accept") is true>>
 GOOD JOB!
 
+<<GetReward Item>>
+
+
 <<endif>>
 
 <<if Visited("Shirley.Start") is false>>
