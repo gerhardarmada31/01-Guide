@@ -20,6 +20,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
     [Header("UI Implement")]
     [SerializeField] private HealthUI hpUI;
     [SerializeField] private SpiritUI spUI;
+    
     //PROPS
 
     public bool spiritCommandRange { get; set; }

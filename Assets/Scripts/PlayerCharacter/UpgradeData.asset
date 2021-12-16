@@ -41,6 +41,6 @@ MonoBehaviour:
   lvl3CostSpRate: 0
   lvl4CostSpRate: 0
   lvl1UpgradeSpRate: 1
-  lvl2UpgradeSpRate: 0
+  lvl2UpgradeSpRate: 1
   lvl3UpgradeSpRate: 0
   lvl4UpgradeSpRate: 0
