@@ -9,14 +9,6 @@ public class StatsUI : MonoBehaviour
     public PlayerCharacter_SO playerStatus;
     [SerializeField] private TMP_Text maxHP, maxSP, attack, spRate;
 
-    private void Awake()
-    {
-        // pStatus = FindObjectOfType<PlayerStatus>();
-        // if (pStatus == null)
-        // {
-        //     Debug.LogError("Player status is empty on UI, set something to it");
-        // }
-    }
 
     void Start()
     {

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl1CostHp: 200
   lvl2CostHp: 800
-  lvl3CostHp: 0
-  lvl4CostHp: 0
+  lvl3CostHp: 300
+  lvl4CostHp: 350
   lvl1UpgradeHp: 1
   lvl2UpgradeHp: 2
   lvl3UpgradeHp: 0
