@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -107,8 +108,10 @@ public class PlayerUpgrades : MonoBehaviour
 
     void Start()
     {
-
+        InventoryEvent.currentInventoryEvent.onPlayerSPUpgrade += SPUpgradeEvent;
     }
+
+
 
     //A function that upgrades the values in Int Based
     public int UpgradingInt(int[] _typeArray, int _currentTypeLvl, int[] _typeCostArray, int _pStat)
@@ -214,6 +217,11 @@ public class PlayerUpgrades : MonoBehaviour
         }
     }
 
+    private void SPUpgradeEvent(int _spAmount)
+    {
+        pStatus.playerStats.maxSp += _spAmount;
+    }
+
     public void AtkUpgradeEvent()
     {
         pStatus.playerStats.attackPoint = UpgradingInt(atkUpgradeArray, atkCurrentLvl, atkCostArray, pStatus.playerStats.attackPoint);
@@ -237,28 +245,6 @@ public class PlayerUpgrades : MonoBehaviour
         }
     }
 
-    public void SpUpgradeEvent()
-    {
-        pStatus.playerStats.maxSp = UpgradingInt(spUpgradeArray, spCurrentLvl, spCostArray, pStatus.playerStats.maxSp);
-
-        if (canUpgrade)
-        {
-            spCurrentLvl++;
-            for (int i = 0; i < spCostArray.Length; i++)
-            {
-                if (spCurrentLvl == i)
-                {
-                    currentSPCost = spCostArray[i];
-                }
-            }
-
-            if (spCurrentLvl >= spCostArray.Length)
-            {
-                Debug.Log("Reached Max Level");
-            }
-            canUpgrade = false;
-        }
-    }
 
     public void SpRateUpgrade()
     {
@@ -279,6 +265,11 @@ public class PlayerUpgrades : MonoBehaviour
             }
             canUpgrade = false;
         }
+    }
+
+    void OnDisable()
+    {
+        InventoryEvent.currentInventoryEvent.onPlayerSPUpgrade -= SPUpgradeEvent;
     }
 
 

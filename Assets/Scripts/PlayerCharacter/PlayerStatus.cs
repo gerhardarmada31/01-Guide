@@ -20,7 +20,7 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
     [Header("UI Implement")]
     [SerializeField] private HealthUI hpUI;
     [SerializeField] private SpiritUI spUI;
-    
+
     //PROPS
 
     public bool spiritCommandRange { get; set; }
@@ -80,12 +80,12 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
         spRate = playerStats.spRate;
 
         playerStats.invuFrame = 1.5f;
-        // playerStats.maxHp = 3;
-        playerStats.maxSp = 4;
 
 
         //del this later
         // playerStats.currentCoin = 100;
+        // playerStats.maxSp = 4;
+        // playerStats.maxHp = 3;
         maxHp = playerStats.maxHp;
         currentHP = 3;
         currentSP = 3;

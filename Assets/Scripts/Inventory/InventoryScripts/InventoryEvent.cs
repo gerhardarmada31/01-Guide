@@ -15,6 +15,7 @@ public class InventoryEvent : MonoBehaviour
     public event Action<Equipment_SO, bool> onEquipPlayer;
     public event Action<bool> onPlayerItemNotify;
     public event Action<string> onNameItemNotify;
+    public event Action<int> onPlayerSPUpgrade;
 
     public void InventoryUpdateUI(bool isAdd)
     {
@@ -34,5 +35,10 @@ public class InventoryEvent : MonoBehaviour
     public void ItemNotify(string _itemName)
     {
         onNameItemNotify?.Invoke(_itemName);
+    }
+
+    public void PlayerSPUpgrade(int _spPlusAmount)
+    {
+        onPlayerSPUpgrade?.Invoke(_spPlusAmount);
     }
 }

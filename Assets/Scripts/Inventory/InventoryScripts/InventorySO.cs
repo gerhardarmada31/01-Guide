@@ -8,7 +8,7 @@ using UnityEngine;
 public class InventorySO : ScriptableObject
 {
     public List<InventorySlot> Container = new List<InventorySlot>();
-
+    private ItemType spiritType = ItemType.SPIRIT;
 
 
 
@@ -28,7 +28,15 @@ public class InventorySO : ScriptableObject
         if (!hasItem)
         {
             //CALL THE EVENT FOR THE NOTIFICATION ITEM HERE
+            //MAKE a boolean inside ITEM_SO to check if item has already picked.
             InventoryEvent.currentInventoryEvent.ItemNotify(_item.itemNameUI);
+
+            //Check if the Item is spirit type, then send an event.
+            if (_item.type == spiritType)
+            {
+                Debug.Log("This is a spiritType");
+                InventoryEvent.currentInventoryEvent.PlayerSPUpgrade(_item.itemAmount);
+            }
             Container.Add(new InventorySlot(_item, _amount));
         }
     }

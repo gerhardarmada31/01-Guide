@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de15b1b2701b25d4b95f84135e818c0b, type: 3}
+  m_Name: Shirley's Spirit
+  m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 616324364039716464, guid: 8b6ebe34026db4a43912fc41a6f09404, type: 3}
+  type: 3
+  itemNameUI: Shirley's Spirit
+  itemID: shirleysp
+  itemAmount: 1
+  description: 
+  playerCharacter: {fileID: 11400000, guid: e779ac30b0ec2be4faaa63ac56480f06, type: 2}
+  spPlus: 1

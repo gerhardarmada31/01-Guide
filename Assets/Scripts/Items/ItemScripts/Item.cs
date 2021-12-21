@@ -14,19 +14,21 @@ public class Item : MonoBehaviour
     {
         ItemAmount = item.itemAmount;
         itemID = item.itemID;
+        TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
     }
 
     private void ObjectConfirmed(GameObject obj, GameObject playerObj, int currentSp)
     {
+        Debug.Log("DESTROY OBJ");
         if (obj == this.gameObject)
         {
             // GoalEvent.currentGoalEvent.AmountUpdate()
-            Destroy(this.gameObject);           
+            Destroy(this.gameObject);
         }
     }
 
     private void OnDisable()
     {
-         TargetEventSystem.currentTarget.onConfirmTargetSelect -= ObjectConfirmed;
+        TargetEventSystem.currentTarget.onConfirmTargetSelect -= ObjectConfirmed;
     }
 }

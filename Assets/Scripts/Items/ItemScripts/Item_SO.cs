@@ -7,14 +7,14 @@ public enum ItemType
 {
     KEY,
     EQUIPMENT,
-    DEFAULT
+    DEFAULT,
+    SPIRIT
 }
 
 public abstract class Item_SO : ScriptableObject
 {
     public GameObject uiPrefab;
     public ItemType type;
-
     public string itemNameUI;
     public string itemID;
     public int itemAmount = 1;
