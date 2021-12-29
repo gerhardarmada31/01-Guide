@@ -571,6 +571,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MenuNav"",
+                    ""type"": ""Button"",
+                    ""id"": ""39b43284-64a3-4c77-bde8-6e51d14a568b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -1024,6 +1032,61 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""action"": ""Tab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""e751756c-4a07-465d-aea0-de90e4f9b27d"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuNav"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""e48a6987-627b-4a4e-aed9-9b3e715764ec"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""0ede745e-0a6a-410d-9856-59e8f10796a7"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""e9c39973-bd3c-4a48-885e-00c982f9255b"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""522fc239-7a8a-4fc2-a272-0da44f02f895"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -1062,6 +1125,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_Tab = m_UI.FindAction("Tab", throwIfNotFound: true);
+        m_UI_MenuNav = m_UI.FindAction("MenuNav", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1292,6 +1356,7 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_Tab;
+    private readonly InputAction m_UI_MenuNav;
     public struct UIActions
     {
         private @InputActions m_Wrapper;
@@ -1307,6 +1372,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
         public InputAction @Tab => m_Wrapper.m_UI_Tab;
+        public InputAction @MenuNav => m_Wrapper.m_UI_MenuNav;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1349,6 +1415,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Tab.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTab;
                 @Tab.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTab;
                 @Tab.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTab;
+                @MenuNav.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMenuNav;
+                @MenuNav.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMenuNav;
+                @MenuNav.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMenuNav;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1386,6 +1455,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Tab.started += instance.OnTab;
                 @Tab.performed += instance.OnTab;
                 @Tab.canceled += instance.OnTab;
+                @MenuNav.started += instance.OnMenuNav;
+                @MenuNav.performed += instance.OnMenuNav;
+                @MenuNav.canceled += instance.OnMenuNav;
             }
         }
     }
@@ -1424,5 +1496,6 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnTab(InputAction.CallbackContext context);
+        void OnMenuNav(InputAction.CallbackContext context);
     }
 }

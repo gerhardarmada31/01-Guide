@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 3
   invuFrame: 1.5
-  attackPoint: 1
+  attackPoint: 2
   totalDmg: 0
   maxSp: 4
   maxSpRate: 3
@@ -29,6 +29,6 @@ MonoBehaviour:
   jumpHeight: 3.5
   castOffset: 0
   turnSpeed: 0.1
-  currentCoin: 43400
+  currentCoin: 42800
   playerPosition: {x: -7.2533007, y: 7.3581047, z: 12.21105}
   hasTeleport: 0

@@ -27,7 +27,7 @@ public class SpiritUI : MonoBehaviour
     {
         if (_spRate != _maxSpRate)
         {
-            Debug.Log("SP fill UI");
+            // Debug.Log("SP fill UI");
             spRAmount.fillAmount = Mathf.InverseLerp(spRAmount.fillAmount, _maxSpRate, _spRate);
         }
         else
@@ -45,7 +45,7 @@ public class SpiritUI : MonoBehaviour
     public void SpiritCount(int _spCount)
     {
         spCountText.SetText(_spCount.ToString());
-        Debug.Log("commandMode off");
+        // Debug.Log("commandMode off");
     }
 
 

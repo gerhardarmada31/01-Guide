@@ -123,7 +123,7 @@ public class NPCStateController : MonoBehaviour
     void Update()
     {
         currentState.UpdateState(this);
-        Debug.Log(currentState);
+        // Debug.Log(currentState);
     }
 
     private void OnDrawGizmos()

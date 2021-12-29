@@ -20,6 +20,7 @@ public class PlayerInput : MonoBehaviour
     private float tabInput;
     float tabVal = 1;
     private float yMoveInput;
+    private float yItemMove;
     private float mouseWheelAxis;
     private bool commandMode = false;
     private int[] tabList = new int[3];
@@ -30,9 +31,11 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private UnityEvent statsTab;
     [SerializeField] private UnityEvent optionsTab;
     [SerializeField] private UnityEvent closeItemNotification;
+    [SerializeField] private UnityEvent scrollEvent;
 
     private bool isItemNotifyOn = false;
     private bool isMenuOn = false;
+    private bool itemModeOn = false;
     private PlayerMovement playerMovement;
     private PlayerStatus playerStatus;
     private CommandRange commandRange;
@@ -62,6 +65,7 @@ public class PlayerInput : MonoBehaviour
         controls.PlayerCharacter.Menu.performed += HandleMenu;
         controls.UI.Tab.performed += HandleTab;
         controls.PlayerCharacter.CloseNotify.performed += HandleItemNotifyUI;
+        controls.UI.MenuNav.performed += HandleMenuSelect;
 
         //SPRINT
         controls.PlayerCharacter.Sprint.performed += HandleSprint;
@@ -90,6 +94,18 @@ public class PlayerInput : MonoBehaviour
         Debug.Log("ITEM PLAYER NOTIFIED");
     }
 
+    private void HandleMenuSelect(InputAction.CallbackContext context)
+    {
+        if (itemModeOn)
+        {
+            scrollEvent.Invoke();
+            var menuMove = context.ReadValue<Vector2>();
+            yItemMove = menuMove.y;
+            Debug.Log("Y item move" + yItemMove);
+        }
+
+    }
+
     private void HandleItemNotifyUI(InputAction.CallbackContext context)
     {
         if (isItemNotifyOn)
@@ -108,6 +124,14 @@ public class PlayerInput : MonoBehaviour
     private void HandleMenu(InputAction.CallbackContext context)
     {
         isMenuOn = !isMenuOn;
+        if (isMenuOn)
+        {
+            itemModeOn = true;
+        }
+        else
+        {
+            itemModeOn = false;
+        }
         callMenu.Invoke();
     }
 
@@ -133,14 +157,17 @@ public class PlayerInput : MonoBehaviour
             {
                 case 1:
                     itemTab.Invoke();
+                    itemModeOn = true;
                     break;
 
                 case 2:
                     statsTab.Invoke();
+                    itemModeOn = false;
                     break;
 
                 case 3:
                     optionsTab.Invoke();
+                    itemModeOn = false;
                     break;
 
                 default:

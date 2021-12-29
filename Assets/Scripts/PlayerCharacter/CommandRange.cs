@@ -142,7 +142,7 @@ public class CommandRange : MonoBehaviour
     {
         if (gameObject.activeSelf)
         {
-            Debug.Log("cmdOn");
+            // Debug.Log("cmdOn");
             commandRangeFeel?.PlayFeedbacks();
             StartCoroutine(WaitandPause(0.1f));
             isCommandModeOn = true;
@@ -151,7 +151,7 @@ public class CommandRange : MonoBehaviour
         {
             if (this.enabled == true)
             {
-                Debug.Log("cmdOff");
+                // Debug.Log("cmdOff");
                 StopCoroutine(WaitandPause(0.1f));
                 ClearingTarget();
                 targetText.text = "None";
