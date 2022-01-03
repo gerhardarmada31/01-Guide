@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour
     private float tabInput;
     float tabVal = 1;
     private float yMoveInput;
-    private float yItemMove;
+    private Vector2 itemMove;
     private float mouseWheelAxis;
     private bool commandMode = false;
     private int[] tabList = new int[3];
@@ -31,7 +31,6 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private UnityEvent statsTab;
     [SerializeField] private UnityEvent optionsTab;
     [SerializeField] private UnityEvent closeItemNotification;
-    [SerializeField] private UnityEvent scrollEvent;
 
     private bool isItemNotifyOn = false;
     private bool isMenuOn = false;
@@ -66,6 +65,7 @@ public class PlayerInput : MonoBehaviour
         controls.UI.Tab.performed += HandleTab;
         controls.PlayerCharacter.CloseNotify.performed += HandleItemNotifyUI;
         controls.UI.MenuNav.performed += HandleMenuSelect;
+        controls.UI.MenuNav.canceled += HandleMenuZero => itemMove = Vector2.zero;
 
         //SPRINT
         controls.PlayerCharacter.Sprint.performed += HandleSprint;
@@ -91,6 +91,7 @@ public class PlayerInput : MonoBehaviour
     private void HandleItemNotifyInput(bool _isItemOn)
     {
         isItemNotifyOn = true;
+        controls.PlayerCharacter.Menu.Disable();
         Debug.Log("ITEM PLAYER NOTIFIED");
     }
 
@@ -98,12 +99,11 @@ public class PlayerInput : MonoBehaviour
     {
         if (itemModeOn)
         {
-            scrollEvent.Invoke();
-            var menuMove = context.ReadValue<Vector2>();
-            yItemMove = menuMove.y;
-            Debug.Log("Y item move" + yItemMove);
+            // scrollEvent.Invoke();
+            itemMove = context.ReadValue<Vector2>();
+            float scrollMove = itemMove.y;
+            InventoryEvent.currentInventoryEvent.ItemNavigate(scrollMove);
         }
-
     }
 
     private void HandleItemNotifyUI(InputAction.CallbackContext context)
@@ -111,8 +111,8 @@ public class PlayerInput : MonoBehaviour
         if (isItemNotifyOn)
         {
             Debug.Log("ITEM PRESSED");
-            controls.PlayerCharacter.Menu.Disable();
             isItemNotifyOn = false;
+            controls.PlayerCharacter.Menu.Enable();
             //unity event that listens if the ItemNotification Is Active
             closeItemNotification.Invoke();
         }
@@ -123,6 +123,7 @@ public class PlayerInput : MonoBehaviour
     #region MENU
     private void HandleMenu(InputAction.CallbackContext context)
     {
+        Debug.Log("ASDASDASD");
         isMenuOn = !isMenuOn;
         if (isMenuOn)
         {
@@ -270,6 +271,9 @@ public class PlayerInput : MonoBehaviour
         controls.PlayerCharacter.Menu.performed -= HandleMenu;
         controls.UI.Tab.performed -= HandleTab;
         controls.PlayerCharacter.CloseNotify.performed -= HandleItemNotifyUI;
+        controls.UI.MenuNav.performed -= HandleMenuSelect;
+        controls.UI.MenuNav.canceled -= HandleMenuZero => itemMove = Vector2.zero;
+
 
         //SPRINT
         controls.PlayerCharacter.Sprint.performed += HandleSprint;
@@ -340,7 +344,7 @@ public class PlayerInput : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(itemNotifyUI);
         }
         commandRange.CommandMode();
-        Debug.Log("MODE CURRENTLY SELECTED " + EventSystem.current.currentSelectedGameObject);
+        // Debug.Log("MODE CURRENTLY SELECTED " + EventSystem.current.currentSelectedGameObject);
 
 
     }

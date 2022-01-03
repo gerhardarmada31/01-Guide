@@ -11,15 +11,27 @@ public class InventoryEvent : MonoBehaviour
         currentInventoryEvent = this;
     }
 
+    //EVENTS THATS RELATIVE TO INVENTORY
     public event Action<bool> onInventoryUpdateUI;
     public event Action<Equipment_SO, bool> onEquipPlayer;
     public event Action<bool> onPlayerItemNotify;
     public event Action<string> onNameItemNotify;
     public event Action<int> onPlayerSPUpgrade;
+    public event Action<float> onItemNavigate;
+    public event Action<string, string> onItemDescription;
 
-    public void InventoryUpdateUI(bool isAdd)
+    public void ItemDescription(string _name, string _description)
     {
-        onInventoryUpdateUI?.Invoke(isAdd);
+        onItemDescription?.Invoke(_name, _description);
+    }
+
+    public void InventoryUpdateUI(bool _isAdd)
+    {
+        onInventoryUpdateUI?.Invoke(_isAdd);
+    }
+    public void ItemNavigate(float _yInput)
+    {
+        onItemNavigate?.Invoke(_yInput);
     }
 
     public void EquipItemPlayer(Equipment_SO _item, bool _hasHat)

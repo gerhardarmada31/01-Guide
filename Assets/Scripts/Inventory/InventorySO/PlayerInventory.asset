@@ -14,30 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Container:
   - item: {fileID: 11400000, guid: 7c55c25747fc05744984900f8ecf4534, type: 2}
-    amount: 10
+    amount: 11
   - item: {fileID: 11400000, guid: 5bda92c402ff9df4b83c78915f15c908, type: 2}
     amount: 4
-  - item: {fileID: 11400000, guid: 64f11ce556e8c4546a0bbf713eb2a730, type: 2}
-    amount: 4
-  - item: {fileID: 11400000, guid: 9d7059a545621d94e9d9374502fbaa39, type: 2}
-    amount: 1
-  - item: {fileID: 11400000, guid: a49efb69b776d6f4bb75d48281160953, type: 2}
-    amount: 1
-  - item: {fileID: 11400000, guid: 5d9c8206ceec7c44b901dc3baf028345, type: 2}
-    amount: 1
-  - item: {fileID: 11400000, guid: e53950e30af51834fb50c209fdf649a2, type: 2}
-    amount: 1
-  - item: {fileID: 11400000, guid: 0fe350afe7de158499cd8e0c123d05df, type: 2}
-    amount: 1
-  - item: {fileID: 11400000, guid: 902268ee3cf89944eb0c15e7d5786234, type: 2}
-    amount: 1
-  - item: {fileID: 11400000, guid: 21c7c421f962e1445a597b61b7945f91, type: 2}
-    amount: 1
-  - item: {fileID: 11400000, guid: 1bfbbd0aa97caec40afb5ebb4800414c, type: 2}
-    amount: 1
-  - item: {fileID: 11400000, guid: 083036843681c0d4f80c23f4145f9f76, type: 2}
-    amount: 1
-  - item: {fileID: 11400000, guid: 4177235a53ee5e24990d1d380ecd324a, type: 2}
-    amount: 1
-  - item: {fileID: 11400000, guid: 9eb1f87d042c768448d5bbe573c92fc7, type: 2}
-    amount: 1

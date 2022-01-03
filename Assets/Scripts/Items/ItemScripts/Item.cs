@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
     public int ItemAmount { get; set; }
     private string itemID;
     [SerializeField] private string goalTitle;
+    private bool isItemPicked;
     private void Start()
     {
         ItemAmount = item.itemAmount;

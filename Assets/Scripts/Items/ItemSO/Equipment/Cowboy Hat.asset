@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiPrefab: {fileID: 6553217746100236383, guid: 3aa886f3f991085438179c92fe207582, type: 3}
   type: 1
-  itemNameUI: 
-  itemTitle: 
+  itemNameUI: Cowboy Hat
+  itemID: 
   itemAmount: 1
   description: Now all you need is a horse.
   EquipPrefab: {fileID: 225045935228908981, guid: b42a00f9702b84542999bdf2ad21ca27, type: 3}

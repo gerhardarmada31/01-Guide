@@ -41,6 +41,7 @@ public class GoalItem : GoalBase
     //Checks the item if the player has. if it does remove it.
     public void CheckItem()
     {
+        Debug.Log("CHECKING ITEM");
         if (goalComplete == false && goalItem == true)
         {
             //checks if the SO item tittle is the same as the goalItemTitle

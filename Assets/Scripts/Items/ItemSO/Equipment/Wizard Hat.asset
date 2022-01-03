@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiPrefab: {fileID: 6553217746100236383, guid: 215b239728458ba4fbe5951773c9491b, type: 3}
   type: 1
-  itemNameUI: 
-  itemTitle: 
+  itemNameUI: Wizard hat
+  itemID: 
   itemAmount: 1
   description: sadly you can't cast spells
   EquipPrefab: {fileID: 3658221909748571256, guid: 82da36f7a969c7842b3f095483980d24, type: 3}

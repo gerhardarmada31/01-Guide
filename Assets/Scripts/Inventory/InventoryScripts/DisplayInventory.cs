@@ -32,6 +32,10 @@ public class DisplayInventory : MonoBehaviour
     [SerializeField] private GameObject statusParent;
     [SerializeField] private GameObject systemParent;
 
+    [Header("Item Description")]
+    [SerializeField] private TMP_Text itemName;
+    [SerializeField] private TMP_Text itemDescription;
+
 
     public GameObject lastSelectedObj;
     private GameObject obj;
@@ -131,6 +135,8 @@ public class DisplayInventory : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(itemsDisplayed[inventory.Container[0]]);
+
+        itemName.SetText(inventory.Container[0].item.itemNameUI);
     }
 
     public void DisplayOnOff()

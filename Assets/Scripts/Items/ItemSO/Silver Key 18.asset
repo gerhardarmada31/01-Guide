@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3324586995aad5b48992df12eedb8ee7, type: 3}
-  m_Name: LetterToShirley
+  m_Name: Silver Key 18
   m_EditorClassIdentifier: 
   uiPrefab: {fileID: 616324364039716464, guid: ab33f6ec65f6dd6439a1476d2efc5819, type: 3}
   type: 0
-  itemNameUI: A Letter from Shirley
-  itemID: letterShirley
+  itemNameUI: 
+  itemID: 
   itemAmount: 1
-  description: A letter describing how beautiful shirley is.
+  description: A silver key.

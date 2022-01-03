@@ -27,7 +27,7 @@ public class FriendStatus : NPCStatus
         if (friendObj == this.gameObject)
         {
             FriendIsTalking = friendTalking;
-            Debug.Log("stop walking" + friendObj);
+            // Debug.Log("stop walking" + friendObj);
         }
     }
 
@@ -42,7 +42,7 @@ public class FriendStatus : NPCStatus
             if (sentSp <= SpCheckLvl1)
             {
                 Debug.Log("weakSauce");
-                var _goalItem= this.GetComponent<GoalItem>();
+                var _goalItem = this.GetComponent<GoalItem>();
 
                 if (_goalItem != null)
                 {
