@@ -15,6 +15,7 @@ public class TargetEventSystem : MonoBehaviour
     public event Action<GameObject, GameObject, int> onConfirmTargetSelect;
     public event Action<GameObject, bool> onShroudDetected;
     public event Action<Transform> onCheckPointUpdate;
+    public event Action<string, string, bool> onTargetInfoUpdate;
 
 
     //Getting the target and getting from the players Values
@@ -32,5 +33,10 @@ public class TargetEventSystem : MonoBehaviour
     public void CheckPointUpdate(Transform targetCheckPoint)
     {
         onCheckPointUpdate?.Invoke(targetCheckPoint);
+    }
+
+    public void TargetInfoUpdate(string _name, string _act, bool _cmdOn)
+    {
+        onTargetInfoUpdate?.Invoke(_name, _act, _cmdOn);
     }
 }

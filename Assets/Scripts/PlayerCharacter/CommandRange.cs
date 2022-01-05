@@ -16,6 +16,7 @@ public class CommandRange : MonoBehaviour
     private bool isDetected;
 
     public FriendDialogue MyFriend { get; set; }
+    private EnemyStatus enemyChecker;
 
     private bool isCommandModeOn;
     // private IShroudedObj shroudedObj;
@@ -24,6 +25,9 @@ public class CommandRange : MonoBehaviour
     private PlayerDialogue playerDialogue;
     private GameObject playerObj;
 
+    //TARGET 
+    private string targetName;
+    private string targetAct;
     private LineRenderer targetLine;
     private bool canTarget = true;
     private GameObject selectedObj;
@@ -66,20 +70,29 @@ public class CommandRange : MonoBehaviour
         //Make list next of targetable Objects
         var enemy = other.GetComponent<NPCStatus>();
 
+
+        //CHECKS if target has tag of "Target"
         if (other.CompareTag("Target"))
         {
+            //Checks if target has targetInfo and reveals the targets shroud effect, also reveals the object
+            TargetInfo _targetInfo = other.GetComponent<TargetInfo>();
+            if (_targetInfo != null)
+            {
+                _targetInfo.GetInfo(out targetName, out targetAct);
+                TargetEventSystem.currentTarget.TargetInfoUpdate(targetName, targetAct, isCommandModeOn);
+                //give a condition of the player has received the scanner 2.0
+                TargetEventSystem.currentTarget.ShroudDetected(other.gameObject, false);
+                if (other.transform.parent != null)
+                {
+                    // Debug.DrawLine(this.transform.parent.position, other.transform.position, Color.red);
+                    targetObj.Add(other.transform.parent.gameObject);
+                }
+                else
+                {
+                    targetObj.Add(other.transform.gameObject);
+                }
+            }
 
-            //give a condition of the player has received the scanner 2.0
-            TargetEventSystem.currentTarget.ShroudDetected(other.gameObject, false);
-            if (other.transform.parent != null)
-            {
-                // Debug.DrawLine(this.transform.parent.position, other.transform.position, Color.red);
-                targetObj.Add(other.transform.parent.gameObject);
-            }
-            else
-            {
-                targetObj.Add(other.transform.gameObject);
-            }
         }
         else
         {
@@ -97,27 +110,40 @@ public class CommandRange : MonoBehaviour
     {
         if (playerStatus.CurrentSP >= 1 && selectedObj != null && canTarget == true)
         {
-            //calling the functions from the selected object and gives a reference for the player Obj
-            TargetEventSystem.currentTarget.ConfirmTargetSelect(selectedObj, playerObj, playerStatus.TotalDmg);
-            MyFriend = selectedObj.GetComponent<FriendDialogue>();
-            var itemObj = selectedObj.GetComponent<Item>();
-
-            if (itemObj != null)
+            enemyChecker = selectedObj.GetComponent<EnemyStatus>();
+            if (enemyChecker != null)
             {
-                playerInventory.inventory.AddItem(itemObj.item, itemObj.ItemAmount);
-                InventoryEvent.currentInventoryEvent.InventoryUpdateUI(true);
+                TargetEventSystem.currentTarget.ConfirmTargetSelect(selectedObj, playerObj, playerStatus.TotalDmg);
+                Debug.Log("TARGET IS ENEMY" + playerStatus.TotalDmg);
+
+            }
+            else
+            {
+                TargetEventSystem.currentTarget.ConfirmTargetSelect(selectedObj, playerObj, playerStatus.StackSP + 1);
+                Debug.Log("TARGET IS FRIEND" + (playerStatus.StackSP + 1));
+
+                //calling the functions from the selected object and gives a reference for the player Obj
+                MyFriend = selectedObj.GetComponent<FriendDialogue>();
+                var itemObj = selectedObj.GetComponent<Item>();
+
+                if (itemObj != null)
+                {
+                    playerInventory.inventory.AddItem(itemObj.item, itemObj.ItemAmount);
+                    InventoryEvent.currentInventoryEvent.InventoryUpdateUI(true);
+                }
+
+                if (MyFriend != null)
+                {
+                    //checks if player is in a dialogue
+                    playerDialogue.IsInDialogue = true;
+                    DialogueController.Instance.dialogueRunner.StartDialogue(MyFriend.YarnStartNode);
+                }
+                Vector3 targetPos = new Vector3(selectedObj.transform.position.x, this.transform.position.y, selectedObj.transform.position.z);
+                playerObj.transform.LookAt(targetPos);
+                playerStatus.SpiritStack();
+                // Debug.Log("ConfirmTarget");
             }
 
-            if (MyFriend != null)
-            {
-                //checks if player is in a dialogue
-                playerDialogue.IsInDialogue = true;
-                DialogueController.Instance.dialogueRunner.StartDialogue(MyFriend.YarnStartNode);
-            }
-            Vector3 targetPos = new Vector3(selectedObj.transform.position.x, this.transform.position.y, selectedObj.transform.position.z);
-            playerObj.transform.LookAt(targetPos);
-            playerStatus.SpiritStack();
-            // Debug.Log("ConfirmTarget");
         }
     }
 
@@ -126,6 +152,8 @@ public class CommandRange : MonoBehaviour
         targetObj.Clear();
         selectedObj = null;
         targetIndex = 0;
+        TargetEventSystem.currentTarget.TargetInfoUpdate(targetName, targetAct, false);
+
     }
 
     void OnDisable()

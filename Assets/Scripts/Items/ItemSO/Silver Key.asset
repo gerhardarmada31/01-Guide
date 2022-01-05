@@ -15,6 +15,7 @@ MonoBehaviour:
   uiPrefab: {fileID: 616324364039716464, guid: ab33f6ec65f6dd6439a1476d2efc5819, type: 3}
   type: 0
   itemNameUI: 
-  itemTitle: 
+  itemID: 
+  itemPickedUp: 0
   itemAmount: 1
   description: A silver key.

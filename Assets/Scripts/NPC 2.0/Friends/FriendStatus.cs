@@ -7,10 +7,12 @@ public class FriendStatus : NPCStatus
     //friends will power
     private int wP;
     public bool FriendIsTalking { get; set; }
+    private GoalItem goalItem;
 
     private void Awake()
     {
         wP = TotalHp;
+        goalItem = this.GetComponent<GoalItem>();
     }
 
     protected override void Start()
@@ -38,15 +40,16 @@ public class FriendStatus : NPCStatus
         //most likely do a switch case for sp checks
         if (obj == this.gameObject)
         {
+            Debug.Log("sentSp is " + sentSp);
             PlayerObj = player;
             if (sentSp <= SpCheckLvl1)
             {
-                Debug.Log("weakSauce");
-                var _goalItem = this.GetComponent<GoalItem>();
+                Debug.Log("CHECK ITEM");
 
-                if (_goalItem != null)
+
+                if (goalItem != null)
                 {
-                    _goalItem.CheckItem();
+                    goalItem.CheckItem();
                 }
             }
             else
@@ -55,5 +58,10 @@ public class FriendStatus : NPCStatus
             }
         }
     }
+
+    // private void OnDisable()
+    // {
+    //     DialogueEvent.currentDialogueEvent.onFriendTalking -= FriendTalk;
+    // }
 
 }

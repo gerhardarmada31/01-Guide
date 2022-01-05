@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 3
   invuFrame: 1.5
-  attackPoint: 2
+  attackPoint: 1
   totalDmg: 0
   maxSp: 4
   maxSpRate: 3

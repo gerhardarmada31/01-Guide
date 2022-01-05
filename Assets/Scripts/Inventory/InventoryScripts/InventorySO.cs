@@ -29,7 +29,12 @@ public class InventorySO : ScriptableObject
         {
             //CALL THE EVENT FOR THE NOTIFICATION ITEM HERE
             //MAKE a boolean inside ITEM_SO to check if item has already picked.
-            InventoryEvent.currentInventoryEvent.ItemNotify(_item.itemNameUI);
+
+            if (!_item.itemPickedUp)
+            {
+                InventoryEvent.currentInventoryEvent.ItemNotify(_item.itemNameUI);
+                _item.itemPickedUp = true;
+            }
 
             //Check if the Item is spirit type, then send an event.
             if (_item.type == spiritType)

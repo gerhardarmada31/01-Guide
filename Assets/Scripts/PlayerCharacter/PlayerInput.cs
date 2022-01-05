@@ -127,6 +127,7 @@ public class PlayerInput : MonoBehaviour
         isMenuOn = !isMenuOn;
         if (isMenuOn)
         {
+            tabVal = 1;
             itemModeOn = true;
         }
         else

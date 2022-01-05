@@ -17,8 +17,9 @@ public abstract class Item_SO : ScriptableObject
     public ItemType type;
     public string itemNameUI;
     public string itemID;
+    public bool itemPickedUp;
     public int itemAmount = 1;
-    [TextArea(15,20)]
+    [TextArea(15, 20)]
     public string description;
 
 }
