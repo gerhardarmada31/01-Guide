@@ -12,7 +12,7 @@ public class SpiritDrop : MonoBehaviour
 
         if (_spDropCollect != null)
         {
-            _spDropCollect.GetCollectDrop(spiritDropAmount, dropType.SPIRIT);
+            _spDropCollect.GetCollectDrop(spiritDropAmount, DropType.SPIRIT);
             Object.Destroy(this.gameObject);
         }
     }

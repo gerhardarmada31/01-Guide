@@ -12,7 +12,7 @@ public class HealthDrop : MonoBehaviour
 
         if (_hpDropCollect != null)
         {
-            _hpDropCollect.GetCollectDrop(healthDropAmount, dropType.HEALTH);
+            _hpDropCollect.GetCollectDrop(healthDropAmount, DropType.HEALTH);
             Object.Destroy(this.gameObject);
         }
     }

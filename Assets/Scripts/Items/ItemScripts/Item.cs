@@ -9,10 +9,16 @@ public class Item : MonoBehaviour
 
     public int ItemAmount { get; set; }
     private string itemID;
+
+    [Header("QuestName")]
     [SerializeField] private string goalTitle;
     private bool isItemPicked;
     private void Start()
     {
+        if (item == null)
+        {
+            Debug.LogError("Item is empty");
+        }
         ItemAmount = item.itemAmount;
         itemID = item.itemID;
         TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;

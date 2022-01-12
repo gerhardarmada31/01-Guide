@@ -23,6 +23,9 @@ public class DialogueController : SingletonParent<DialogueController>
         dialogueRunner.AddCommandHandler("SetItemGoal", GoalItem);
         dialogueRunner.AddCommandHandler("SetTalkGoal", GoalTalk);
         dialogueRunner.AddCommandHandler("GetReward", GoalReward);
+    }
+    private void Start()
+    {
         TargetEventSystem.currentTarget.onConfirmTargetSelect += FriendTargeted;
     }
 

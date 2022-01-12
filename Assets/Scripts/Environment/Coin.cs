@@ -12,7 +12,7 @@ public class Coin : MonoBehaviour
 
         if (_coinCollector != null)
         {
-            _coinCollector.GetCollectDrop(coinAmount, dropType.COIN);
+            _coinCollector.GetCollectDrop(coinAmount, DropType.COIN);
             Object.Destroy(this.gameObject);
         }
     }

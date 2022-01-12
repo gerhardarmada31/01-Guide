@@ -19,7 +19,8 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
     // public dropType currentDropType;
     [Header("UI Implement")]
     [SerializeField] private HealthUI hpUI;
-    [SerializeField] private SpiritUI spUI;
+    public SpiritUI spUI;
+    [SerializeField] private CoinUI coinUI;
 
     //PROPS
 
@@ -262,12 +263,14 @@ public class PlayerStatus : MonoBehaviour, ITakeDamage, ICollector, ICoinReward
 
 
     //An interface that collects from objects that are collectable
-    public void GetCollectDrop(int dropAmount, dropType _dropType)
+    public void GetCollectDrop(int dropAmount, DropType _dropType)
     {
         switch (((int)_dropType))
         {
             case 0:
                 playerStats.currentCoin += dropAmount;
+                coinUI.UpdateCoin();
+
                 break;
 
             case 1:

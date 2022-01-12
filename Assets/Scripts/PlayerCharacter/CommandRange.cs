@@ -24,6 +24,7 @@ public class CommandRange : MonoBehaviour
     private PlayerInventory playerInventory;
     private PlayerDialogue playerDialogue;
     private GameObject playerObj;
+    private SpiritUI spiritUI;
 
     //TARGET 
     private string targetName;
@@ -48,6 +49,7 @@ public class CommandRange : MonoBehaviour
         targetLine.enabled = false;
         playerDialogue = GetComponentInParent<PlayerDialogue>();
         playerStatus = GetComponentInParent<PlayerStatus>();
+        spiritUI = playerStatus.spUI;
         playerInventory = GetComponentInParent<PlayerInventory>();
         playerObj = this.transform.parent.gameObject;
         myCollider = this.GetComponent<SphereCollider>();
@@ -59,6 +61,15 @@ public class CommandRange : MonoBehaviour
         {
             selectedObj = targetObj[targetIndex];
             targetText.text = targetObj[targetIndex].gameObject.name.ToString();
+
+            TargetInfo _targetInfo = selectedObj.GetComponent<TargetInfo>();
+            if (_targetInfo != null)
+            {
+                Debug.Log("GEY TARGET INFO");
+                _targetInfo.GetInfo(out targetName, out targetAct);
+                TargetEventSystem.currentTarget.TargetInfoUpdate(targetName, targetAct, isCommandModeOn);
+
+            }
         }
         TargetLeyLine();
     }
@@ -75,22 +86,17 @@ public class CommandRange : MonoBehaviour
         if (other.CompareTag("Target"))
         {
             //Checks if target has targetInfo and reveals the targets shroud effect, also reveals the object
-            TargetInfo _targetInfo = other.GetComponent<TargetInfo>();
-            if (_targetInfo != null)
+
+            //give a condition of the player has received the scanner 2.0
+            TargetEventSystem.currentTarget.ShroudDetected(other.gameObject, false);
+            if (other.transform.parent != null)
             {
-                _targetInfo.GetInfo(out targetName, out targetAct);
-                TargetEventSystem.currentTarget.TargetInfoUpdate(targetName, targetAct, isCommandModeOn);
-                //give a condition of the player has received the scanner 2.0
-                TargetEventSystem.currentTarget.ShroudDetected(other.gameObject, false);
-                if (other.transform.parent != null)
-                {
-                    // Debug.DrawLine(this.transform.parent.position, other.transform.position, Color.red);
-                    targetObj.Add(other.transform.parent.gameObject);
-                }
-                else
-                {
-                    targetObj.Add(other.transform.gameObject);
-                }
+                // Debug.DrawLine(this.transform.parent.position, other.transform.position, Color.red);
+                targetObj.Add(other.transform.parent.gameObject);
+            }
+            else
+            {
+                targetObj.Add(other.transform.gameObject);
             }
 
         }
@@ -113,12 +119,14 @@ public class CommandRange : MonoBehaviour
             enemyChecker = selectedObj.GetComponent<EnemyStatus>();
             if (enemyChecker != null)
             {
+                //SENDS A CONFIRMATION SPIRIT CHARGE ON HOSTILE OBJECTS
                 TargetEventSystem.currentTarget.ConfirmTargetSelect(selectedObj, playerObj, playerStatus.TotalDmg);
                 Debug.Log("TARGET IS ENEMY" + playerStatus.TotalDmg);
 
             }
             else
             {
+                //SENDS A CONFIRMATION SPIRIT CHARGE ON NON-HOSTILE OBJECTS
                 TargetEventSystem.currentTarget.ConfirmTargetSelect(selectedObj, playerObj, playerStatus.StackSP + 1);
                 Debug.Log("TARGET IS FRIEND" + (playerStatus.StackSP + 1));
 
@@ -171,6 +179,7 @@ public class CommandRange : MonoBehaviour
         if (gameObject.activeSelf)
         {
             // Debug.Log("cmdOn");
+            spiritUI.CommandModeOn(true);
             commandRangeFeel?.PlayFeedbacks();
             StartCoroutine(WaitandPause(0.1f));
             isCommandModeOn = true;
@@ -182,6 +191,7 @@ public class CommandRange : MonoBehaviour
                 // Debug.Log("cmdOff");
                 StopCoroutine(WaitandPause(0.1f));
                 ClearingTarget();
+                spiritUI.CommandModeOn(false);
                 targetText.text = "None";
                 Time.timeScale = 1f;
                 isCommandModeOn = false;

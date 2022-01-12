@@ -24,11 +24,11 @@ public interface ICombatZone
     void TargetObject(bool inCombat);
 }
 
-public enum dropType { COIN, HEALTH, SPIRIT }
+public enum DropType { COIN, HEALTH, SPIRIT }
 
 public interface ICollector
 {
-    void GetCollectDrop(int dropAmount, dropType _dropType);
+    void GetCollectDrop(int dropAmount, DropType _dropType);
 }
 
 public interface ICoinReward

@@ -9,7 +9,9 @@ public class SpiritUI : MonoBehaviour
     [SerializeField] private PlayerStatus pStats;
     private CommandRange commandRange;
     [SerializeField] private Image spRAmount;
-    [SerializeField] private TMP_Text spCountText;
+    [SerializeField] private TMP_Text spCountValue;
+    [SerializeField] private TMP_Text spText;
+
     private float maxSprate;
     private int spCount;
     private int maxSpCount;
@@ -44,8 +46,20 @@ public class SpiritUI : MonoBehaviour
 
     public void SpiritCount(int _spCount)
     {
-        spCountText.SetText(_spCount.ToString());
+        spCountValue.SetText((_spCount + 1).ToString());
         // Debug.Log("commandMode off");
+    }
+
+    public void CommandModeOn(bool _cmdOn)
+    {
+        if (_cmdOn)
+        {
+            spText.SetText("Stack");
+        }
+        else
+        {
+            spText.SetText("SP");
+        }
     }
 
 
