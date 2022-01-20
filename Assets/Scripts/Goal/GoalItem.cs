@@ -50,6 +50,8 @@ public class GoalItem : GoalBase
                 if (playerInventory.Container[i].item.itemID == requiredItemTitle)
                 {
                     Debug.Log("goal ITEM COMPLETE " + playerInventory.Container[i].item);
+
+                    //sends an event to GoalCompleteDialogue
                     GoalEvent.currentGoalEvent.GoalComplete(goalTitle, true);
                     goalComplete = true;
                     var dicItem = UIItem.ItemsDisplayed;

@@ -34,6 +34,9 @@ public class DialogueController : SingletonParent<DialogueController>
         Debug.Log("REWARD!!!");
         GoalBase goalReward = friendObject.GetComponent<GoalBase>();
         goalReward.GoalReward(parameters);
+        Debug.Log("COIN UI CALLING");
+        var coinUI = FindObjectOfType<CoinUI>();
+        coinUI.UpdateCoin();
     }
 
     private void GoalItem(string[] info)

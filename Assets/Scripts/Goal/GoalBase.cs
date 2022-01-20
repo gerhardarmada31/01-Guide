@@ -50,7 +50,6 @@ public abstract class GoalBase : MonoBehaviour
     protected virtual void Start()
     {
 
-
     }
 
     // protected abstract void CheckAmount(string goalName, int currentAmount);

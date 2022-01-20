@@ -8,6 +8,7 @@ public class PlayerUpgrades : MonoBehaviour
 {
     private PlayerStatus pStatus;
     [SerializeField] private PlayerUpgrade_SO pUpgrade;
+    private CoinUI coinUI;
 
     [Header("HP")]
     private int hpCurrentLvl = 0;
@@ -88,6 +89,7 @@ public class PlayerUpgrades : MonoBehaviour
     private void Awake()
     {
         pStatus = this.GetComponent<PlayerStatus>();
+        coinUI = FindObjectOfType<CoinUI>();
 
         // setting the Arrays to the Upgrade SO
         hpCostArray = new int[] { pUpgrade.lvl1CostHp, pUpgrade.lvl2CostHp, pUpgrade.lvl3CostHp, pUpgrade.lvl4CostHp };
@@ -130,6 +132,7 @@ public class PlayerUpgrades : MonoBehaviour
                     {
                         _pStat += _typeArray[i];
                         pStatus.playerStats.currentCoin -= _typeCostArray[i];
+                        coinUI.UpdateCoin();
                         canUpgrade = true;
                         // Debug.Log($"The current Level is {_currentTypeLvl}");
 
@@ -161,6 +164,7 @@ public class PlayerUpgrades : MonoBehaviour
                     {
                         _pStat += _typeArray[i];
                         pStatus.playerStats.currentCoin -= _typeCostArray[i];
+                        coinUI.UpdateCoin();
                         canUpgrade = true;
                         return _pStat;
                     }

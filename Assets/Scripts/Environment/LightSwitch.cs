@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightSwitch : MonoBehaviour
+public class LightSwitch : GoalEnvironment
 {
     // Start is called before the first frame update
 
@@ -11,23 +11,27 @@ public class LightSwitch : MonoBehaviour
     //Variable for the light component to check if its on or off
     private Light lightSource;
 
-    void Start()
+    private void Awake()
     {
         lightSource = GetComponentInChildren<Light>();
-        TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
     }
 
-    private void ObjectConfirmed(GameObject obj, GameObject playerObj, int sentSP)
+    protected override void Start()
     {
-        if (obj == this.gameObject && sentSP >= spCheckLvl1)
-        {
-            lightSource.enabled = true;
-        }
-
+        base.Start();
+        // TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
     }
 
-    private void OnDisable()
+    //CALL This on either ActObjectLvl1 or 2 depending on the level you want
+    public void UpdateGoal()
     {
-        TargetEventSystem.currentTarget.onConfirmTargetSelect -= ObjectConfirmed;
+        GoalEvent.currentGoalEvent.spInteractUpdate(goalTitle, goalCounter);
+        Debug.Log("Update Goal");
+    }
+
+    protected override void ActObjectLvl1()
+    {
+        lightSource.enabled = true;
+        UpdateGoal();
     }
 }

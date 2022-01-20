@@ -9,12 +9,15 @@ public class ShroudedObject : MonoBehaviour
     // private GameObject shroudedObj;
     private bool isShrouded = true;
     private bool isActivated = false;
+
+    [Header("Only write if object does not have Goal Environment")]
     [SerializeField] private string goalTitle;
     private int activateCounter = 1;
-    [SerializeField] private int spChecklvl1;
-    [SerializeField] private int spChecklvl2;
-
+    [SerializeField] private int spCheck;
     [SerializeField] private float lookRadius = 1f;
+    private Collider myCollider;
+
+    private GoalEnvironment interactiveObj;
 
 
     void OnDrawGizmos()
@@ -23,10 +26,27 @@ public class ShroudedObject : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
+    private void Awake()
+    {
+        myCollider = GetComponent<Collider>();
+        interactiveObj = GetComponent<GoalEnvironment>();
+    }
+
     void Start()
     {
+        this.transform.GetChild(0).gameObject.SetActive(false);
         TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
         TargetEventSystem.currentTarget.onShroudDetected += ShroudDetected;
+
+        if (spCheck <= 0)
+        {
+            Debug.LogError("sp Checks cannot be zero");
+        }
+
+        if (!String.IsNullOrEmpty(goalTitle) && interactiveObj != null)
+        {
+            Debug.LogError("Goal Title has characters. This should be empty if have a child of GoalEnvironment Script");
+        }
     }
 
 
@@ -45,18 +65,19 @@ public class ShroudedObject : MonoBehaviour
         else if (!isActivated)
         {
             this.transform.GetChild(0).gameObject.SetActive(false);
+
         }
     }
 
+
     private void ObjectConfirmed(GameObject obj, GameObject playerObj, int currentSp)
     {
-        if (obj == this.gameObject && currentSp >= spChecklvl1)
+        if (obj == this.gameObject && currentSp >= spCheck)
         {
             Debug.Log("got hit");
 
-            if (currentSp <= spChecklvl1)
+            if (currentSp <= spCheck)
             {
-                isShrouded = false;
 
                 if (!isActivated)
                 {
@@ -65,11 +86,9 @@ public class ShroudedObject : MonoBehaviour
                 }
 
                 this.transform.GetChild(0).gameObject.SetActive(true);
-                //Change behaviour because of npcStateController
-            }
-            else if (currentSp >= spChecklvl2)
-            {
-                Debug.Log("strong Sauce");
+                myCollider.isTrigger = false;
+                this.enabled = false;
+                isShrouded = false;
             }
             isActivated = true;
         }
@@ -83,17 +102,5 @@ public class ShroudedObject : MonoBehaviour
         TargetEventSystem.currentTarget.onShroudDetected -= ShroudDetected;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        // if (isShrouded)
-        // {
-        //     Debug.Log("shroud");
-        //     this.transform.GetChild(0).gameObject.SetActive(false);
-        // }
-    }
 
 }

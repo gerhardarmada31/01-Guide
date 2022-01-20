@@ -11,6 +11,7 @@ public class SpiritUI : MonoBehaviour
     [SerializeField] private Image spRAmount;
     [SerializeField] private TMP_Text spCountValue;
     [SerializeField] private TMP_Text spText;
+    private bool cmdOn;
 
     private float maxSprate;
     private int spCount;
@@ -46,15 +47,23 @@ public class SpiritUI : MonoBehaviour
 
     public void SpiritCount(int _spCount)
     {
-        spCountValue.SetText((_spCount + 1).ToString());
-        // Debug.Log("commandMode off");
+        if (cmdOn)
+        {
+            spCountValue.SetText((_spCount + 1).ToString());
+        }
+        else
+        {
+            spCountValue.SetText(_spCount.ToString());
+
+        }
     }
 
     public void CommandModeOn(bool _cmdOn)
     {
+        cmdOn = _cmdOn;
         if (_cmdOn)
         {
-            spText.SetText("Stack");
+            spText.SetText("Cost");
         }
         else
         {

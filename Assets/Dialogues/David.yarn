@@ -1,32 +1,37 @@
 title: David.Start
 tags: 
-position: 476.44873046875,193.91168975830078
+position: 243,130
 ---
 <<SetSpeaker David>>
 
-<<if GoalComplete("Goal01") is true && Visited("David.NotBusy") is true>>
-Awesome Thank you
-<<GetReward Item>>
+<<if GoalComplete("DavidGoal") is true && Visited("David.NotBusy") is true>>
+yey! people can see now!
+<<GetReward Coin>>
 
 <<else>>
 
 <<endif>>
 
 <<if Visited("David.Start") is false>>
-hey you busy?
+hey rob! hey tom!
+
+<<SetSpeaker Phantom>>
+hey david
+
+<<SetSpeaker David>>
+are you guys busy?
 
 [[not really|David.NotBusy]]
 [[kinda|David.Busy]]
 
 <<else>>
     <<if Visited("David.Busy") is true && Visited("David.NotBusy") is false>>
-    Still Busy?
+    still busy?
     [[yup|David.Busy]]
     [[I'm free|David.NotBusy]]
     <<else>>
-        <<if GoalComplete("Goal01") is false>>
+        <<if GoalComplete("DavidGoal") is false>>
         Look for some 2 balls
-
         <<endif>>
     <<endif>>
 <<endif>>
@@ -35,12 +40,21 @@ title: David.NotBusy
 tags: 
 position: -78.08853340148926,229.2957763671875
 ---
-Sweet!
+sweet!
 <<SetSpeaker Phantom>>
-oh no more tasks....
+what is it?
 <<SetSpeaker David>>
-can you look for some white balls?
-great thanks!
+you see, it's starting to get dark
+and the streetlights won't turn on for some reason..
+can you turn them on if you see one?
+
+<<SetSpeaker Phantom>>
+we'll keep a lookout
+
+<<SetSpeaker David>>
+thank you!
+turn on atleast 4 lights
+i think that'll be enough
 ===
 title: David.Busy
 tags: 
