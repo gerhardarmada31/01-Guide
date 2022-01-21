@@ -29,6 +29,6 @@ MonoBehaviour:
   jumpHeight: 3.5
   castOffset: 0
   turnSpeed: 0.1
-  currentCoin: 5000
+  currentCoin: 200
   playerPosition: {x: -7.2533007, y: 7.3581047, z: 12.21105}
   hasTeleport: 0

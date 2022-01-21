@@ -5,8 +5,27 @@ position: 243,130
 <<SetSpeaker David>>
 
 <<if GoalComplete("DavidGoal") is true && Visited("David.NotBusy") is true>>
-yey! people can see now!
+yey! people can see now! thank you!
+
+<<SetSpeaker Phantom>>
+no worries
+
+<<SetSpeaker David>>
+you guys deserve a reward
+...
+uh sorry
+i only got lose change on me
+i hope you don't mind
 <<GetReward Coin>>
+
+<<SetSpeaker Phantom>>
+300 COINS!?
+
+<<SetSpeaker David>>
+yeah, i know i'm sorry
+
+<<SetSpeaker Phantom>>
+no no no it's cool
 
 <<else>>
 
@@ -31,7 +50,7 @@ are you guys busy?
     [[I'm free|David.NotBusy]]
     <<else>>
         <<if GoalComplete("DavidGoal") is false>>
-        Look for some 2 balls
+        some of the streetlights are shrouded, so keep an eye out
         <<endif>>
     <<endif>>
 <<endif>>
@@ -49,7 +68,7 @@ and the streetlights won't turn on for some reason..
 can you turn them on if you see one?
 
 <<SetSpeaker Phantom>>
-we'll keep a lookout
+sure! we'll keep a lookout
 
 <<SetSpeaker David>>
 thank you!
