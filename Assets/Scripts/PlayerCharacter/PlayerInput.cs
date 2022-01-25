@@ -45,10 +45,10 @@ public class PlayerInput : MonoBehaviour
         controls = new InputActions();
         playerMovement = GetComponent<PlayerMovement>();
         playerStatus = GetComponent<PlayerStatus>();
-        commandRange = GetComponentInChildren<CommandRange>();
         playerDialogue = GetComponent<PlayerDialogue>();
-        if (commandRange != null)
+        if (commandRange == null)
         {
+            commandRange = GetComponentInChildren<CommandRange>();
             commandRange.transform.gameObject.SetActive(false);
         }
 
@@ -302,50 +302,54 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isItemNotifyOn)
+        if (commandRange != null)
         {
-
-
-            if (!playerStatus.IsHit)
+            if (!isItemNotifyOn)
             {
-                if (!commandMode && !freeMove)
-                {
-                    playerMovement.Move(moveInput);
 
-                    if (!playerDialogue.IsInDialogue && isMenuOn == false)
-                    {
-                        controls.PlayerCharacter.Sprint.Enable();
-                        controls.PlayerCharacter.Jump.Enable();
-                        controls.PlayerCharacter.CmdOn.Enable();
-                        controls.PlayerCharacter.Move.Enable();
-                    }
-                    else
-                    {
-                        controls.PlayerCharacter.Move.Disable();
-                        controls.PlayerCharacter.Jump.Disable();
-                        controls.PlayerCharacter.CmdOn.Disable();
-                    }
-                }
-                else if (freeMove)
+
+                if (!playerStatus.IsHit)
                 {
-                    playerMovement.FreeMoveMode(moveInput, yMoveInput);
+                    if (!commandMode && !freeMove)
+                    {
+                        playerMovement.Move(moveInput);
+
+                        if (!playerDialogue.IsInDialogue && isMenuOn == false)
+                        {
+                            controls.PlayerCharacter.Sprint.Enable();
+                            controls.PlayerCharacter.Jump.Enable();
+                            controls.PlayerCharacter.CmdOn.Enable();
+                            controls.PlayerCharacter.Move.Enable();
+                        }
+                        else
+                        {
+                            controls.PlayerCharacter.Move.Disable();
+                            controls.PlayerCharacter.Jump.Disable();
+                            controls.PlayerCharacter.CmdOn.Disable();
+                        }
+                    }
+                    else if (freeMove)
+                    {
+                        playerMovement.FreeMoveMode(moveInput, yMoveInput);
+                    }
+                    // Debug.Log(moveInput);
                 }
-                // Debug.Log(moveInput);
             }
-        }
-        else
-        {
-            Debug.Log("HELLOSASDASD");
-            controls.PlayerCharacter.CmdOn.Disable();
-            controls.PlayerCharacter.Jump.Disable();
-            controls.PlayerCharacter.Move.Disable();
-            var itemNotifyUI = EventSystem.current.currentSelectedGameObject;
+            else
+            {
+                Debug.Log("HELLOSASDASD");
+                controls.PlayerCharacter.CmdOn.Disable();
+                controls.PlayerCharacter.Jump.Disable();
+                controls.PlayerCharacter.Move.Disable();
+                var itemNotifyUI = EventSystem.current.currentSelectedGameObject;
 
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(itemNotifyUI);
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(itemNotifyUI);
+            }
+            commandRange.CommandMode();
+            // Debug.Log("MODE CURRENTLY SELECTED " + EventSystem.current.currentSelectedGameObject);
+
         }
-        commandRange.CommandMode();
-        // Debug.Log("MODE CURRENTLY SELECTED " + EventSystem.current.currentSelectedGameObject);
 
 
     }
