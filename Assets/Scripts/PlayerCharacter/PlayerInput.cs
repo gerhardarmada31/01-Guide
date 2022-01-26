@@ -46,12 +46,11 @@ public class PlayerInput : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerStatus = GetComponent<PlayerStatus>();
         playerDialogue = GetComponent<PlayerDialogue>();
-        if (commandRange == null)
+        commandRange = GetComponentInChildren<CommandRange>();
+        if (commandRange != null)
         {
-            commandRange = GetComponentInChildren<CommandRange>();
             commandRange.transform.gameObject.SetActive(false);
         }
-
     }
 
     private void OnEnable()

@@ -1,0 +1,52 @@
+title: ShrdGhost.Start
+tags: 
+colorID: 0
+position: 755,479
+---
+<<if Visited("ShrdGhost.Start") is false>>
+<<SetSpeaker ShroudedGhost>>
+YO!!!!!
+NOT COOL!!!!
+
+<<SetSpeaker Phantom>>
+huh?
+
+<<SetSpeaker ShroudedGhost>>
+you broke my shroud effect!!
+
+[[uh my bad!|ShrdGhost.Apologize]]
+[[shroud effect?|ShrdGhost.Question]]
+
+<<else>>
+<<SetSpeaker Phantom>>
+we're really sorry
+
+<<SetSpeaker ShroudedGhost>>
+....
+it's fine...
+
+<<endif>>
+===
+title: ShrdGhost.Apologize
+tags: 
+colorID: 8
+position: 371,417
+---
+<<SetSpeaker ShroudedGhost>>
+man... there goes my solitude....
+===
+title: ShrdGhost.Question
+tags: 
+colorID: 0
+position: 1097,429
+---
+<<SetSpeaker ShroudedGhost>>
+its a thing were ghosts can go invisible and stuff
+but it's not just ghosts other objects can become shrouded to
+
+<<SetSpeaker Phantom>>
+ah, thanks for the help
+
+<<SetSpeaker ShroudedGhost>>
+*grumble noise*
+===

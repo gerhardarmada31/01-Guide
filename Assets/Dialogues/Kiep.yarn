@@ -1,0 +1,29 @@
+title: Kiep.Start
+tags: 
+colorID: 0
+position: 223,-551
+---
+<<if Visited("Kiep.Start") is false>>
+
+<<SetSpeaker Kiep>>
+dang
+
+<<SetSpeaker Phantom>>
+what's up?
+
+<<SetSpeaker Kiep>>
+i can't read my book...
+
+<<SetSpeaker Phantom>>
+whats wrong with it?
+
+<<SetSpeaker Kiep>>
+theres usually good lighting here
+but now it's lame...
+
+<<else>>
+hmmm....
+it's a pretty good book too.
+
+<<endif>>
+===

@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1643614032869271217, guid: 3932928018534f5458868846c85e8672, type: 3}
       propertyPath: m_Name
-      value: Friend IOM
+      value: Friend p0B
       objectReference: {fileID: 0}
     - target: {fileID: 1643614032869271219, guid: 3932928018534f5458868846c85e8672, type: 3}
       propertyPath: currentState

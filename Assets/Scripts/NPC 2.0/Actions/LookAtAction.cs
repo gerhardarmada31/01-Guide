@@ -13,6 +13,7 @@ public class LookAtAction : NPCActions_SO
 
     private void LookAt(NPCStateController controller)
     {
+      //  COMMENTED due to problems for stopper talk
         if (controller.ChaseTarget != null)
         {
             // Vector3 direction = controller.ChaseTarget.position - controller.transform.position;

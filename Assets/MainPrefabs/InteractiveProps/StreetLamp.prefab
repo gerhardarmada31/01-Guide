@@ -215,6 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3085fa33c404bb148bde8e224533fbb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goalTitle: DavidGoal
+  spChecklvl1: 1
+  spChecklvl2: 2
   spCheckLvl1: 1
 --- !u!1001 &7280202560394296722
 PrefabInstance:

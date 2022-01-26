@@ -10,7 +10,7 @@ public class ShroudedObject : MonoBehaviour
     private bool isShrouded = true;
     private bool isActivated = false;
 
-    [Header("Only write if object does not have Goal Environment")]
+    [Header("Only use if it does NOT has Goal Environment or NPCstatus")]
     [SerializeField] private string goalTitle;
     private int activateCounter = 1;
     [SerializeField] private int spCheck;
@@ -18,6 +18,7 @@ public class ShroudedObject : MonoBehaviour
     private Collider myCollider;
 
     private GoalEnvironment interactiveObj;
+    private NPCStatus npcObject;
 
 
     void OnDrawGizmos()
@@ -30,6 +31,7 @@ public class ShroudedObject : MonoBehaviour
     {
         myCollider = GetComponent<Collider>();
         interactiveObj = GetComponent<GoalEnvironment>();
+        npcObject = GetComponent<NPCStatus>();
     }
 
     void Start()
@@ -43,7 +45,8 @@ public class ShroudedObject : MonoBehaviour
             Debug.LogError("sp Checks cannot be zero");
         }
 
-        if (!String.IsNullOrEmpty(goalTitle) && interactiveObj != null)
+        //Checks if the object is something written on the goaltitle and the object has goalenvironment
+        if (!String.IsNullOrEmpty(goalTitle) && (interactiveObj == null || npcObject == null))
         {
             Debug.LogError("Goal Title has characters. This should be empty if have a child of GoalEnvironment Script");
         }

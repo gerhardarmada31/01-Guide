@@ -227,13 +227,15 @@ public class CommandRange : MonoBehaviour
             {
                 // selectedObj = (hit.collider.gameObject);
                 targetLine.enabled = true;
-                targetLine.SetPosition(0, this.transform.position);
+                targetLine.SetPosition(0, Vector3.zero);
                 // var targetPosition = selectedObj.transform.position - transform.position;
 
                 //Checks if Leyline hits the target
                 if (hit.collider)
                 {
-                    targetLine.SetPosition(1, hit.point);
+                    // var _object = hit.point-this.transform.position;
+                    // targetLine.world
+                    targetLine.SetPosition(1, this.transform.InverseTransformPoint(hit.point));
                     Debug.Log(hit.collider.name);
                     if (hit.collider.transform.position != selectedObj.transform.position)
                     {
