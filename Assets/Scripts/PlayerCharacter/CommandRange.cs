@@ -89,15 +89,15 @@ public class CommandRange : MonoBehaviour
 
             //give a condition of the player has received the scanner 2.0
             TargetEventSystem.currentTarget.ShroudDetected(other.gameObject, false);
-            if (other.transform.parent != null)
-            {
-                // Debug.DrawLine(this.transform.parent.position, other.transform.position, Color.red);
-                targetObj.Add(other.transform.parent.gameObject);
-            }
-            else
-            {
-                targetObj.Add(other.transform.gameObject);
-            }
+            targetObj.Add(other.transform.gameObject);
+            // if (other.transform.parent != null && other.transform.parent.CompareTag("Enemy"))
+            // {
+            //     // Debug.DrawLine(this.transform.parent.position, other.transform.position, Color.red);
+            //     targetObj.Add(other.transform.parent.gameObject);
+            // }
+            // else
+            // {
+            // }
 
         }
         else
@@ -116,12 +116,15 @@ public class CommandRange : MonoBehaviour
     {
         if (playerStatus.CurrentSP >= 1 && selectedObj != null && canTarget == true)
         {
+
+
             enemyChecker = selectedObj.GetComponent<EnemyStatus>();
             if (enemyChecker != null)
             {
                 //SENDS A CONFIRMATION SPIRIT CHARGE ON HOSTILE OBJECTS
                 TargetEventSystem.currentTarget.ConfirmTargetSelect(selectedObj, playerObj, playerStatus.TotalDmg);
                 Debug.Log("TARGET IS ENEMY" + playerStatus.TotalDmg);
+
 
             }
             else
@@ -133,6 +136,13 @@ public class CommandRange : MonoBehaviour
                 //calling the functions from the selected object and gives a reference for the player Obj
                 MyFriend = selectedObj.GetComponent<FriendDialogue>();
                 var itemObj = selectedObj.GetComponent<Item>();
+
+                // ShroudedObject npcShroud = selectedObj.GetComponent<ShroudedObject>();
+                // if (npcShroud != null)
+                // {
+                //     Debug.Break();
+                //     TargetEventSystem.currentTarget.ShroudDetected(selectedObj.gameObject, false);
+                // }
 
                 if (itemObj != null)
                 {
@@ -147,10 +157,10 @@ public class CommandRange : MonoBehaviour
                     DialogueController.Instance.dialogueRunner.StartDialogue(MyFriend.YarnStartNode);
                 }
                 Vector3 targetPos = new Vector3(selectedObj.transform.position.x, this.transform.position.y, selectedObj.transform.position.z);
-                playerObj.transform.LookAt(targetPos);
-                playerStatus.SpiritStack();
                 // Debug.Log("ConfirmTarget");
+                playerObj.transform.LookAt(targetPos);
             }
+                playerStatus.SpiritStack();
 
         }
     }

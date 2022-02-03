@@ -37,6 +37,11 @@ public class ShroudedObject : MonoBehaviour
     void Start()
     {
         this.transform.GetChild(0).gameObject.SetActive(false);
+
+        // foreach (Transform child in this.transform)
+        // {
+        //     child.gameObject.SetActive(!isShrouded);
+        // }
         TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
         TargetEventSystem.currentTarget.onShroudDetected += ShroudDetected;
 
@@ -62,11 +67,20 @@ public class ShroudedObject : MonoBehaviour
 
         if (!isShrouded)
         {
-            //Shroud is activated
             this.transform.GetChild(0).gameObject.SetActive(true);
+
+            //Shroud is activated
+            // foreach (Transform child in this.transform)
+            // {
+            //     child.gameObject.SetActive(!isShrouded);
+            // }
         }
         else if (!isActivated)
         {
+            // foreach (Transform child in this.transform)
+            // {
+            //     child.gameObject.SetActive(!isShrouded);
+            // };
             this.transform.GetChild(0).gameObject.SetActive(false);
 
         }
