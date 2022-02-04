@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de15b1b2701b25d4b95f84135e818c0b, type: 3}
   m_Name: Allen's Spirit
   m_EditorClassIdentifier: 
-  uiPrefab: {fileID: 616324364039716464, guid: ab33f6ec65f6dd6439a1476d2efc5819, type: 3}
+  uiPrefab: {fileID: 4548802154864198177, guid: 812ebac7ec2239e45a66900835e04dff, type: 3}
   type: 3
   itemNameUI: Allen's Spirit
   itemID: allensp
-  itemPickedUp: 0
+  itemPickedUp: 1
   itemAmount: 1
   description: 'you feel agitated and confused from this spirit.
 

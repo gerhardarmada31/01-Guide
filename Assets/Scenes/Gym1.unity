@@ -15522,7 +15522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3419914392280672359, guid: b91a80cfe98f23e4786c6d5106ddd33d, type: 3}
       propertyPath: targetName
-      value: Allep
+      value: Allen
       objectReference: {fileID: 0}
     - target: {fileID: 4966737140431004326, guid: b91a80cfe98f23e4786c6d5106ddd33d, type: 3}
       propertyPath: m_Name

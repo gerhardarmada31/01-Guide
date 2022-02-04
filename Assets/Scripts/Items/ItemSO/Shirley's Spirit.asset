@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de15b1b2701b25d4b95f84135e818c0b, type: 3}
   m_Name: Shirley's Spirit
   m_EditorClassIdentifier: 
-  uiPrefab: {fileID: 616324364039716464, guid: 8b6ebe34026db4a43912fc41a6f09404, type: 3}
+  uiPrefab: {fileID: 4974967432219314606, guid: 463e0cd71af493e48b1d1b8db09a9377, type: 3}
   type: 3
   itemNameUI: Shirley's Spirit
   itemID: shirleysp
+  itemPickedUp: 0
   itemAmount: 1
-  description: 
+  description: you feel nice from the glow of this spirit
   playerCharacter: {fileID: 11400000, guid: e779ac30b0ec2be4faaa63ac56480f06, type: 2}
   spPlus: 1
