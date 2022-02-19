@@ -1,6 +1,6 @@
 title: p0B.Start
 tags: 
-position: 107,-1111
+position: 108.00001049041748,-1025.0000610351562
 ---
 <<SetSpeaker p0B>>
 hi! Rob!
@@ -9,86 +9,73 @@ hi! Tom!
 <<set $p0B_Found to true>>
 
 <<SetSpeaker Phantom>>
-hey p0B
+uuh hi?
 
 <<if $IOM_Talked is false>>
-<<SetSpeaker p0B>>
-well
-goodbye!
+    <<SetSpeaker p0B>>
+    goodbye!
 
-<<SetSpeaker Phantom>>
-uh
-bye
+    <<SetSpeaker Phantom>>
+    bye?
+    I figured you we're gonna give us an errand or something
 
+    <<SetSpeaker p0B>>
+    hmmm... 
+    not really..
 
-<<elseif $IOM_Talked is true && $talkedp0B is false>>
-<<SetSpeaker Phantom>>
-IOM's looking for you
-
-<<SetSpeaker p0B>>
-what he'd say?
-
-<<SetSpeaker Phantom>>
-he says your lunch is at the beach
+    <<SetSpeaker Phantom>>
+    sweet!
 
 
-<<SetSpeaker p0B>>
-aww 
-thats so nice of him
+<<elseif $IOM_Talked is true>>
+    <<SetSpeaker Phantom>>
+    wait, you're p0B?
 
-<<if $couple_story is true && $talkedp0B is false>>
-<<SetSpeaker Phantom>>
-IOM told us about your situation
-i'm sorry to hear that
-<<SetSpeaker p0B>>
-yeah kinda sucks
-but we made it work
-i still love IOM with all my heart!!!
-<<SetTalkGoal p0B>>
-<<set $talkedp0B to true>>
+    <<SetSpeaker p0B>>
+    yes?
 
-<<else>>
-<<SetSpeaker Phantom>>
-he's actually pretty nearby
-you can go to him if you go arou-
+    <<SetSpeaker Phantom>>
+    you're partner's looking for you.
 
-<<SetSpeaker p0B>>
-oh, i can't do that
+    <<SetSpeaker p0B>>
+    IOM? did he say something?
+    
+    <<SetSpeaker Phantom>>
+    he says he's thinking about you all time
 
-<<SetSpeaker Phantom>>
-huh why?
+    <<SetSpeaker p0B>>
+    aww 
+    can you tell him
+    i'm thinking about him too
 
-<<SetSpeaker p0B>>
-cause back when we got married
-we installed a telepathic chip so we can hear each others mind at a distance
-it was a great idea at first
-we can truly hear what they're feeling
-but one day we said some very hurtful things at each other
-and it was really hard to let it go
-it was hard for us to look at each other
-so in order for our marriage to work
-we decided to not see each other.
+    <<SetSpeaker Phantom>>
+    he's actually pretty nearby
+    you can go to him if you go arou-
 
-<<SetSpeaker Phantom>>
-....
-i'm sorry to hear that
+    <<SetSpeaker p0B>>
+    HE'S CLOSE?!
+    TELL HIM MOVE AWAY!
 
-<<SetSpeaker p0B>>
-oh don't worry about it
-it's been 5 years and we're still able to make it work
-<<SetTalkGoal p0B>>
-<<set $talkedp0B to true>>
+    <<SetSpeaker Phantom>>
+    ....
+    huh??
+    ...
+    ok...
 
+    <<SetSpeaker p0B>>
+    <<SetTalkGoal p0B>>
 
-<<endif>>
-
-<<elseif $talkedp0B is true>>
-<<SetSpeaker p0B>>
-thanks again for helping us
-
-<<SetSpeaker Phantom>>
-don't mention it!
 <<endif>>
 ===
+title: p0B.madAtPhantom
+tags: 
+position: 103.00000095367432,-1293.9999389648438
+---
+<<SetSpeaker Phantom>>
+.....
+sorry.
 
+//SetTalkGoal
+
+===
 
