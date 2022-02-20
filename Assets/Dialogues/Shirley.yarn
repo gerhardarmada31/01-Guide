@@ -3,34 +3,65 @@ tags:
 colorID: 0
 position: 368,-284
 ---
+<<SetItemGoal>>
 <<SetSpeaker Shirley>>
 
-<<if GoalComplete("Shirley.Goal") is true && Visited("Shirley.Accept") is true>>
-GOOD JOB!
-
-<<GetReward Item>>
-
-
-<<endif>>
-
 <<if Visited("Shirley.Start") is false>>
-can you find my Letter?
+    oh no it's gotta be here somewhere
+    maybe up the mountain?
 
-[[for sure|Shirley.Accept]]
-[[uuuhh no|Shirley.Decline]]
+    <<SetSpeaker Phantom>>
+    hello!
+    looking for something?
 
-<<else>>
-    <<if Visited("Shirley.Decline") is true && Visited("Shirley.Accept") is false>>
-    are you free now?
-    [[yeah|Shirley.Accept]]
-    [[still busy|Shirley.Decline]]
-    
-    <<else>>
-        <<if GoalComplete("Shirley.Goal") is false>>
-        the letter is made out of paper
-        <<endif>>
+    <<SetSpeaker Shirley>>
+    ....
+    oh uh HI HELLO!
 
-    <<endif>>
+    <<SetSpeaker Phantom>>
+    uh... hello?
+    <<SetSpeaker Shirley>>
+    shuush BE QUIET!
+
+    <<SetSpeaker Phantom>>
+    um, you okay?
+
+    <<SetSpeaker Shirley>>
+    oh sorry about that
+    i'm bit cray cray right now
+    you see, i lost my letter
+    and no one can read it except me
+
+    <<SetSpeaker Phantom>>
+    oh i get it
+    letters can sometimes be a bit embarrassing so i totally underst-
+
+    <<SetSpeaker Shirley>>
+    no no it's not like that
+    you see i'm from the future
+
+    <<SetSpeaker Phantom>>
+    .....
+    uh huh?
+
+    <<SetSpeaker Shirley>>
+    yeah
+    and if anybody besides me reads that letter
+    the world is gonna break!
+    so if you can find a letter that says "to shirley"
+    please deliver it to me!
+
+    [[i'll look for it|Shirley.Accept]]
+    [[you're from the future?|Shirley.Question]]
+
+<<elseif Visited("Shirley.Start") is true && GoalComplete("Shirley.Goal") is true>>
+     <<SetSpeaker Shirley>>
+    now time to read this
+    ....
+    i can't read this
+<<elseif Visited("Shirley.Start") is true && GoalComplete("Shirley.Goal") is false>>
+    oh jeez
+    the fate of the world
 
 <<endif>>
 ===
@@ -38,8 +69,29 @@ title: Shirley.Accept
 tags: 
 position: 51,-277
 ---
-<<SetItemGoal>>
-Thank you so much
+
+
+<<if GoalComplete("Shirley.Goal") is true>>
+
+<<SetSpeaker Phantom>>
+oh yeah we found a letter that says shirley in it
+i read it but it's just a huge letter C in it
+
+<<SetSpeaker Shirley>>
+OH NO!!!
+THE SPACE TIME CONTINUUM!!
+....
+....
+oh i guess we're okay
+thanks for finding my letter
+here as take this as a reward
+<<GetReward Item>>
+
+<<elseif GoalComplete("Shirley.Goal") is false>>
+awesome!
+with your help the space time continuum will be safe
+
+<<endif>>
 ===
 title: Shirley.Decline
 tags: 
@@ -47,4 +99,15 @@ colorID: 0
 position: 693,-317
 ---
 oh.... okay
+===
+title: Shirley.Question
+position: 374,-156
+---
+<<SetSpeaker Phantom>>
+so you're from the future?
+<<SetSpeaker Shirley>>
+yup
+<<SetSpeaker Phantom>>
+cool!
+
 ===

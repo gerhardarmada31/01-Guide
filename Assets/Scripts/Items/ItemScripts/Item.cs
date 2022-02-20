@@ -29,6 +29,11 @@ public class Item : MonoBehaviour
         Debug.Log("DESTROY OBJ");
         if (obj == this.gameObject)
         {
+            if(!String.IsNullOrEmpty(goalTitle))
+            {
+             GoalEvent.currentGoalEvent.GoalItem(goalTitle);
+             Debug.Log("GOAL TITLE IS SENT FROM ITEM");
+            }
             // GoalEvent.currentGoalEvent.AmountUpdate()
             Destroy(this.gameObject);
         }
