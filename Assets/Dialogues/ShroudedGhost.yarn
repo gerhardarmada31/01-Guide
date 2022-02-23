@@ -19,7 +19,8 @@ you broke my shroud effect!!
 
 <<else>>
 <<SetSpeaker Phantom>>
-we're really sorry
+oh
+our bad
 
 <<SetSpeaker ShroudedGhost>>
 ....
@@ -33,7 +34,7 @@ colorID: 8
 position: 371,417
 ---
 <<SetSpeaker ShroudedGhost>>
-man... there goes my solitude....
+man... there goes my alone time....
 ===
 title: ShrdGhost.Question
 tags: 
@@ -45,7 +46,7 @@ its a thing were ghosts can go invisible and stuff
 but it's not just ghosts other objects can become shrouded to
 
 <<SetSpeaker Phantom>>
-ah, thanks for the help
+ah, thanks for the tip
 
 <<SetSpeaker ShroudedGhost>>
 *grumble noise*

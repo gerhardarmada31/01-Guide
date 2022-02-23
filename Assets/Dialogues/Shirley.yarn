@@ -27,14 +27,13 @@ position: 368,-284
     um, you okay?
 
     <<SetSpeaker Shirley>>
-    oh sorry about that
-    i'm bit cray cray right now
-    you see, i lost my letter
+    .... uhh
+    depons
+    y'see, i lost my letter
     and no one can read it except me
 
     <<SetSpeaker Phantom>>
-    oh i get it
-    letters can sometimes be a bit embarrassing so i totally underst-
+    cus your letter can contain some juicy info?
 
     <<SetSpeaker Shirley>>
     no no it's not like that
@@ -42,12 +41,12 @@ position: 368,-284
 
     <<SetSpeaker Phantom>>
     .....
-    uh huh?
+    huh?
 
     <<SetSpeaker Shirley>>
     yeah
-    and if anybody besides me reads that letter
-    the world is gonna break!
+    and if anybody reads it besides me
+    the world is gonna explode!
     so if you can find a letter that says "to shirley"
     please deliver it to me!
 
@@ -88,8 +87,7 @@ here as take this as a reward
 <<GetReward Item>>
 
 <<elseif GoalComplete("Shirley.Goal") is false>>
-awesome!
-with your help the space time continuum will be safe
+the fate world rest in your hands
 
 <<endif>>
 ===
