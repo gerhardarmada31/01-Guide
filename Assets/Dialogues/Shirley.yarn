@@ -27,13 +27,13 @@ position: 368,-284
     um, you okay?
 
     <<SetSpeaker Shirley>>
-    .... uhh
-    depons
+    ....
+    i'm sorry
     y'see, i lost my letter
-    and no one can read it except me
+    and i'm worried someone's gonna read it
 
     <<SetSpeaker Phantom>>
-    cus your letter can contain some juicy info?
+    cus your letter has some juicy info?
 
     <<SetSpeaker Shirley>>
     no no it's not like that

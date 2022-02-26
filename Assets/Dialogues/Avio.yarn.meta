@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 98cf2064b54078f40bf291cfcc306653
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-US
+  stringIDs:
+  - Avio-Avio.Start-0
+  - Avio-Avio.Start-1
+  - Avio-Avio.Start-2
+  - Avio-Avio.Start-3
+  - Avio-Avio.Start-4
+  - Avio-Avio.Start-5
+  - Avio-Avio.Start-6
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {fileID: 7128917941130120860, guid: 98cf2064b54078f40bf291cfcc306653, type: 3}
+  localizations: []
