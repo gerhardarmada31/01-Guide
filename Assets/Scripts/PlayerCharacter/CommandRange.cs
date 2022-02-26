@@ -8,7 +8,6 @@ using UnityEngine.Events;
 public class CommandRange : MonoBehaviour
 {
     public List<GameObject> targetObj = new List<GameObject>();
-    public Text targetText;
     private int targetIndex;
 
     private SphereCollider myCollider;
@@ -60,7 +59,7 @@ public class CommandRange : MonoBehaviour
         if (targetIndex < targetObj.Count && targetObj[targetIndex] != null)
         {
             selectedObj = targetObj[targetIndex];
-            targetText.text = targetObj[targetIndex].gameObject.name.ToString();
+           // targetText.text = targetObj[targetIndex].gameObject.name.ToString();
 
             TargetInfo _targetInfo = selectedObj.GetComponent<TargetInfo>();
             if (_targetInfo != null)
@@ -99,10 +98,6 @@ public class CommandRange : MonoBehaviour
             // {
             // }
 
-        }
-        else
-        {
-            targetText.text = "None";
         }
     }
 
@@ -202,7 +197,6 @@ public class CommandRange : MonoBehaviour
                 StopCoroutine(WaitandPause(0.1f));
                 ClearingTarget();
                 spiritUI.CommandModeOn(false);
-                targetText.text = "None";
                 Time.timeScale = 1f;
                 isCommandModeOn = false;
             }
