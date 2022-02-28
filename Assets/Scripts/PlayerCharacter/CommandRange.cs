@@ -226,8 +226,10 @@ public class CommandRange : MonoBehaviour
         RaycastHit hit;
         if (selectedObj != null)
         {
-            var allLayers = ~(1 << 8);
-            if (Physics.Linecast(this.transform.position, selectedObj.transform.position, out hit, allLayers))
+            
+            //Layers are able to hit the layers
+            int layer_mask = LayerMask.GetMask("Enemy", "Interactable", "Terrain"); 
+            if (Physics.Linecast(this.transform.position, selectedObj.transform.position, out hit, layer_mask))
             {
                 // selectedObj = (hit.collider.gameObject);
                 targetLine.enabled = true;

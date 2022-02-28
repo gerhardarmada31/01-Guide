@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3592315469731415597}
   - component: {fileID: 6080606996484413065}
   - component: {fileID: 3364828304604669014}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NPC Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 8023379754542807265}
   - component: {fileID: 6531095845308462710}
   - component: {fileID: 1838729082590051620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FeedBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6620549591347287183}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -276,7 +276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4752667531856397773}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyChaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 4043320797367127205}
   - component: {fileID: 4752667532120920247}
   - component: {fileID: 6185550298254168613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy Character
   m_TagString: Target
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4752667532209081512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WayPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4752667532598647208}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -519,7 +519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4752667532737504661}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -549,7 +549,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4752667533212809639}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 4752667533233192847}
   - component: {fileID: 4752667533233192846}
   - component: {fileID: 4752667533233192841}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: DetectCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,7 +638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4752667533797237543}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -668,19 +668,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1165327704009262, guid: b395d5d6eb4b4b846acc021ee036b744, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1171611907214908, guid: b395d5d6eb4b4b846acc021ee036b744, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1414974731765640, guid: b395d5d6eb4b4b846acc021ee036b744, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1419287599744486, guid: b395d5d6eb4b4b846acc021ee036b744, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1845240806346120, guid: b395d5d6eb4b4b846acc021ee036b744, type: 3}
       propertyPath: m_Name
@@ -688,7 +688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1845240806346120, guid: b395d5d6eb4b4b846acc021ee036b744, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4733340085621846, guid: b395d5d6eb4b4b846acc021ee036b744, type: 3}
       propertyPath: m_RootOrder

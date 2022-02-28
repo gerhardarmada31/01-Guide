@@ -28,12 +28,14 @@ public abstract class GoalEnvironment : MonoBehaviour
 
     protected virtual void ObjectConfirmed(GameObject _obj, GameObject _playerObj, int sentSP)
     {
+        Debug.Log("yo  got hit");
         if (_obj == this.gameObject && sentSP >= spChecklvl1)
         {
             //FIX this Shrouded needs to reveal first then back to activiting it
             //Solution Probably add a boolean in the objectconfirmed event that says shroudGone?
             if (this.GetComponent<ShroudedObject>() != null && this.GetComponent<ShroudedObject>().enabled == false)
             {
+                Debug.Log("ShroudStuff");
                 // Debug.Log("ShroudCall");
 
                 // {

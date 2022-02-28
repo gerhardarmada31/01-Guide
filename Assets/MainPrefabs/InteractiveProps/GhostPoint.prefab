@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3981978446033648871}
   - component: {fileID: 5957156829822983858}
   - component: {fileID: 5728346199788483305}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: GhostPoint
   m_TagString: Target
   m_Icon: {fileID: 0}

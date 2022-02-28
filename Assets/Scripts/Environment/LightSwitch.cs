@@ -32,6 +32,7 @@ public class LightSwitch : GoalEnvironment
     protected override void ActObjectLvl1()
     {
         lightSource.enabled = true;
+        Debug.Log("LIGHT");
         UpdateGoal();
     }
 }
