@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 7280202562226312486}
   - component: {fileID: 40879179813280198}
   - component: {fileID: 8336837287774879123}
-  - component: {fileID: 2123461606146877023}
   - component: {fileID: 2173798478575612647}
   m_Layer: 12
   m_Name: StreetLamp
@@ -189,20 +188,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2123461606146877023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7280202562226312487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fbfe7b254b5c0145abaefeb4cefaef2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetName: Street Lamp
-  targetAct: LIGHT ON
 --- !u!114 &2173798478575612647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +203,9 @@ MonoBehaviour:
   goalTitle: DavidGoal
   spChecklvl1: 1
   spChecklvl2: 2
-  spCheckLvl1: 1
+  targetName: Street Lamp
+  targetAct01: OFF LIGHT
+  targetAct02: ON LIGHT
 --- !u!1001 &7280202560394296722
 PrefabInstance:
   m_ObjectHideFlags: 0

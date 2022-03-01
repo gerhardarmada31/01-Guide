@@ -126,6 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8109595e1de47164ab81a90b12c2809b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spChecklvl1: 0
+  spChecklvl2: 0
+  targetName: Checkpoint
+  targetAct01: SAVE
+  targetAct02: SAVE
 --- !u!114 &4498514273137246169
 MonoBehaviour:
   m_ObjectHideFlags: 0

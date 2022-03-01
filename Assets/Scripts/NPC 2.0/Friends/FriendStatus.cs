@@ -59,6 +59,7 @@ public class FriendStatus : NPCStatus
         }
     }
 
+
     // private void OnDisable()
     // {
     //     DialogueEvent.currentDialogueEvent.onFriendTalking -= FriendTalk;

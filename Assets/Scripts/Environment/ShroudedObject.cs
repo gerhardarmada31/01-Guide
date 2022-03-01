@@ -93,7 +93,7 @@ public class ShroudedObject : MonoBehaviour
         {
             Debug.Log("got hit");
 
-            if (currentSp <= spCheck)
+            if (currentSp >= spCheck)
             {
 
                 if (!isActivated)

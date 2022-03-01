@@ -3,29 +3,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakableObject : MonoBehaviour
+public class BreakableObject : GoalEnvironment, ITargetInfo
 {
     [SerializeField] private int breakableObjHP;
     [SerializeField] private GameObject dropPrefab;
 
-    void Start()
-    {
-        TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
-    }
 
-    private void ObjectConfirmed(GameObject obj, GameObject playerObj, int sentSp)
+    // [Header("Sp Checks")]
+    // [SerializeField] protected int spChecklvl1;
+    // [SerializeField] protected int spChecklvl2;
+
+    // [Header("Target Info")]
+    // [SerializeField] protected string targetName;
+    // [SerializeField] protected string targetAct01;
+    // [SerializeField] protected string targetAct02;
+
+    private void Awake()
     {
-        if (obj == this.gameObject)
+        if (spChecklvl1 <= 0 || spChecklvl2 <= 0)
         {
-            breakableObjHP -= sentSp;
-
-            if (breakableObjHP <= 0)
-            {
-                DropObject();
-                gameObject.SetActive(false);
-            }
+            Debug.LogError("spCheck 1 or 2 cannot be in the value of 0");
         }
 
+        if (String.IsNullOrEmpty(targetAct01) || String.IsNullOrEmpty(targetAct02) || String.IsNullOrEmpty(targetName))
+        {
+            Debug.LogError("target name or Acts cannot be Null");
+        }
+    }
+    protected override void Start()
+    {
+        base.Start();
+        // TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
+    }
+
+
+    protected override void ActObjectLvl2()
+    {
+        breakableObjHP -= sentSP;
+
+        if (breakableObjHP <= 0)
+        {
+            DropObject();
+            gameObject.SetActive(false);
+        }
     }
 
     public void DropObject()
@@ -45,4 +65,5 @@ public class BreakableObject : MonoBehaviour
     {
         TargetEventSystem.currentTarget.onConfirmTargetSelect -= ObjectConfirmed;
     }
+
 }

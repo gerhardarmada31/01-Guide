@@ -16,6 +16,6 @@ MonoBehaviour:
   type: 0
   itemNameUI: A Letter from Shirley
   itemID: letterShirley
-  itemPickedUp: 1
+  itemPickedUp: 0
   itemAmount: 1
   description: A letter that say "To Shirley" and Big letter "C" on it

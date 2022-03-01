@@ -7,9 +7,10 @@ public class LightSwitch : GoalEnvironment
 {
     // Start is called before the first frame update
 
-    [SerializeField] int spCheckLvl1;
+
     //Variable for the light component to check if its on or off
     private Light lightSource;
+    private bool isLit = false;
 
     private void Awake()
     {
@@ -23,16 +24,24 @@ public class LightSwitch : GoalEnvironment
     }
 
     //CALL This on either ActObjectLvl1 or 2 depending on the level you want
-    public void UpdateGoal()
+
+    protected override void ActObjectLvl2()
     {
-        GoalEvent.currentGoalEvent.spInteractUpdate(goalTitle, goalCounter);
-        Debug.Log("Update Goal");
+        lightSource.enabled = true;
+        Debug.Log("LIGHT");
+        if (!isLit)
+        {
+            UpdateGoal(1);
+        }
+        isLit = true;
     }
 
     protected override void ActObjectLvl1()
     {
-        lightSource.enabled = true;
-        Debug.Log("LIGHT");
-        UpdateGoal();
+        // base.ActObjectLvl1();
+        lightSource.enabled = false;
+        UpdateGoal(-1);
+        isLit = false;
+        //Check if the 
     }
 }

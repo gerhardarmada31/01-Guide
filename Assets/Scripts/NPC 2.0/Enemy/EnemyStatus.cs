@@ -63,7 +63,7 @@ public class EnemyStatus : NPCStatus
             else if (sentSp >= SpCheckLvl2)
             {
                 Debug.Log("strong Sauce");
-                if (hasStun)
+                if (canStun)
                 {
                     IsStun = true;
                 }

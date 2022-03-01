@@ -105,6 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd3c7e2a4ef6ca49963bb0fd3284f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetName: Shooter
+  targetAct01: ATTACK
+  targetAct02: STUN ATTACK
   nPCAttributes: {fileID: 11400000, guid: a8db7a9a76d6b2649aaad69cbf9e7db6, type: 2}
 --- !u!114 &1998876991501354671
 MonoBehaviour:
