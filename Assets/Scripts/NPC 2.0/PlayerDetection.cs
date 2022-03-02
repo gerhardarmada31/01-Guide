@@ -25,11 +25,9 @@ public class PlayerDetection : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (isDetectorFriend)
-            {
-                controller.ChaseTarget = null;
-                Debug.Log("PlayerExit");
-            }
+
+            controller.ChaseTarget = null;
+            Debug.Log("PlayerExit");
             controller.IsplayerIn = false;
 
         }
