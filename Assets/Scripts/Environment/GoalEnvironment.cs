@@ -21,7 +21,7 @@ public abstract class GoalEnvironment : MonoBehaviour, ITargetInfo
 
 
     protected int sentSP;
-
+    protected GameObject player;
 
 
 
@@ -43,6 +43,7 @@ public abstract class GoalEnvironment : MonoBehaviour, ITargetInfo
         Debug.Log("yo  got hit");
         if (_obj == this.gameObject && _sentSP >= spChecklvl1)
         {
+            player = _playerObj;
             sentSP = _sentSP;
             //FIX this Shrouded needs to reveal first then back to activiting it
             //Solution Probably add a boolean in the objectconfirmed event that says shroudGone?

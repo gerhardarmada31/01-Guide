@@ -33,12 +33,24 @@ public class BreakableObject : GoalEnvironment, ITargetInfo
     protected override void Start()
     {
         base.Start();
-        // TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
+        TargetEventSystem.currentTarget.onConfirmTargetSelect += ObjectConfirmed;
     }
 
 
     protected override void ActObjectLvl2()
     {
+        breakableObjHP -= sentSP;
+
+        if (breakableObjHP <= 0)
+        {
+            DropObject();
+            gameObject.SetActive(false);
+        }
+    }
+    
+    protected override void ActObjectLvl1()
+    {
+        Debug.Log("destroy object");
         breakableObjHP -= sentSP;
 
         if (breakableObjHP <= 0)

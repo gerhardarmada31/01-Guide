@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// [RequireComponent(typeof(YarnProgram))]
-// [RequireComponent(typeof(SpeakerSO))]
-public class FriendDialogue : MonoBehaviour
+public class TalkObject : MonoBehaviour
 {
-    public string YarnStartNode { get{return yarnStartNode;} }
+    public string YarnStartNode { get { return yarnStartNode; } }
     [SerializeField] GameObject chatBubble;
-    [SerializeField] string yarnStartNode ="Start";
+    [SerializeField] string yarnStartNode = "Start";
     [SerializeField] YarnProgram yarnDialogue;
     [SerializeField] SpeakerSO speakerData;
     // Start is called before the first frame update
@@ -18,5 +16,4 @@ public class FriendDialogue : MonoBehaviour
         DialogueController.Instance.dialogueRunner.Add(yarnDialogue);
         DialogueController.Instance.AddSpeaker(speakerData);
     }
-
 }

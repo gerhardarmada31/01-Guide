@@ -110,6 +110,7 @@ public class CommandRange : MonoBehaviour
             //give a condition of the player has received the scanner 2.0
             TargetEventSystem.currentTarget.ShroudDetected(other.gameObject, false);
             targetObj.Add(other.transform.gameObject);
+            // targetIndex = (targetIndex + 1) % targetObj.Count;
             // if (other.transform.parent != null && other.transform.parent.CompareTag("Enemy"))
             // {
             //     // Debug.DrawLine(this.transform.parent.position, other.transform.position, Color.red);
@@ -169,8 +170,8 @@ public class CommandRange : MonoBehaviour
                 if (MyFriend != null)
                 {
                     //checks if player is in a dialogue
-                    playerDialogue.IsInDialogue = true;
-                    DialogueController.Instance.dialogueRunner.StartDialogue(MyFriend.YarnStartNode);
+                    // playerDialogue.IsInDialogue = true;
+                    // DialogueController.Instance.dialogueRunner.StartDialogue(MyFriend.YarnStartNode);
                 }
                 Vector3 targetPos = new Vector3(selectedObj.transform.position.x, this.transform.position.y, selectedObj.transform.position.z);
                 // Debug.Log("ConfirmTarget");

@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 6129041648734965416}
   - component: {fileID: 6129041648734965420}
   - component: {fileID: 6129041648734965423}
-  - component: {fileID: 6129041648734965422}
   - component: {fileID: 7412626159762229586}
   m_Layer: 12
   m_Name: BreakableObject
@@ -158,22 +157,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb4737dab63b1c429ac76114129c9a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goalTitle: 
+  spChecklvl1: 0
+  spChecklvl2: 0
+  targetName: 
+  targetAct01: 
+  targetAct02: 
   breakableObjHP: 1
   dropPrefab: {fileID: 0}
---- !u!114 &6129041648734965422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6129041648734965417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fbfe7b254b5c0145abaefeb4cefaef2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetName: Box
-  targetAct: Break
 --- !u!114 &7412626159762229586
 MonoBehaviour:
   m_ObjectHideFlags: 0

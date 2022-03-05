@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dcc365b3cc11a41439f30e6b50c2a07c, type: 3}
-  m_Name: Phantom
+  m_Name: PhantomDoorScan
   m_EditorClassIdentifier: 
   speakerName: Phantom
   DialougeBox: {fileID: 21300000, guid: 0b458f5889c6f8b41886e7edd5987632, type: 3}

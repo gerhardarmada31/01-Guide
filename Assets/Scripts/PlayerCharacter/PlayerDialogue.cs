@@ -7,8 +7,16 @@ public class PlayerDialogue : MonoBehaviour
     //Const
     private FriendDialogue friendNpc;
     private CommandRange commandRange;
-    private bool isInDialogue = false;
+
     [SerializeField] SpeakerSO speakerData;
+    private bool isInDialogue = false;
+    //Property
+    public bool IsInDialogue
+    {
+        get { return isInDialogue; }
+        set { isInDialogue = value; }
+    }
+
 
     private void Start()
     {
@@ -16,12 +24,7 @@ public class PlayerDialogue : MonoBehaviour
         DialogueController.Instance.AddSpeaker(speakerData);
     }
     // public string YarnStartNode { get{return yarnStartNode;} }
-    //Property
-    public bool IsInDialogue
-    {
-        get { return isInDialogue; }
-        set { isInDialogue = value; }
-    }
+
 
     public void SelectingDialogueOptions(int dialogueOption)
     {
