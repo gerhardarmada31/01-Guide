@@ -259,7 +259,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""17969292-8a94-42ca-b99f-56efd1f586cb"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -270,7 +270,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""a1b07ff2-ad52-437d-9b9e-146be23c42a1"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1089,6 +1089,63 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""MainMenuUI"",
+            ""id"": ""c3a56403-8b05-4548-8ed8-fa9a370d8074"",
+            ""actions"": [
+                {
+                    ""name"": ""MenuCmdOn"",
+                    ""type"": ""Button"",
+                    ""id"": ""5f70f243-003d-4ec2-acf5-4a22426244f6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MenuCmdOff"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""7c97443c-e116-4b2e-b821-8bbaf35819f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c5e80cb4-1157-49f0-bf27-450e9d820663"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuCmdOn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""85b801a2-a26d-49b1-b6d1-61ade188a3b8"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuCmdOn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac63191e-59ab-40d8-903e-c874090d0f04"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuCmdOff"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -1126,6 +1183,10 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_Tab = m_UI.FindAction("Tab", throwIfNotFound: true);
         m_UI_MenuNav = m_UI.FindAction("MenuNav", throwIfNotFound: true);
+        // MainMenuUI
+        m_MainMenuUI = asset.FindActionMap("MainMenuUI", throwIfNotFound: true);
+        m_MainMenuUI_MenuCmdOn = m_MainMenuUI.FindAction("MenuCmdOn", throwIfNotFound: true);
+        m_MainMenuUI_MenuCmdOff = m_MainMenuUI.FindAction("MenuCmdOff", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1462,6 +1523,47 @@ public class @InputActions : IInputActionCollection, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // MainMenuUI
+    private readonly InputActionMap m_MainMenuUI;
+    private IMainMenuUIActions m_MainMenuUIActionsCallbackInterface;
+    private readonly InputAction m_MainMenuUI_MenuCmdOn;
+    private readonly InputAction m_MainMenuUI_MenuCmdOff;
+    public struct MainMenuUIActions
+    {
+        private @InputActions m_Wrapper;
+        public MainMenuUIActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MenuCmdOn => m_Wrapper.m_MainMenuUI_MenuCmdOn;
+        public InputAction @MenuCmdOff => m_Wrapper.m_MainMenuUI_MenuCmdOff;
+        public InputActionMap Get() { return m_Wrapper.m_MainMenuUI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MainMenuUIActions set) { return set.Get(); }
+        public void SetCallbacks(IMainMenuUIActions instance)
+        {
+            if (m_Wrapper.m_MainMenuUIActionsCallbackInterface != null)
+            {
+                @MenuCmdOn.started -= m_Wrapper.m_MainMenuUIActionsCallbackInterface.OnMenuCmdOn;
+                @MenuCmdOn.performed -= m_Wrapper.m_MainMenuUIActionsCallbackInterface.OnMenuCmdOn;
+                @MenuCmdOn.canceled -= m_Wrapper.m_MainMenuUIActionsCallbackInterface.OnMenuCmdOn;
+                @MenuCmdOff.started -= m_Wrapper.m_MainMenuUIActionsCallbackInterface.OnMenuCmdOff;
+                @MenuCmdOff.performed -= m_Wrapper.m_MainMenuUIActionsCallbackInterface.OnMenuCmdOff;
+                @MenuCmdOff.canceled -= m_Wrapper.m_MainMenuUIActionsCallbackInterface.OnMenuCmdOff;
+            }
+            m_Wrapper.m_MainMenuUIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MenuCmdOn.started += instance.OnMenuCmdOn;
+                @MenuCmdOn.performed += instance.OnMenuCmdOn;
+                @MenuCmdOn.canceled += instance.OnMenuCmdOn;
+                @MenuCmdOff.started += instance.OnMenuCmdOff;
+                @MenuCmdOff.performed += instance.OnMenuCmdOff;
+                @MenuCmdOff.canceled += instance.OnMenuCmdOff;
+            }
+        }
+    }
+    public MainMenuUIActions @MainMenuUI => new MainMenuUIActions(this);
     public interface IPlayerCharacterActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -1497,5 +1599,10 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnTab(InputAction.CallbackContext context);
         void OnMenuNav(InputAction.CallbackContext context);
+    }
+    public interface IMainMenuUIActions
+    {
+        void OnMenuCmdOn(InputAction.CallbackContext context);
+        void OnMenuCmdOff(InputAction.CallbackContext context);
     }
 }

@@ -1,0 +1,32 @@
+title: ScanDoor.Start
+tags: 
+colorID: 0
+position: 645,-13
+---
+<<SetSpeaker Phantom>>
+
+<<if $tetor_Talked is false>>
+
+<<if Visited("ScanDoor.Start") is false>>
+what weird looking wall
+lets asks that guy
+he might know what to do with these weird walls
+    
+<<else>>
+lets try talking to that guy siting on the bench
+<<endif>>
+
+<<else>>
+    <<if Visited("ScanDoor.Start") is false>>
+    ah, so this is the door the old dude was talking about
+    cmon rob
+    you can break it
+    (and hopefully won't get us into trouble)
+    <<else>>
+    what did tetor said again?
+
+    <<SetSpeaker Tetor>>
+    move the mouse wheel!
+    <<endif>>
+<<endif>>
+===

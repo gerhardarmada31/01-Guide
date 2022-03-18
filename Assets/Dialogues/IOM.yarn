@@ -1,96 +1,96 @@
 title: IOM.Start
 tags: 
-position: 311.0792236328125,-478.95477294921875
+position: 247,-357
 ---
 <<SetSpeaker IOM>>
+
 
 
 <<if GoalComplete("Odd.Couple") is false>>
-hey Rob
-have you seen my husband?
+    <<if Visited("IOM.Start") is false>>
+    hey rob and tom
+    have you seen my husband?
+
+        <<if $p0B_Found is true>>
+        <<SetSpeaker Phantom>>
+        yeah
+        he's at the station
+
+        <<SetSpeaker IOM>>
+        oh thats great news!
+        if you don't mind
+        can you tell him
+        his lunch is at the beach
 
 
+        [[we'll tell him|IOM.Help]]
+        [[we're busy|IOM.NotHelp]]
+        [[why can't you do it?|IOM.Question]]
 
-[[nah|IOM.NotFoundPartner]]
-<<if $p0B_Found is true>>
-[[as matter of fact|IOM.FoundPartner]]
-<<endif>>
+        <<else>>
 
+        <<SetSpeaker Phantom>>
+        not really
+        do you know where he is?
+
+        <<SetSpeaker IOM>>
+        last time we acidentally communicated 
+        i told him to go the train station
+
+        <<SetSpeaker Phantom>>
+        acidentally?
+
+        <<SetSpeaker IOM>>
+        yes
+        acidentally
+        anyway, can you tell him his lunch is at the at beach
+        
+
+
+        [[okay|IOM.Help]]
+        [[nah|IOM.NotHelp]]
+
+        <<endif>>
+    <<elseif Visited("IOM.Help") is true>>
+    <<SetSpeaker IOM>>
+    p0B is probably at the station
+
+    <<elseif Visited("IOM.Start") is true && Visited("IOM.NotHelp") is true>>
+    <<SetSpeaker IOM>>
+    hmmm....
+    how do I tell p0B his lunchbox is at the beach
+
+    [[we'll tell him|IOM.Help]]
+    [[we're still busy|IOM.NotHelp]]
+
+
+    <<endif>>
+<<elseif $coupleRewardGot is false>>
+<<SetSpeaker Phantom>>
+we told him to go to the beach
+<<SetSpeaker IOM>>
+thats great
+here take this
+thanks for helping us out.
+<<GetReward Coin>>
+<<set $coupleRewardGot to true>>
 <<else>>
-
-<<SetSpeaker Phantom>>
-we found p0b
-
 <<SetSpeaker IOM>>
-h$%ck
-sweet
+Thanks again!
 
 <<endif>>
 ===
-title: IOM.NotFoundPartner
-tags: 
-colorID: 0
-position: -139,-863
----
-<<SetSpeaker Phantom>>
-uhh no, whats he look like?
 
-<<SetSpeaker IOM>>
-he looks handsome.
 
-<<SetSpeaker Phantom>>
-uhuh. and?
-
-<<SetSpeaker IOM>>
-kind
-gentle
-caring
-
-<<SetSpeaker Phantom>>
-.....
-should we just walk away?
-[[I wanna see how this goes|IOM.Help]]
-[[yeah.... |IOM.NotHelp]]
-===
-title: IOM.FoundPartner
-tags: 
-colorID: 0
-position: 624,-882
----
-<<SetSpeaker Phantom>>
-yeah we talked a little bit.
-last time we saw him.
-he was at the beach.
-
-<<SetSpeaker IOM>>
-that's great! 
-can you tell him
-I think about him everyday...
-
-<<SetSpeaker Phantom>>
-huh??
-can't you just tell him yourself...
-
-<<SetSpeaker IOM>>
-uhhh... no I can't.... 
-I would love to..
-but no...
-
-<<SetSpeaker Phantom>>
-whatcha thinkin Rob?
-[[lets help them|IOM.Help]]
-[[seems... like a hassle|IOM.NotHelp]]
-===
 title: IOM.Help
 tags: 
 position: 240,-875
 ---
 <<SetSpeaker Phantom>>
-Fine, we'll do it.
+we'll do it.
 
 <<SetSpeaker IOM>>
-thank you thank you thank you!!!!
-
+thanks a bunch!
 
 <<set $IOM_Talked to true>>
 ===
@@ -100,12 +100,45 @@ colorID: 0
 position: 238,-1145
 ---
 <<SetSpeaker Phantom>>
-sorry, we're kinda busy.
+we're really sorry but-
 
 <<SetSpeaker IOM>>
-oh no worries!
-I can wait.
+oh don't worry about it's fine
+===
+title: IOM.Question
+position: 296,-474.5
+---
+<<SetSpeaker Phantom>>
+can't you just tell him yourself?
+
+<<SetSpeaker IOM>>
+uh, hehehehe
+you see
+we can't go near we each other
+
 
 <<SetSpeaker Phantom>>
-.....
+huh? why not?
+
+<<SetSpeaker IOM>>
+so back when we got married
+we installed a telepathic chip so we can hear each others mind
+it was nice at first....
+you can truly hear what they feel about you
+but after a while
+you hear each others darkest thoughts
+it becomes something painful
+
+<<SetSpeaker Phantom>>
+oh
+im sorry to hear that
+
+<<SetSpeaker IOM>>
+its fine
+<<set  $couple_story to true>>
+
+<<SetSpeaker Phantom>>
+so what do we do Rob?
+[[let's help them|IOM.Help]]
+[[this is too much for me|IOM.NotHelp]]
 ===

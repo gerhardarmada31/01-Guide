@@ -16,10 +16,11 @@ position: 447,37
     yo, is that my spirit?
 
     <<SetSpeaker Phantom>>
-    uhhh no?
+    uhhh yeah
 
     <<SetSpeaker Allen>>
-    oh okay.
+    cool
+    i was gonna throw it out anyway
     <<endif>>
 
 <<else>>
@@ -58,13 +59,13 @@ probably
 maybe...
 
 <<SetSpeaker Phantom>>
-cool thanks
+uhh not really helpful
 ===
 title: Allen.NoTask
 tags: 
 position: 109,35
 ---
-let me know when you're free
+you guys free now?
 ===
 title: Allen.YesTask
 tags: 

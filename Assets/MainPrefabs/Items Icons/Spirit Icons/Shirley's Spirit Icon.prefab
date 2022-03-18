@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 190580304934601057, guid: 660ac045f3b18094dbe9f6b42909e959, type: 3}
       propertyPath: m_Name
-      value: Spirit Item Image
+      value: Shirley's Spirit Icon
       objectReference: {fileID: 0}
     - target: {fileID: 190580304934601070, guid: 660ac045f3b18094dbe9f6b42909e959, type: 3}
       propertyPath: m_Pivot.x
@@ -95,5 +95,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6405768784823587132, guid: 660ac045f3b18094dbe9f6b42909e959, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d7059a545621d94e9d9374502fbaa39, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 660ac045f3b18094dbe9f6b42909e959, type: 3}

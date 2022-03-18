@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1464746446337292472}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ShroudObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6414977017466582450}
   - component: {fileID: 1955150328958509704}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Point Light
   m_TagString: Target
   m_Icon: {fileID: 0}
@@ -136,9 +136,8 @@ GameObject:
   - component: {fileID: 7280202562226312486}
   - component: {fileID: 40879179813280198}
   - component: {fileID: 8336837287774879123}
-  - component: {fileID: 2123461606146877023}
   - component: {fileID: 2173798478575612647}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: StreetLamp
   m_TagString: Target
   m_Icon: {fileID: 0}
@@ -189,20 +188,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2123461606146877023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7280202562226312487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fbfe7b254b5c0145abaefeb4cefaef2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetName: Street Lamp
-  targetAct: LIGHT ON
 --- !u!114 &2173798478575612647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +203,9 @@ MonoBehaviour:
   goalTitle: DavidGoal
   spChecklvl1: 1
   spChecklvl2: 2
-  spCheckLvl1: 1
+  targetName: Street Lamp
+  targetAct01: OFF LIGHT
+  targetAct02: ON LIGHT
 --- !u!1001 &7280202560394296722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -270,13 +257,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8513424388201257645, guid: 6c240b601b5541241ba02b789f8bd65a, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6c240b601b5541241ba02b789f8bd65a, type: 3}
       propertyPath: m_Name
       value: StreetLampModel
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6c240b601b5541241ba02b789f8bd65a, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6c240b601b5541241ba02b789f8bd65a, type: 3}
       propertyPath: m_TagString
       value: Target
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507767883509144192, guid: 6c240b601b5541241ba02b789f8bd65a, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3779745573541866595, guid: 6c240b601b5541241ba02b789f8bd65a, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c240b601b5541241ba02b789f8bd65a, type: 3}

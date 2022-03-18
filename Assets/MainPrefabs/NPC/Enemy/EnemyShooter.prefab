@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1998876991501354671}
   - component: {fileID: 1252777867780567858}
   - component: {fileID: 4513695326966258421}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy Character
   m_TagString: Target
   m_Icon: {fileID: 0}
@@ -105,6 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd3c7e2a4ef6ca49963bb0fd3284f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetName: Shooter
+  targetAct01: ATTACK
+  targetAct02: STUN ATTACK
   nPCAttributes: {fileID: 11400000, guid: a8db7a9a76d6b2649aaad69cbf9e7db6, type: 2}
 --- !u!114 &1998876991501354671
 MonoBehaviour:
@@ -220,7 +223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1998876991689890480}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WayPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1998876991774725077}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1998876992097308592}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -317,7 +320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1998876992235352973}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -349,7 +352,7 @@ GameObject:
   - component: {fileID: 1998876992545434007}
   - component: {fileID: 1998876992545434006}
   - component: {fileID: 1998876992545434001}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: DetectCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +409,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1998876992557297599}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -436,7 +439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1998876993046607167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -469,7 +472,7 @@ GameObject:
   - component: {fileID: 4120734838255127362}
   - component: {fileID: 8040170974063735559}
   - component: {fileID: 3950652196802154310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FeedBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +627,7 @@ GameObject:
   - component: {fileID: 7400679606755208788}
   - component: {fileID: 475750139307714852}
   - component: {fileID: 7080063744709271524}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NPC Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +708,7 @@ GameObject:
   - component: {fileID: 3872707056441824492}
   - component: {fileID: 3866650744798290312}
   - component: {fileID: 611827093099515338}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HitParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5600,7 +5603,7 @@ GameObject:
   - component: {fileID: 8460147930075978159}
   - component: {fileID: 4002395517726513297}
   - component: {fileID: 4752029541952136482}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10472,7 +10475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 119705199494726295}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -10504,7 +10507,7 @@ GameObject:
   - component: {fileID: 6549239094608435752}
   - component: {fileID: 7848664948865761470}
   - component: {fileID: 7153500032576867032}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Distortion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15377,6 +15380,10 @@ PrefabInstance:
     - target: {fileID: 1829314623044445987, guid: 97450db169ab82e4cb8e84dba0464191, type: 3}
       propertyPath: m_Name
       value: GameObjectPool
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829314623044445987, guid: 97450db169ab82e4cb8e84dba0464191, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1829314623044446013, guid: 97450db169ab82e4cb8e84dba0464191, type: 3}
       propertyPath: m_RootOrder

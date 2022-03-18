@@ -93,7 +93,7 @@ public class ShroudedObject : MonoBehaviour
         {
             Debug.Log("got hit");
 
-            if (currentSp <= spCheck)
+            if (currentSp >= spCheck)
             {
 
                 if (!isActivated)
@@ -104,7 +104,6 @@ public class ShroudedObject : MonoBehaviour
 
                 this.transform.GetChild(0).gameObject.SetActive(true);
                 myCollider.isTrigger = false;
-                this.enabled = false;
                 isShrouded = false;
             }
             isActivated = true;

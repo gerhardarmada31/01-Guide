@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1643614032358256556}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1643614032605344713}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Friend01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,8 +77,7 @@ GameObject:
   - component: {fileID: 1643614032869271213}
   - component: {fileID: 1643614032869271212}
   - component: {fileID: 1643614032869271219}
-  - component: {fileID: 9031922157408123143}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Friend01
   m_TagString: Target
   m_Icon: {fileID: 0}
@@ -182,6 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a859e0a80d792ef49bd4b1747dd78d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetName: 
+  targetAct01: 
+  targetAct02: 
   nPCAttributes: {fileID: 11400000, guid: a6a71325b949d0442a70cadb6708276a, type: 2}
 --- !u!114 &1643614032869271219
 MonoBehaviour:
@@ -209,20 +211,6 @@ MonoBehaviour:
   wayPoints:
   - {fileID: 1643614032358256556}
   - {fileID: 1643614034029891491}
---- !u!114 &9031922157408123143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643614032869271217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fbfe7b254b5c0145abaefeb4cefaef2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetName: 
-  targetAct: 
 --- !u!1 &1643614033024547501
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1643614033024547500}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WayPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1643614034029891491}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -296,7 +284,7 @@ GameObject:
   - component: {fileID: 1643614034051320203}
   - component: {fileID: 1643614034051320202}
   - component: {fileID: 1643614034051320205}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: DetectCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 926472098686198411}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AttackSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -385,7 +373,7 @@ GameObject:
   - component: {fileID: 7807334367046251800}
   - component: {fileID: 2997645848843660168}
   - component: {fileID: 5437366183356255935}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: NPCModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

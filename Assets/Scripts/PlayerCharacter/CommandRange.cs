@@ -8,7 +8,6 @@ using UnityEngine.Events;
 public class CommandRange : MonoBehaviour
 {
     public List<GameObject> targetObj = new List<GameObject>();
-    public Text targetText;
     private int targetIndex;
 
     private SphereCollider myCollider;
@@ -29,6 +28,10 @@ public class CommandRange : MonoBehaviour
     //TARGET 
     private string targetName;
     private string targetAct;
+    private string targetAct01;
+    private string targetAct02;
+    private int targetReq01;
+    private int targetReq02;
     private LineRenderer targetLine;
     private bool canTarget = true;
     private GameObject selectedObj;
@@ -60,15 +63,32 @@ public class CommandRange : MonoBehaviour
         if (targetIndex < targetObj.Count && targetObj[targetIndex] != null)
         {
             selectedObj = targetObj[targetIndex];
-            targetText.text = targetObj[targetIndex].gameObject.name.ToString();
+            // targetText.text = targetObj[targetIndex].gameObject.name.ToString();
 
-            TargetInfo _targetInfo = selectedObj.GetComponent<TargetInfo>();
-            if (_targetInfo != null)
+            // TargetInfo _targetInfo = selectedObj.GetComponent<TargetInfo>();
+            // if (_targetInfo != null)
+            // {
+            //     Debug.Log("GEY TARGET INFO");
+            //     _targetInfo.GetInfo(out targetName, out targetAct);
+            //     //updates the UI of targetINFOR
+            //     TargetEventSystem.currentTarget.TargetInfoUpdate(targetName, targetAct, isCommandModeOn);
+
+            // }
+            ITargetInfo targetinfo = selectedObj.GetComponent<ITargetInfo>();
+            if (targetinfo != null)
             {
-                Debug.Log("GEY TARGET INFO");
-                _targetInfo.GetInfo(out targetName, out targetAct);
-                TargetEventSystem.currentTarget.TargetInfoUpdate(targetName, targetAct, isCommandModeOn);
+                targetinfo.GetTargetInfo(out targetName, out targetAct01, out targetAct02, out targetReq01, out targetReq02);
+                Debug.Log($"GETTING ALL ON targetName {targetName}, the action01 is {targetAct01}");
 
+                //get current spStack amount and check if they have been met.
+                if ((playerStatus.StackSP + 1) >= targetReq02)
+                {
+                    TargetEventSystem.currentTarget.TargetInfoUpdate(targetName, targetAct02, isCommandModeOn);
+                }
+                else
+                {
+                    TargetEventSystem.currentTarget.TargetInfoUpdate(targetName, targetAct01, isCommandModeOn);
+                }
             }
         }
         TargetLeyLine();
@@ -90,6 +110,7 @@ public class CommandRange : MonoBehaviour
             //give a condition of the player has received the scanner 2.0
             TargetEventSystem.currentTarget.ShroudDetected(other.gameObject, false);
             targetObj.Add(other.transform.gameObject);
+            // targetIndex = (targetIndex + 1) % targetObj.Count;
             // if (other.transform.parent != null && other.transform.parent.CompareTag("Enemy"))
             // {
             //     // Debug.DrawLine(this.transform.parent.position, other.transform.position, Color.red);
@@ -99,10 +120,6 @@ public class CommandRange : MonoBehaviour
             // {
             // }
 
-        }
-        else
-        {
-            targetText.text = "None";
         }
     }
 
@@ -153,14 +170,14 @@ public class CommandRange : MonoBehaviour
                 if (MyFriend != null)
                 {
                     //checks if player is in a dialogue
-                    playerDialogue.IsInDialogue = true;
-                    DialogueController.Instance.dialogueRunner.StartDialogue(MyFriend.YarnStartNode);
+                    // playerDialogue.IsInDialogue = true;
+                    // DialogueController.Instance.dialogueRunner.StartDialogue(MyFriend.YarnStartNode);
                 }
                 Vector3 targetPos = new Vector3(selectedObj.transform.position.x, this.transform.position.y, selectedObj.transform.position.z);
                 // Debug.Log("ConfirmTarget");
                 playerObj.transform.LookAt(targetPos);
             }
-                playerStatus.SpiritStack();
+            playerStatus.SpiritStack();
 
         }
     }
@@ -202,7 +219,6 @@ public class CommandRange : MonoBehaviour
                 StopCoroutine(WaitandPause(0.1f));
                 ClearingTarget();
                 spiritUI.CommandModeOn(false);
-                targetText.text = "None";
                 Time.timeScale = 1f;
                 isCommandModeOn = false;
             }
@@ -232,8 +248,10 @@ public class CommandRange : MonoBehaviour
         RaycastHit hit;
         if (selectedObj != null)
         {
-            var allLayers = ~(1 << 8);
-            if (Physics.Linecast(this.transform.position, selectedObj.transform.position, out hit, allLayers))
+
+            //Layers are able to hit the layers
+            int layer_mask = LayerMask.GetMask("Enemy", "Interactable", "Terrain", "Bullet");
+            if (Physics.Linecast(this.transform.position, selectedObj.transform.position, out hit, layer_mask))
             {
                 // selectedObj = (hit.collider.gameObject);
                 targetLine.enabled = true;
@@ -250,6 +268,7 @@ public class CommandRange : MonoBehaviour
                     if (hit.collider.transform.position != selectedObj.transform.position)
                     {
                         canTarget = false;
+                        TargetEventSystem.currentTarget.TargetInfoUpdate(targetName, "BLOCKED", isCommandModeOn);
                     }
                     else
                     {

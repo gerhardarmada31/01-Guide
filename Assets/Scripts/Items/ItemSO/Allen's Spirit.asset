@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 3
   itemNameUI: Allen's Spirit
   itemID: allensp
-  itemPickedUp: 1
+  itemPickedUp: 0
   itemAmount: 1
   description: 'you feel agitated and confused from this spirit.
 
