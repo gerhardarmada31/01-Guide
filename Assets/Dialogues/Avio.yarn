@@ -1,0 +1,25 @@
+title: Avio.Start
+tags: 
+colorID: 0
+position: 610,149
+---
+<<SetSpeaker Avio>>
+
+<<if Visited("Avio.Start") is false>>
+you want extra power in your attacks?
+move the scroll wheel to stack sp during the command mode
+
+<<SetSpeaker Phantom>>
+but i'm guessing it'll cost more SP?
+
+<<SetSpeaker Avio>>
+you betcha
+so think carefully
+
+<<else>>
+<<SetSpeaker Avio>>
+oh i forgot to mention
+sometimes you need to use more than sp on one object in order to activate it
+
+<<endif>>
+===
