@@ -10,6 +10,7 @@ TagManager:
   - ItemIcon
   - StatusIcon
   - SystemIcon
+  - CommandRange
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - CommandRange
   - gbCamera
   - UIContent
-  - 
-  - 
+  - Interactable
+  - Bullet
   - 
   - 
   - 

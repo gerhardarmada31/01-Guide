@@ -7,14 +7,12 @@ public class TargetInfo : MonoBehaviour
 {
     [SerializeField] private string targetName;
     [SerializeField] private string targetAct;
+    //actCostRequirement = goalEnvironments or NPCs spRequirment make this a interface probably
     // private bool hasShroud;
 
     private void Awake()
     {
         // ShroudChecker();
-
-
-
     }
 
     // public void ShroudChecker()

@@ -1,0 +1,21 @@
+title: Kate.Start
+tags: 
+colorID: 0
+position: 689,255
+---
+<<SetSpeaker Kate>>
+
+<<if Visited("Kate.Start") is false>>
+*huff* *huff*
+i got the zoomies!!!
+did you know you can sprint by holding LSHIFT
+but it consumes your SP tho..
+
+<<SetSpeaker Phantom>>
+good to know thanks!
+
+<<else>>
+<<SetSpeaker Kate>>
+hold LSHIFT to sprint
+<<endif>>
+===

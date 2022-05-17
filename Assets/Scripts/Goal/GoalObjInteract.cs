@@ -15,17 +15,15 @@ public class GoalObjInteract : GoalBase
         requiredAmount = ObjectRequireAmount;
         GoalEvent.currentGoalEvent.onGoalspInteractUpdate += CheckAmount;
     }
-    public void AddAmount()
-    {
-        currentAmount++;
-    }
+
 
     private void CheckAmount(string goalName, int _currentAmount)
     {
         if (goalTitle == goalName)
         {
-            Debug.Log("amountAdd");
-            AddAmount();
+            currentAmount = currentAmount + _currentAmount;
+            Debug.Log($"amountAdd {currentAmount}");
+
 
             if (currentAmount >= requiredAmount)
             {

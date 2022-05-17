@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0b1ebee70fff209498d920a0376198ec
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-US
+  stringIDs: []
+  compilationStatus: 0
+  isSuccesfullyCompiled: 0
+  compilationErrorMessage: "Error on line 15 at position 7:\nno viable alternative
+    at input '<<else'\r\n    <<else>>\r\n      ^^^^"
+  baseLanguage: {instanceID: 0}
+  localizations: []

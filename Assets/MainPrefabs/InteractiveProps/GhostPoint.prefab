@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 2611445769792980208}
   - component: {fileID: 3981978446033648871}
   - component: {fileID: 5957156829822983858}
-  - component: {fileID: 5728346199788483305}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: GhostPoint
   m_TagString: Target
   m_Icon: {fileID: 0}
@@ -111,6 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acdaf920c01ae24a9ba209651a034f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spChecklvl1: 1
+  spChecklvl2: 2
+  targetName: Ghost Point
+  targetAct01: JUMP
+  targetAct02: JUMP
 --- !u!54 &5957156829822983858
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,17 +131,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5728346199788483305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3957768011740475229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fbfe7b254b5c0145abaefeb4cefaef2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetName: Ghost Point
-  targetAct: JUMP

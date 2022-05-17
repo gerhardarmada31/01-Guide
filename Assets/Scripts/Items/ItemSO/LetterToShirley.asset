@@ -18,4 +18,4 @@ MonoBehaviour:
   itemID: letterShirley
   itemPickedUp: 0
   itemAmount: 1
-  description: A letter describing how beautiful shirley is.
+  description: A letter that say "To Shirley" and Big letter "C" on it

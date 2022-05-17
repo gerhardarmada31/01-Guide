@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1359394876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5541412120050939257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca26e15d66fd4ba478ecc7a8dba5b3eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goalTitle: 
+  spCheck: 1
+  lookRadius: 1
 --- !u!1001 &6496520216836248520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55,6 +70,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1643614032869271212, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: targetAct01
+      value: TALK
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643614032869271212, guid: 3932928018534f5458868846c85e8672, type: 3}
+      propertyPath: targetAct02
+      value: TAAALLLKKK
+      objectReference: {fileID: 0}
     - target: {fileID: 1643614032869271213, guid: 3932928018534f5458868846c85e8672, type: 3}
       propertyPath: speakerData
       value: 
@@ -79,5 +102,11 @@ PrefabInstance:
       propertyPath: targetName
       value: Shrouded Ghost
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9031922157408123143, guid: 3932928018534f5458868846c85e8672, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3932928018534f5458868846c85e8672, type: 3}
+--- !u!1 &5541412120050939257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1643614032869271217, guid: 3932928018534f5458868846c85e8672, type: 3}
+  m_PrefabInstance: {fileID: 6496520216836248520}
+  m_PrefabAsset: {fileID: 0}

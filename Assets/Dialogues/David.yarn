@@ -12,10 +12,6 @@ no worries
 
 <<SetSpeaker David>>
 you guys deserve a reward
-...
-uh sorry
-i only got lose change on me
-i hope you don't mind
 <<GetReward Coin>>
 
 
@@ -23,11 +19,11 @@ i hope you don't mind
 300 COINS!?
 
 <<SetSpeaker David>>
-yeah, i know i'm sorry
+yeah, i'm a bit low on cash
 
 <<SetSpeaker Phantom>>
-no no no it's cool
-
+nah dude, 300 works
+thank you!
 <<else>>
 
 <<endif>>

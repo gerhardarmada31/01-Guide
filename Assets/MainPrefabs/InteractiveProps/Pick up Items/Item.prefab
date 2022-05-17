@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 8333419213412743457}
   - component: {fileID: 8333419213412743456}
   - component: {fileID: 8333419213412743463}
-  - component: {fileID: 2707224276573330211}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Item
   m_TagString: Target
   m_Icon: {fileID: 0}
@@ -111,6 +110,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  spChecklvl1: 0
+  spChecklvl2: 0
+  targetName: 
+  targetAct01: PICK UP
+  targetAct02: PICK UP
   goalTitle: 
 --- !u!54 &8333419213412743463
 Rigidbody:
@@ -128,17 +132,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2707224276573330211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8333419213412743462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fbfe7b254b5c0145abaefeb4cefaef2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetName: 
-  targetAct: 

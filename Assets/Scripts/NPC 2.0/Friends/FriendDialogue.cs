@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(YarnProgram))]
-[RequireComponent(typeof(SpeakerSO))]
+// [RequireComponent(typeof(YarnProgram))]
+// [RequireComponent(typeof(SpeakerSO))]
 public class FriendDialogue : MonoBehaviour
 {
     public string YarnStartNode { get{return yarnStartNode;} }

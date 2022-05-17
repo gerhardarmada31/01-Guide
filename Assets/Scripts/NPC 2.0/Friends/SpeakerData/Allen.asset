@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Allen
   m_EditorClassIdentifier: 
   speakerName: Allen
-  DialougeBox: {fileID: 21300000, guid: 381fc44bba77f2d4da613595d68f1c9b, type: 3}
+  DialougeBox: {fileID: 21300000, guid: 0b458f5889c6f8b41886e7edd5987632, type: 3}

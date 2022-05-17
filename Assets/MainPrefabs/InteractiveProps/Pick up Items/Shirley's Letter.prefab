@@ -23,6 +23,14 @@ PrefabInstance:
       propertyPath: goalTitle
       value: GoalShirley
       objectReference: {fileID: 0}
+    - target: {fileID: 8333419213412743456, guid: 185401f15a21f0d4b957a44710073c6c, type: 3}
+      propertyPath: spChecklvl1
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333419213412743456, guid: 185401f15a21f0d4b957a44710073c6c, type: 3}
+      propertyPath: spChecklvl2
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8333419213412743462, guid: 185401f15a21f0d4b957a44710073c6c, type: 3}
       propertyPath: m_Name
       value: Shirley's Letter
