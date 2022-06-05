@@ -155,7 +155,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 jumpCount++;
                 charVelocity.y += Mathf.Sqrt(pStatus.playerStats.jumpHeight * -3f * pStatus.playerStats.gravityScale);
-
             }
         }
     }
